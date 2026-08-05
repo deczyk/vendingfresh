@@ -15,9 +15,14 @@ export function initHeroFallback(container: HTMLElement, getScrollProgress: () =
 
   loadCutoutCanvas(MACHINE_IMAGE_SRC)
     .then((canvas) => {
-      photo.src = canvas.toDataURL('image/png');
-      window.addEventListener('scroll', update, { passive: true });
-      update();
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const url = URL.createObjectURL(blob);
+        photo.addEventListener('load', () => URL.revokeObjectURL(url), { once: true });
+        photo.src = url;
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+      }, 'image/png');
     })
     .catch((error: unknown) => {
       console.warn('heroFallback: nie udało się załadować zdjęcia automatu', error);
