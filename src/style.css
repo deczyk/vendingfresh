@@ -182,13 +182,10 @@ img {
   align-items: center;
   justify-content: center;
 }
-.hero-fallback__shape {
-  width: min(60vw, 260px);
-  height: min(75vw, 340px);
-  border-radius: 36px;
-  background: linear-gradient(155deg, var(--color-green-light) 0%, var(--color-green-dark) 65%);
-  box-shadow: 0 0 90px rgba(216, 169, 79, 0.35), inset 0 0 40px rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(216, 169, 79, 0.4);
+.hero-fallback__photo {
+  width: min(70vw, 320px);
+  height: auto;
+  filter: drop-shadow(0 0 40px rgba(216, 169, 79, 0.45));
   will-change: transform;
 }
 
