@@ -161,14 +161,14 @@ img {
 }
 .nav__dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.75rem);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-hover);
-  padding: 0.5rem;
+  padding: 1.25rem 0.5rem 0.5rem;
   min-width: 240px;
   list-style: none;
   margin: 0;
@@ -279,13 +279,6 @@ img {
   color: var(--secondary);
   margin: 0 0 1rem;
 }
-.section__lead {
-  color: var(--text-light);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  margin: 0;
-}
-
 /* Dlaczego (2x3 grid) */
 .why-grid {
   display: grid;
@@ -583,13 +576,24 @@ img {
 
 /* Scroll-reveal */
 .reveal {
-  opacity: 0;
-  transform: translateY(24px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-.reveal.is-visible {
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.js-ready .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+  }
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Responsive */

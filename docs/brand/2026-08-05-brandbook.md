@@ -98,8 +98,9 @@ produktów. Duże, czytelne nagłówki, dużo światła, proste sekcje i wyraźn
 może wyglądać jak firma znacznie większa niż lokalny operator vendingowy.
 
 ## Decyzja dot. kolejności prac (2026-08-05)
-Hero photo (canvas cutout + tilt) zostało zmergowane, a rebranding wdrożony zaraz po nim,
-jednym przejściem przez całe `style.css` i `index.html`, zgodnie z powyższym planem. Etap 1
+Hero photo (canvas cutout + tilt) zostało zmergowane, a następnie zastąpione statycznym
+zdjęciem w ramach rebrandingu (mechanizm 3D/cutout został usunięty), jednym przejściem przez
+całe `style.css` i `index.html`, zgodnie z powyższym planem. Etap 1
 (rebrand + Home) jest zamknięty. Kolejne etapy — architektura wielostronicowa, podstrony
 oferty, realizacje, o nas, blog, lokalne SEO — to osobne projekty z własnym
 spec+planem, uruchamiane przez `superpowers:brainstorming` gdy przyjdzie ich kolej.

@@ -1,5 +1,7 @@
 import './style.css';
 
+document.documentElement.classList.add('js-ready');
+
 function initNav(): void {
   const toggle = document.getElementById('nav-toggle');
   const links = document.getElementById('nav-links');
