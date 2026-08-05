@@ -1,11 +1,11 @@
 # VendingFresh — Brandbook (2026-08-05)
 
-> Nowy kierunek wizualny marki, dostarczony przez użytkownika 2026-08-05. **Nie jest jeszcze
-> wdrożony** — obecny kod (`src/style.css`, `index.html`) wciąż używa starszej palety ze
-> spec `docs/superpowers/specs/2026-08-03-vendingfresh-landing-design.md` (zielony
-> ciemny/złoto/kremowy, Montserrat). Ten dokument to materiał źródłowy do przyszłego
-> osobnego projektu rebrandingu (spec + plan), nie do miksowania z bieżącym planem hero
-> (`docs/superpowers/plans/2026-08-05-vendingfresh-hero-photo.md`).
+> Nowy kierunek wizualny marki, dostarczony przez użytkownika 2026-08-05. **Wdrożony
+> na stronie głównej 2026-08-05** — zobacz
+> `docs/superpowers/specs/2026-08-05-vendingfresh-rebrand-home-design.md` i
+> `docs/superpowers/plans/2026-08-05-vendingfresh-rebrand-home.md`. Kolejne etapy
+> (architektura wielostronicowa, podstrony oferty, realizacje, o nas, blog, lokalne SEO)
+> mają własne, osobne specy.
 
 ## Paleta kolorów
 
@@ -98,8 +98,8 @@ produktów. Duże, czytelne nagłówki, dużo światła, proste sekcje i wyraźn
 może wyglądać jak firma znacznie większa niż lokalny operator vendingowy.
 
 ## Decyzja dot. kolejności prac (2026-08-05)
-Dokończamy najpierw plan hero photo na obecnej (starej) palecie — to zmiana czysto
-techniczna (canvas cutout + tilt), niezależna od kolorów. Rebranding wg tego brandbooka
-robimy jako osobny projekt zaraz po zmergowaniu hero (nowy spec przez
-`superpowers:brainstorming`, potem plan), obejmujący całe `style.css` i `index.html`
-jednym przejściem — nie łatamy koloru po kolorze przy okazji innych zadań.
+Hero photo (canvas cutout + tilt) zostało zmergowane, a rebranding wdrożony zaraz po nim,
+jednym przejściem przez całe `style.css` i `index.html`, zgodnie z powyższym planem. Etap 1
+(rebrand + Home) jest zamknięty. Kolejne etapy — architektura wielostronicowa, podstrony
+oferty, realizacje, o nas, blog, lokalne SEO — to osobne projekty z własnym
+spec+planem, uruchamiane przez `superpowers:brainstorming` gdy przyjdzie ich kolej.
