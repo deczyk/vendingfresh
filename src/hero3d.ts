@@ -1,9 +1,15 @@
 import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { loadCutoutCanvas } from './imageCutout';
+import {
+  HERO_TILT_MAX_DEGREES,
+  HERO_ZOOM_MAX,
+  HERO_Z_PARALLAX,
+  MACHINE_IMAGE_SRC,
+} from './heroConfig';
+import { showHeroErrorPanel } from './heroError';
 
-const BRAND_GREEN_DARK = 0x102b23;
-const BRAND_GOLD = 0xd8a94f;
-const BRAND_GREEN_LIGHT = 0x7ba05d;
+const BRAND_GOLD_RGB = '216, 169, 79';
+const MACHINE_PLANE_HEIGHT = 3.6;
 
 export function initHero3D(container: HTMLElement, getScrollProgress: () => number): void {
   const scene = new THREE.Scene();
@@ -15,40 +21,20 @@ export function initHero3D(container: HTMLElement, getScrollProgress: () => numb
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
-  // Placeholder product shape: rounded box standing in for the vending machine silhouette.
-  const geometry = new RoundedBoxGeometry(2.2, 3.6, 1.3, 6, 0.22);
-  const material = new THREE.MeshStandardMaterial({
-    color: BRAND_GREEN_LIGHT,
-    metalness: 0.35,
-    roughness: 0.4,
-  });
-  const machine = new THREE.Mesh(geometry, material);
-  scene.add(machine);
+  scene.add(createGoldGlow());
 
-  // Thin gold trim near the base, echoing the brand's ribbon motif.
-  const trimGeometry = new RoundedBoxGeometry(2.3, 0.12, 1.4, 4, 0.06);
-  const trimMaterial = new THREE.MeshStandardMaterial({
-    color: BRAND_GOLD,
-    metalness: 0.6,
-    roughness: 0.3,
-  });
-  const trim = new THREE.Mesh(trimGeometry, trimMaterial);
-  trim.position.y = -1.6;
-  machine.add(trim);
+  let machine: THREE.Mesh | null = null;
 
-  scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-
-  const keyLight = new THREE.DirectionalLight(0xffffff, 1.1);
-  keyLight.position.set(3, 4, 5);
-  scene.add(keyLight);
-
-  const goldRim = new THREE.DirectionalLight(BRAND_GOLD, 0.9);
-  goldRim.position.set(-4, 1, -3);
-  scene.add(goldRim);
-
-  const fillLight = new THREE.DirectionalLight(BRAND_GREEN_DARK, 0.3);
-  fillLight.position.set(0, -3, 2);
-  scene.add(fillLight);
+  loadCutoutCanvas(MACHINE_IMAGE_SRC)
+    .then((canvas) => {
+      machine = createMachinePlane(canvas);
+      scene.add(machine);
+    })
+    .catch((error: unknown) => {
+      console.warn('hero3d: nie udało się załadować zdjęcia automatu', error);
+      container.hidden = true;
+      showHeroErrorPanel();
+    });
 
   function resize(): void {
     const { clientWidth, clientHeight } = container;
@@ -61,10 +47,58 @@ export function initHero3D(container: HTMLElement, getScrollProgress: () => numb
 
   function animate(): void {
     requestAnimationFrame(animate);
-    const progress = getScrollProgress();
-    machine.rotation.y = progress * Math.PI * 2;
-    machine.rotation.x = Math.sin(progress * Math.PI) * 0.05;
+    if (machine) {
+      const progress = getScrollProgress();
+      const tiltDegrees = THREE.MathUtils.lerp(
+        -HERO_TILT_MAX_DEGREES,
+        HERO_TILT_MAX_DEGREES,
+        progress,
+      );
+      machine.rotation.y = THREE.MathUtils.degToRad(tiltDegrees);
+      machine.scale.setScalar(THREE.MathUtils.lerp(1, HERO_ZOOM_MAX, progress));
+      machine.position.z = THREE.MathUtils.lerp(0, HERO_Z_PARALLAX, progress);
+    }
     renderer.render(scene, camera);
   }
   animate();
+}
+
+function createMachinePlane(canvas: HTMLCanvasElement): THREE.Mesh {
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+
+  const aspect = canvas.width / canvas.height;
+  const height = MACHINE_PLANE_HEIGHT;
+  const width = height * aspect;
+
+  const geometry = new THREE.PlaneGeometry(width, height);
+  const material = new THREE.MeshBasicMaterial({
+    map: texture,
+    transparent: true,
+    side: THREE.DoubleSide,
+  });
+  return new THREE.Mesh(geometry, material);
+}
+
+function createGoldGlow(): THREE.Sprite {
+  const size = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = size;
+  canvas.height = size;
+
+  const ctx = canvas.getContext('2d');
+  if (ctx) {
+    const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+    gradient.addColorStop(0, `rgba(${BRAND_GOLD_RGB}, 0.55)`);
+    gradient.addColorStop(1, `rgba(${BRAND_GOLD_RGB}, 0)`);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, size, size);
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  const material = new THREE.SpriteMaterial({ map: texture, transparent: true, depthWrite: false });
+  const sprite = new THREE.Sprite(material);
+  sprite.scale.set(6, 6, 1);
+  sprite.position.z = -1;
+  return sprite;
 }
