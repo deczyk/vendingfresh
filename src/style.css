@@ -133,6 +133,13 @@ img {
   width: auto;
   opacity: 0.9;
 }
+/* `display: flex` above is an author rule, which outranks the browser's
+   default `[hidden] { display: none }` UA rule at equal specificity — so
+   without this override, `hidden` alone can't hide `.hero-error`/`.hero-fallback`. */
+.hero-fallback[hidden],
+.hero-error[hidden] {
+  display: none;
+}
 .hero-sticky::before {
   content: '';
   position: absolute;
