@@ -9,13 +9,24 @@ import {
 import { showHeroErrorPanel } from './heroError';
 
 const BRAND_GOLD_RGB = '216, 169, 79';
-const MACHINE_PLANE_HEIGHT = 3.6;
+
+const CAMERA_FOV_DEGREES = 35;
+const CAMERA_DISTANCE = 6.5;
+const FRAME_SAFETY_MARGIN = 0.95; // 5% headroom so zoom/parallax never clips the photo
+
+// Plane height is derived, not hardcoded: at the closest point in the scroll
+// animation (max zoom, max z-parallax), the plane must still fit inside the
+// camera's vertical frustum.
+const machineNearestDistance = CAMERA_DISTANCE - HERO_Z_PARALLAX;
+const halfFovRadians = THREE.MathUtils.degToRad(CAMERA_FOV_DEGREES / 2);
+const MACHINE_PLANE_HEIGHT =
+  ((2 * machineNearestDistance * Math.tan(halfFovRadians)) / HERO_ZOOM_MAX) * FRAME_SAFETY_MARGIN;
 
 export function initHero3D(container: HTMLElement, getScrollProgress: () => number): void {
   const scene = new THREE.Scene();
 
-  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-  camera.position.set(0, 0.4, 6.5);
+  const camera = new THREE.PerspectiveCamera(CAMERA_FOV_DEGREES, 1, 0.1, 100);
+  camera.position.set(0, 0, CAMERA_DISTANCE);
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -38,6 +49,7 @@ export function initHero3D(container: HTMLElement, getScrollProgress: () => numb
 
   function resize(): void {
     const { clientWidth, clientHeight } = container;
+    if (!clientWidth || !clientHeight) return;
     camera.aspect = clientWidth / clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(clientWidth, clientHeight);
@@ -75,7 +87,6 @@ function createMachinePlane(canvas: HTMLCanvasElement): THREE.Mesh {
   const material = new THREE.MeshBasicMaterial({
     map: texture,
     transparent: true,
-    side: THREE.DoubleSide,
   });
   return new THREE.Mesh(geometry, material);
 }
