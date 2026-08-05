@@ -99,7 +99,7 @@ img {
 /* Hero */
 .hero-wrap {
   position: relative;
-  height: 300vh;
+  height: 180vh;
   background: linear-gradient(180deg, var(--color-green-dark) 0%, var(--color-green-dark-light) 100%);
 }
 .hero-sticky {
@@ -155,6 +155,7 @@ img {
   color: var(--color-cream);
   padding: 0 1.5rem;
   transition: opacity 0.2s ease;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65), 0 1px 4px rgba(0, 0, 0, 0.85);
 }
 .hero-content__eyebrow {
   color: var(--color-gold);
