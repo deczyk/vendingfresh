@@ -30,6 +30,15 @@ img {
   display: block;
 }
 
+/* Author `display` declarations (e.g. `img { display: block }`,
+   `.hero-fallback { display: flex }`) always beat the browser's default
+   `[hidden] { display: none }` at equal specificity, because author-origin
+   rules outrank user-agent-origin rules regardless of specificity. This
+   closes that gap globally instead of patching one selector at a time. */
+[hidden] {
+  display: none !important;
+}
+
 /* Shared logotype styling */
 .logotype {
   font-family: var(--font-brand);
@@ -132,13 +141,6 @@ img {
   height: 64px;
   width: auto;
   opacity: 0.9;
-}
-/* `display: flex` above is an author rule, which outranks the browser's
-   default `[hidden] { display: none }` UA rule at equal specificity — so
-   without this override, `hidden` alone can't hide `.hero-error`/`.hero-fallback`. */
-.hero-fallback[hidden],
-.hero-error[hidden] {
-  display: none;
 }
 .hero-sticky::before {
   content: '';
