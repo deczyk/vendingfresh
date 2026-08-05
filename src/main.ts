@@ -1,60 +1,34 @@
 import './style.css';
-import { initHero3D } from './hero3d';
-import { initHeroFallback } from './heroFallback';
 
-const MOBILE_BREAKPOINT = 768;
-
-function supportsWebGL(): boolean {
-  try {
-    const canvas = document.createElement('canvas');
-    return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
-  } catch {
-    return false;
-  }
-}
-
-function getHeroScrollProgress(heroWrap: HTMLElement): () => number {
-  return () => {
-    const rect = heroWrap.getBoundingClientRect();
-    const scrollableHeight = rect.height - window.innerHeight;
-    if (scrollableHeight <= 0) return 0;
-    const progress = -rect.top / scrollableHeight;
-    return Math.min(Math.max(progress, 0), 1);
-  };
-}
-
-function initHero(): void {
-  const heroWrap = document.getElementById('hero');
-  const hero3dContainer = document.getElementById('hero-3d');
-  const heroFallbackContainer = document.getElementById('hero-fallback');
-  const heroContent = document.querySelector<HTMLElement>('.hero-content');
-  if (!heroWrap || !hero3dContainer || !heroFallbackContainer) return;
-
-  const getProgress = getHeroScrollProgress(heroWrap);
-  const useFallback = window.innerWidth < MOBILE_BREAKPOINT || !supportsWebGL();
-
-  if (useFallback) {
-    hero3dContainer.hidden = true;
-    heroFallbackContainer.hidden = false;
-    initHeroFallback(heroFallbackContainer, getProgress);
-  } else {
-    initHero3D(hero3dContainer, getProgress);
+function initNav(): void {
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const isOpen = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
   }
 
-  if (heroContent) {
-    window.addEventListener(
-      'scroll',
-      () => {
-        const fadeProgress = Math.min(getProgress() / 0.35, 1);
-        heroContent.style.opacity = String(1 - fadeProgress);
-      },
-      { passive: true },
-    );
+  const dropdown = document.getElementById('nav-oferta');
+  const dropdownToggle = dropdown?.querySelector<HTMLButtonElement>('.nav__dropdown-toggle');
+  if (dropdown && dropdownToggle) {
+    dropdownToggle.addEventListener('click', () => {
+      const isOpen = dropdown.classList.toggle('is-open');
+      dropdownToggle.setAttribute('aria-expanded', String(isOpen));
+    });
   }
+
+  document.querySelectorAll('.nav__links a').forEach((link) => {
+    link.addEventListener('click', () => {
+      links?.classList.remove('is-open');
+      dropdown?.classList.remove('is-open');
+    });
+  });
 }
 
 function initScrollReveal(): void {
-  const targets = document.querySelectorAll('.section__inner, .features');
+  const targets = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
@@ -69,5 +43,5 @@ function initScrollReveal(): void {
   targets.forEach((target) => observer.observe(target));
 }
 
-initHero();
+initNav();
 initScrollReveal();
