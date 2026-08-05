@@ -112,7 +112,8 @@ img {
   justify-content: center;
 }
 .hero-3d,
-.hero-fallback {
+.hero-fallback,
+.hero-error {
   position: absolute;
   inset: 0;
 }
@@ -120,6 +121,17 @@ img {
   display: block;
   width: 100%;
   height: 100%;
+}
+.hero-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-green-dark);
+}
+.hero-error__logo {
+  height: 64px;
+  width: auto;
+  opacity: 0.9;
 }
 .hero-sticky::before {
   content: '';
