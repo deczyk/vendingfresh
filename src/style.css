@@ -154,6 +154,9 @@ img {
 .nav__dropdown-toggle:hover {
   color: var(--primary-dark);
 }
+.nav__dropdown-toggle.is-current {
+  color: var(--primary-dark);
+}
 .nav__dropdown-icon {
   width: 14px;
   height: 14px;

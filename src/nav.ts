@@ -34,6 +34,10 @@ function markCurrentNavLink(): void {
     if (linkPath.endsWith('.html') && linkPath === currentPath) {
       link.classList.add('is-current');
       link.setAttribute('aria-current', 'page');
+      link
+        .closest('.nav__item--dropdown')
+        ?.querySelector('.nav__dropdown-toggle')
+        ?.classList.add('is-current');
     }
   });
 }
