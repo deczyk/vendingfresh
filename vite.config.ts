@@ -17,6 +17,8 @@ export default defineConfig({
         ofertaPrzekaskowe: resolve(__dirname, 'oferta-przekaskowe.html'),
         ofertaNapoje: resolve(__dirname, 'oferta-napoje.html'),
         ofertaKawa: resolve(__dirname, 'oferta-kawa.html'),
+        ofertaPremium: resolve(__dirname, 'oferta-premium.html'),
+        ofertaDzierzawa: resolve(__dirname, 'oferta-dzierzawa.html'),
       },
     },
   },
