@@ -97,10 +97,22 @@ Coś pomiędzy Apple, Stripe i Notion, ale z zielonym charakterem nawiązującym
 produktów. Duże, czytelne nagłówki, dużo światła, proste sekcje i wyraźne przyciski. Marka
 może wyglądać jak firma znacznie większa niż lokalny operator vendingowy.
 
-## Decyzja dot. kolejności prac (2026-08-05)
+## Decyzja dot. kolejności prac (2026-08-05, zamknięte 2026-08-06)
 Hero photo (canvas cutout + tilt) zostało zmergowane, a następnie zastąpione statycznym
 zdjęciem w ramach rebrandingu (mechanizm 3D/cutout został usunięty), jednym przejściem przez
 całe `style.css` i `index.html`, zgodnie z powyższym planem. Etap 1
 (rebrand + Home) jest zamknięty. Kolejne etapy — architektura wielostronicowa, podstrony
 oferty, realizacje, o nas, blog, lokalne SEO — to osobne projekty z własnym
 spec+planem, uruchamiane przez `superpowers:brainstorming` gdy przyjdzie ich kolej.
+
+**Status na 2026-08-06: wszystkie etapy zaimplementowane.**
+- Architektura wielostronicowa — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-multipage-architecture-design.md`): wspólny nav/footer przez plugin `html-include`, konwencja `/#kotwica` i `/plik.html`.
+- Podstrony oferty — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-oferta-subpages-design.md`): 6 stron `oferta-*.html`.
+- Realizacje / O nas — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-o-nas-realizacje-design.md`): `o-nas.html` z realną treścią, `realizacje.html` jako świadomy placeholder (brak prawdziwych case studies — czeka na dane od klienta).
+- Blog / lokalne SEO — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-blog-lokalne-seo-design.md`): `blog.html` jako placeholder, `robots.txt`/`sitemap.xml`, meta/canonical/noindex na 12 stronach, podświetlanie aktywnej strony w nav. Uwaga: to etap "SEO technicznego", nie "SEO lokalnego" sensu stricto — brak danych NAP (adres) i JSON-LD LocalBusiness, bo wymagają realnych danych firmy.
+
+**Otwarte pozycje wymagające danych od klienta (nie do zmyślenia przez Claude'a):**
+- Realne treści `polityka.html`/`rodo.html` (obecnie "w przygotowaniu", a strona już zbiera kontakt — realne pod RODO).
+- Case studies do `realizacje.html`.
+- Adres/dane NAP pod prawdziwe lokalne SEO.
+- Potwierdzenie domeny produkcyjnej (specy zakładają `https://vendingfresh.pl` na podstawie adresu e-mail, niepotwierdzone przez Vercel).
