@@ -108,11 +108,8 @@ spec+planem, uruchamiane przez `superpowers:brainstorming` gdy przyjdzie ich kol
 **Status na 2026-08-06: wszystkie etapy zaimplementowane.**
 - Architektura wielostronicowa — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-multipage-architecture-design.md`): wspólny nav/footer przez plugin `html-include`, konwencja `/#kotwica` i `/plik.html`.
 - Podstrony oferty — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-oferta-subpages-design.md`): 6 stron `oferta-*.html`.
-- Realizacje / O nas — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-o-nas-realizacje-design.md`): `o-nas.html` z realną treścią, `realizacje.html` jako świadomy placeholder (brak prawdziwych case studies — czeka na dane od klienta).
-- Blog / lokalne SEO — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-blog-lokalne-seo-design.md`): `blog.html` jako placeholder, `robots.txt`/`sitemap.xml`, meta/canonical/noindex na 12 stronach, podświetlanie aktywnej strony w nav. Uwaga: to etap "SEO technicznego", nie "SEO lokalnego" sensu stricto — brak danych NAP (adres) i JSON-LD LocalBusiness, bo wymagają realnych danych firmy.
+- O nas — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-o-nas-realizacje-design.md`): `o-nas.html` z realną treścią. **Realizacje wycofane 2026-08-06** — decyzja klienta: nie ma case studies i nie będzie ich fabrykować, strona `realizacje.html` i wszystkie jej wpięcia w nav/footer/`vite.config.ts` usunięte (nie zostaje jako "wkrótce").
+- Blog / lokalne SEO — gotowe (`docs/superpowers/specs/2026-08-06-vendingfresh-blog-lokalne-seo-design.md`): `blog.html` jako placeholder, `robots.txt`/`sitemap.xml`, meta/canonical/noindex na stronach, podświetlanie aktywnej strony w nav. **Lokalne SEO domknięte 2026-08-06**: prawdziwy adres potwierdzony przez klienta (ten sam co „Sklep za Stodołą" — zweryfikowany po zgodnym numerze telefonu +48 690 000 923) — `ul. Warszawska 40-2A, 40-008 Katowice`, dodany do stopki i jako JSON-LD `LocalBusiness` na Home. Domena `https://vendingfresh.pl` potwierdzona przez klienta.
 
 **Otwarte pozycje wymagające danych od klienta (nie do zmyślenia przez Claude'a):**
 - Realne treści `polityka.html`/`rodo.html` (obecnie "w przygotowaniu", a strona już zbiera kontakt — realne pod RODO).
-- Case studies do `realizacje.html`.
-- Adres/dane NAP pod prawdziwe lokalne SEO.
-- Potwierdzenie domeny produkcyjnej (specy zakładają `https://vendingfresh.pl` na podstawie adresu e-mail, niepotwierdzone przez Vercel).
