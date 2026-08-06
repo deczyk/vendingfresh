@@ -21,6 +21,7 @@ export default defineConfig({
         ofertaDzierzawa: resolve(__dirname, 'oferta-dzierzawa.html'),
         oNas: resolve(__dirname, 'o-nas.html'),
         realizacje: resolve(__dirname, 'realizacje.html'),
+        blog: resolve(__dirname, 'blog.html'),
       },
     },
   },
