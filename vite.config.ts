@@ -19,6 +19,7 @@ export default defineConfig({
         ofertaKawa: resolve(__dirname, 'oferta-kawa.html'),
         ofertaPremium: resolve(__dirname, 'oferta-premium.html'),
         ofertaDzierzawa: resolve(__dirname, 'oferta-dzierzawa.html'),
+        oNas: resolve(__dirname, 'o-nas.html'),
       },
     },
   },

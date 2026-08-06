@@ -339,6 +339,14 @@ img {
   color: var(--secondary);
   margin: 0 0 1rem;
 }
+.section__lead {
+  max-width: 60ch;
+  margin: 0 auto 1rem;
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
 /* Dlaczego (2x3 grid) */
 .why-grid {
   display: grid;
