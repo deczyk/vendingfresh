@@ -249,6 +249,66 @@ img {
   box-shadow: var(--shadow-hover);
 }
 
+/* Offer hero (oferta-*.html subpages) */
+.offer-hero {
+  padding: 8rem 2rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.offer-hero__eyebrow {
+  color: var(--primary-dark);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin: 0 0 1rem;
+}
+.offer-hero__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--secondary);
+  margin: 0 0 1.25rem;
+}
+.offer-hero__description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-light);
+  max-width: 46ch;
+  margin: 0 0 2rem;
+}
+.offer-hero__art {
+  display: flex;
+  justify-content: center;
+}
+.offer-hero__photo {
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hover);
+}
+.offer-hero__icon-block {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.offer-hero__icon {
+  width: 120px;
+  height: 120px;
+  color: var(--primary);
+}
+
 /* Sections */
 .section {
   padding: 6rem 1.5rem;
@@ -611,6 +671,18 @@ img {
     justify-content: center;
   }
   .hero__art {
+    order: -1;
+  }
+  .offer-hero {
+    grid-template-columns: 1fr;
+    padding: 7rem 1.5rem 3rem;
+    text-align: center;
+  }
+  .offer-hero__description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .offer-hero__art {
     order: -1;
   }
   .why-grid {

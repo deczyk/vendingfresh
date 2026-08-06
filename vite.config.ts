@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         polityka: resolve(__dirname, 'polityka.html'),
         rodo: resolve(__dirname, 'rodo.html'),
+        ofertaChlodnicze: resolve(__dirname, 'oferta-chlodnicze.html'),
       },
     },
   },
