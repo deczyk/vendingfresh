@@ -23,4 +23,17 @@ export function initNav(): void {
       dropdown?.classList.remove('is-open');
     });
   });
+
+  markCurrentNavLink();
+}
+
+function markCurrentNavLink(): void {
+  const currentPath = window.location.pathname;
+  document.querySelectorAll<HTMLAnchorElement>('.nav__links a').forEach((link) => {
+    const linkPath = new URL(link.href, window.location.origin).pathname;
+    if (linkPath.endsWith('.html') && linkPath === currentPath) {
+      link.classList.add('is-current');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
 }
