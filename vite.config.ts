@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'node:path';
+import { htmlInclude } from './vite-plugins/html-include';
 
 export default defineConfig({
   root: '.',
   publicDir: 'public',
+  plugins: [htmlInclude(resolve(__dirname, 'partials'))],
   build: {
     outDir: 'dist',
     rollupOptions: {
