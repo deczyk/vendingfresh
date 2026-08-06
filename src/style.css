@@ -313,6 +313,9 @@ img {
 .section {
   padding: 6rem 1.5rem;
 }
+.section--top {
+  padding-top: 8rem;
+}
 .section--surface {
   background: var(--surface);
 }
@@ -757,5 +760,8 @@ img {
 @media (max-width: 768px) {
   .section {
     padding: 4rem 1.25rem;
+  }
+  .section--top {
+    padding-top: 7rem;
   }
 }
