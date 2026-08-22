@@ -65,19 +65,19 @@ ozdobników, dużo białej przestrzeni, duże zdjęcia, zielone akcenty, delikat
 
 ```css
 :root{
-  --primary:#59B52C;
-  --primary-dark:#479822;
+  --primary:#0E8577;
+  --primary-dark:#0B6B60;
 
-  --secondary:#102235;
-  --secondary-light:#1B3550;
+  --secondary:#12181C;
+  --secondary-light:#1E262B;
 
-  --background:#F8FAFB;
+  --background:#EFF1F2;
   --surface:#FFFFFF;
 
-  --border:#E6EAEE;
+  --border:#DCE1E3;
 
-  --text:#1B2733;
-  --text-light:#687583;
+  --text:#12181C;
+  --text-light:#5A656B;
 
   --success:#38A169;
   --warning:#F6AD55;
@@ -113,3 +113,11 @@ spec+planem, uruchamiane przez `superpowers:brainstorming` gdy przyjdzie ich kol
 
 **Otwarte pozycje wymagające danych od klienta (nie do zmyślenia przez Claude'a):**
 - Realne treści `polityka.html`/`rodo.html` (obecnie "w przygotowaniu", a strona już zbiera kontakt — realne pod RODO).
+
+## Aktualizacja palety (2026-08-22)
+Pierwotna zielono-granatowa paleta (`#59B52C` / `#102235`) zastąpiona kierunkiem
+"stal i turkus" (`#0E8577` / `#12181C`) na podstawie feedbacku klienta i wyboru z
+trzech zaprezentowanych wariantów — zob.
+`docs/superpowers/specs/2026-08-22-vendingfresh-steel-teal-repaint-design.md`. Zmiana
+objęła wyłącznie tokeny CSS w `src/style.css`, bez zmian w markupie ani zdjęciach
+produktowych.
