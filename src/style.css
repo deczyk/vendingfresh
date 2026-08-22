@@ -220,7 +220,7 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  background-image: radial-gradient(rgba(16, 34, 53, 0.06) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(18, 24, 28, 0.06) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
   background-position: center top;
 }
@@ -306,7 +306,7 @@ img {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  background-image: radial-gradient(rgba(16, 34, 53, 0.06) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(rgba(18, 24, 28, 0.06) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
   background-position: center top;
 }
@@ -378,7 +378,7 @@ img {
   color: #FFFFFF;
 }
 .section--band .section__eyebrow {
-  color: #9FD98A;
+  color: #6FE0CE;
 }
 .section--band .section__title,
 .section--band .section__lead {
@@ -442,7 +442,7 @@ img {
   padding: 12px;
   box-sizing: content-box;
   color: var(--primary);
-  background: rgba(89, 181, 44, 0.12);
+  background: rgba(14, 133, 119, 0.14);
   border-radius: var(--radius-sm);
   margin-bottom: 1.25rem;
 }
