@@ -77,7 +77,7 @@ img {
 }
 .btn--primary {
   background: var(--primary);
-  color: var(--secondary);
+  color: #FFFFFF;
 }
 .btn--primary:hover {
   background: var(--secondary);

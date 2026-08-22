@@ -9,33 +9,32 @@
 
 ## Paleta kolorów
 
-**Kolor główny (Fresh Green)** — odpowiada za "Fresh".
-- HEX: `#59B52C` | RGB: 89, 181, 44
-- Zielony ciemniejszy (Hover): HEX `#479822` | RGB: 71, 152, 34
+**Kolor główny (Steel Teal)** — akcent marki, przyciski, linki, ikony.
+- HEX: `#0E8577` | RGB: 14, 133, 119
+- Teal ciemniejszy (Hover): HEX `#0B6B60` | RGB: 11, 107, 96
 
-**Granat (główny kolor marki)** — kolor automatu oraz napisu "Vending".
-- HEX: `#102235` | RGB: 16, 34, 53
-- Granat jaśniejszy (ikony, hovery, gradienty): `#1B3550`
+**Grafit (główny kolor marki)** — kolor automatu oraz napisu "Vending".
+- HEX: `#12181C` | RGB: 18, 24, 28
+- Grafit jaśniejszy (ikony, hovery, gradienty): `#1E262B`
 
 **Pozostałe:**
-- Tło strony (nie czyste białe, lekko złamane): `#F8FAFB`
+- Tło strony (nie czyste białe, lekko złamane): `#EFF1F2`
 - Kolor kart: `#FFFFFF`
-- Obramowania: `#E6EAEE`
-- Jasny szary: `#F2F4F6`
-- Tekst główny: `#1B2733`
-- Tekst pomocniczy: `#687583`
-- Gradient firmowy: `#59B52C → #83D33A` lub `#102235 → #1B3550`
+- Obramowania: `#DCE1E3`
+- Tekst główny: `#12181C`
+- Tekst pomocniczy: `#5A656B`
+- Gradient firmowy: `#12181C → #1E262B`
 
 ## Kolor przycisków
 
-**Primary Button** (poprawione — decyzja Kuby):
-- Tło: `#59B52C`
-- Tekst: `#102235` (był `#FFFFFF` — kontrast 6.2:1 zamiast 2.6:1, spełnia standardy czytelności)
-- Hover: tło `#102235`, tekst `#FFFFFF`
+**Primary Button:**
+- Tło: `#0E8577`
+- Tekst: `#FFFFFF` (kontrast ~4.52:1, spełnia WCAG AA)
+- Hover: tło `#12181C`, tekst `#FFFFFF`
 
 **Secondary Button:**
-- Tło: `#FFFFFF`, Border: `#102235`, Tekst: `#102235`
-- Hover: tło `#102235`, tekst `#FFFFFF`
+- Tło: `#FFFFFF`, Border: `#12181C`, Tekst: `#12181C`
+- Hover: tło `#12181C`, tekst `#FFFFFF`
 
 ## Akcenty
 Sukces `#38A169` · Ostrzeżenie `#F6AD55` · Błąd `#E53E3E` · Informacja `#3182CE`
@@ -59,7 +58,7 @@ szkoły, firmy, dużo zieleni.
 
 ## Styl całej strony
 Hasła przewodnie: nowocześnie, premium, czysto, ekologicznie, profesjonalnie, bez zbędnych
-ozdobników, dużo białej przestrzeni, duże zdjęcia, zielone akcenty, delikatne animacje.
+ozdobników, dużo białej przestrzeni, duże zdjęcia, stalowo-turkusowe akcenty, delikatne animacje.
 
 ## CSS Variables (dostarczone)
 
@@ -93,7 +92,7 @@ ozdobników, dużo białej przestrzeni, duże zdjęcia, zielone akcenty, delikat
 ```
 
 ## Kierunek wizualny
-Coś pomiędzy Apple, Stripe i Notion, ale z zielonym charakterem nawiązującym do świeżych
+Coś pomiędzy Apple, Stripe i Notion, ale ze stalowo-turkusowym charakterem nawiązującym do świeżych
 produktów. Duże, czytelne nagłówki, dużo światła, proste sekcje i wyraźne przyciski. Marka
 może wyglądać jak firma znacznie większa niż lokalny operator vendingowy.
 
