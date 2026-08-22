@@ -1,17 +1,17 @@
 :root {
-  --primary: #59B52C;
-  --primary-dark: #479822;
+  --primary: #0E8577;
+  --primary-dark: #0B6B60;
 
-  --secondary: #102235;
-  --secondary-light: #1B3550;
+  --secondary: #12181C;
+  --secondary-light: #1E262B;
 
-  --background: #F8FAFB;
+  --background: #EFF1F2;
   --surface: #FFFFFF;
 
-  --border: #E6EAEE;
+  --border: #DCE1E3;
 
-  --text: #1B2733;
-  --text-light: #687583;
+  --text: #12181C;
+  --text-light: #5A656B;
 
   --success: #38A169;
   --warning: #F6AD55;
@@ -27,8 +27,8 @@
 
   --font-brand: 'Manrope', sans-serif;
 
-  --tint: #EFF6EC;
-  --gradient-brand: linear-gradient(135deg, #102235, #1B3550);
+  --tint: #E7EBEC;
+  --gradient-brand: linear-gradient(135deg, #12181C, #1E262B);
 }
 
 * {
