@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vendingfresh.pl/sitemap.xml
+Sitemap: https://www.vendingfresh.pl/sitemap.xml
