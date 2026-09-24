@@ -133,6 +133,7 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 /* Hero */
 .hero { background: var(--color-primary); color: #fff; padding: 72px 0; }
 .hero .eyebrow { color: var(--color-accent); }
+.hero h1 em, .hero h2 em { color: var(--color-accent); }
 .hero__subtitle { font-size: 18px; max-width: 640px; opacity: 0.92; }
 .hero__cta { display: flex; gap: 16px; margin: 24px 0 40px; flex-wrap: wrap; }
 .hero .btn--secondary { color: #fff; border-color: #fff; }
@@ -243,8 +244,9 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 .owner-quote footer { margin-top: 12px; font-style: normal; font-weight: 600; opacity: 0.8; }
 
 /* CTA final */
-.cta-final { background: var(--color-primary); color: #fff; text-align: center; }
+.section.cta-final { background: var(--color-primary); color: #fff; text-align: center; }
 .cta-final .hero__cta { justify-content: center; }
+.cta-final h2 em { color: var(--color-accent); }
 
 /* Footer */
 .site-footer { background: var(--color-ink); color: #fff; padding: 48px 0 24px; }
@@ -352,3 +354,11 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 .faq-item.is-open .faq-item__question { background: var(--color-bg-alt); }
 .faq-item__answer { display: none; padding: 0 20px 20px; font-size: 15px; }
 .faq-item.is-open .faq-item__answer { display: block; }
+
+/* Article */
+.article { max-width: 720px; margin: 0 auto; }
+.article h2 { color: var(--color-primary); font-size: 22px; margin-top: 40px; }
+.article p { margin: 0 0 16px; }
+.article ul { margin: 0 0 16px; padding-left: 24px; }
+.article li { margin-bottom: 8px; }
+.article__lead { font-size: 18px; opacity: 0.85; }
