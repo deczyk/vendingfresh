@@ -1,6 +1,6 @@
 const CONSENT_KEY = 'vf_cookie_consent';
 const META_PIXEL_ID = 'REPLACE_ME_META_PIXEL_ID';
-const GA4_MEASUREMENT_ID = 'G-REPLACE_ME';
+const GA4_MEASUREMENT_ID = 'G-2PQS0SMZ9K';
 
 export type ConsentValue = 'accepted' | 'declined';
 
