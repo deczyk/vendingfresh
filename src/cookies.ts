@@ -1,5 +1,6 @@
 const CONSENT_KEY = 'vf_cookie_consent';
 const META_PIXEL_ID = 'REPLACE_ME_META_PIXEL_ID';
+const GA4_MEASUREMENT_ID = 'G-REPLACE_ME';
 
 export type ConsentValue = 'accepted' | 'declined';
 
@@ -24,6 +25,25 @@ export function loadMetaPixel(pixelId: string): void {
   document.head.appendChild(script);
 }
 
+export function loadGA4(measurementId: string): void {
+  if (document.getElementById('ga4-script')) return;
+  const script = document.createElement('script');
+  script.id = 'ga4-script';
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  document.head.appendChild(script);
+
+  const inline = document.createElement('script');
+  inline.id = 'ga4-inline';
+  inline.textContent = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${measurementId}');
+  `;
+  document.head.appendChild(inline);
+}
+
 function initCookieBanner(): void {
   const banner = document.getElementById('cookie-banner');
   const acceptBtn = document.getElementById('cookie-accept');
@@ -33,6 +53,7 @@ function initCookieBanner(): void {
   const stored = getStoredConsent(window.localStorage);
   if (stored === 'accepted') {
     loadMetaPixel(META_PIXEL_ID);
+    loadGA4(GA4_MEASUREMENT_ID);
   } else if (stored === null) {
     banner.hidden = false;
   }
@@ -41,6 +62,7 @@ function initCookieBanner(): void {
     window.localStorage.setItem(CONSENT_KEY, 'accepted');
     banner.hidden = true;
     loadMetaPixel(META_PIXEL_ID);
+    loadGA4(GA4_MEASUREMENT_ID);
   });
 
   declineBtn.addEventListener('click', () => {

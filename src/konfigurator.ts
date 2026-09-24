@@ -16,6 +16,7 @@ export interface ConfiguratorState {
   email: string;
   miejscowoscKontakt: string;
   rodo: boolean;
+  website: string;
 }
 
 export function createInitialState(): ConfiguratorState {
@@ -37,6 +38,7 @@ export function createInitialState(): ConfiguratorState {
     email: '',
     miejscowoscKontakt: '',
     rodo: false,
+    website: '',
   };
 }
 
@@ -132,6 +134,7 @@ function initConfigurator(): void {
     state.miejscowoscKontakt =
       (document.getElementById('miejscowosc-kontakt') as HTMLInputElement | null)?.value ?? '';
     state.rodo = (document.getElementById('rodo') as HTMLInputElement | null)?.checked ?? false;
+    state.website = (document.getElementById('hp-website') as HTMLInputElement | null)?.value ?? '';
   }
 
   function renderStep(): void {

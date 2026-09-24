@@ -307,3 +307,13 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 .config-nav { display: flex; justify-content: space-between; margin-top: 24px; }
 .config-result { text-align: center; padding: 48px 0; }
 .config-result h2 { color: var(--color-primary); }
+.placeholder-page {
+  max-width: 640px;
+  margin: 96px auto;
+  padding: 0 24px;
+  text-align: center;
+}
+.placeholder-page__logo {
+  max-width: 280px;
+  margin: 0 auto 32px;
+}

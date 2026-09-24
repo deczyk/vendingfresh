@@ -13,13 +13,6 @@
   <meta property="og:url" content="https://vendingfresh.pl/konfigurator">
   <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
   <meta name="twitter:card" content="summary">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-REPLACE_ME');
-  </script>
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
@@ -32,6 +25,7 @@
       <p class="config-progress__label" id="config-progress-label">Krok 1 z 9</p>
 
       <form id="config-form">
+        <input type="text" name="website" id="hp-website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;">
         <section class="config-step" data-step="1">
           <h2>Kim jesteś?</h2>
           <div class="config-options">
@@ -154,6 +148,7 @@
     </div>
   </main>
   <!-- include:footer.html -->
+  <!-- include:cookie-banner.html -->
   <script type="module" src="/src/main.ts"></script>
   <script type="module" src="/src/konfigurator.ts"></script>
   <script type="module" src="/src/cookies.ts"></script>

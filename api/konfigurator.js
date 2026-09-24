@@ -1,6 +1,7 @@
 import { neon } from '@neondatabase/serverless';
 
 const TELEGRAM_WEBHOOK_ENDPOINT = 'REPLACE_ME_TELEGRAM_WEBHOOK_ENDPOINT';
+const MAX_PAYLOAD_SIZE = 20000;
 
 export function validateLeadPayload(body) {
   if (!body || typeof body !== 'object') {
@@ -14,6 +15,12 @@ export function validateLeadPayload(body) {
   }
   if (!body.payload || typeof body.payload !== 'object') {
     return 'Brak danych formularza.';
+  }
+  if (JSON.stringify(body.payload).length > MAX_PAYLOAD_SIZE) {
+    return 'Zgłoszenie jest za duże.';
+  }
+  if (body.payload.website) {
+    return 'Nieprawidłowe zgłoszenie.';
   }
   return null;
 }
@@ -49,10 +56,17 @@ export default async function handler(req, res) {
 
   try {
     await saveLead(req.body);
-    await notifyTelegram(req.body);
-    res.status(200).json({ ok: true });
   } catch (err) {
-    console.error('konfigurator handler error', err);
+    console.error('konfigurator handler error (save)', err);
     res.status(500).json({ error: 'Nie udało się zapisać zgłoszenia.' });
+    return;
   }
+
+  try {
+    await notifyTelegram(req.body);
+  } catch (err) {
+    console.error('konfigurator handler error (telegram notify)', err);
+  }
+
+  res.status(200).json({ ok: true });
 }

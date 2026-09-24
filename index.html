@@ -31,13 +31,6 @@
     "sameAs": []
   }
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE_ME"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-REPLACE_ME');
-  </script>
   <link rel="stylesheet" href="/src/style.css">
 </head>
 <body>
@@ -262,13 +255,7 @@
 
   <!-- include:footer.html -->
 
-  <div class="cookie-banner" id="cookie-banner" hidden>
-    <p>Używamy plików cookie do analityki i marketingu. <a href="/polityka">Dowiedz się więcej</a>.</p>
-    <div class="cookie-banner__actions">
-      <button type="button" id="cookie-accept" class="btn btn--primary">Akceptuję</button>
-      <button type="button" id="cookie-decline" class="btn btn--secondary">Odrzuć</button>
-    </div>
-  </div>
+  <!-- include:cookie-banner.html -->
 
   <script type="module" src="/src/main.ts"></script>
   <script type="module" src="/src/calculator.ts"></script>

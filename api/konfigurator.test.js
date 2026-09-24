@@ -23,4 +23,21 @@ describe('validateLeadPayload', () => {
       validateLeadPayload({ marka: 'vendingfresh', typ: 'konfigurator', payload: { kim: 'piekarnia' } }),
     ).toBeNull();
   });
+
+  it('rejects an oversized payload', () => {
+    const bigString = 'x'.repeat(20001);
+    expect(
+      validateLeadPayload({ marka: 'vendingfresh', typ: 'konfigurator', payload: { notes: bigString } }),
+    ).toMatch(/za duże/);
+  });
+
+  it('rejects a payload with the honeypot field filled in', () => {
+    expect(
+      validateLeadPayload({
+        marka: 'vendingfresh',
+        typ: 'konfigurator',
+        payload: { kim: 'piekarnia', website: 'http://spam.example' },
+      }),
+    ).toMatch(/Nieprawidłowe zgłoszenie/);
+  });
 });
