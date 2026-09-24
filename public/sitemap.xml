@@ -70,4 +70,24 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://vendingfresh.pl/poradnik</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vendingfresh.pl/poradnik/ile-kosztuje-automat-na-jajka</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vendingfresh.pl/poradnik/automat-na-chleb-jak-dziala</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vendingfresh.pl/poradnik/sprzedaz-zywnosci-z-automatu-przepisy</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

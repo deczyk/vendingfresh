@@ -13,7 +13,11 @@
     { "source": "/rozwiazania/napoje", "destination": "/rozwiazania/napoje.html" },
     { "source": "/jak-dzialamy", "destination": "/jak-dzialamy.html" },
     { "source": "/finansowanie", "destination": "/finansowanie.html" },
-    { "source": "/automaty-sielaff", "destination": "/automaty-sielaff.html" }
+    { "source": "/automaty-sielaff", "destination": "/automaty-sielaff.html" },
+    { "source": "/poradnik", "destination": "/poradnik.html" },
+    { "source": "/poradnik/ile-kosztuje-automat-na-jajka", "destination": "/poradnik/ile-kosztuje-automat-na-jajka.html" },
+    { "source": "/poradnik/automat-na-chleb-jak-dziala", "destination": "/poradnik/automat-na-chleb-jak-dziala.html" },
+    { "source": "/poradnik/sprzedaz-zywnosci-z-automatu-przepisy", "destination": "/poradnik/sprzedaz-zywnosci-z-automatu-przepisy.html" }
   ],
   "headers": [
     {
