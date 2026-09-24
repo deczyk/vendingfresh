@@ -22,6 +22,8 @@ export default defineConfig({
         rozwiazaniaBioLokalne: resolve(__dirname, 'rozwiazania/bio-lokalne.html'),
         rozwiazaniaMiesoDania: resolve(__dirname, 'rozwiazania/mieso-dania.html'),
         rozwiazaniaNapoje: resolve(__dirname, 'rozwiazania/napoje.html'),
+        jakDzialamy: resolve(__dirname, 'jak-dzialamy.html'),
+        finansowanie: resolve(__dirname, 'finansowanie.html'),
       },
     },
   },

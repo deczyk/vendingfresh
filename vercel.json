@@ -10,7 +10,9 @@
     { "source": "/rozwiazania/ziemniaki-warzywa", "destination": "/rozwiazania/ziemniaki-warzywa.html" },
     { "source": "/rozwiazania/bio-lokalne", "destination": "/rozwiazania/bio-lokalne.html" },
     { "source": "/rozwiazania/mieso-dania", "destination": "/rozwiazania/mieso-dania.html" },
-    { "source": "/rozwiazania/napoje", "destination": "/rozwiazania/napoje.html" }
+    { "source": "/rozwiazania/napoje", "destination": "/rozwiazania/napoje.html" },
+    { "source": "/jak-dzialamy", "destination": "/jak-dzialamy.html" },
+    { "source": "/finansowanie", "destination": "/finansowanie.html" }
   ],
   "headers": [
     {
