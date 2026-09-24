@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automat na pieczywo 24/7 — automat do chleba | VendingFresh</title>
+  <meta name="description" content="Automat do chleba i pieczywa dostępny 24/7. Temperatura pokojowa, codzienna rotacja, konfiguracja pod Twoje wypieki. Partner Sielaff, wycena indywidualna.">
+  <link rel="canonical" href="https://vendingfresh.pl/rozwiazania/pieczywo">
+  <link rel="icon" type="image/png" href="/vendingfresh_icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Automat na pieczywo 24/7 — VendingFresh">
+  <meta property="og:description" content="Automat do chleba i pieczywa dostępny 24/7, konfigurowany pod Twoje wypieki.">
+  <meta property="og:url" content="https://vendingfresh.pl/rozwiazania/pieczywo">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- include:nav.html -->
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Rozwiązanie</p>
+        <h1>Automat na pieczywo <em>24/7.</em></h1>
+        <p class="hero__subtitle">Świeży chleb i bułki dostępne całą dobę — bez otwierania sklepu wcześniej ani zostawania po godzinach.</p>
+        <div class="hero__cta">
+          <a href="/konfigurator" class="btn btn--primary">Skonfiguruj automat →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Dla kogo</p>
+        <h2>Dla piekarni <em>i punktów sprzedaży pieczywa.</em></h2>
+        <p>Automat na pieczywo sprawdza się w piekarniach chcących wydłużyć godziny sprzedaży, przy osiedlowych sklepach i wszędzie tam, gdzie klienci wracają po chleb regularnie, ale nie zawsze w godzinach otwarcia.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Konfiguracja</p>
+        <h2>Jak konfigurujemy automat <em>pod pieczywo.</em></h2>
+        <div class="layers-grid">
+          <div class="layer"><h3>Opakowanie</h3><p>Pieczywo w torbach papierowych lub foliowych, dopasowany rozmiar podajnika pod bochenki i bułki.</p></div>
+          <div class="layer"><h3>Temperatura</h3><p>Pokojowa, nie chłodzenie — chłodzenie tylko przyspiesza czerstwienie chleba.</p></div>
+          <div class="layer"><h3>Wydawanie</h3><p>Spirala lub popychacz, dopasowany do kształtu bochenka lub bułek.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Na co uważać</p>
+        <h2>Zanim <em>zaczniesz.</em></h2>
+        <ul class="checklist">
+          <li>Krótka świeżość — wymaga codziennej rotacji i uzupełniania</li>
+          <li>Szczyty sprzedaży rano i wieczorem — zaplanuj dostawy pod te godziny</li>
+          <li>Oznakowanie składu i alergenów zgodnie z przepisami</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Większy koszyk</p>
+        <h2>Co sprzedawać <em>obok pieczywa.</em></h2>
+        <div class="cards-grid">
+          <div class="family-card"><h3>Masło i dżemy</h3><p>Małe opakowania, naturalne dopełnienie zakupu pieczywa.</p></div>
+          <div class="family-card"><h3>Jajka</h3><p>Częsty duet z chlebem na śniadanie.</p></div>
+          <div class="family-card"><h3>Lokalny miód</h3><p>Wyższa wartość koszyka przy jednej wizycie.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calculator" id="kalkulator">
+      <div class="wrap">
+        <p class="eyebrow">Opłacalność</p>
+        <h2>Sprawdź, <em>czy to się opłaca.</em></h2>
+        <div class="calc-grid">
+          <div class="calc-sliders">
+            <div class="slider-group">
+              <label for="calc-transactions">Transakcji dziennie: <output id="calc-transactions-out">40</output></label>
+              <input type="range" id="calc-transactions" min="1" max="200" value="40">
+            </div>
+            <div class="slider-group">
+              <label for="calc-basket">Średnia wartość koszyka (zł): <output id="calc-basket-out">12</output></label>
+              <input type="range" id="calc-basket" min="3" max="50" value="12">
+            </div>
+            <div class="slider-group">
+              <label for="calc-margin">Marża na produkcie (%): <output id="calc-margin-out">35</output></label>
+              <input type="range" id="calc-margin" min="5" max="70" value="35">
+            </div>
+            <div class="slider-group">
+              <label for="calc-investment">Wartość inwestycji (zł): <output id="calc-investment-out">35000</output></label>
+              <input type="range" id="calc-investment" min="5000" max="150000" step="1000" value="35000">
+            </div>
+            <div class="slider-group">
+              <label for="calc-costs">Koszty miesięczne (zł): <output id="calc-costs-out">400</output></label>
+              <input type="range" id="calc-costs" min="100" max="3000" step="50" value="400">
+            </div>
+          </div>
+          <div class="calc-results">
+            <div class="calc-result"><span class="calc-result__label">Przychód miesięczny</span><span class="calc-result__value" id="calc-revenue-month">—</span></div>
+            <div class="calc-result"><span class="calc-result__label">Przychód roczny</span><span class="calc-result__value" id="calc-revenue-year">—</span></div>
+            <div class="calc-result"><span class="calc-result__label">Zysk po kosztach (mies.)</span><span class="calc-result__value" id="calc-profit">—</span></div>
+            <div class="calc-result calc-result--highlight"><span class="calc-result__label">Zwrot inwestycji</span><span class="calc-result__value" id="calc-roi">—</span></div>
+          </div>
+        </div>
+        <p class="calc-disclaimer">To szacunek orientacyjny, nie gwarancja wyniku — zależy od cen, kosztów i ruchu klientów.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">FAQ</p>
+        <h2>Pytania <em>o automat na pieczywo.</em></h2>
+        <div class="layers-grid">
+          <div class="layer"><h3>Czy chleb w automacie szybko czerstwieje?</h3><p>Nie przy temperaturze pokojowej i codziennej rotacji — chłodzenie wręcz przyspiesza czerstwienie chleba.</p></div>
+          <div class="layer"><h3>Jak często trzeba uzupełniać automat?</h3><p>Zwykle raz-dwa dziennie, dopasowane do szczytów porannych i wieczornych.</p></div>
+          <div class="layer"><h3>Czy automat obsłuży bułki i bochenki jednocześnie?</h3><p>Tak, konfigurujemy podajniki pod różne rozmiary opakowań.</p></div>
+          <div class="layer"><h3>Czy trzeba specjalnie oznakować pieczywo?</h3><p>Tak, etykieta ze składem i alergenami zgodnie z przepisami — pomagamy to ustawić.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-final">
+      <div class="wrap">
+        <h2>Sprzedajesz pieczywo? <em>Skonfigurujmy automat pod Twoje wypieki.</em></h2>
+        <div class="hero__cta">
+          <a href="/konfigurator" class="btn btn--primary">Skonfiguruj automat →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer.html -->
+  <!-- include:cookie-banner.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/calculator.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>

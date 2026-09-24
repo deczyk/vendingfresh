@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automat na ziemniaki i warzywa 24/7 — ziemniakomat | VendingFresh</title>
+  <meta name="description" content="Ziemniakomat na duże opakowania warzyw i ziemniaków — sprzedaż 24/7 bez Twojej obecności. Partner Sielaff, wycena indywidualna.">
+  <link rel="canonical" href="https://vendingfresh.pl/rozwiazania/ziemniaki-warzywa">
+  <link rel="icon" type="image/png" href="/vendingfresh_icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Automat na ziemniaki i warzywa 24/7 — VendingFresh">
+  <meta property="og:description" content="Ziemniakomat dostępny 24/7, dobrany pod duże, ciężkie opakowania warzyw.">
+  <meta property="og:url" content="https://vendingfresh.pl/rozwiazania/ziemniaki-warzywa">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- include:nav.html -->
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Rozwiązanie</p>
+        <h1>Automat na ziemniaki i warzywa <em>24/7.</em></h1>
+        <p class="hero__subtitle">Ziemniakomat na duże, ciężkie opakowania — sprzedaż, która nie wymaga Twojej obecności.</p>
+        <div class="hero__cta">
+          <a href="/konfigurator" class="btn btn--primary">Skonfiguruj automat →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Dla kogo</p>
+        <h2>Dla gospodarstw <em>i producentów warzyw.</em></h2>
+        <p>Ziemniakomat sprawdza się w gospodarstwach rolnych i u producentów warzyw sprzedających bezpośrednio, którzy chcą prowadzić sprzedaż bezobsługową bez stania przy stoisku.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Konfiguracja</p>
+        <h2>Jak konfigurujemy automat <em>pod ziemniaki i warzywa.</em></h2>
+        <div class="layers-grid">
+          <div class="layer"><h3>Opakowanie</h3><p>Worki 2,5–5 kg, wzmocnione podajniki pod większy ciężar.</p></div>
+          <div class="layer"><h3>Temperatura</h3><p>Zwykle pokojowa, zależnie od produktu i sezonu.</p></div>
+          <div class="layer"><h3>Wydawanie</h3><p>Dopasowane do rozmiaru i wagi worków.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Na co uważać</p>
+        <h2>Zanim <em>zaczniesz.</em></h2>
+        <ul class="checklist">
+          <li>Sezonowość — sprzedaż zmienia się w ciągu roku, dobierz asortyment pod sezon</li>
+          <li>Niska marża jednostkowa → liczy się wolumen sprzedaży, nie cena za sztukę</li>
+          <li>Przechowywanie w odpowiednich warunkach przed uzupełnieniem</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Większy koszyk</p>
+        <h2>Co sprzedawać <em>obok warzyw.</em></h2>
+        <div class="cards-grid">
+          <div class="family-card"><h3>Warzywa sezonowe</h3><p>Rotacja asortymentu w ciągu roku.</p></div>
+          <div class="family-card"><h3>Jajka</h3><p>Częsty duet u klientów kupujących na zapas.</p></div>
+          <div class="family-card"><h3>Miód</h3><p>Zwiększa wartość koszyka przy jednej wizycie.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calculator" id="kalkulator">
+      <div class="wrap">
+        <p class="eyebrow">Opłacalność</p>
+        <h2>Sprawdź, <em>czy to się opłaca.</em></h2>
+        <div class="calc-grid">
+          <div class="calc-sliders">
+            <div class="slider-group">
+              <label for="calc-transactions">Transakcji dziennie: <output id="calc-transactions-out">50</output></label>
+              <input type="range" id="calc-transactions" min="1" max="200" value="50">
+            </div>
+            <div class="slider-group">
+              <label for="calc-basket">Średnia wartość koszyka (zł): <output id="calc-basket-out">8</output></label>
+              <input type="range" id="calc-basket" min="3" max="50" value="8">
+            </div>
+            <div class="slider-group">
+              <label for="calc-margin">Marża na produkcie (%): <output id="calc-margin-out">20</output></label>
+              <input type="range" id="calc-margin" min="5" max="70" value="20">
+            </div>
+            <div class="slider-group">
+              <label for="calc-investment">Wartość inwestycji (zł): <output id="calc-investment-out">30000</output></label>
+              <input type="range" id="calc-investment" min="5000" max="150000" step="1000" value="30000">
+            </div>
+            <div class="slider-group">
+              <label for="calc-costs">Koszty miesięczne (zł): <output id="calc-costs-out">300</output></label>
+              <input type="range" id="calc-costs" min="100" max="3000" step="50" value="300">
+            </div>
+          </div>
+          <div class="calc-results">
+            <div class="calc-result"><span class="calc-result__label">Przychód miesięczny</span><span class="calc-result__value" id="calc-revenue-month">—</span></div>
+            <div class="calc-result"><span class="calc-result__label">Przychód roczny</span><span class="calc-result__value" id="calc-revenue-year">—</span></div>
+            <div class="calc-result"><span class="calc-result__label">Zysk po kosztach (mies.)</span><span class="calc-result__value" id="calc-profit">—</span></div>
+            <div class="calc-result calc-result--highlight"><span class="calc-result__label">Zwrot inwestycji</span><span class="calc-result__value" id="calc-roi">—</span></div>
+          </div>
+        </div>
+        <p class="calc-disclaimer">To szacunek orientacyjny, nie gwarancja wyniku — zależy od cen, kosztów i ruchu klientów.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">FAQ</p>
+        <h2>Pytania <em>o automat na warzywa.</em></h2>
+        <div class="layers-grid">
+          <div class="layer"><h3>Czy automat obsłuży ciężkie worki z ziemniakami?</h3><p>Tak, dobieramy wzmocnione podajniki pod większe obciążenie.</p></div>
+          <div class="layer"><h3>Czy sprzedaż warzyw w automacie się opłaca przy niskiej marży?</h3><p>Tak, liczy się wolumen — sprawdź to w kalkulatorze powyżej.</p></div>
+          <div class="layer"><h3>Czy mogę zmieniać asortyment sezonowo?</h3><p>Tak, automat konfigurujemy elastycznie pod to, co akurat sprzedajesz.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-final">
+      <div class="wrap">
+        <h2>Sprzedajesz ziemniaki lub warzywa? <em>Skonfigurujmy ziemniakomat.</em></h2>
+        <div class="hero__cta">
+          <a href="/konfigurator" class="btn btn--primary">Skonfiguruj automat →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer.html -->
+  <!-- include:cookie-banner.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/calculator.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>

@@ -3,7 +3,14 @@
     { "source": "/konfigurator", "destination": "/konfigurator.html" },
     { "source": "/polityka", "destination": "/polityka.html" },
     { "source": "/kontakt", "destination": "/kontakt.html" },
-    { "source": "/faq", "destination": "/faq.html" }
+    { "source": "/faq", "destination": "/faq.html" },
+    { "source": "/rozwiazania/pieczywo", "destination": "/rozwiazania/pieczywo.html" },
+    { "source": "/rozwiazania/jajka", "destination": "/rozwiazania/jajka.html" },
+    { "source": "/rozwiazania/sery", "destination": "/rozwiazania/sery.html" },
+    { "source": "/rozwiazania/ziemniaki-warzywa", "destination": "/rozwiazania/ziemniaki-warzywa.html" },
+    { "source": "/rozwiazania/bio-lokalne", "destination": "/rozwiazania/bio-lokalne.html" },
+    { "source": "/rozwiazania/mieso-dania", "destination": "/rozwiazania/mieso-dania.html" },
+    { "source": "/rozwiazania/napoje", "destination": "/rozwiazania/napoje.html" }
   ],
   "headers": [
     {

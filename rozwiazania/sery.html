@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automat na sery i nabiał 24/7 — regiomat | VendingFresh</title>
+  <meta name="description" content="Regiomat z chłodzeniem na sery i nabiał — automat dostępny 24/7, konfigurowany pod różne formaty opakowań. Partner Sielaff, wycena indywidualna.">
+  <link rel="canonical" href="https://vendingfresh.pl/rozwiazania/sery">
+  <link rel="icon" type="image/png" href="/vendingfresh_icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Automat na sery i nabiał 24/7 — VendingFresh">
+  <meta property="og:description" content="Regiomat z chłodzeniem, dostępny 24/7, konfigurowany pod różne formaty serów i nabiału.">
+  <meta property="og:url" content="https://vendingfresh.pl/rozwiazania/sery">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- include:nav.html -->
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Rozwiązanie</p>
+        <h1>Automat na sery i nabiał <em>24/7.</em></h1>
+        <p class="hero__subtitle">Regiomat z chłodzeniem, który utrzyma Twoje sery i nabiał w odpowiedniej temperaturze całą dobę.</p>
+        <div class="hero__cta">
+          <a href="/konfigurator" class="btn btn--primary">Skonfiguruj automat →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Dla kogo</p>
+        <h2>Dla serowarni <em>i gospodarstw mlecznych.</em></h2>
+        <p>Regiomat sprawdza się w serowarniach, gospodarstwach mlecznych i u lokalnych producentów nabiału, którzy chcą sprzedawać poza godzinami otwarcia bez utraty jakości produktu.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Konfiguracja</p>
+        <h2>Jak konfigurujemy automat <em>pod sery i nabiał.</em></h2>
+        <div class="layers-grid">
+          <div class="layer"><h3>Opakowanie</h3><p>Różne formaty jednocześnie: kostki, krążki, słoiki z jogurtem.</p></div>
+          <div class="layer"><h3>Temperatura</h3><p>Chłodzenie z ciągłą kontrolą — kluczowe dla bezpieczeństwa produktu.</p></div>
+          <div class="layer"><h3>Wydawanie</h3><p>Spirala lub popychacz, dopasowany do kształtu opakowania.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Na co uważać</p>
+        <h2>Zanim <em>zaczniesz.</em></h2>
+        <ul class="checklist">
+          <li>Ciągłość łańcucha chłodniczego — automat musi utrzymać temperaturę non-stop</li>
+          <li>Etykietowanie zgodne z przepisami dla produktów mlecznych</li>
+          <li>Krótszy termin przydatności części produktów</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">Większy koszyk</p>
+        <h2>Co sprzedawać <em>obok serów.</em></h2>
+        <div class="cards-grid">
+          <div class="family-card"><h3>Pieczywo</h3><p>Klasyczny duet z nabiałem.</p></div>
+          <div class="family-card"><h3>Miód</h3><p>Kolejny lokalny produkt w tym samym automacie.</p></div>
+          <div class="family-card"><h3>Przetwory</h3><p>Wyższa średnia wartość koszyka przy jednej wizycie.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calculator" id="kalkulator">
+      <div class="wrap">
+        <p class="eyebrow">Opłacalność</p>
+        <h2>Sprawdź, <em>czy to się opłaca.</em></h2>
+        <div class="calc-grid">
+          <div class="calc-sliders">
+            <div class="slider-group">
+              <label for="calc-transactions">Transakcji dziennie: <output id="calc-transactions-out">15</output></label>
+              <input type="range" id="calc-transactions" min="1" max="200" value="15">
+            </div>
+            <div class="slider-group">
+              <label for="calc-basket">Średnia wartość koszyka (zł): <output id="calc-basket-out">25</output></label>
+              <input type="range" id="calc-basket" min="3" max="50" value="25">
+            </div>
+            <div class="slider-group">
+              <label for="calc-margin">Marża na produkcie (%): <output id="calc-margin-out">45</output></label>
+              <input type="range" id="calc-margin" min="5" max="70" value="45">
+            </div>
+            <div class="slider-group">
+              <label for="calc-investment">Wartość inwestycji (zł): <output id="calc-investment-out">40000</output></label>
+              <input type="range" id="calc-investment" min="5000" max="150000" step="1000" value="40000">
+            </div>
+            <div class="slider-group">
+              <label for="calc-costs">Koszty miesięczne (zł): <output id="calc-costs-out">350</output></label>
+              <input type="range" id="calc-costs" min="100" max="3000" step="50" value="350">
+            </div>
+          </div>
+          <div class="calc-results">
+            <div class="calc-result"><span class="calc-result__label">Przychód miesięczny</span><span class="calc-result__value" id="calc-revenue-month">—</span></div>
+            <div class="calc-result"><span class="calc-result__label">Przychód roczny</span><span class="calc-result__value" id="calc-revenue-year">—</span></div>
+            <div class="calc-result"><span class="calc-result__label">Zysk po kosztach (mies.)</span><span class="calc-result__value" id="calc-profit">—</span></div>
+            <div class="calc-result calc-result--highlight"><span class="calc-result__label">Zwrot inwestycji</span><span class="calc-result__value" id="calc-roi">—</span></div>
+          </div>
+        </div>
+        <p class="calc-disclaimer">To szacunek orientacyjny, nie gwarancja wyniku — zależy od cen, kosztów i ruchu klientów.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <p class="eyebrow">FAQ</p>
+        <h2>Pytania <em>o automat na sery i nabiał.</em></h2>
+        <div class="layers-grid">
+          <div class="layer"><h3>Czy automat utrzyma odpowiednią temperaturę dla serów?</h3><p>Tak, moduł chłodniczy pracuje non-stop z kontrolą temperatury.</p></div>
+          <div class="layer"><h3>Czy mogę sprzedawać różne rodzaje nabiału w jednym automacie?</h3><p>Tak, konfigurujemy podajniki pod różne formaty opakowań.</p></div>
+          <div class="layer"><h3>Co z terminem przydatności produktów mlecznych?</h3><p>Zalecamy częstszą rotację — pomagamy dobrać harmonogram uzupełniania.</p></div>
+          <div class="layer"><h3>Czy trzeba specjalnie oznakować sery?</h3><p>Tak, zgodnie z przepisami dla produktów mlecznych — pomagamy to ustawić.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-final">
+      <div class="wrap">
+        <h2>Produkujesz sery lub nabiał? <em>Skonfigurujmy regiomat.</em></h2>
+        <div class="hero__cta">
+          <a href="/konfigurator" class="btn btn--primary">Skonfiguruj automat →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer.html -->
+  <!-- include:cookie-banner.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/calculator.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>
