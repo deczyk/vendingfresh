@@ -1,5 +1,4 @@
 export interface ConfiguratorState {
-  kim: string;
   produkty: string[];
   produktInne: string;
   opakowanie: string;
@@ -10,7 +9,6 @@ export interface ConfiguratorState {
   lokalizacja: string;
   miejscowoscTyp: string;
   platnosci: string[];
-  finansowanie: string;
   imie: string;
   telefon: string;
   email: string;
@@ -21,7 +19,6 @@ export interface ConfiguratorState {
 
 export function createInitialState(): ConfiguratorState {
   return {
-    kim: '',
     produkty: [],
     produktInne: '',
     opakowanie: '',
@@ -32,7 +29,6 @@ export function createInitialState(): ConfiguratorState {
     lokalizacja: '',
     miejscowoscTyp: '',
     platnosci: [],
-    finansowanie: '',
     imie: '',
     telefon: '',
     email: '',
@@ -45,30 +41,28 @@ export function createInitialState(): ConfiguratorState {
 export function validateStep(step: number, state: ConfiguratorState): string | null {
   switch (step) {
     case 1:
-      return state.kim.trim() === '' ? 'Wybierz, kim jesteś.' : null;
-    case 2:
       return state.produkty.length === 0 && state.produktInne.trim() === ''
         ? 'Wybierz co najmniej jeden produkt albo opisz go w polu "inne".'
         : null;
-    case 3:
-      return state.opakowanie.trim() === '' ? 'Wybierz sposób pakowania.' : null;
-    case 4:
-      return state.temperatura.trim() === '' ? 'Wybierz temperaturę.' : null;
-    case 5:
-      return state.wolumenDzienny.trim() === '' ? 'Podaj orientacyjny wolumen sprzedaży.' : null;
-    case 6:
-      return state.lokalizacja.trim() === '' ? 'Wybierz, gdzie stanie automat.' : null;
-    case 7:
+    case 2:
+      if (state.opakowanie.trim() === '') return 'Wybierz sposób pakowania.';
+      if (state.temperatura.trim() === '') return 'Wybierz temperaturę.';
       return null;
-    case 8:
-      return state.finansowanie.trim() === '' ? 'Wybierz sposób finansowania.' : null;
-    case 9:
+    case 3:
+      return state.wolumenDzienny.trim() === '' ? 'Podaj orientacyjny wolumen sprzedaży.' : null;
+    case 4:
+      return state.lokalizacja.trim() === '' ? 'Wybierz, gdzie stanie automat.' : null;
+    case 5:
+      return null;
+    case 6:
       if (state.telefon.trim() === '' && state.email.trim() === '') {
         return 'Podaj telefon lub e-mail.';
       }
       if (!state.rodo) {
         return 'Zaznacz zgodę RODO, żeby wysłać formularz.';
       }
+      return null;
+    case 7:
       return null;
     default:
       return null;
@@ -91,7 +85,7 @@ export function suggestDirection(state: ConfiguratorState): string {
   return `Proponowany kierunek: ${kierunek}.`;
 }
 
-const TOTAL_STEPS = 9;
+const TOTAL_STEPS = 7;
 
 function initConfigurator(): void {
   const state = createInitialState();
@@ -111,7 +105,6 @@ function initConfigurator(): void {
   if (!form || !progressBar || !progressLabel || !backBtn || !nextBtn) return;
 
   function syncStateFromDom(): void {
-    state.kim = form!.querySelector<HTMLInputElement>('input[name="kim"]:checked')?.value ?? '';
     state.produkty = Array.from(
       form!.querySelectorAll<HTMLInputElement>('input[name="produkty"]:checked'),
     ).map((el) => el.value);
@@ -127,7 +120,6 @@ function initConfigurator(): void {
     state.platnosci = Array.from(
       form!.querySelectorAll<HTMLInputElement>('input[name="platnosci"]:checked'),
     ).map((el) => el.value);
-    state.finansowanie = form!.querySelector<HTMLInputElement>('input[name="finansowanie"]:checked')?.value ?? '';
     state.imie = (document.getElementById('imie') as HTMLInputElement | null)?.value ?? '';
     state.telefon = (document.getElementById('telefon') as HTMLInputElement | null)?.value ?? '';
     state.email = (document.getElementById('email') as HTMLInputElement | null)?.value ?? '';
@@ -144,7 +136,7 @@ function initConfigurator(): void {
     progressBar!.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
     progressLabel!.textContent = `Krok ${currentStep} z ${TOTAL_STEPS}`;
     backBtn!.hidden = currentStep === 1;
-    nextBtn!.textContent = currentStep === TOTAL_STEPS ? 'Wyślij' : 'Dalej';
+    nextBtn!.textContent = currentStep === TOTAL_STEPS ? 'Wyślij zgłoszenie' : 'Dalej';
     if (errorEl) errorEl.textContent = '';
   }
 

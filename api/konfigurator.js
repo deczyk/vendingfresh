@@ -32,14 +32,12 @@ export function buildLeadsRequestBody(payload) {
     : '';
 
   const notes = [
-    `Kim jest: ${payload.kim || '—'}`,
     `Produkty: ${produkty || '—'}`,
     `Opakowanie: ${payload.opakowanie || '—'} (wymiary: ${payload.wymiary || '—'})`,
     `Temperatura: ${payload.temperatura || '—'}`,
     `Wolumen: ${payload.wolumenDzienny || '—'} (liczba produktów: ${payload.liczbaProduktow || '—'})`,
     `Lokalizacja: ${payload.lokalizacja || '—'} (${payload.miejscowoscTyp || '—'})`,
     `Płatności i dodatki: ${platnosci || '—'}`,
-    `Finansowanie: ${payload.finansowanie || '—'}`,
   ].join('\n');
 
   return {

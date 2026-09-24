@@ -45,7 +45,6 @@ describe('validateLeadPayload', () => {
 describe('buildLeadsRequestBody', () => {
   it('maps configurator fields onto the sklepzastodola.pl /api/leads schema', () => {
     const body = buildLeadsRequestBody({
-      kim: 'piekarnia',
       produkty: ['chleb'],
       produktInne: '',
       opakowanie: 'worek',
@@ -56,7 +55,6 @@ describe('buildLeadsRequestBody', () => {
       lokalizacja: 'budynek',
       miejscowoscTyp: 'miasto',
       platnosci: ['karta_blik'],
-      finansowanie: 'leasing',
       imie: 'Jan',
       telefon: '600123456',
       email: 'jan@example.com',
@@ -73,16 +71,15 @@ describe('buildLeadsRequestBody', () => {
     expect(body.miejscowosc).toBe('Kraków');
     expect(body.website).toBe('');
     expect(body.produkt).toBe('chleb');
-    expect(body.notes).toContain('Kim jest: piekarnia');
     expect(body.notes).toContain('Opakowanie: worek (wymiary: 20x10x8 cm)');
-    expect(body.notes).toContain('Finansowanie: leasing');
+    expect(body.notes).toContain('Temperatura: pokojowa');
   });
 
   it('falls back to the free-text "inne" product when no checkboxes are selected', () => {
     const body = buildLeadsRequestBody({
-      kim: '', produkty: [], produktInne: 'kawa mielona', opakowanie: '', wymiary: '',
+      produkty: [], produktInne: 'kawa mielona', opakowanie: '', wymiary: '',
       temperatura: '', wolumenDzienny: '', liczbaProduktow: '', lokalizacja: '',
-      miejscowoscTyp: '', platnosci: [], finansowanie: '', imie: '', telefon: '600000000',
+      miejscowoscTyp: '', platnosci: [], imie: '', telefon: '600000000',
       email: '', miejscowoscKontakt: '', rodo: true, website: '',
     });
 

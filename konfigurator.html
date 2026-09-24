@@ -26,24 +26,12 @@
       <div class="config-progress">
         <div class="config-progress__bar" id="config-progress-bar"></div>
       </div>
-      <p class="config-progress__label" id="config-progress-label">Krok 1 z 9</p>
+      <p class="config-progress__label" id="config-progress-label">Krok 1 z 7</p>
 
       <form id="config-form">
         <input type="text" name="website" id="hp-website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;">
-        <section class="config-step" data-step="1">
-          <h2>Kim jesteś?</h2>
-          <div class="config-options">
-            <label><input type="radio" name="kim" value="rolnik"> Rolnik</label>
-            <label><input type="radio" name="kim" value="piekarnia"> Piekarnia</label>
-            <label><input type="radio" name="kim" value="serowarnia"> Serowarnia</label>
-            <label><input type="radio" name="kim" value="sklep"> Sklep</label>
-            <label><input type="radio" name="kim" value="gmina"> Gmina lub KGW</label>
-            <label><input type="radio" name="kim" value="inwestor"> Inwestor pod lokalizację</label>
-            <label><input type="radio" name="kim" value="inne"> Inne</label>
-          </div>
-        </section>
 
-        <section class="config-step" data-step="2" hidden>
+        <section class="config-step" data-step="1">
           <h2>Co chcesz sprzedawać?</h2>
           <div class="config-options">
             <label><input type="checkbox" name="produkty" value="chleb"> Chleb</label>
@@ -63,7 +51,7 @@
           <label class="config-field">Inne (opisz): <input type="text" id="produkt-inne"></label>
         </section>
 
-        <section class="config-step" data-step="3" hidden>
+        <section class="config-step" data-step="2" hidden>
           <h2>Jak to jest zapakowane?</h2>
           <div class="config-options">
             <label><input type="radio" name="opakowanie" value="worek"> Worek</label>
@@ -74,10 +62,7 @@
             <label><input type="radio" name="opakowanie" value="luzem"> Luzem</label>
           </div>
           <label class="config-field">Orientacyjne wymiary i waga: <input type="text" id="wymiary" placeholder="np. 20x10x8 cm, 0,5 kg"></label>
-        </section>
-
-        <section class="config-step" data-step="4" hidden>
-          <h2>Temperatura</h2>
+          <h3>Temperatura</h3>
           <div class="config-options">
             <label><input type="radio" name="temperatura" value="chlodzenie"> Chłodzenie</label>
             <label><input type="radio" name="temperatura" value="pokojowa"> Pokojowa</label>
@@ -85,13 +70,13 @@
           </div>
         </section>
 
-        <section class="config-step" data-step="5" hidden>
+        <section class="config-step" data-step="3" hidden>
           <h2>Ile sprzedajesz?</h2>
           <label class="config-field">Ile dziennie/tygodniowo: <input type="text" id="wolumen-dzienny" placeholder="np. 40 szt. dziennie"></label>
           <label class="config-field">Ile różnych produktów: <input type="text" id="liczba-produktow" placeholder="np. 5"></label>
         </section>
 
-        <section class="config-step" data-step="6" hidden>
+        <section class="config-step" data-step="4" hidden>
           <h2>Gdzie stanie automat?</h2>
           <div class="config-options">
             <label><input type="radio" name="lokalizacja" value="budynek"> W budynku</label>
@@ -105,7 +90,7 @@
           </div>
         </section>
 
-        <section class="config-step" data-step="7" hidden>
+        <section class="config-step" data-step="5" hidden>
           <h2>Płatności i dodatki</h2>
           <div class="config-options">
             <label><input type="checkbox" name="platnosci" value="karta_blik"> Karta i BLIK</label>
@@ -116,23 +101,49 @@
           </div>
         </section>
 
-        <section class="config-step" data-step="8" hidden>
-          <h2>Finansowanie</h2>
-          <div class="config-options">
-            <label><input type="radio" name="finansowanie" value="gotowka"> Gotówka</label>
-            <label><input type="radio" name="finansowanie" value="leasing"> Leasing</label>
-            <label><input type="radio" name="finansowanie" value="dotacja"> Szukam dotacji</label>
-            <label><input type="radio" name="finansowanie" value="niewiem"> Nie wiem</label>
-          </div>
-        </section>
-
-        <section class="config-step" data-step="9" hidden>
+        <section class="config-step" data-step="6" hidden>
           <h2>Kontakt</h2>
           <label class="config-field">Imię: <input type="text" id="imie"></label>
           <label class="config-field">Telefon: <input type="tel" id="telefon"></label>
           <label class="config-field">E-mail: <input type="email" id="email"></label>
           <label class="config-field">Miejscowość: <input type="text" id="miejscowosc-kontakt"></label>
           <label class="config-checkbox"><input type="checkbox" id="rodo"> Zgadzam się na przetwarzanie danych osobowych w celu kontaktu w sprawie wyceny (zgodnie z <a href="/polityka">polityką prywatności</a>).</label>
+        </section>
+
+        <section class="config-step" data-step="7" hidden>
+          <h2>Szacowana opłacalność <em>(opcjonalnie)</em></h2>
+          <p class="config-field" style="font-weight:400;">Możesz od razu poeksperymentować z liczbami — albo pominąć ten krok i po prostu wysłać zgłoszenie.</p>
+          <div class="calc-grid">
+            <div class="calc-sliders">
+              <div class="slider-group">
+                <label for="calc-transactions">Transakcji dziennie: <output id="calc-transactions-out">30</output></label>
+                <input type="range" id="calc-transactions" min="1" max="200" value="30">
+              </div>
+              <div class="slider-group">
+                <label for="calc-basket">Średnia wartość koszyka (zł): <output id="calc-basket-out">15</output></label>
+                <input type="range" id="calc-basket" min="3" max="50" value="15">
+              </div>
+              <div class="slider-group">
+                <label for="calc-margin">Marża na produkcie (%): <output id="calc-margin-out">35</output></label>
+                <input type="range" id="calc-margin" min="5" max="70" value="35">
+              </div>
+              <div class="slider-group">
+                <label for="calc-investment">Wartość inwestycji (zł): <output id="calc-investment-out">35000</output></label>
+                <input type="range" id="calc-investment" min="5000" max="150000" step="1000" value="35000">
+              </div>
+              <div class="slider-group">
+                <label for="calc-costs">Koszty miesięczne (zł): <output id="calc-costs-out">400</output></label>
+                <input type="range" id="calc-costs" min="100" max="3000" step="50" value="400">
+              </div>
+            </div>
+            <div class="calc-results">
+              <div class="calc-result"><span class="calc-result__label">Przychód miesięczny</span><span class="calc-result__value" id="calc-revenue-month">—</span></div>
+              <div class="calc-result"><span class="calc-result__label">Przychód roczny</span><span class="calc-result__value" id="calc-revenue-year">—</span></div>
+              <div class="calc-result"><span class="calc-result__label">Zysk po kosztach (mies.)</span><span class="calc-result__value" id="calc-profit">—</span></div>
+              <div class="calc-result calc-result--highlight"><span class="calc-result__label">Zwrot inwestycji</span><span class="calc-result__value" id="calc-roi">—</span></div>
+            </div>
+          </div>
+          <p class="calc-disclaimer">To szacunek orientacyjny, nie gwarancja wyniku — zależy od cen, kosztów i ruchu klientów.</p>
         </section>
 
         <p class="config-error" id="config-error" role="alert"></p>
@@ -155,6 +166,7 @@
   <!-- include:cookie-banner.html -->
   <script type="module" src="/src/main.ts"></script>
   <script type="module" src="/src/konfigurator.ts"></script>
+  <script type="module" src="/src/calculator.ts"></script>
   <script type="module" src="/src/cookies.ts"></script>
 </body>
 </html>
