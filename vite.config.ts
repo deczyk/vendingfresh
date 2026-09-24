@@ -24,6 +24,7 @@ export default defineConfig({
         rozwiazaniaNapoje: resolve(__dirname, 'rozwiazania/napoje.html'),
         jakDzialamy: resolve(__dirname, 'jak-dzialamy.html'),
         finansowanie: resolve(__dirname, 'finansowanie.html'),
+        automatySielaff: resolve(__dirname, 'automaty-sielaff.html'),
       },
     },
   },
