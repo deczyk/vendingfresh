@@ -9,6 +9,10 @@
   --max-width: 1160px;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
