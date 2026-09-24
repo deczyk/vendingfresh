@@ -301,7 +301,8 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 }
 .config-options label:has(input:checked) { border-color: var(--color-primary); background: var(--color-bg-alt); }
 .config-field { display: block; margin-bottom: 16px; font-weight: 600; font-size: 14px; }
-.config-field input { display: block; width: 100%; margin-top: 6px; padding: 10px 12px; border: 1px solid #dcefec; border-radius: 8px; font-size: 15px; }
+.config-field input, .config-field textarea { display: block; width: 100%; margin-top: 6px; padding: 10px 12px; border: 1px solid #dcefec; border-radius: 8px; font-size: 15px; font-family: inherit; }
+.config-field textarea { resize: vertical; min-height: 120px; }
 .config-checkbox { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
 .config-error { color: #C0392B; font-weight: 600; min-height: 20px; }
 .config-nav { display: flex; justify-content: space-between; margin-top: 24px; }
@@ -317,3 +318,37 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
   max-width: 280px;
   margin: 0 auto 32px;
 }
+
+/* Kontakt */
+.kontakt-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start; margin: 32px 0; }
+.kontakt-info { background: var(--color-bg-alt); border-radius: var(--radius); padding: 32px; }
+.kontakt-info h3 { color: var(--color-primary); font-size: 16px; margin-bottom: 12px; }
+.kontakt-info p { margin: 0 0 12px; }
+.kontakt-info .btn { margin-top: 12px; }
+@media (max-width: 760px) {
+  .kontakt-grid { grid-template-columns: 1fr; }
+}
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 12px; margin: 32px 0; }
+.faq-item { border: 1px solid #e5efee; border-radius: var(--radius); overflow: hidden; }
+.faq-item__question {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: none;
+  padding: 18px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  color: var(--color-ink);
+}
+.faq-item__question::after { content: "+"; color: var(--color-primary); font-size: 20px; flex-shrink: 0; }
+.faq-item.is-open .faq-item__question::after { content: "\2212"; }
+.faq-item.is-open .faq-item__question { background: var(--color-bg-alt); }
+.faq-item__answer { display: none; padding: 0 20px 20px; font-size: 15px; }
+.faq-item.is-open .faq-item__answer { display: block; }

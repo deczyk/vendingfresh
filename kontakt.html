@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt — VendingFresh | Partner Sielaff</title>
+  <meta name="description" content="Napisz do nas w sprawie automatu vendingowego dla Twojego produktu. Partner Sielaff, wycena zawsze indywidualna, odpowiadamy w 24–48 h.">
+  <link rel="canonical" href="https://vendingfresh.pl/kontakt">
+  <link rel="icon" type="image/png" href="/vendingfresh_icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kontakt — VendingFresh">
+  <meta property="og:description" content="Napisz do nas w sprawie automatu vendingowego dla Twojego produktu. Partner Sielaff.">
+  <meta property="og:url" content="https://vendingfresh.pl/kontakt">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- include:nav.html -->
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Kontakt</p>
+        <h1>Porozmawiajmy <em>o Twoim automacie.</em></h1>
+        <p class="hero__subtitle">Masz pytanie albo chcesz od razu przejść do konkretów? Napisz — odpowiadamy w 24–48 h.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="kontakt-grid">
+          <form action="https://formspree.io/f/xqpalbpj" method="POST">
+            <label class="config-field">Imię: <input type="text" name="imie" required></label>
+            <label class="config-field">Telefon: <input type="tel" name="telefon"></label>
+            <label class="config-field">E-mail: <input type="email" name="email" required></label>
+            <label class="config-field">Wiadomość: <textarea name="wiadomosc" required></textarea></label>
+            <label class="config-checkbox">
+              <input type="checkbox" required>
+              Zgadzam się na przetwarzanie danych osobowych w celu kontaktu (zgodnie z <a href="/polityka">polityką prywatności</a>).
+            </label>
+            <button type="submit" class="btn btn--primary" style="margin-top: 20px;">Wyślij wiadomość</button>
+          </form>
+
+          <div class="kontakt-info">
+            <h3>Dane kontaktowe</h3>
+            <p>Telefon: <a href="tel:+48735115427">+48 735 115 427</a></p>
+            <p>E-mail: <a href="mailto:kontakt@vendingfresh.pl">kontakt@vendingfresh.pl</a></p>
+            <h3>Wolisz od razu dobrać automat?</h3>
+            <p>Konfigurator zajmuje 5 minut i od razu podpowie kierunek dopasowany do Twojego produktu.</p>
+            <a href="/konfigurator" class="btn btn--secondary">Przejdź do konfiguratora →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer.html -->
+  <!-- include:cookie-banner.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>

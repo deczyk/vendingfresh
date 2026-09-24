@@ -13,6 +13,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         konfigurator: resolve(__dirname, 'konfigurator.html'),
         polityka: resolve(__dirname, 'polityka.html'),
+        kontakt: resolve(__dirname, 'kontakt.html'),
+        faq: resolve(__dirname, 'faq.html'),
       },
     },
   },

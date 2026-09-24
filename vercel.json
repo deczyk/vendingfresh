@@ -1,7 +1,9 @@
 {
   "rewrites": [
     { "source": "/konfigurator", "destination": "/konfigurator.html" },
-    { "source": "/polityka", "destination": "/polityka.html" }
+    { "source": "/polityka", "destination": "/polityka.html" },
+    { "source": "/kontakt", "destination": "/kontakt.html" },
+    { "source": "/faq", "destination": "/faq.html" }
   ],
   "headers": [
     {
