@@ -1,6 +1,4 @@
-import { neon } from '@neondatabase/serverless';
-
-const TELEGRAM_WEBHOOK_ENDPOINT = 'REPLACE_ME_TELEGRAM_WEBHOOK_ENDPOINT';
+const LEADS_ENDPOINT = 'https://www.sklepzastodola.pl/api/leads';
 const MAX_PAYLOAD_SIZE = 20000;
 
 export function validateLeadPayload(body) {
@@ -25,21 +23,49 @@ export function validateLeadPayload(body) {
   return null;
 }
 
-async function saveLead(body) {
-  const sql = neon(process.env.DATABASE_URL);
-  await sql`
-    insert into leads (marka, typ, payload)
-    values (${body.marka}, ${body.typ}, ${JSON.stringify(body.payload)}::jsonb)
-  `;
+export function buildLeadsRequestBody(payload) {
+  const produkty = Array.isArray(payload.produkty) && payload.produkty.length > 0
+    ? payload.produkty.join(', ')
+    : (payload.produktInne || '');
+  const platnosci = Array.isArray(payload.platnosci) && payload.platnosci.length > 0
+    ? payload.platnosci.join(', ')
+    : '';
+
+  const notes = [
+    `Kim jest: ${payload.kim || '—'}`,
+    `Produkty: ${produkty || '—'}`,
+    `Opakowanie: ${payload.opakowanie || '—'} (wymiary: ${payload.wymiary || '—'})`,
+    `Temperatura: ${payload.temperatura || '—'}`,
+    `Wolumen: ${payload.wolumenDzienny || '—'} (liczba produktów: ${payload.liczbaProduktow || '—'})`,
+    `Lokalizacja: ${payload.lokalizacja || '—'} (${payload.miejscowoscTyp || '—'})`,
+    `Płatności i dodatki: ${platnosci || '—'}`,
+    `Finansowanie: ${payload.finansowanie || '—'}`,
+  ].join('\n');
+
+  return {
+    source: 'kontakt',
+    marka: 'vendingfresh',
+    zainteresowanie: 'Konfigurator VendingFresh',
+    produkt: produkty,
+    imie: payload.imie || '',
+    telefon: payload.telefon || '',
+    email: payload.email || '',
+    miejscowosc: payload.miejscowoscKontakt || '',
+    website: payload.website || '',
+    notes,
+  };
 }
 
-async function notifyTelegram(body) {
-  const text = `[VendingFresh] Nowe zgłoszenie (${body.typ})\n${JSON.stringify(body.payload, null, 2)}`;
-  await fetch(TELEGRAM_WEBHOOK_ENDPOINT, {
+async function sendToLeadsApi(payload) {
+  const response = await fetch(LEADS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify(buildLeadsRequestBody(payload)),
   });
+  if (!response.ok) {
+    const detail = await response.text().catch(() => '');
+    throw new Error(`leads API responded ${response.status}: ${detail}`);
+  }
 }
 
 export default async function handler(req, res) {
@@ -55,18 +81,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    await saveLead(req.body);
+    await sendToLeadsApi(req.body.payload);
+    res.status(200).json({ ok: true });
   } catch (err) {
-    console.error('konfigurator handler error (save)', err);
+    console.error('konfigurator handler error', err);
     res.status(500).json({ error: 'Nie udało się zapisać zgłoszenia.' });
-    return;
   }
-
-  try {
-    await notifyTelegram(req.body);
-  } catch (err) {
-    console.error('konfigurator handler error (telegram notify)', err);
-  }
-
-  res.status(200).json({ ok: true });
 }

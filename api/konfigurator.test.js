@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateLeadPayload } from './konfigurator.js';
+import { buildLeadsRequestBody, validateLeadPayload } from './konfigurator.js';
 
 describe('validateLeadPayload', () => {
   it('rejects a missing body', () => {
@@ -39,5 +39,54 @@ describe('validateLeadPayload', () => {
         payload: { kim: 'piekarnia', website: 'http://spam.example' },
       }),
     ).toMatch(/Nieprawidłowe zgłoszenie/);
+  });
+});
+
+describe('buildLeadsRequestBody', () => {
+  it('maps configurator fields onto the sklepzastodola.pl /api/leads schema', () => {
+    const body = buildLeadsRequestBody({
+      kim: 'piekarnia',
+      produkty: ['chleb'],
+      produktInne: '',
+      opakowanie: 'worek',
+      wymiary: '20x10x8 cm',
+      temperatura: 'pokojowa',
+      wolumenDzienny: '40 szt dziennie',
+      liczbaProduktow: '3',
+      lokalizacja: 'budynek',
+      miejscowoscTyp: 'miasto',
+      platnosci: ['karta_blik'],
+      finansowanie: 'leasing',
+      imie: 'Jan',
+      telefon: '600123456',
+      email: 'jan@example.com',
+      miejscowoscKontakt: 'Kraków',
+      rodo: true,
+      website: '',
+    });
+
+    expect(body.source).toBe('kontakt');
+    expect(body.marka).toBe('vendingfresh');
+    expect(body.imie).toBe('Jan');
+    expect(body.telefon).toBe('600123456');
+    expect(body.email).toBe('jan@example.com');
+    expect(body.miejscowosc).toBe('Kraków');
+    expect(body.website).toBe('');
+    expect(body.produkt).toBe('chleb');
+    expect(body.notes).toContain('Kim jest: piekarnia');
+    expect(body.notes).toContain('Opakowanie: worek (wymiary: 20x10x8 cm)');
+    expect(body.notes).toContain('Finansowanie: leasing');
+  });
+
+  it('falls back to the free-text "inne" product when no checkboxes are selected', () => {
+    const body = buildLeadsRequestBody({
+      kim: '', produkty: [], produktInne: 'kawa mielona', opakowanie: '', wymiary: '',
+      temperatura: '', wolumenDzienny: '', liczbaProduktow: '', lokalizacja: '',
+      miejscowoscTyp: '', platnosci: [], finansowanie: '', imie: '', telefon: '600000000',
+      email: '', miejscowoscKontakt: '', rodo: true, website: '',
+    });
+
+    expect(body.produkt).toBe('kawa mielona');
+    expect(body.notes).toContain('Produkty: kawa mielona');
   });
 });
