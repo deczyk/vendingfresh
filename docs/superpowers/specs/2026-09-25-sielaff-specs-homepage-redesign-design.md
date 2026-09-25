@@ -12,20 +12,35 @@ Serwis obecnie opisuje modele Sielaff jednym zdaniem, bez zdjęć i bez realnych
 
 ## Źródło danych
 
-Nowy plik `src/data/sielaff-models.ts` — jeden obiekt na model. To jedyne miejsce, z którego czytają zarówno `automaty-sielaff.html`, jak i karty "polecany model" na stronach `rozwiazania/*`. Pola na model:
+Serwis to statyczny multi-page Vite (patrz `vite.config.ts`) — każda strona to osobny plik HTML z treścią wpisaną wprost (partials tylko dla nav/footer/cookie-banner przez `vite-plugins/html-include`). Nie ma warstwy renderującej HTML z danych w buildzie, więc specyfikacje modeli wpisujemy bezpośrednio w markup `automaty-sielaff.html` i `rozwiazania/*.html` — bez pośredniego pliku `.ts`/`.json`, żeby nie zostawiać martwego kodu, którego nic nie czyta. Ten dokument (sekcja "Zebrane specyfikacje" poniżej) jest źródłem prawdy dla wartości liczbowych, żeby nie rozjeżdżały się między stronami.
 
-- `slug`, `name`, `category` (świeże produkty / napoje / gorące napoje / outdoor / dodatki-kawa / zwroty opakowań)
-- `dimensions` (szer./wys./głęb.), `capacity` (opis pojemności — liczba spiral/półek/pojemników)
-- `tempRange` (jeśli dotyczy — w tym dwustrefowe, np. SN48 2T LM: górna strefa ~10–15°C, dolna strefa ≤4°C)
-- `screen` (przekątna, rozdzielczość, typ)
-- `payment` (obsługiwane metody)
-- `variants` (lista dostępnych wersji, np. Snack/Combi/Fresh food/2T LM dla SN48)
-- `shortDescription`, `longDescription`
-- `images: { product: string; lifestyle?: string }` — ścieżki względne do `public/sielaff/<slug>/`
+Pola opisujące model (spójne dla każdej karty): nazwa, kategoria, wymiary/pojemność, zakres temperatur (jeśli dotyczy — w tym dwustrefowe, np. SN48 2T LM: górna strefa ~10–15°C, dolna strefa ≤4°C), ekran, dodatkowe cechy, warianty, krótki opis.
 
-Modele do pokrycia: **SiLine Snack & Combi, SN48, SiLine GF, Robimat X, seria FK, Siamonie, SiLine HG/SiVend HG, SiLine Outdoor/SiVend Outdoor, SiLine Public, SiLoop, SiOne**. Realne wartości specyfikacji (wymiary, pojemność, zakresy temperatur) są dociągane z sielaff.de podczas implementacji — część już potwierdzona (SN48, SiLine Snack & Combi), reszta wymaga doczytania podstron produktowych i/lub kart PDF.
+Modele do pokrycia z pełnymi kartami: **SiLine Snack & Combi, SN48, SiLine GF, Robimat X series, seria FK, Siamonie series, SiLine HG TS27 / SiVend HG 15 TT, SiLine/SiVend Outdoor, SiLine Public, SiOne**. **SiLoop (CO2)** to funkcja/moduł doczepiany do automatów na napoje (nie osobna maszyna z własnym zdjęciem) — dostaje krótką wzmiankę bez pełnej karty.
 
-Jeśli dla któregoś modelu nie da się znaleźć konkretnej wartości liczbowej (np. producent nie podaje wymiarów publicznie), pole zostaje pominięte w renderze zamiast wypełnione zgadywaną wartością — nie zmyślamy specyfikacji technicznych.
+Jeśli dla któregoś modelu nie da się znaleźć konkretnej wartości liczbowej (np. producent nie podaje wymiarów publicznie), pole zostaje pominięte zamiast wypełnione zgadywaną wartością — nie zmyślamy specyfikacji technicznych.
+
+### Zebrane specyfikacje (źródło: sielaff.de, pobrane 2026-09-25)
+
+**SiLine® Snack & Combi** — szerokość 780 lub 990 mm; dwie strefy temperatur w jednej maszynie, granica między nimi przesuwalna między półkami; hermetyczny system chłodzenia z elektronicznie sterowanym agregatem typu push-in; ekran 7" LED, dotykowy, 800×480 px; oprogramowanie "FoodSafety" monitorujące temperaturę w strefie świeżych produktów; opcjonalna winda (lift system) do delikatnych produktów (jajka, szkło, napoje gazowane).
+
+**SN48** — jeden rozmiar obudowy, 5 lub 6 półek, 8 spiral w wielu rozmiarach; warianty: Snack / Combi / Fresh food / 2T LM (dwustrefowy); w wersji 2T LM górne półki ~10–15°C, dolna strefa (LM) ≤4°C, monitorowana przez oprogramowanie FoodSafety; obudowa nitowana, półki i spirale metalowe malowane proszkowo, agregat push-in, sterownik SMD.
+
+**SiLine® GF** — do 72 wyborów na 8 półkach; butelki szklane/PET i puszki 0,2–0,6 l, maks. wysokość butelki 270 mm; hermetyczne chłodzenie, agregat push-in; wspólny dla serii SiLine ekran dotykowy.
+
+**Robimat X series (XS/XM/XL)** — dostawa produktu ramieniem robota (nie spiralą); butelki/puszki 0,2–0,6 l, maks. wysokość 270 mm, produkty 200–910 g, średnica do 72 mm; XM: 5 półek, 35 wyborów, ok. 315 napojów (PET 0,6 l); XL: 5 półek, 45 wyborów, ok. 405 napojów; konstrukcja modułowa, w pełni serwisowalna i podlegająca recyklingowi, oświetlenie LED, szklenie izolacyjne.
+
+**Seria FK** — klasyczny automat zsypowy na napoje w butelkach/puszkach 0,2–2,0 l; wiele rozmiarów obudowy, wariantów drzwi i szerokości/głębokości zsypów; elastyczny system zsypów (standardowe i wąskie w dowolnej kombinacji); kompaktowy agregat elektroniczny typu slide-in, dostawa wózkiem paletowym bez palety; wersje wysokiego bezpieczeństwa (poza FK170); FK280 dostępny w wersji outdoor IP24; klasa energetyczna A+ lub lepsza.
+
+**Siamonie series** (kawa) — wymiary 710 × 450 × 570 mm, waga 68 kg; do 250 kubków/h; pojemność półki ok. 15 kubków kawy / 25 espresso / 15 szklanek latte macchiato, górna szklana półka ok. 12 kubków; pojemnik na ziarna 1,2 kg (wariant Mono), douzupełnianie po 1 kg; zasilanie 230 V/50 Hz/16 A, pobór mocy 2,9 kW; 10 przycisków bezpośredniego wyboru, do 20 produktów.
+
+**SiLine® HG TS27 / SiVend HG 15 TT** (gorące napoje) — TS27: bojler 2,0 kW + dogrzewanie zależne od przepływu, temperatura ustawiana per produkt/składnik, pełnopowierzchniowy dotykowy wyświetlacz za szkłem; HG 15 TT: profil premium (kawa specialty); pokrewny model HG20 Trend: do 20 napojów gorących, podajnik kubków (bucket elevator) 520×70 mm i 375×80 mm, kubki 150 ml (70 mm) / 240–300 ml (80 mm), dozowanie gorącej wody.
+
+**SiLine® / SiVend® Outdoor series** — klasa szczelności IP24, odporność na warunki do -20°C; niezależnie testowane, oznaczenie GS; przeznaczone na lokalizacje zewnętrzne o dużym ruchu pieszym.
+
+**SiLine® Public series** — spirale i popychacze na słodycze, przekąski, świeże produkty, napoje i produkty niespożywcze; panel antywandalowy z poliwęglanu 12 mm, wzmocniona falista blokada dźwigni; telemetria, pobór danych przez USB/MDB; oprogramowanie monitorujące chłodzenie i zużycie energii, zgłasza usterki przy otwarciu drzwi; koszyk do 5 produktów, funkcja zestawów ("deal"); miejsce na informacje o alergenach/składnikach i banery reklamowe.
+
+**SiOne series** (zwrot opakowań) — rozpoznawanie kodów kreskowych do 10 000 pozycji; prędkość przyjmowania do 30 opakowań/min; pojemność do 600 butelek PET 0,5 l lub 700 puszek; wersja wolnostojąca lub naścienna; kolory RAL 9010 / RAL 9006 / RAL 9005; opcje: drugi hopper na monety, separacja na 2 frakcje, kontener na rolki, drukarka paragonów, dodatkowa ochrona, zabezpieczenie antyoszustwowe, rozpoznawanie produktu.
 
 ## Zdjęcia
 
@@ -70,7 +85,7 @@ Cała obecna IA serwisu (nav, hero tiles, sekcja "Rozwiązania", karuzela) komun
 ## Poza zakresem
 - Nie zmieniamy kolejności ani treści sekcji niezwiązanych ze sprzętem/zdjęciami (kalkulator, finansowanie, FAQ, poradnik).
 - Nie dodajemy zdjęć do stopki ani innych podstron (kontakt, FAQ, poradnik) — poza zakresem tej prośby.
-- Nie tworzymy nowego systemu CMS/danych z bazy — `sielaff-models.ts` to statyczny plik w repo.
+- Nie tworzymy nowego systemu CMS/danych ani warstwy szablonów — specyfikacje wpisujemy wprost w HTML, zgodnie z istniejącą konwencją repo.
 
 ## Weryfikacja
 Dev server + przegląd w przeglądarce: homepage (karuzela + split-sections), `automaty-sielaff.html` (pełne specyfikacje), min. 2 strony `rozwiazania/*` (karta polecanego modelu). Sprawdzenie responsywności (mobile) i braku błędów 404 dla obrazów.
