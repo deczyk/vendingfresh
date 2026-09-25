@@ -364,3 +364,90 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 .article ul { margin: 0 0 16px; padding-left: 24px; }
 .article li { margin-bottom: 8px; }
 .article__lead { font-size: 18px; opacity: 0.85; }
+
+/* Model card with photo + spec table */
+.model-card {
+  background: #FFFDF8;
+  border: 1px solid #E5DFD2;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.model-card--photo .model-card__img {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background: #F1EDE3;
+  padding: 16px;
+}
+.model-card__body { padding: 20px; }
+.model-card__body h3 { color: var(--color-primary); font-size: 18px; }
+.model-card__link { display: inline-block; margin-top: 16px; font-weight: 600; color: var(--color-primary); }
+.model-card--compact { max-width: 420px; }
+.model-card--compact .model-card__img { height: 180px; }
+
+.spec-table { margin: 16px 0 0; padding: 0; }
+.spec-table__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #EFEAE0;
+  font-size: 14px;
+}
+.spec-table__row:last-child { border-bottom: none; }
+.spec-table__row dt { font-weight: 600; color: var(--color-secondary); margin: 0; flex-shrink: 0; }
+.spec-table__row dd { margin: 0; text-align: right; }
+
+/* Split section: image + text 50/50 */
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin: 32px 0; }
+.split-section--reverse .split-section__media { order: 2; }
+.split-section__media { border-radius: var(--radius); overflow: hidden; }
+.split-section__media img { width: 100%; height: 100%; object-fit: cover; max-height: 420px; }
+.split-section__media--contain { background: #F1EDE3; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.split-section__media--contain img { object-fit: contain; max-height: 380px; }
+.split-section__body h2 { margin-bottom: 16px; }
+@media (max-width: 760px) {
+  .split-section { grid-template-columns: 1fr; }
+  .split-section--reverse .split-section__media { order: 0; }
+}
+
+/* Carousel (flat-peek variant) */
+.carousel { position: relative; overflow: hidden; padding: 24px 0 8px; }
+.carousel__track { display: flex; align-items: center; justify-content: center; gap: 16px; }
+.carousel__item {
+  flex-shrink: 0;
+  width: 340px;
+  height: 420px;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  transition: width 0.3s ease, height 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  display: block;
+}
+.carousel__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.carousel__item--side { width: 220px; height: 340px; filter: brightness(0.75) saturate(0.85); }
+.carousel__item--far { width: 100px; height: 260px; filter: brightness(0.5); opacity: 0.5; }
+.carousel__item--hidden { display: none; }
+.carousel__caption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 18px 16px 14px;
+  background: linear-gradient(to top, rgba(14,92,92,0.92), rgba(14,92,92,0));
+  color: #fff; opacity: 0; transition: opacity 0.3s;
+}
+.carousel__item--active .carousel__caption { opacity: 1; }
+.carousel__caption h3 { margin: 0 0 4px; font-size: 18px; color: #fff; }
+.carousel__caption p { margin: 0; font-size: 13px; opacity: 0.9; }
+.carousel__item--brand { background: var(--color-primary); display: flex; align-items: center; justify-content: center; }
+.carousel__item--brand .carousel__caption { opacity: 1; position: static; background: none; padding: 24px; text-align: center; }
+.carousel__dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
+.carousel__dot { width: 8px; height: 8px; border-radius: 50%; background: #DCD5C5; cursor: pointer; border: none; padding: 0; }
+.carousel__dot--active { background: var(--color-primary); width: 22px; border-radius: 4px; }
+@media (max-width: 760px) {
+  .carousel__item { width: 260px; height: 340px; }
+  .carousel__item--side { width: 140px; height: 260px; }
+  .carousel__item--far { display: none; }
+}
