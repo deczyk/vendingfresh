@@ -2,6 +2,8 @@ import { describe, expect, it, vi } from 'vitest';
 import { buildLeadPrompt, fallbackLeadSummary, summarizeLead } from './_lib/lead-summary.js';
 import {
   cleanProposals,
+  fitWords,
+  brandName,
   createRateLimiter,
   fallbackSlogans,
   generateSlogans,
@@ -62,8 +64,17 @@ describe('okleina generator', () => {
     ] });
     expect(out).toHaveLength(3);
     expect(out[0].nazwa).toBe('Chlebomat');
-    expect(out[1].nazwa).toHaveLength(20);
+    expect(out[1].nazwa).toHaveLength(26);
     expect(out[1].haslo).toHaveLength(30);
+  });
+
+  it('shortens names to whole words and drops the legal form', () => {
+    expect(fitWords('Gospodarstwo Rolne Jan Kowalski i Synowie', 20)).toBe('Gospodarstwo Rolne');
+    expect(fitWords('Piekarnia u Zenka Nowaka', 16)).toBe('Piekarnia');
+    expect(fitWords('Superdługanazwafirmybezspacji', 10)).toBe('Superdługa');
+    expect(brandName('Eko-Farma Zielona Dolina Sp. z o.o.')).toBe('Eko-Farma Zielona Dolina');
+    expect(brandName('„Mleczarnia Wiśniewski” s.c.')).toBe('Mleczarnia Wiśniewski');
+    expect(brandName('ABC S.A.')).toBe('ABC');
   });
 
   it('asks for structured JSON and parses it', async () => {
@@ -78,8 +89,9 @@ describe('okleina generator', () => {
   it('falls back to template proposals that include the company name', () => {
     const out = fallbackSlogans({ nazwa: 'Piekarnia u Zenka', produkt: 'pieczywo' });
     expect(out).toHaveLength(3);
-    expect(out[0]).toEqual({ nazwa: 'Chlebomat', haslo: 'Piekarnia u Zenka' });
-    expect(out.every((p) => p.nazwa.length <= 20 && p.haslo.length <= 30)).toBe(true);
+    expect(out[0]).toEqual({ nazwa: 'Piekarnia u Zenka', haslo: 'świeże prosto z pieca' });
+    expect(out[1]).toEqual({ nazwa: 'Chlebomat', haslo: 'Piekarnia u Zenka' });
+    expect(out.every((p) => p.nazwa.length <= 26 && p.haslo.length <= 30)).toBe(true);
   });
 
   it('rate-limits bursts per key', () => {

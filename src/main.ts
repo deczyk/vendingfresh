@@ -251,16 +251,64 @@ function initWrapMock(): void {
     'To tylko podgląd — napis, logo, kolory i grafikę na froncie i bokach zaprojektujemy dokładnie tak, jak chcesz.';
   mock.append(note);
 
-  // Sizes are in the photo's 350×500 coordinate space: long names shrink to stay on the panels.
+  // Sizes are in the photo's 350×500 coordinate space. Text is measured and shrunk to fit its panel;
+  // a long name on the front goes onto two lines instead of becoming tiny.
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const measure = (el: SVGTextContentElement): number => {
+    try {
+      return el.getComputedTextLength();
+    } catch {
+      return 0;
+    }
+  };
+  const fit = (el: SVGTextContentElement, target: SVGTextElement, maxWidth: number, size: number, min: number): number => {
+    target.setAttribute('font-size', String(size));
+    const width = measure(el);
+    const fitted = width > maxWidth ? Math.max(min, Math.floor((size * maxWidth * 10) / width) / 10) : size;
+    target.setAttribute('font-size', String(fitted));
+    return fitted;
+  };
+  const splitInTwo = (text: string): [string, string] | null => {
+    const words = text.split(' ');
+    if (words.length < 2) return null;
+    let best: [string, string] = [text, ''];
+    let bestDiff = Infinity;
+    for (let i = 1; i < words.length; i += 1) {
+      const a = words.slice(0, i).join(' ');
+      const b = words.slice(i).join(' ');
+      const diff = Math.abs(a.length - b.length);
+      if (diff < bestDiff) [best, bestDiff] = [[a, b], diff];
+    }
+    return best;
+  };
+  const paintFrontName = (text: string): void => {
+    name.replaceChildren(text);
+    name.setAttribute('y', '467');
+    const oneLine = fit(name, name, 186, 34, 10);
+    const lines = oneLine < 22 ? splitInTwo(text) : null;
+    if (!lines) return;
+    name.replaceChildren();
+    const spans = lines.map((line, i) => {
+      const span = document.createElementNS(SVG_NS, 'tspan');
+      span.setAttribute('x', '175');
+      span.setAttribute('y', String(i === 0 ? 453 : 478));
+      span.textContent = line;
+      name.appendChild(span);
+      return span;
+    });
+    const widest = spans.reduce((a, b) => (measure(a) >= measure(b) ? a : b));
+    fit(widest, name, 186, 24, 10);
+  };
   const paint = (text: string, sub: string): void => {
-    name.textContent = text;
-    name.setAttribute('font-size', String(Math.min(34, Math.floor(330 / Math.max(text.length, 1)))));
+    paintFrontName(text);
     sideName.textContent = text;
-    sideName.setAttribute('font-size', String(Math.min(22, Math.floor(250 / Math.max(text.length, 1)))));
+    fit(sideName, sideName, 200, 22, 8);
     tagline.textContent = sub.toUpperCase();
-    tagline.setAttribute('font-size', String(Math.min(9, Math.floor(260 / Math.max(sub.length, 1)))));
+    fit(tagline, tagline, 188, 9, 5);
     sideBig.textContent = text;
-    sideBig.style.fontSize = `${Math.min(2.4, 21 / Math.max(text.length, 1))}em`;
+    const longestWord = Math.max(...text.split(' ').map((w) => w.length));
+    const longestLine = Math.max(longestWord, Math.ceil(text.length / 2));
+    sideBig.style.fontSize = `${Math.min(2.4, 21 / Math.max(text.length <= 12 ? text.length : longestLine, 1))}em`;
     sideTag.textContent = sub;
   };
 
