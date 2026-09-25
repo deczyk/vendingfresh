@@ -48,6 +48,11 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
   switch (step) {
     case 1:
       if (state.model.trim() === '') return 'Wybierz, jak chcesz mieć automat: zakup, wynajem albo pełna obsługa.';
+      if (state.model === 'pelna_obsluga') {
+        return state.produkty.length === 0 && state.produktInne.trim() === ''
+          ? 'Wybierz, jakie produkty mają być w automacie.'
+          : null;
+      }
       return state.produkty.length === 0 && state.produktInne.trim() === ''
         ? 'Wybierz co najmniej jeden produkt albo opisz go w polu "inne".'
         : null;
@@ -86,6 +91,9 @@ export const MODEL_LABELS: Record<string, string> = {
 };
 
 export function suggestDirection(state: ConfiguratorState): string {
+  if (state.model === 'pelna_obsluga') {
+    return `Proponowany kierunek: gotowy automat z naszym asortymentem, dobrany do liczby osób na miejscu. ${MODEL_LABELS.pelna_obsluga}`;
+  }
   const wymagaChlodzenia =
     state.temperatura === 'chlodzenie' ||
     state.produkty.some((p) => ['sery', 'nabial', 'mieso', 'wedliny', 'dania'].includes(p));
@@ -108,6 +116,11 @@ const TOTAL_STEPS = 7;
 // packaging/temperature step (2) does not apply and is skipped.
 export function nextStep(step: number, model: string): number {
   return model === 'pelna_obsluga' && step === 1 ? 3 : step + 1;
+}
+
+/** Step number and total as shown to the visitor (pełna obsługa has one step fewer). */
+export function displayStep(step: number, total: number, model: string): [number, number] {
+  return model === 'pelna_obsluga' ? [step > 2 ? step - 1 : step, total - 1] : [step, total];
 }
 
 export function prevStep(step: number, model: string): number {
@@ -163,8 +176,9 @@ function initConfigurator(): void {
     stepEls.forEach((el) => {
       el.hidden = Number(el.dataset.step) !== currentStep;
     });
-    progressBar!.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
-    progressLabel!.textContent = `Krok ${currentStep} z ${TOTAL_STEPS}`;
+    const [shown, total] = displayStep(currentStep, TOTAL_STEPS, form!.dataset.model ?? '');
+    progressBar!.style.width = `${(shown / total) * 100}%`;
+    progressLabel!.textContent = `Krok ${shown} z ${total}`;
     backBtn!.hidden = currentStep === 1;
     nextBtn!.textContent = currentStep === TOTAL_STEPS ? 'Wyślij zgłoszenie' : 'Dalej';
     if (errorEl) errorEl.textContent = '';
@@ -223,7 +237,14 @@ function initConfigurator(): void {
 
   form.addEventListener('change', (e) => {
     const target = e.target as HTMLInputElement | null;
-    if (target?.name === 'model') form.dataset.model = target.value;
+    if (target?.name === 'model') {
+      form.dataset.model = target.value;
+      const hiddenGroup = target.value === 'pelna_obsluga' ? 'custom' : 'pelna';
+      form
+        .querySelectorAll<HTMLInputElement>(`[data-group="${hiddenGroup}"] input:checked`)
+        .forEach((input) => (input.checked = false));
+      renderStep();
+    }
   });
 
   // Deep link from /oferta: /konfigurator?model=pelna_obsluga preselects the option.

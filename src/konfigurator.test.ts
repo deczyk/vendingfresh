@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createInitialState, nextStep, prevStep, suggestDirection, validateStep } from './konfigurator';
+import { createInitialState, displayStep, nextStep, prevStep, suggestDirection, validateStep } from './konfigurator';
 
 describe('validateStep', () => {
   it('requires a cooperation model on step 1', () => {
@@ -108,5 +108,30 @@ describe('step navigation', () => {
     expect(nextStep(1, 'zakup')).toBe(2);
     expect(prevStep(3, 'wynajem')).toBe(2);
     expect(nextStep(4, 'pelna_obsluga')).toBe(5);
+  });
+});
+
+describe('pełna obsługa flow', () => {
+  it('numbers steps without the skipped one', () => {
+    expect(displayStep(1, 7, 'pelna_obsluga')).toEqual([1, 6]);
+    expect(displayStep(3, 7, 'pelna_obsluga')).toEqual([2, 6]);
+    expect(displayStep(7, 7, 'pelna_obsluga')).toEqual([6, 6]);
+    expect(displayStep(3, 7, 'zakup')).toEqual([3, 7]);
+  });
+
+  it('asks for products from our range on step 1', () => {
+    const state = createInitialState();
+    state.model = 'pelna_obsluga';
+    expect(validateStep(1, state)).toMatch(/produkty/);
+    state.produkty = ['napoje_zimne'];
+    expect(validateStep(1, state)).toBeNull();
+  });
+
+  it('suggests a ready-made machine, not a custom configuration', () => {
+    const state = createInitialState();
+    state.model = 'pelna_obsluga';
+    state.produkty = ['kanapki_salatki'];
+    expect(suggestDirection(state)).toMatch(/^Proponowany kierunek: gotowy automat/);
+    expect(suggestDirection(state)).not.toMatch(/SiLine/);
   });
 });

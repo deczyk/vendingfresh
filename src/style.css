@@ -1818,3 +1818,4 @@ h2 em, h1 em {
   .wrap-gen__row input { grid-column: 1 / -1; }
 }
 .wrapmock__name { overflow-wrap: anywhere; }
+[data-model="pelna_obsluga"] .config-options.show-pelna { display: grid; }
