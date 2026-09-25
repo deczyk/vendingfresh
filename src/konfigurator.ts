@@ -10,6 +10,7 @@ export interface ConfiguratorState {
   opakowanieInne: string;
   modelAutomatu: string;
   kolorObudowy: string;
+  liczbaAutomatow: string;
   wymiary: string;
   temperatura: string;
   wolumenDzienny: string;
@@ -36,6 +37,7 @@ export function createInitialState(): ConfiguratorState {
     opakowanieInne: '',
     modelAutomatu: '',
     kolorObudowy: '',
+    liczbaAutomatow: '',
     wymiary: '',
     temperatura: '',
     wolumenDzienny: '',
@@ -161,6 +163,7 @@ function initConfigurator(): void {
     state.modelAutomatu = state.linia === 'smart' || state.linia === 'premium'
       ? (form!.querySelector<HTMLInputElement>('input[name="model-automatu"]:checked')?.value ?? '')
       : '';
+    state.liczbaAutomatow = state.linia === 'smart' ? (document.getElementById('liczba-automatow') as HTMLInputElement | null)?.value ?? '' : '';
     state.kolorObudowy = state.linia === 'smart' ? (document.getElementById('kolor-obudowy') as HTMLInputElement | null)?.value ?? '' : '';
     state.czestotliwosc = form!.querySelector<HTMLInputElement>('input[name="czestotliwosc"]:checked')?.value ?? '';
     state.produkty = Array.from(
