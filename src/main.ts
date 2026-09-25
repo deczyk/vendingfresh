@@ -126,7 +126,63 @@ function initReveal(): void {
   els.forEach((el) => observer.observe(el));
 }
 
+const MATS = [
+  { name: 'Chlebomat', tagline: 'świeże 24/7', icon: '🥖', color: '#B8742A', color2: '#F2D29B' },
+  { name: 'Kwiatomat', tagline: 'bukiety 24/7', icon: '🌷', color: '#C2466B', color2: '#FFD1DC' },
+  { name: 'Ciastkomat', tagline: 'słodko 24/7', icon: '🧁', color: '#8E5BA8', color2: '#F6D5FF' },
+  { name: 'Jajomat', tagline: 'prosto z fermy', icon: '🥚', color: '#C98A12', color2: '#FFF0C2' },
+  { name: 'Seromat', tagline: 'nabiał od rolnika', icon: '🧀', color: '#2F7D4E', color2: '#F3E3A6' },
+  { name: 'Wszystkomat', tagline: 'twój produkt 24/7', icon: '✨', color: '#0E5C5C', color2: '#F3E3A6' },
+];
+
+function initWrapMock(): void {
+  const mock = document.querySelector<HTMLElement>('.wrapmock');
+  if (!mock) return;
+  const name = mock.querySelector<HTMLElement>('.wrapmock__name');
+  const tagline = mock.querySelector<HTMLElement>('.wrapmock__tagline');
+  const windowEl = mock.querySelector<HTMLElement>('.wrapmock__window');
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.mat-chip'));
+  if (!name || !tagline || !windowEl) return;
+
+  chips.forEach((chip, i) => chip.style.setProperty('--mat-color', MATS[i]?.color ?? ''));
+
+  let current = 0;
+  const show = (i: number): void => {
+    const mat = MATS[i];
+    current = i;
+    mock.style.setProperty('--mat-color', mat.color);
+    mock.style.setProperty('--mat-color-2', mat.color2);
+    name.textContent = mat.name;
+    tagline.textContent = mat.tagline;
+    windowEl.querySelectorAll('span').forEach((s) => (s.textContent = mat.icon));
+    [name, windowEl].forEach((el) => {
+      el.classList.remove('is-swapping');
+      void el.offsetWidth;
+      el.classList.add('is-swapping');
+    });
+    chips.forEach((c, j) => c.classList.toggle('is-active', j === i));
+  };
+
+  let timer: number | undefined;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const start = (): void => {
+    if (reducedMotion) return;
+    window.clearInterval(timer);
+    timer = window.setInterval(() => show((current + 1) % MATS.length), 2600);
+  };
+
+  chips.forEach((chip, i) =>
+    chip.addEventListener('click', () => {
+      show(i);
+      start();
+    }),
+  );
+  show(0);
+  start();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initWrapMock();
   initNav();
   initFooterYear();
   initHowSteps();

@@ -73,6 +73,7 @@ describe('buildLeadsRequestBody', () => {
     expect(body.produkt).toBe('chleb');
     expect(body.notes).toContain('Opakowanie: worek (wymiary: 20x10x8 cm)');
     expect(body.notes).toContain('Temperatura: pokojowa');
+    expect(body.notes).toContain('Model współpracy: —');
   });
 
   it('falls back to the free-text "inne" product when no checkboxes are selected', () => {
@@ -85,5 +86,14 @@ describe('buildLeadsRequestBody', () => {
 
     expect(body.produkt).toBe('kawa mielona');
     expect(body.notes).toContain('Produkty: kawa mielona');
+  });
+
+  it('includes the chosen cooperation model in notes and interest', () => {
+    const body = buildLeadsRequestBody({
+      model: 'pelna_obsluga', produkty: ['napoje'], produktInne: '', telefon: '600000000', rodo: true, website: '',
+    });
+
+    expect(body.notes).toContain('Model współpracy: pełna obsługa (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)');
+    expect(body.zainteresowanie).toBe('Konfigurator VendingFresh — pełna obsługa (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)');
   });
 });

@@ -2,8 +2,17 @@ import { describe, expect, it } from 'vitest';
 import { createInitialState, suggestDirection, validateStep } from './konfigurator';
 
 describe('validateStep', () => {
+  it('requires a cooperation model on step 1', () => {
+    const state = createInitialState();
+    state.produktInne = 'kawa mielona';
+    expect(validateStep(1, state)).toMatch(/zakup, wynajem albo pełna obsługa/);
+    state.model = 'pelna_obsluga';
+    expect(validateStep(1, state)).toBeNull();
+  });
+
   it('requires at least one product or free text on step 1', () => {
     const state = createInitialState();
+    state.model = 'zakup';
     expect(validateStep(1, state)).not.toBeNull();
     state.produktInne = 'kawa mielona';
     expect(validateStep(1, state)).toBeNull();
@@ -22,6 +31,14 @@ describe('validateStep', () => {
     const state = createInitialState();
     expect(validateStep(3, state)).toMatch(/wolumen/);
     state.wolumenDzienny = '40 szt dziennie';
+    expect(validateStep(3, state)).toBeNull();
+  });
+
+  it('asks full-service clients about headcount instead of sales volume on step 3', () => {
+    const state = createInitialState();
+    state.model = 'pelna_obsluga';
+    expect(validateStep(3, state)).toMatch(/ile osób/);
+    state.wolumenDzienny = '120 pracowników';
     expect(validateStep(3, state)).toBeNull();
   });
 
@@ -51,6 +68,16 @@ describe('validateStep', () => {
 });
 
 describe('suggestDirection', () => {
+  it('appends the chosen cooperation model', () => {
+    const state = createInitialState();
+    state.temperatura = 'pokojowa';
+    state.lokalizacja = 'budynek';
+    state.model = 'wynajem';
+    expect(suggestDirection(state)).toBe(
+      'Proponowany kierunek: SiLine Snack & Combi. Model: wynajem — Ty uzupełniasz automat, płacisz miesięczną opłatę.',
+    );
+  });
+
   it('suggests a cooled model for dairy products', () => {
     const state = createInitialState();
     state.temperatura = 'chlodzenie';

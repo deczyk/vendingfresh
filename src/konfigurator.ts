@@ -1,4 +1,6 @@
 export interface ConfiguratorState {
+  model: string;
+  czestotliwosc: string;
   produkty: string[];
   produktInne: string;
   opakowanie: string;
@@ -19,6 +21,8 @@ export interface ConfiguratorState {
 
 export function createInitialState(): ConfiguratorState {
   return {
+    model: '',
+    czestotliwosc: '',
     produkty: [],
     produktInne: '',
     opakowanie: '',
@@ -41,6 +45,7 @@ export function createInitialState(): ConfiguratorState {
 export function validateStep(step: number, state: ConfiguratorState): string | null {
   switch (step) {
     case 1:
+      if (state.model.trim() === '') return 'Wybierz, jak chcesz mieć automat: zakup, wynajem albo pełna obsługa.';
       return state.produkty.length === 0 && state.produktInne.trim() === ''
         ? 'Wybierz co najmniej jeden produkt albo opisz go w polu "inne".'
         : null;
@@ -49,6 +54,9 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
       if (state.temperatura.trim() === '') return 'Wybierz temperaturę.';
       return null;
     case 3:
+      if (state.model === 'pelna_obsluga') {
+        return state.wolumenDzienny.trim() === '' ? 'Podaj, ile osób mniej więcej jest na miejscu każdego dnia.' : null;
+      }
       return state.wolumenDzienny.trim() === '' ? 'Podaj orientacyjny wolumen sprzedaży.' : null;
     case 4:
       return state.lokalizacja.trim() === '' ? 'Wybierz, gdzie stanie automat.' : null;
@@ -69,6 +77,12 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
   }
 }
 
+export const MODEL_LABELS: Record<string, string> = {
+  zakup: 'Model: zakup na własność — gotówka, leasing albo dotacja.',
+  wynajem: 'Model: wynajem — Ty uzupełniasz automat, płacisz miesięczną opłatę.',
+  pelna_obsluga: 'Model: pełna obsługa — stawiamy automat bez kosztów po Twojej stronie, uzupełniamy go i serwisujemy.',
+};
+
 export function suggestDirection(state: ConfiguratorState): string {
   const wymagaChlodzenia =
     state.temperatura === 'chlodzenie' ||
@@ -82,7 +96,8 @@ export function suggestDirection(state: ConfiguratorState): string {
   if (state.platnosci.includes('karta_blik')) modifiers.push('płatności bezgotówkowe');
 
   const kierunek = [base, ...modifiers].join(', ');
-  return `Proponowany kierunek: ${kierunek}.`;
+  const model = MODEL_LABELS[state.model];
+  return model ? `Proponowany kierunek: ${kierunek}. ${model}` : `Proponowany kierunek: ${kierunek}.`;
 }
 
 const TOTAL_STEPS = 7;
@@ -105,6 +120,9 @@ function initConfigurator(): void {
   if (!form || !progressBar || !progressLabel || !backBtn || !nextBtn) return;
 
   function syncStateFromDom(): void {
+    state.model = form!.querySelector<HTMLInputElement>('input[name="model"]:checked')?.value ?? '';
+    form!.dataset.model = state.model;
+    state.czestotliwosc = form!.querySelector<HTMLInputElement>('input[name="czestotliwosc"]:checked')?.value ?? '';
     state.produkty = Array.from(
       form!.querySelectorAll<HTMLInputElement>('input[name="produkty"]:checked'),
     ).map((el) => el.value);
@@ -184,6 +202,19 @@ function initConfigurator(): void {
     } finally {
       nextBtn!.removeAttribute('disabled');
     }
+  }
+
+  form.addEventListener('change', (e) => {
+    const target = e.target as HTMLInputElement | null;
+    if (target?.name === 'model') form.dataset.model = target.value;
+  });
+
+  // Deep link from /oferta: /konfigurator?model=pelna_obsluga preselects the option.
+  const preset = new URLSearchParams(window.location.search).get('model');
+  const presetInput = preset ? form.querySelector<HTMLInputElement>(`input[name="model"][value="${CSS.escape(preset)}"]`) : null;
+  if (presetInput) {
+    presetInput.checked = true;
+    form.dataset.model = presetInput.value;
   }
 
   renderStep();
