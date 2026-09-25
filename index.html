@@ -95,14 +95,41 @@
       <div class="wrap">
         <p class="eyebrow">Rozwiązania</p>
         <h2>Automat dopasowany <em>do Twojego produktu.</em></h2>
-        <div class="cards-grid">
-          <a href="/rozwiazania/pieczywo" class="product-card"><span class="product-card__icon">🍞</span><h3>Pieczywo</h3><p>Codzienna rotacja, temperatura pokojowa, szczyty rano i wieczorem.</p></a>
-          <a href="/rozwiazania/jajka" class="product-card"><span class="product-card__icon">🥚</span><h3>Jajka</h3><p>Delikatne wydawanie windą, wytłaczanki, oznakowanie zgodne z przepisami.</p></a>
-          <a href="/rozwiazania/sery" class="product-card"><span class="product-card__icon">🧀</span><h3>Sery i nabiał</h3><p>Chłodzenie, różne formaty, wyższa średnia wartość koszyka.</p></a>
-          <a href="/rozwiazania/ziemniaki-warzywa" class="product-card"><span class="product-card__icon">🥔</span><h3>Ziemniaki i warzywa</h3><p>Duże, ciężkie opakowania — liczy się wolumen.</p></a>
-          <a href="/rozwiazania/bio-lokalne" class="product-card"><span class="product-card__icon">🌱</span><h3>Bio i lokalne</h3><p>Mini-sklep z wieloma produktami i opisami producentów na ekranie.</p></a>
-          <a href="/rozwiazania/mieso-dania" class="product-card"><span class="product-card__icon">🥩</span><h3>Mięso i dania gotowe</h3><p>Chłodzenie z kontrolą temperatury i telemetrią, rygor sanitarny.</p></a>
-          <a href="/rozwiazania/napoje" class="product-card"><span class="product-card__icon">🧃</span><h3>Napoje</h3><p>SiLine GF, Robimat X, seria FK — z opcją zwrotów opakowań.</p></a>
+        <div class="carousel" tabindex="0">
+          <div class="carousel__track">
+            <a href="/rozwiazania/pieczywo" class="carousel__item carousel__item--active" style="order: 0">
+              <img src="/kategorie/pieczywo.jpg" alt="Pieczywo w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Pieczywo</h3><p>Codzienna rotacja, temperatura pokojowa, szczyty rano i wieczorem.</p></div>
+            </a>
+            <a href="/rozwiazania/jajka" class="carousel__item carousel__item--side" style="order: 1">
+              <img src="/kategorie/jajka.jpg" alt="Jajka w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Jajka</h3><p>Delikatne wydawanie windą, wytłaczanki, oznakowanie zgodne z przepisami.</p></div>
+            </a>
+            <a href="/rozwiazania/sery" class="carousel__item carousel__item--far" style="order: 2">
+              <img src="/kategorie/sery.jpg" alt="Sery w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Sery i nabiał</h3><p>Chłodzenie, różne formaty, wyższa średnia wartość koszyka.</p></div>
+            </a>
+            <a href="/rozwiazania/ziemniaki-warzywa" class="carousel__item carousel__item--hidden" style="order: 3">
+              <img src="/kategorie/ziemniaki-warzywa.jpg" alt="Warzywa w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Ziemniaki i warzywa</h3><p>Duże, ciężkie opakowania — liczy się wolumen.</p></div>
+            </a>
+            <a href="/rozwiazania/bio-lokalne" class="carousel__item carousel__item--hidden" style="order: 4">
+              <img src="/kategorie/bio-lokalne.jpg" alt="Produkty bio i lokalne w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Bio i lokalne</h3><p>Mini-sklep z wieloma produktami i opisami producentów na ekranie.</p></div>
+            </a>
+            <a href="/rozwiazania/mieso-dania" class="carousel__item carousel__item--hidden" style="order: -3">
+              <img src="/kategorie/mieso-dania.jpg" alt="Mięso i dania gotowe w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Mięso i dania gotowe</h3><p>Chłodzenie z kontrolą temperatury i telemetrią, rygor sanitarny.</p></div>
+            </a>
+            <a href="/rozwiazania/napoje" class="carousel__item carousel__item--far" style="order: -2">
+              <img src="/kategorie/napoje.jpg" alt="Napoje w automacie" loading="lazy">
+              <div class="carousel__caption"><h3>Napoje</h3><p>SiLine GF, Robimat X, seria FK — z opcją zwrotów opakowań.</p></div>
+            </a>
+            <a href="/konfigurator" class="carousel__item carousel__item--brand carousel__item--side" style="order: -1">
+              <div class="carousel__caption"><h3>Twoja branża?</h3><p>Konfigurujemy automat pod dowolny produkt i opakowanie — nie tylko żywność.</p></div>
+            </a>
+          </div>
+          <div class="carousel__dots"></div>
         </div>
       </div>
     </section>
@@ -273,6 +300,7 @@
 
   <script type="module" src="/src/main.ts"></script>
   <script type="module" src="/src/calculator.ts"></script>
+  <script type="module" src="/src/carousel.ts"></script>
   <script type="module" src="/src/cookies.ts"></script>
 </body>
 </html>
