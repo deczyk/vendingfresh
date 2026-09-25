@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <!-- include:fonts.html -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poptávka — nabídka prodejního automatu | VendingFresh</title>
+  <meta name="description" content="Napište nám, co chcete prodávat a kde má automat stát. Do 24–48 h odpovíme s návrhem na míru.">
+  <link rel="canonical" href="https://vendingfresh.pl/cs/poptavka">
+  <link rel="alternate" hreflang="pl" href="https://vendingfresh.pl/konfigurator">
+  <link rel="alternate" hreflang="en" href="https://vendingfresh.pl/en/inquiry">
+  <link rel="alternate" hreflang="cs" href="https://vendingfresh.pl/cs/poptavka">
+  <link rel="alternate" hreflang="sk" href="https://vendingfresh.pl/sk/dopyt">
+  <link rel="alternate" hreflang="x-default" href="https://vendingfresh.pl/konfigurator">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="Poptávka — nabídka prodejního automatu | VendingFresh">
+  <meta property="og:description" content="Napište nám, co chcete prodávat a kde má automat stát. Do 24–48 h odpovíme s návrhem na míru.">
+  <meta property="og:url" content="https://vendingfresh.pl/cs/poptavka">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Úvod",
+        "item": "https://vendingfresh.pl/cs"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Poslat poptávku",
+        "item": "https://vendingfresh.pl/cs/poptavka"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- include:nav-cs.html -->
+  <main>
+    <section class="config-page">
+      <div class="wrap">
+        <div class="config-intro">
+          <p class="eyebrow">Poptávka</p>
+          <h1>Napište nám <em>o svém produktu.</em></h1>
+          <p>Pár otázek a do 24–48 h vám pošleme návrh — nebo vám dáme vědět, pokud vaši lokalitu neobsloužíme.</p>
+        </div>
+        <form id="inquiry-form" class="config-step" novalidate data-lang="cs" data-thanks="/cs/dekujeme"
+              data-err-product="Napište nám, co chcete prodávat." data-err-contact="Uveďte telefon nebo e-mail." data-err-consent="Zaškrtněte prosím souhlas, abychom vás mohli kontaktovat." data-err-send="Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nám zavolejte.">
+          <input type="text" name="website" autocomplete="off" tabindex="-1" class="visually-hidden" aria-hidden="true">
+          <h2>Jak chcete automat mít?</h2>
+          <div class="config-options">
+            <label><input type="radio" name="model" value="zakup" checked> Koupě</label>
+            <label><input type="radio" name="model" value="wynajem"> Pronájem</label>
+          </div>
+          <label class="config-field">Co chcete prodávat?
+            <textarea name="produkt" required placeholder="např. chléb a rohlíky v papírových sáčcích, asi 60 denně"></textarea>
+          </label>
+          <div class="config-row">
+            <label class="config-field">Země
+              <select name="kraj">
+                <option value="CZ">Česko</option>
+                <option value="SK">Slovensko</option>
+                <option value="PL">Polsko</option>
+                <option value="other">Jiná</option>
+              </select>
+            </label>
+            <label class="config-field">Obec / město <input type="text" name="miasto"></label>
+          </div>
+          <label class="config-field">Jméno <input type="text" name="imie" autocomplete="name"></label>
+          <div class="config-row">
+            <label class="config-field">Telefon <input type="tel" name="telefon" autocomplete="tel"></label>
+            <label class="config-field">E-mail <input type="email" name="email" autocomplete="email"></label>
+          </div>
+          <p class="config-hint">Uveďte alespoň telefon nebo e-mail.</p>
+          <label class="config-checkbox"><input type="checkbox" name="zgoda"> <span>Souhlasím se zpracováním osobních údajů za účelem kontaktu ohledně nabídky (viz <a href="/polityka">zásady ochrany osobních údajů</a>, polsky).</span></label>
+          <p class="config-error" role="alert"></p>
+          <div class="config-nav"><button type="submit" class="btn btn--primary">Odeslat poptávku</button></div>
+          <p class="models-note">Sídlíme v Polsku a rádi přijímáme poptávky z Česka, Slovenska i odjinud — napište nám, kde má automat stát, a dáme vám vědět, zda vaši lokalitu obsloužíme.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer-cs.html -->
+  <!-- include:cookie-banner-cs.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/inquiry.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>

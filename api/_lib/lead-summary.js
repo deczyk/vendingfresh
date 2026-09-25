@@ -12,6 +12,7 @@ PRIORYTET: gorący / ciepły / zimny — z jednym słowem uzasadnienia.`;
 
 // Only configuration answers go to the model — never name, phone, e-mail or town.
 const FIELDS = [
+  ['jezyk', 'Język strony (zapytanie z zagranicy, jeśli podany)'],
   ['model', 'Model współpracy'],
   ['produkty', 'Produkty'],
   ['produktInne', 'Inne produkty (opis klienta)'],

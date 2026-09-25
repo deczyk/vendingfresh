@@ -191,10 +191,10 @@ h2 em, h1 em {
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; position: relative; }
 .nav__logo-img { height: 56px; width: auto; transition: height 0.3s var(--ease-out); }
 .site-header.is-scrolled .nav__logo-img { height: 44px; }
-.nav__links { display: flex; align-items: center; gap: 18px; flex-wrap: nowrap; white-space: nowrap; }
+.nav__links { display: flex; align-items: center; gap: 15px; flex-wrap: nowrap; white-space: nowrap; }
 .nav__links > a, .nav__dropdown-toggle {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13.5px;
   position: relative;
   padding: 4px 0;
   color: var(--color-ink);
@@ -228,7 +228,7 @@ h2 em, h1 em {
 .nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .nav__dropdown { position: relative; }
-.nav__dropdown-toggle { background: none; border: none; font: inherit; font-weight: 600; font-size: 14px; cursor: pointer; }
+.nav__dropdown-toggle { background: none; border: none; font: inherit; font-weight: 600; font-size: 13.5px; cursor: pointer; }
 .nav__dropdown-menu {
   display: none;
   position: absolute;
@@ -251,7 +251,7 @@ h2 em, h1 em {
 .nav__dropdown-menu a { display: block; padding: 10px 14px; border-radius: 10px; font-weight: 500; font-size: 14px; transition: background 0.2s, padding 0.2s, color 0.2s; }
 .nav__dropdown-menu a:hover { background: var(--color-bg-alt); color: var(--color-primary); padding-left: 20px; }
 
-@media (max-width: 1180px) {
+@media (max-width: 1320px) {
   .nav__toggle { display: flex; }
   .nav__links {
     display: none;
@@ -1756,3 +1756,12 @@ h2 em, h1 em {
   .wrap-gen__row input { grid-column: 1 / -1; }
 }
 [data-model="pelna_obsluga"] .config-options.show-pelna { display: grid; }
+
+/* ---------- Translated pages: inquiry form + language switcher ---------- */
+.config-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .config-row { grid-template-columns: 1fr; } }
+#inquiry-form .config-options { grid-template-columns: repeat(2, 1fr); }
+.nav__lang .nav__dropdown-toggle { font-weight: 700; letter-spacing: 0.5px; }
+.nav__lang .nav__dropdown-menu { min-width: 150px; left: auto; right: -12px; }
+.nav__lang a[aria-current="true"] { color: var(--color-primary); font-weight: 700; }
+@media (max-width: 1320px) { .nav__lang .nav__dropdown-menu { right: auto; } }

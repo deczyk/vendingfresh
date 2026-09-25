@@ -107,6 +107,186 @@
     {
       "source": "/poradnik/kwiatomat-sprzedaz-kwiatow-z-automatu",
       "destination": "/poradnik/kwiatomat-sprzedaz-kwiatow-z-automatu.html"
+    },
+    {
+      "source": "/en",
+      "destination": "/en/index.html"
+    },
+    {
+      "source": "/en/offer",
+      "destination": "/en/offer.html"
+    },
+    {
+      "source": "/en/inquiry",
+      "destination": "/en/inquiry.html"
+    },
+    {
+      "source": "/en/sielaff-machines",
+      "destination": "/en/sielaff-machines.html"
+    },
+    {
+      "source": "/en/thank-you",
+      "destination": "/en/thank-you.html"
+    },
+    {
+      "source": "/en/solutions/bread",
+      "destination": "/en/solutions/bread.html"
+    },
+    {
+      "source": "/en/solutions/eggs",
+      "destination": "/en/solutions/eggs.html"
+    },
+    {
+      "source": "/en/solutions/cheese-dairy",
+      "destination": "/en/solutions/cheese-dairy.html"
+    },
+    {
+      "source": "/en/solutions/potatoes-vegetables",
+      "destination": "/en/solutions/potatoes-vegetables.html"
+    },
+    {
+      "source": "/en/solutions/organic-local",
+      "destination": "/en/solutions/organic-local.html"
+    },
+    {
+      "source": "/en/solutions/meat-ready-meals",
+      "destination": "/en/solutions/meat-ready-meals.html"
+    },
+    {
+      "source": "/en/solutions/drinks",
+      "destination": "/en/solutions/drinks.html"
+    },
+    {
+      "source": "/en/solutions/flowers",
+      "destination": "/en/solutions/flowers.html"
+    },
+    {
+      "source": "/en/solutions/cakes",
+      "destination": "/en/solutions/cakes.html"
+    },
+    {
+      "source": "/en/solutions/anything",
+      "destination": "/en/solutions/anything.html"
+    },
+    {
+      "source": "/cs",
+      "destination": "/cs/index.html"
+    },
+    {
+      "source": "/cs/nabidka",
+      "destination": "/cs/nabidka.html"
+    },
+    {
+      "source": "/cs/poptavka",
+      "destination": "/cs/poptavka.html"
+    },
+    {
+      "source": "/cs/automaty-sielaff",
+      "destination": "/cs/automaty-sielaff.html"
+    },
+    {
+      "source": "/cs/dekujeme",
+      "destination": "/cs/dekujeme.html"
+    },
+    {
+      "source": "/cs/reseni/pecivo",
+      "destination": "/cs/reseni/pecivo.html"
+    },
+    {
+      "source": "/cs/reseni/vejce",
+      "destination": "/cs/reseni/vejce.html"
+    },
+    {
+      "source": "/cs/reseni/syry-mlecne-vyrobky",
+      "destination": "/cs/reseni/syry-mlecne-vyrobky.html"
+    },
+    {
+      "source": "/cs/reseni/brambory-zelenina",
+      "destination": "/cs/reseni/brambory-zelenina.html"
+    },
+    {
+      "source": "/cs/reseni/bio-lokalni",
+      "destination": "/cs/reseni/bio-lokalni.html"
+    },
+    {
+      "source": "/cs/reseni/maso-hotova-jidla",
+      "destination": "/cs/reseni/maso-hotova-jidla.html"
+    },
+    {
+      "source": "/cs/reseni/napoje",
+      "destination": "/cs/reseni/napoje.html"
+    },
+    {
+      "source": "/cs/reseni/kvetiny",
+      "destination": "/cs/reseni/kvetiny.html"
+    },
+    {
+      "source": "/cs/reseni/zakusky",
+      "destination": "/cs/reseni/zakusky.html"
+    },
+    {
+      "source": "/cs/reseni/cokoliv",
+      "destination": "/cs/reseni/cokoliv.html"
+    },
+    {
+      "source": "/sk",
+      "destination": "/sk/index.html"
+    },
+    {
+      "source": "/sk/ponuka",
+      "destination": "/sk/ponuka.html"
+    },
+    {
+      "source": "/sk/dopyt",
+      "destination": "/sk/dopyt.html"
+    },
+    {
+      "source": "/sk/automaty-sielaff",
+      "destination": "/sk/automaty-sielaff.html"
+    },
+    {
+      "source": "/sk/dakujeme",
+      "destination": "/sk/dakujeme.html"
+    },
+    {
+      "source": "/sk/riesenia/pecivo",
+      "destination": "/sk/riesenia/pecivo.html"
+    },
+    {
+      "source": "/sk/riesenia/vajcia",
+      "destination": "/sk/riesenia/vajcia.html"
+    },
+    {
+      "source": "/sk/riesenia/syry-mliecne-vyrobky",
+      "destination": "/sk/riesenia/syry-mliecne-vyrobky.html"
+    },
+    {
+      "source": "/sk/riesenia/zemiaky-zelenina",
+      "destination": "/sk/riesenia/zemiaky-zelenina.html"
+    },
+    {
+      "source": "/sk/riesenia/bio-lokalne",
+      "destination": "/sk/riesenia/bio-lokalne.html"
+    },
+    {
+      "source": "/sk/riesenia/maso-hotove-jedla",
+      "destination": "/sk/riesenia/maso-hotove-jedla.html"
+    },
+    {
+      "source": "/sk/riesenia/napoje",
+      "destination": "/sk/riesenia/napoje.html"
+    },
+    {
+      "source": "/sk/riesenia/kvety",
+      "destination": "/sk/riesenia/kvety.html"
+    },
+    {
+      "source": "/sk/riesenia/zakusky",
+      "destination": "/sk/riesenia/zakusky.html"
+    },
+    {
+      "source": "/sk/riesenia/cokolvek",
+      "destination": "/sk/riesenia/cokolvek.html"
     }
   ],
   "headers": [

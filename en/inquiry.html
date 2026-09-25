@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- include:fonts.html -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send an inquiry — vending machine quote | VendingFresh</title>
+  <meta name="description" content="Tell us what you want to sell and where the machine should stand. We reply with a tailored proposal within 24–48 h.">
+  <link rel="canonical" href="https://vendingfresh.pl/en/inquiry">
+  <link rel="alternate" hreflang="pl" href="https://vendingfresh.pl/konfigurator">
+  <link rel="alternate" hreflang="en" href="https://vendingfresh.pl/en/inquiry">
+  <link rel="alternate" hreflang="cs" href="https://vendingfresh.pl/cs/poptavka">
+  <link rel="alternate" hreflang="sk" href="https://vendingfresh.pl/sk/dopyt">
+  <link rel="alternate" hreflang="x-default" href="https://vendingfresh.pl/konfigurator">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:title" content="Send an inquiry — vending machine quote | VendingFresh">
+  <meta property="og:description" content="Tell us what you want to sell and where the machine should stand. We reply with a tailored proposal within 24–48 h.">
+  <meta property="og:url" content="https://vendingfresh.pl/en/inquiry">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://vendingfresh.pl/en"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Send an inquiry",
+        "item": "https://vendingfresh.pl/en/inquiry"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- include:nav-en.html -->
+  <main>
+    <section class="config-page">
+      <div class="wrap">
+        <div class="config-intro">
+          <p class="eyebrow">Inquiry</p>
+          <h1>Tell us about <em>your product.</em></h1>
+          <p>A few questions, and within 24–48 h we’ll reply with a proposal — or let you know if we can’t serve your location.</p>
+        </div>
+        <form id="inquiry-form" class="config-step" novalidate data-lang="en" data-thanks="/en/thank-you"
+              data-err-product="Tell us what you want to sell." data-err-contact="Give us a phone number or an e-mail address." data-err-consent="Please tick the consent so we can contact you." data-err-send="We could not send the form. Please try again or call us.">
+          <input type="text" name="website" autocomplete="off" tabindex="-1" class="visually-hidden" aria-hidden="true">
+          <h2>How do you want the machine?</h2>
+          <div class="config-options">
+            <label><input type="radio" name="model" value="zakup" checked> Buy</label>
+            <label><input type="radio" name="model" value="wynajem"> Rent</label>
+          </div>
+          <label class="config-field">What do you want to sell?
+            <textarea name="produkt" required placeholder="e.g. bread and rolls in paper bags, about 60 a day"></textarea>
+          </label>
+          <div class="config-row">
+            <label class="config-field">Country
+              <select name="kraj">
+                <option value="CZ">Czechia</option>
+                <option value="SK">Slovakia</option>
+                <option value="PL">Poland</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+            <label class="config-field">Town / city <input type="text" name="miasto"></label>
+          </div>
+          <label class="config-field">Name <input type="text" name="imie" autocomplete="name"></label>
+          <div class="config-row">
+            <label class="config-field">Phone <input type="tel" name="telefon" autocomplete="tel"></label>
+            <label class="config-field">E-mail <input type="email" name="email" autocomplete="email"></label>
+          </div>
+          <p class="config-hint">Give us at least a phone number or an e-mail address.</p>
+          <label class="config-checkbox"><input type="checkbox" name="zgoda"> <span>I agree to the processing of my personal data in order to be contacted about a quote (see the <a href="/polityka">privacy policy</a>, in Polish).</span></label>
+          <p class="config-error" role="alert"></p>
+          <div class="config-nav"><button type="submit" class="btn btn--primary">Send inquiry</button></div>
+          <p class="models-note">We are based in Poland and welcome inquiries from Czechia, Slovakia and beyond — tell us where the machine should stand and we will let you know whether we can serve your location.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer-en.html -->
+  <!-- include:cookie-banner-en.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/inquiry.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>

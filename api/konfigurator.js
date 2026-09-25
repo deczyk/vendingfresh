@@ -42,6 +42,7 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
   const model = modelLabels[payload.model] || payload.model || '—';
 
   const notes = [
+    ...(payload.jezyk ? [`Język strony: ${payload.jezyk} (zapytanie z zagranicznej wersji strony)`] : []),
     `Model współpracy: ${model}`,
     `Produkty: ${produkty || '—'}`,
     `Opakowanie: ${payload.opakowanie || '—'} (wymiary: ${payload.wymiary || '—'})`,
@@ -56,7 +57,10 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
   return {
     source: 'kontakt',
     marka: 'vendingfresh',
-    zainteresowanie: payload.model ? `Konfigurator VendingFresh — ${model}` : 'Konfigurator VendingFresh',
+    zainteresowanie: [
+      payload.jezyk ? `Zapytanie VendingFresh (${String(payload.jezyk).toUpperCase()})` : 'Konfigurator VendingFresh',
+      payload.model ? model : null,
+    ].filter(Boolean).join(' — '),
     produkt: produkty,
     imie: payload.imie || '',
     telefon: payload.telefon || '',

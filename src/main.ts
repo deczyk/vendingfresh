@@ -36,6 +36,13 @@ function initHowSteps(): void {
   });
 }
 
+function initLanguageSwitcher(): void {
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-link]').forEach((a) => {
+    const alt = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${a.dataset.langLink}"]`);
+    if (alt) a.href = new URL(alt.href).pathname;
+  });
+}
+
 function initCurrentNavLink(): void {
   const path = window.location.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
   document.querySelectorAll<HTMLAnchorElement>('.nav__links > a').forEach((a) => {
@@ -218,8 +225,10 @@ function initWrapMock(): void {
   const tagline = mock.querySelector<SVGTextElement>('.wrapmock__tagline');
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.mat-chip'));
   if (!name || !sideName || !tagline) return;
+  // Translated pages pass their own machine names/taglines (same colours, same order).
+  const mats: typeof MATS = mock.dataset.mats ? JSON.parse(mock.dataset.mats) : MATS;
 
-  chips.forEach((chip, i) => chip.style.setProperty('--mat-color', MATS[i]?.color ?? ''));
+  chips.forEach((chip, i) => chip.style.setProperty('--mat-color', mats[i]?.color ?? ''));
 
   // Sizes are in the photo's 350×500 coordinate space: long names shrink to stay on the panels.
   const paint = (text: string, sub: string): void => {
@@ -233,7 +242,7 @@ function initWrapMock(): void {
 
   let current = 0;
   const show = (i: number): void => {
-    const mat = MATS[i];
+    const mat = mats[i];
     current = i;
     mock.style.setProperty('--mat-color', mat.color);
     mock.style.setProperty('--mat-color-2', mat.color2);
@@ -251,7 +260,7 @@ function initWrapMock(): void {
   const start = (): void => {
     if (reducedMotion) return;
     window.clearInterval(timer);
-    timer = window.setInterval(() => show((current + 1) % MATS.length), 2600);
+    timer = window.setInterval(() => show((current + 1) % mats.length), 2600);
   };
 
   chips.forEach((chip, i) =>
@@ -318,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFooterYear();
   initHowSteps();
   initCurrentNavLink();
+  initLanguageSwitcher();
   initScrollEffects();
   initReveal();
 });

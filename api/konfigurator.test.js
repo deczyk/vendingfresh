@@ -88,6 +88,12 @@ describe('buildLeadsRequestBody', () => {
     expect(body.notes).toContain('Produkty: kawa mielona');
   });
 
+  it('marks inquiries from the translated site with their language', () => {
+    const body = buildLeadsRequestBody({ model: 'zakup', produktInne: 'Chléb', jezyk: 'cs', telefon: '1', rodo: true, website: '' });
+    expect(body.notes).toContain('Język strony: cs');
+    expect(body.zainteresowanie).toBe('Zapytanie VendingFresh (CS) — zakup na własność');
+  });
+
   it('includes the chosen cooperation model in notes and interest', () => {
     const body = buildLeadsRequestBody({
       model: 'pelna_obsluga', produkty: ['napoje'], produktInne: '', telefon: '600000000', rodo: true, website: '',

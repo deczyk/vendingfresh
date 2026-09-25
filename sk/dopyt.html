@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <!-- include:fonts.html -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dopyt — ponuka predajného automatu | VendingFresh</title>
+  <meta name="description" content="Napíšte nám, čo chcete predávať a kde má automat stáť. Do 24–48 h odpovieme s návrhom na mieru.">
+  <link rel="canonical" href="https://vendingfresh.pl/sk/dopyt">
+  <link rel="alternate" hreflang="pl" href="https://vendingfresh.pl/konfigurator">
+  <link rel="alternate" hreflang="en" href="https://vendingfresh.pl/en/inquiry">
+  <link rel="alternate" hreflang="cs" href="https://vendingfresh.pl/cs/poptavka">
+  <link rel="alternate" hreflang="sk" href="https://vendingfresh.pl/sk/dopyt">
+  <link rel="alternate" hreflang="x-default" href="https://vendingfresh.pl/konfigurator">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sk_SK">
+  <meta property="og:title" content="Dopyt — ponuka predajného automatu | VendingFresh">
+  <meta property="og:description" content="Napíšte nám, čo chcete predávať a kde má automat stáť. Do 24–48 h odpovieme s návrhom na mieru.">
+  <meta property="og:url" content="https://vendingfresh.pl/sk/dopyt">
+  <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="/src/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Úvod",
+        "item": "https://vendingfresh.pl/sk"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Poslať dopyt",
+        "item": "https://vendingfresh.pl/sk/dopyt"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- include:nav-sk.html -->
+  <main>
+    <section class="config-page">
+      <div class="wrap">
+        <div class="config-intro">
+          <p class="eyebrow">Dopyt</p>
+          <h1>Napíšte nám <em>o svojom produkte.</em></h1>
+          <p>Pár otázok a do 24–48 h vám pošleme návrh — alebo vám dáme vedieť, ak vašu lokalitu neobslúžime.</p>
+        </div>
+        <form id="inquiry-form" class="config-step" novalidate data-lang="sk" data-thanks="/sk/dakujeme"
+              data-err-product="Napíšte nám, čo chcete predávať." data-err-contact="Uveďte telefón alebo e-mail." data-err-consent="Zaškrtnite, prosím, súhlas, aby sme vás mohli kontaktovať." data-err-send="Formulár sa nepodarilo odoslať. Skúste to, prosím, znova alebo nám zavolajte.">
+          <input type="text" name="website" autocomplete="off" tabindex="-1" class="visually-hidden" aria-hidden="true">
+          <h2>Ako chcete automat mať?</h2>
+          <div class="config-options">
+            <label><input type="radio" name="model" value="zakup" checked> Kúpa</label>
+            <label><input type="radio" name="model" value="wynajem"> Prenájom</label>
+          </div>
+          <label class="config-field">Čo chcete predávať?
+            <textarea name="produkt" required placeholder="napr. chlieb a rožky v papierových vreckách, asi 60 denne"></textarea>
+          </label>
+          <div class="config-row">
+            <label class="config-field">Krajina
+              <select name="kraj">
+                <option value="SK">Slovensko</option>
+                <option value="CZ">Česko</option>
+                <option value="PL">Poľsko</option>
+                <option value="other">Iná</option>
+              </select>
+            </label>
+            <label class="config-field">Obec / mesto <input type="text" name="miasto"></label>
+          </div>
+          <label class="config-field">Meno <input type="text" name="imie" autocomplete="name"></label>
+          <div class="config-row">
+            <label class="config-field">Telefón <input type="tel" name="telefon" autocomplete="tel"></label>
+            <label class="config-field">E-mail <input type="email" name="email" autocomplete="email"></label>
+          </div>
+          <p class="config-hint">Uveďte aspoň telefón alebo e-mail.</p>
+          <label class="config-checkbox"><input type="checkbox" name="zgoda"> <span>Súhlasím so spracovaním osobných údajov za účelom kontaktu ohľadom ponuky (pozri <a href="/polityka">zásady ochrany osobných údajov</a>, po poľsky).</span></label>
+          <p class="config-error" role="alert"></p>
+          <div class="config-nav"><button type="submit" class="btn btn--primary">Odoslať dopyt</button></div>
+          <p class="models-note">Sídlime v Poľsku a radi prijímame dopyty zo Slovenska, Česka aj odinakiaľ — napíšte nám, kde má automat stáť, a dáme vám vedieť, či vašu lokalitu obslúžime.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- include:footer-sk.html -->
+  <!-- include:cookie-banner-sk.html -->
+  <script type="module" src="/src/main.ts"></script>
+  <script type="module" src="/src/inquiry.ts"></script>
+  <script type="module" src="/src/cookies.ts"></script>
+</body>
+</html>
