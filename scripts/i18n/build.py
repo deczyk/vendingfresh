@@ -377,7 +377,7 @@ def offer(lang):
             <a href="{url('inquiry', lang)}?model=zakup" class="btn btn--secondary">{p['offer_choose_buy']}</a>
           </article>
           <article class="model-plan model-plan--featured" id="rent">
-            <span class="model-plan__icon" aria-hidden="true">📅</span>
+            <span class="model-plan__icon" aria-hidden="true">🔄</span>
             <h3>{t['rent']}</h3>
             <p class="model-plan__for">{p['offer_rent_for']}</p>
             <ul class="model-plan__list">

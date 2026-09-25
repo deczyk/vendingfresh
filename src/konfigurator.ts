@@ -99,8 +99,20 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
 
 export const MODEL_LABELS: Record<string, string> = {
   zakup: 'Model: zakup na własność — gotówka, leasing albo dotacja.',
-  wynajem: 'Model: wynajem — Ty uzupełniasz automat, płacisz miesięczną opłatę.',
+  wynajem: 'Model: wynajem — Ty uzupełniasz automat, płacisz stałą opłatę co miesiąc.',
   pelna_obsluga: 'Model: pełna obsługa — stawiamy automat, uzupełniamy go i serwisujemy. Przy odpowiednim ruchu bez kosztów po Twojej stronie, przy mniejszym stała opłata miesięczna — ustalimy to w wycenie.',
+};
+
+const MACHINE_NAMES: Record<string, string> = {
+  wv_hybrid: 'Westvend WV Hybrid',
+  wv_8: 'Westvend WV 8',
+  siline_snack_combi: 'Sielaff SiLine Snack & Combi',
+  sn48: 'Sielaff SN48',
+  siline_gf: 'Sielaff SiLine GF',
+  robimat_x: 'Sielaff Robimat X',
+  seria_fk: 'Sielaff seria FK',
+  outdoor: 'Sielaff w wersji outdoor',
+  siline_public: 'Sielaff SiLine Public',
 };
 
 export function suggestDirection(state: ConfiguratorState): string {
@@ -110,12 +122,20 @@ export function suggestDirection(state: ConfiguratorState): string {
   const wymagaChlodzenia =
     state.temperatura === 'chlodzenie' ||
     state.produkty.some((p) => ['sery', 'nabial', 'mieso', 'wedliny', 'dania'].includes(p));
+  const naZewnatrz = state.lokalizacja === 'zewnatrz' || state.lokalizacja === 'publiczne';
+  const smart = state.linia === 'smart';
 
-  const base = wymagaChlodzenia ? 'SiLine Combi/GF z chłodzeniem' : 'SiLine Snack & Combi';
+  const onlyDrinks = state.produkty.length > 0 && state.produkty.every((p) => p === 'napoje');
+  const base =
+    MACHINE_NAMES[state.modelAutomatu] ??
+    (smart
+      ? onlyDrinks ? 'Westvend WV 8' : 'Westvend WV Hybrid'
+      : wymagaChlodzenia ? 'SiLine Combi/GF z chłodzeniem' : 'SiLine Snack & Combi');
   const modifiers: string[] = [];
 
-  if (state.produkty.includes('jajka')) modifiers.push('z windą');
-  if (state.lokalizacja === 'zewnatrz' || state.lokalizacja === 'publiczne') modifiers.push('wersja outdoor');
+  // The WV Hybrid always has a lift; Sielaff machines get it as an option.
+  if (state.produkty.includes('jajka') && !base.includes('Westvend')) modifiers.push('z windą');
+  if (naZewnatrz) modifiers.push(smart ? 'uwaga: linia Smart jest do wnętrz i pod zadaszenie — na zewnątrz polecamy Premium outdoor' : 'wersja outdoor');
   if (state.platnosci.includes('karta_blik')) modifiers.push('płatności bezgotówkowe');
 
   const kierunek = [base, ...modifiers].join(', ');

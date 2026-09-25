@@ -83,7 +83,7 @@ describe('suggestDirection', () => {
     state.lokalizacja = 'budynek';
     state.model = 'wynajem';
     expect(suggestDirection(state)).toBe(
-      'Proponowany kierunek: SiLine Snack & Combi. Model: wynajem — Ty uzupełniasz automat, płacisz miesięczną opłatę.',
+      'Proponowany kierunek: SiLine Snack & Combi. Model: wynajem — Ty uzupełniasz automat, płacisz stałą opłatę co miesiąc.',
     );
   });
 
@@ -104,6 +104,26 @@ describe('suggestDirection', () => {
     expect(suggestDirection(state)).toBe(
       'Proponowany kierunek: SiLine Snack & Combi, z windą, wersja outdoor, płatności bezgotówkowe.',
     );
+  });
+});
+
+describe('suggestDirection for the chosen line', () => {
+  it('uses the machine the client picked', () => {
+    const state = createInitialState();
+    state.linia = 'premium';
+    state.modelAutomatu = 'robimat_x';
+    expect(suggestDirection(state)).toBe('Proponowany kierunek: Sielaff Robimat X.');
+  });
+
+  it('suggests Westvend for the Smart line and warns about outdoor use', () => {
+    const state = createInitialState();
+    state.linia = 'smart';
+    state.produkty = ['jajka'];
+    state.lokalizacja = 'zewnatrz';
+    expect(suggestDirection(state)).toMatch(/^Proponowany kierunek: Westvend WV Hybrid, uwaga: linia Smart/);
+    state.produkty = ['napoje'];
+    state.lokalizacja = 'budynek';
+    expect(suggestDirection(state)).toBe('Proponowany kierunek: Westvend WV 8.');
   });
 });
 
