@@ -2,6 +2,7 @@ import { track } from './analytics';
 
 export interface ConfiguratorState {
   model: string;
+  linia: string;
   czestotliwosc: string;
   produkty: string[];
   produktInne: string;
@@ -24,6 +25,7 @@ export interface ConfiguratorState {
 export function createInitialState(): ConfiguratorState {
   return {
     model: '',
+    linia: '',
     czestotliwosc: '',
     produkty: [],
     produktInne: '',
@@ -147,6 +149,7 @@ function initConfigurator(): void {
   function syncStateFromDom(): void {
     state.model = form!.querySelector<HTMLInputElement>('input[name="model"]:checked')?.value ?? '';
     form!.dataset.model = state.model;
+    state.linia = state.model === 'pelna_obsluga' ? '' : (form!.querySelector<HTMLInputElement>('input[name="linia"]:checked')?.value ?? '');
     state.czestotliwosc = form!.querySelector<HTMLInputElement>('input[name="czestotliwosc"]:checked')?.value ?? '';
     state.produkty = Array.from(
       form!.querySelectorAll<HTMLInputElement>('input[name="produkty"]:checked'),

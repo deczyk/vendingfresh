@@ -13,7 +13,7 @@ NAMES = {'siline-snack-combi': 'SiLine Snack & Combi', 'sn48': 'SN48', 'siline-g
 
 M = {
  'en': {
-  'title': 'Sielaff vending machines — models & specs | VendingFresh',
+  'title': 'Vending machines: Smart & Premium lines | VendingFresh',
   'desc': 'Sielaff vending machines by use: fresh food, drinks, outdoor and public spaces, coffee and packaging returns. We configure and wrap every model for your product.',
   'eyebrow': 'Equipment', 'h1': 'Sielaff vending machines', 'h1em': 'by use.',
   'sub': 'As a Sielaff partner we choose the model and configuration for your product — we don’t sell off-the-shelf machines. Size, compartments, temperatures and a wrap with your logo — every model can be bought or rented.',
@@ -47,7 +47,7 @@ M = {
   'final_h': 'Not sure which model fits?', 'final_em': 'Tell us about your product.',
  },
  'cs': {
-  'title': 'Automaty Sielaff — modely a specifikace | VendingFresh',
+  'title': 'Automaty: řady Smart a Premium | VendingFresh',
   'desc': 'Automaty Sielaff podle použití: čerstvé potraviny, nápoje, venkovní prostory, káva a zpětný odběr obalů. Každý model nakonfigurujeme pro váš produkt.',
   'eyebrow': 'Vybavení', 'h1': 'Automaty Sielaff', 'h1em': 'podle použití.',
   'sub': 'Jako partner Sielaff vybíráme model a konfiguraci pro váš produkt — neprodáváme automaty z regálu. Velikost, přihrádky, teploty a polep s vaším logem — každý model si můžete koupit, nebo pronajmout.',
@@ -81,7 +81,7 @@ M = {
   'final_h': 'Nevíte, který model se hodí?', 'final_em': 'Napište nám o svém produktu.',
  },
  'sk': {
-  'title': 'Automaty Sielaff — modely a špecifikácie | VendingFresh',
+  'title': 'Automaty: rady Smart a Premium | VendingFresh',
   'desc': 'Automaty Sielaff podľa použitia: čerstvé potraviny, nápoje, vonkajšie priestory, káva a spätný zber obalov. Každý model nakonfigurujeme pre váš produkt.',
   'eyebrow': 'Vybavenie', 'h1': 'Automaty Sielaff', 'h1em': 'podľa použitia.',
   'sub': 'Ako partner Sielaff vyberáme model a konfiguráciu pre váš produkt — nepredávame automaty z regálu. Veľkosť, priehradky, teploty a polep s vaším logom — každý model si môžete kúpiť alebo prenajať.',
@@ -114,4 +114,23 @@ M = {
   'tech': ['Dotykový displej s informáciami o produkte', 'Výťah pre krehké produkty (napr. vajcia)', 'Uzamykateľná výdajná klapka', 'Konfigurácia so špirálami alebo posúvačmi podľa tvaru obalu'],
   'final_h': 'Neviete, ktorý model sa hodí?', 'final_em': 'Napíšte nám o svojom produkte.',
  },
+}
+
+# Smart line (Westvend) — shown above the Sielaff (Premium) models on the machines page
+SMART = {
+ 'en': dict(eyebrow='Smart line · Westvend', h='Two lines:', em='Smart and Premium.',
+   intro='The Smart line is proven German Westvend machines at a more affordable price — fewer models, a lower entry cost. We wrap them with your logo just the same, and you can buy or rent them. The Premium line (Sielaff) is below.',
+   models=[('wv-hybrid', '🛗', 'Westvend WV Hybrid', 'With a goods lift — products are dispensed gently so they don’t get damaged.', ['Lift instead of dropping the product', 'Good for eggs, bread, dairy, jars and organic products', 'Wrap with your logo', 'Buy or rent']),
+           ('wv-8', '🥤', 'Westvend WV 8', 'A classic machine without a lift — products drop into the tray, so it suits products that don’t mind that.', ['Drinks, snacks, chocolate, PET bottles', 'The lowest entry cost in our range', 'Wrap with your logo', 'Buy or rent'])],
+   note='We confirm the exact specification, stock availability and delivery time with your quote.', premium='Premium line · Sielaff', offer_note='Buying and renting cover two lines: <strong>Smart</strong> (Westvend) at a more affordable price and <strong>Premium</strong> (Sielaff) with the full range of models.'),
+ 'cs': dict(eyebrow='Řada Smart · Westvend', h='Dvě řady:', em='Smart a Premium.',
+   intro='Řada Smart jsou osvědčené německé automaty Westvend za příznivější cenu — méně modelů, nižší vstupní náklady. Polepíme je vaším logem stejně jako ostatní a můžete je koupit, nebo pronajmout. Řadu Premium (Sielaff) najdete níže.',
+   models=[('wv-hybrid', '🛗', 'Westvend WV Hybrid', 'S nákladním výtahem — produkty se vydávají šetrně, aby se nepoškodily.', ['Výtah místo shazování produktu', 'Vhodný pro vejce, pečivo, mléčné výrobky, sklenice a bio produkty', 'Polep s vaším logem', 'Koupě nebo pronájem']),
+           ('wv-8', '🥤', 'Westvend WV 8', 'Klasický automat bez výtahu — produkty padají do výdejní přihrádky, proto se hodí pro produkty, kterým to nevadí.', ['Nápoje, snacky, čokoláda, PET láhve', 'Nejnižší vstupní náklady v naší nabídce', 'Polep s vaším logem', 'Koupě nebo pronájem'])],
+   note='Přesnou specifikaci, dostupnost skladem a dobu dodání potvrdíme v nabídce.', premium='Řada Premium · Sielaff', offer_note='Koupě i pronájem zahrnují dvě řady: <strong>Smart</strong> (Westvend) za příznivější cenu a <strong>Premium</strong> (Sielaff) s plnou nabídkou modelů.'),
+ 'sk': dict(eyebrow='Rad Smart · Westvend', h='Dva rady:', em='Smart a Premium.',
+   intro='Rad Smart sú osvedčené nemecké automaty Westvend za výhodnejšiu cenu — menej modelov, nižšie vstupné náklady. Polepíme ich vaším logom rovnako ako ostatné a môžete ich kúpiť alebo prenajať. Rad Premium (Sielaff) nájdete nižšie.',
+   models=[('wv-hybrid', '🛗', 'Westvend WV Hybrid', 'S nákladným výťahom — produkty sa vydávajú šetrne, aby sa nepoškodili.', ['Výťah namiesto zhadzovania produktu', 'Vhodný pre vajcia, pečivo, mliečne výrobky, poháre a bio produkty', 'Polep s vaším logom', 'Kúpa alebo prenájom']),
+           ('wv-8', '🥤', 'Westvend WV 8', 'Klasický automat bez výťahu — produkty padajú do výdajnej priehradky, preto sa hodí pre produkty, ktorým to nevadí.', ['Nápoje, snacky, čokoláda, PET fľaše', 'Najnižšie vstupné náklady v našej ponuke', 'Polep s vaším logom', 'Kúpa alebo prenájom'])],
+   note='Presnú špecifikáciu, dostupnosť na sklade a dobu dodania potvrdíme v ponuke.', premium='Rad Premium · Sielaff', offer_note='Kúpa aj prenájom zahŕňajú dva rady: <strong>Smart</strong> (Westvend) za výhodnejšiu cenu a <strong>Premium</strong> (Sielaff) s plnou ponukou modelov.'),
 }

@@ -14,6 +14,7 @@ PRIORYTET: gorący / ciepły / zimny — z jednym słowem uzasadnienia.`;
 const FIELDS = [
   ['jezyk', 'Język strony (zapytanie z zagranicy, jeśli podany)'],
   ['model', 'Model współpracy'],
+  ['linia', 'Linia automatów (smart = Westvend: WV Hybrid z windą do żywności, WV 8 bez windy do napojów/przekąsek; premium = Sielaff)'],
   ['produkty', 'Produkty'],
   ['produktInne', 'Inne produkty (opis klienta)'],
   ['opakowanie', 'Opakowanie'],
@@ -46,7 +47,12 @@ export function fallbackLeadSummary(p = {}) {
     proposal.push('gotowy automat z naszym asortymentem, dobrany do liczby osób');
   } else {
     const cooled = p.temperatura === 'chlodzenie' || (p.produkty ?? []).some((x) => COOLED.includes(x));
-    proposal.push(cooled ? 'automat z chłodzeniem (SN48 2T LM lub SiLine Combi)' : 'SiLine Snack & Combi');
+    const fragile = (p.produkty ?? []).some((x) => ['jajka', 'kwiaty', 'ciastka', 'przetwory', 'miod'].includes(x));
+    if (p.linia === 'smart') {
+      proposal.push(fragile || cooled ? 'Westvend WV Hybrid (winda)' : 'Westvend WV 8 lub WV Hybrid');
+    } else {
+      proposal.push(cooled ? 'automat z chłodzeniem (SN48 2T LM lub SiLine Combi)' : 'SiLine Snack & Combi');
+    }
     if ((p.produkty ?? []).includes('jajka')) proposal.push('winda do jajek');
     if ((p.produkty ?? []).includes('kwiaty')) proposal.push('wysokie komory na bukiety, chłodzenie');
     if ((p.produkty ?? []).includes('ciastka')) proposal.push('strefa chłodzona na wyroby z kremem');

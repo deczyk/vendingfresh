@@ -38,7 +38,7 @@ ICON = {'pieczywo': '🍞', 'jajka': '🥚', 'sery': '🧀', 'ziemniaki-warzywa'
 T = {
  'en': {
   'lang_name': 'English',
-  'nav_offer': 'Offer', 'nav_solutions': 'Solutions', 'nav_machines': 'Sielaff machines', 'nav_cta': 'Send an inquiry',
+  'nav_offer': 'Offer', 'nav_solutions': 'Solutions', 'nav_machines': 'Machines', 'nav_cta': 'Send an inquiry',
   'sol_names': {'pieczywo': 'Bread', 'jajka': 'Eggs', 'sery': 'Cheese & dairy', 'ziemniaki-warzywa': 'Potatoes & vegetables',
                 'bio-lokalne': 'Organic & local', 'mieso-dania': 'Meat & ready meals', 'napoje': 'Drinks', 'kwiaty': 'Flowers',
                 'ciastka': 'Cakes & pastries', 'automat-na-wszystko': 'Anything else'},
@@ -62,7 +62,7 @@ T = {
  },
  'cs': {
   'lang_name': 'Čeština',
-  'nav_offer': 'Nabídka', 'nav_solutions': 'Řešení', 'nav_machines': 'Automaty Sielaff', 'nav_cta': 'Poslat poptávku',
+  'nav_offer': 'Nabídka', 'nav_solutions': 'Řešení', 'nav_machines': 'Automaty', 'nav_cta': 'Poslat poptávku',
   'sol_names': {'pieczywo': 'Pečivo', 'jajka': 'Vejce', 'sery': 'Sýry a mléčné výrobky', 'ziemniaki-warzywa': 'Brambory a zelenina',
                 'bio-lokalne': 'Bio a lokální', 'mieso-dania': 'Maso a hotová jídla', 'napoje': 'Nápoje', 'kwiaty': 'Květiny',
                 'ciastka': 'Zákusky a dorty', 'automat-na-wszystko': 'Cokoliv jiného'},
@@ -86,7 +86,7 @@ T = {
  },
  'sk': {
   'lang_name': 'Slovenčina',
-  'nav_offer': 'Ponuka', 'nav_solutions': 'Riešenia', 'nav_machines': 'Automaty Sielaff', 'nav_cta': 'Poslať dopyt',
+  'nav_offer': 'Ponuka', 'nav_solutions': 'Riešenia', 'nav_machines': 'Automaty', 'nav_cta': 'Poslať dopyt',
   'sol_names': {'pieczywo': 'Pečivo', 'jajka': 'Vajcia', 'sery': 'Syry a mliečne výrobky', 'ziemniaki-warzywa': 'Zemiaky a zelenina',
                 'bio-lokalne': 'Bio a lokálne', 'mieso-dania': 'Mäso a hotové jedlá', 'napoje': 'Nápoje', 'kwiaty': 'Kvety',
                 'ciastka': 'Zákusky a torty', 'automat-na-wszystko': 'Čokoľvek iné'},

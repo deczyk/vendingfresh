@@ -88,6 +88,11 @@ describe('buildLeadsRequestBody', () => {
     expect(body.notes).toContain('Produkty: kawa mielona');
   });
 
+  it('includes the chosen machine line', () => {
+    const body = buildLeadsRequestBody({ model: 'zakup', linia: 'smart', produkty: ['jajka'], telefon: '1', rodo: true, website: '' });
+    expect(body.notes).toContain('Linia automatów: Smart (Westvend)');
+  });
+
   it('marks inquiries from the translated site with their language', () => {
     const body = buildLeadsRequestBody({ model: 'zakup', produktInne: 'Chléb', jezyk: 'cs', telefon: '1', rodo: true, website: '' });
     expect(body.notes).toContain('Język strony: cs');

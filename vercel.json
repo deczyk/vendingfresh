@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/automaty-smart",
+      "destination": "/automaty-smart.html"
+    },
+    {
       "source": "/konfigurator",
       "destination": "/konfigurator.html"
     },

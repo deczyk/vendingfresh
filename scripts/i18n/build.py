@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import LANGS, LOCALE, PAGES, SOLUTIONS, T, MATS, MAT_COLORS, MAT_ICONS, IMG, ICON, url
 from pages import P
 from solutions import S, SEC
-from machines import M, IMGS, GROUPS, NAMES
+from machines import M, IMGS, GROUPS, NAMES, SMART
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 BASE = 'https://vendingfresh.pl'
@@ -386,6 +386,7 @@ def offer(lang):
             <a href="{url('inquiry', lang)}?model=wynajem" class="btn btn--primary">{p['offer_choose_rent']}</a>
           </article>
         </div>
+        <p class="models-note">{SMART[lang]['offer_note']} <a href="{url('machines', lang)}#smart">→</a></p>
         <p class="models-note">{t['abroad']}</p>
       </div>
     </section>
@@ -504,6 +505,30 @@ def machines(lang):
       </div>
     </section>
 '''
+    sm = SMART[lang]
+    smart_cards = ''.join(f'''
+          <article class="model-plan{' model-plan--featured' if i == 0 else ''}" id="{mid}">
+            <span class="model-plan__icon" aria-hidden="true">{icon}</span>
+            <h3>{name}</h3>
+            <p class="model-plan__for">{txt}</p>
+            <ul class="model-plan__list">
+{''.join(f'              <li>{x}</li>' + chr(10) for x in bullets)}            </ul>
+            <a href="{url('inquiry', lang)}" class="btn btn--{'primary' if i == 0 else 'secondary'}">{t['cta_btn']}</a>
+          </article>''' for i, (mid, icon, name, txt, bullets) in enumerate(sm['models']))
+    smart = f'''
+    <section class="section" id="smart">
+      <div class="wrap">
+        <p class="eyebrow">{sm['eyebrow']}</p>
+        <h2>{sm['h']} <em>{sm['em']}</em></h2>
+        <p>{sm['intro']}</p>
+        <div class="models-grid">{smart_cards}
+        </div>
+        <p class="models-note">{sm['note']}</p>
+        <p class="eyebrow" style="margin-top:40px">{sm['premium']}</p>
+      </div>
+    </section>
+'''
+    sections = smart + sections
     tech = '\n'.join(f'          <li>{x}</li>' for x in m['tech'])
     body = f'''    <section class="hero hero--photo" style="--hero-img: url(/sielaff/outdoor/lifestyle.webp)">
       <div class="wrap">

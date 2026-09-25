@@ -44,6 +44,7 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
   const notes = [
     ...(payload.jezyk ? [`Język strony: ${payload.jezyk} (zapytanie z zagranicznej wersji strony)`] : []),
     `Model współpracy: ${model}`,
+    ...(payload.linia ? [`Linia automatów: ${{ smart: 'Smart (Westvend)', premium: 'Premium (Sielaff)', doradzcie: 'do doradzenia' }[payload.linia] || payload.linia}`] : []),
     `Produkty: ${produkty || '—'}`,
     `Opakowanie: ${payload.opakowanie || '—'} (wymiary: ${payload.wymiary || '—'})`,
     `Temperatura: ${payload.temperatura || '—'}`,

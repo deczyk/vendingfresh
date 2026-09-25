@@ -26,6 +26,7 @@ export default defineConfig({
         rozwiazaniaNapoje: resolve(__dirname, 'rozwiazania/napoje.html'),
         jakDzialamy: resolve(__dirname, 'jak-dzialamy.html'),
         oferta: resolve(__dirname, 'oferta.html'),
+        automatySmart: resolve(__dirname, 'automaty-smart.html'),
         rozwiazaniaKwiaty: resolve(__dirname, 'rozwiazania/kwiaty.html'),
         rozwiazaniaCiastka: resolve(__dirname, 'rozwiazania/ciastka.html'),
         rozwiazaniaWszystko: resolve(__dirname, 'rozwiazania/automat-na-wszystko.html'),

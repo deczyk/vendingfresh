@@ -1814,3 +1814,14 @@ h2 em, h1 em {
 .nav__lang .nav__dropdown-menu { min-width: 150px; left: auto; right: -12px; }
 .nav__lang a[aria-current="true"] { color: var(--color-primary); font-weight: 700; }
 @media (max-width: 1320px) { .nav__lang .nav__dropdown-menu { right: auto; } }
+
+/* ---------- Smart / Premium lines ---------- */
+.line-callout {
+  margin: 24px 0 0;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  background: var(--color-card);
+  border: 1px dashed var(--color-secondary);
+  max-width: 860px;
+}
+.compare--lines small { font-family: var(--font-body); font-size: 12px; opacity: 0.8; font-weight: 600; }
