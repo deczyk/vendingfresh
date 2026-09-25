@@ -1314,7 +1314,45 @@ h2 em, h1 em {
     linear-gradient(160deg, var(--color-primary), var(--color-primary-dark));
   display: flex; align-items: center; justify-content: center;
 }
-.carousel__item--brand .carousel__caption { opacity: 1; transform: none; position: static; background: none; padding: 24px; text-align: center; }
+.carousel__item--brand .carousel__caption {
+  opacity: 1;
+  transform: none;
+  position: static;
+  background: none;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.carousel__item--brand .carousel__caption h3 { margin: 0; }
+.carousel__brand-icon {
+  display: grid;
+  place-items: center;
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  font-size: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.carousel__brand-cta {
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-weight: 700;
+  font-size: 14px;
+}
+/* Off-centre the card is narrow: show only icon + title, never the squeezed text. */
+.carousel__item--brand:not(.carousel__item--active) .carousel__caption p,
+.carousel__item--brand:not(.carousel__item--active) .carousel__brand-cta { display: none; }
+.carousel__item--brand.carousel__item--side .carousel__caption { padding: 16px; }
+.carousel__item--brand.carousel__item--side .carousel__caption h3 { font-size: 20px; }
+.carousel__item--brand.carousel__item--far .carousel__caption { padding: 8px; }
+.carousel__item--brand.carousel__item--far .carousel__caption h3 { display: none; }
+.carousel__item--brand.carousel__item--far .carousel__brand-icon { width: 48px; height: 48px; font-size: 22px; }
 .carousel__dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
 .carousel__dot { width: 10px; height: 10px; border-radius: 50%; background: #DCD5C5; cursor: pointer; border: none; padding: 0; transition: width 0.4s var(--ease-out), background 0.3s; }
 .carousel__dot--active { background: var(--color-primary); width: 30px; border-radius: 5px; }
