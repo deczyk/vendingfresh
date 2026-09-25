@@ -213,24 +213,47 @@
           <div class="hide-pelna linia-opts" data-linia-opts="premium">
             <h3>Linia Premium (Sielaff) — który model?</h3>
             <div class="config-options config-options--wide">
-              <label><input type="radio" name="model-automatu" value="siline_snack_combi"> SiLine Snack &amp; Combi — świeże produkty, dwie strefy temperatur</label>
-              <label><input type="radio" name="model-automatu" value="sn48"> SN48 — kompaktowy, na start i mniejsze miejsca</label>
-              <label><input type="radio" name="model-automatu" value="siline_gf"> SiLine GF — szklana witryna, napoje i produkty markowe</label>
-              <label><input type="radio" name="model-automatu" value="robimat_x"> Robimat X — ramię robota zamiast spirali</label>
-              <label><input type="radio" name="model-automatu" value="seria_fk"> Seria FK — zsypowy na napoje</label>
-              <label><input type="radio" name="model-automatu" value="outdoor"> Wersja outdoor — na zewnątrz, IP24, do −20 °C</label>
-              <label><input type="radio" name="model-automatu" value="siline_public"> SiLine Public — antywandalowy, miejsca publiczne</label>
+              <label><input type="radio" name="model-automatu" value="siline_snack_combi"> SiLine Snack &amp; Combi — S (780 mm) lub M (990 mm), spirale i popychacze, do 7 półek</label>
+              <label><input type="radio" name="model-automatu" value="sn48"> SN48 — kompaktowy spiralny: Snack, Combi, LM lub 2T</label>
+              <label><input type="radio" name="model-automatu" value="siline_gf"> SiLine GF — szklana witryna, M lub L, napoje i produkty markowe</label>
+              <label><input type="radio" name="model-automatu" value="robimat_x"> Robimat X — XS, XM lub XL, ramię robota zamiast spirali</label>
+              <label><input type="radio" name="model-automatu" value="seria_fk"> Seria FK — FK 185, 230 lub 320, zsypowy na napoje</label>
+              <label><input type="radio" name="model-automatu" value="outdoor"> Outdoor (RO) — SiLine GF L RO, Snack &amp; Combi M RO, Robimat X Outdoor</label>
+              <label><input type="radio" name="model-automatu" value="siline_public"> SiLine Public (RP) — antywandalowe Snack &amp; Combi S/M i GF M/L</label>
               <label><input type="radio" name="model-automatu" value="doradzcie"> Doradźcie</label>
             </div>
-            <h3>Konfiguracja Sielaff</h3>
+            <h3>Wersja temperaturowa</h3>
+            <div class="config-options config-options--wide" data-lead-label="Wersja temperaturowa">
+              <label><input type="radio" name="sl-temp" value="standard"> Standard — przekąski i napoje</label>
+              <label><input type="radio" name="sl-temp" value="LM"> LM — świeże produkty ≤ +4 °C w całym automacie, FoodSafety</label>
+              <label><input type="radio" name="sl-temp" value="2T"> 2T — dwie strefy temperatur w jednym automacie</label>
+              <label><input type="radio" name="sl-temp" value="doradzcie"> Doradźcie</label>
+            </div>
+            <h3>Kolor obudowy</h3>
+            <div class="config-options" data-lead-label="Kolor obudowy (Sielaff)">
+              <label><input type="radio" name="sl-kolor" value="RAL 9010 czysta biel"> Czysta biel (RAL 9010)</label>
+              <label><input type="radio" name="sl-kolor" value="RAL 9006 biały aluminium"> Biały aluminium (RAL 9006)</label>
+              <label><input type="radio" name="sl-kolor" value="RAL 9005 czarny"> Czarny (RAL 9005)</label>
+            </div>
+            <h3>Panel dolny</h3>
+            <div class="config-options config-options--wide" data-lead-label="Panel dolny">
+              <label><input type="radio" name="sl-panel" value="VA stal nierdzewna"> Stal nierdzewna (VA)</label>
+              <label><input type="radio" name="sl-panel" value="RA lakierowany RAL"> Lakierowany w kolorze RAL (RA)</label>
+            </div>
+            <h3>Opcje i akcesoria Sielaff</h3>
             <div class="config-options config-options--wide">
-              <label><input type="checkbox" name="platnosci" value="dwie_strefy_foodsafety"> Dwie strefy temperatur z monitoringiem FoodSafety</label>
-              <label><input type="checkbox" name="platnosci" value="winda"> Winda do delikatnych produktów (jajka, szkło)</label>
-              <label><input type="checkbox" name="platnosci" value="spirale_lub_popychacze"> Spirale lub popychacze pod kształt opakowania</label>
-              <label><input type="checkbox" name="platnosci" value="blokowana_klapa"> Blokowana klapa odbioru</label>
-              <label><input type="checkbox" name="platnosci" value="ekran_dotykowy_alergeny"> Ekran dotykowy z informacją o produkcie i alergenach</label>
+              <label><input type="checkbox" name="platnosci" value="winda"> Winda — delikatne wydawanie (jajka, szkło, napoje gazowane)</label>
+              <label><input type="checkbox" name="platnosci" value="bariera_swietlna"> Bariera świetlna — kontrola, czy produkt wypadł</label>
+              <label><input type="checkbox" name="platnosci" value="spirale_i_popychacze"> Spirale i popychacze (Combi) pod kształt opakowań</label>
+              <label><input type="checkbox" name="platnosci" value="pakiet_designu_led"> Pakiet designu A — panel dekoracyjny LED</label>
+              <label><input type="checkbox" name="platnosci" value="panel_antywandalowy"> Panel antywandalowy 8 mm</label>
+              <label><input type="checkbox" name="platnosci" value="rama_antywlamaniowa_keso"> Rama antywłamaniowa z zamkiem bocznym (KESO)</label>
+              <label><input type="checkbox" name="platnosci" value="ogrzewanie_przeciwmrozowe"> Ogrzewanie przeciwmrozowe (utrzymuje powyżej 0 °C)</label>
+              <label><input type="checkbox" name="platnosci" value="szyba_uv"> Szyba bezpieczna z filtrem UV</label>
+              <label><input type="checkbox" name="platnosci" value="panel_tylny_reklama"> Dodatkowy panel tylny — więcej miejsca na reklamę (Robimat)</label>
               <label><input type="checkbox" name="platnosci" value="automat_do_kawy"> Automat do kawy obok (Siamonie / SiLine HG)</label>
             </div>
+          </div>
           </div>
           <h3 class="hide-pelna">Automat na wymiar</h3>
           <div class="config-options hide-pelna">

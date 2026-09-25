@@ -11,6 +11,7 @@ export interface ConfiguratorState {
   modelAutomatu: string;
   kolorObudowy: string;
   liczbaAutomatow: string;
+  opcjeLinii: string[];
   wymiary: string;
   temperatura: string;
   wolumenDzienny: string;
@@ -38,6 +39,7 @@ export function createInitialState(): ConfiguratorState {
     modelAutomatu: '',
     kolorObudowy: '',
     liczbaAutomatow: '',
+    opcjeLinii: [],
     wymiary: '',
     temperatura: '',
     wolumenDzienny: '',
@@ -163,6 +165,13 @@ function initConfigurator(): void {
     state.modelAutomatu = state.linia === 'smart' || state.linia === 'premium'
       ? (form!.querySelector<HTMLInputElement>('input[name="model-automatu"]:checked')?.value ?? '')
       : '';
+    // Radio groups inside the visible line block, e.g. "Wersja temperaturowa: LM".
+    state.opcjeLinii = Array.from(
+      form!.querySelectorAll<HTMLElement>(`[data-linia-opts="${CSS.escape(state.linia)}"] [data-lead-label]`),
+    ).flatMap((group) => {
+      const checked = group.querySelector<HTMLInputElement>('input:checked');
+      return checked ? [`${group.dataset.leadLabel}: ${checked.value}`] : [];
+    });
     state.liczbaAutomatow = state.linia === 'smart' ? (document.getElementById('liczba-automatow') as HTMLInputElement | null)?.value ?? '' : '';
     state.kolorObudowy = state.linia === 'smart' ? (document.getElementById('kolor-obudowy') as HTMLInputElement | null)?.value ?? '' : '';
     state.czestotliwosc = form!.querySelector<HTMLInputElement>('input[name="czestotliwosc"]:checked')?.value ?? '';

@@ -20,6 +20,7 @@ const FIELDS = [
   ['modelAutomatu', 'Wybrany model automatu'],
   ['kolorObudowy', 'Kolor obudowy (linia Smart)'],
   ['liczbaAutomatow', 'Liczba automatów'],
+  ['opcjeLinii', 'Wersja, kolor i panel (linia Premium)'],
   ['opakowanie', 'Opakowanie'],
   ['opakowanieInne', 'Opakowanie — opis klienta'],
   ['wymiary', 'Wymiary i waga'],

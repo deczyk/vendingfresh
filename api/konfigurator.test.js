@@ -43,6 +43,17 @@ describe('validateLeadPayload', () => {
 });
 
 describe('buildLeadsRequestBody', () => {
+  it('adds the machine model, line options and custom packaging to the notes', () => {
+    const body = buildLeadsRequestBody({
+      linia: 'premium', modelAutomatu: 'siline_snack_combi', opcjeLinii: ['Wersja temperaturowa: LM', 'Panel dolny: VA stal nierdzewna'],
+      opakowanie: 'inne', opakowanieInne: 'tacka z folią', liczbaAutomatow: '2', platnosci: ['winda'], telefon: '600000000', rodo: true,
+    });
+    expect(body.notes).toContain('Model automatu: siline_snack_combi');
+    expect(body.notes).toContain('Opcje linii: Wersja temperaturowa: LM; Panel dolny: VA stal nierdzewna');
+    expect(body.notes).toContain('Opakowanie: inne — tacka z folią');
+    expect(body.notes).toContain('Liczba automatów: 2');
+  });
+
   it('maps configurator fields onto the sklepzastodola.pl /api/leads schema', () => {
     const body = buildLeadsRequestBody({
       produkty: ['chleb'],

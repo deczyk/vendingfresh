@@ -48,6 +48,7 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
     `Produkty: ${produkty || '—'}`,
     ...(payload.modelAutomatu ? [`Model automatu: ${payload.modelAutomatu}`] : []),
     ...(payload.kolorObudowy ? [`Kolor obudowy: ${payload.kolorObudowy}`] : []),
+    ...(Array.isArray(payload.opcjeLinii) && payload.opcjeLinii.length ? [`Opcje linii: ${payload.opcjeLinii.join('; ')}`] : []),
     ...(payload.liczbaAutomatow && payload.liczbaAutomatow !== '1' ? [`Liczba automatów: ${payload.liczbaAutomatow}`] : []),
     `Opakowanie: ${[payload.opakowanie, payload.opakowanieInne].filter(Boolean).join(' — ') || '—'} (wymiary: ${payload.wymiary || '—'})`,
     `Temperatura: ${payload.temperatura || '—'}`,
