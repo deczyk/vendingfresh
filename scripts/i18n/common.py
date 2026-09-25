@@ -57,6 +57,8 @@ T = {
   'models_h': 'Buy', 'models_em': 'or rent.', 'models_eyebrow': 'How do you want it?', 'compare': 'Compare options →',
   'faq_eyebrow': 'FAQ', 'faq_h': 'Frequently asked', 'faq_em': 'questions.',
   'home_crumb': 'Home',
+  'views': 'Front|Side',
+  'preview_note': 'This is only a preview — we design the lettering, logo, colours and graphics on the front and sides exactly the way you want.',
  },
  'cs': {
   'lang_name': 'Čeština',
@@ -79,6 +81,8 @@ T = {
   'models_h': 'Kupte', 'models_em': 'nebo si pronajměte.', 'models_eyebrow': 'Jak ho chcete mít?', 'compare': 'Porovnat možnosti →',
   'faq_eyebrow': 'FAQ', 'faq_h': 'Časté', 'faq_em': 'otázky.',
   'home_crumb': 'Úvod',
+  'views': 'Zepředu|Z boku',
+  'preview_note': 'Toto je jen náhled — nápis, logo, barvy i grafiku na předku a bocích navrhneme přesně podle vašeho přání.',
  },
  'sk': {
   'lang_name': 'Slovenčina',
@@ -101,6 +105,8 @@ T = {
   'models_h': 'Kúpte', 'models_em': 'alebo si prenajmite.', 'models_eyebrow': 'Ako ho chcete mať?', 'compare': 'Porovnať možnosti →',
   'faq_eyebrow': 'FAQ', 'faq_h': 'Časté', 'faq_em': 'otázky.',
   'home_crumb': 'Úvod',
+  'views': 'Spredu|Z boku',
+  'preview_note': 'Toto je len náhľad — nápis, logo, farby aj grafiku na prednej strane a bokoch navrhneme presne podľa vášho želania.',
  },
 }
 

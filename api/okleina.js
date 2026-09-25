@@ -1,9 +1,14 @@
 import { getClaudeClient } from './_lib/claude.js';
-import { createRateLimiter, generateSlogans, isAllowedOrigin, validateOkleinaInput } from './_lib/okleina.js';
+import { createRateLimiter, fallbackSlogans, generateSlogans, isAllowedOrigin, validateOkleinaInput } from './_lib/okleina.js';
 
 const allow = createRateLimiter({ limit: 6, windowMs: 10 * 60 * 1000 });
 
 export default async function handler(req, res) {
+  // GET /api/okleina tells whether the AI key is configured (never reveals the key itself).
+  if (req.method === 'GET') {
+    res.status(200).json({ ai: Boolean(getClaudeClient()) });
+    return;
+  }
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
@@ -26,17 +31,17 @@ export default async function handler(req, res) {
   }
 
   const client = getClaudeClient();
-  if (!client) {
-    res.status(503).json({ error: 'Generator jest chwilowo niedostępny.' });
-    return;
+  if (client) {
+    try {
+      const propozycje = await generateSlogans(input, client);
+      if (propozycje.length > 0) {
+        res.status(200).json({ propozycje, zrodlo: 'ai' });
+        return;
+      }
+    } catch (err) {
+      console.error('okleina AI error, using templates', err?.status ?? '', err?.message ?? err);
+    }
   }
-
-  try {
-    const propozycje = await generateSlogans(input, client);
-    if (propozycje.length === 0) throw new Error('empty proposals');
-    res.status(200).json({ propozycje });
-  } catch (err) {
-    console.error('okleina handler error', err?.status ?? '', err?.message ?? err);
-    res.status(502).json({ error: 'Nie udało się wymyślić napisów — spróbuj ponownie.' });
-  }
+  // No key or AI unavailable: template proposals so the visitor always gets an answer.
+  res.status(200).json({ propozycje: fallbackSlogans(input), zrodlo: 'szablon' });
 }

@@ -52,7 +52,7 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
     `Lokalizacja: ${payload.lokalizacja || '—'} (${payload.miejscowoscTyp || '—'})`,
     `Płatności i dodatki: ${platnosci || '—'}`,
   ].join('\n');
-  const notesWithSummary = aiSummary ? `${notes}\n\n--- Podsumowanie AI (do weryfikacji) ---\n${aiSummary}` : notes;
+  const notesWithSummary = aiSummary ? `${notes}\n\n--- Podsumowanie zgłoszenia (do weryfikacji) ---\n${aiSummary}` : notes;
 
   return {
     source: 'kontakt',

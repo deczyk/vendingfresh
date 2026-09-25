@@ -131,7 +131,7 @@ def mock(lang, fixed=None, idd='m'):
     mats = [{"name": n, "tagline": tg, "icon": MAT_ICONS[i], "color": MAT_COLORS[i][0], "color2": MAT_COLORS[i][1]} for i, (n, tg) in enumerate(MATS[lang])]
     first = mats[fixed if isinstance(fixed, int) else 0]
     attr = f' data-mat="{fixed}"' if isinstance(fixed, int) else ''
-    return f'''<div class="wrapmock"{attr} data-mats="{e(json.dumps(mats, ensure_ascii=False))}" aria-hidden="true">
+    return f'''<div class="wrapmock"{attr} data-views="{e(T[lang]['views'])}" data-note="{e(T[lang]['preview_note'])}" data-mats="{e(json.dumps(mats, ensure_ascii=False))}">
             <div class="wrapmock__photo">
               <img src="/sielaff/siline-snack-combi/product.webp" width="350" height="500" alt="">
               <svg class="wrapmock__svg" viewBox="0 0 350 500" aria-hidden="true">

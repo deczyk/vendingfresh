@@ -1439,12 +1439,61 @@ h2 em, h1 em {
   background: radial-gradient(circle, color-mix(in srgb, var(--mat-color) 35%, transparent), transparent 70%);
   transition: background 0.6s;
 }
+.wrapmock { perspective: 1600px; }
 .wrapmock__photo {
   position: relative;
-  width: min(340px, 78vw);
-  animation: bob 7s ease-in-out infinite;
-  filter: drop-shadow(0 24px 30px rgba(14, 50, 50, 0.28));
+  width: min(340px, 72vw);
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform 1s var(--ease-out);
 }
+.wrapmock.is-side .wrapmock__photo { transform: rotateY(-38deg) translateX(-14%); }
+/* Side wall of the cabinet (photo coordinates: body spans x 75–275, y 13–487 of 350×500). */
+.wrapmock__sideface {
+  position: absolute;
+  left: 78.4%;
+  top: 2.6%;
+  height: 94.8%;
+  width: 62%;
+  transform-origin: left center;
+  transform: rotateY(90deg);
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4%;
+  padding: 8% 6%;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: min(15px, 3.4vw);
+  text-align: center;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 12%, rgba(255, 255, 255, 0.08) 60%, rgba(0, 0, 0, 0.2)),
+    repeating-linear-gradient(135deg, transparent 0 22px, rgba(255, 255, 255, 0.05) 22px 44px),
+    linear-gradient(180deg, var(--mat-color), color-mix(in srgb, var(--mat-color) 70%, #000));
+  border-top: 6px solid #1c1c1c;
+  border-bottom: 10px solid #1c1c1c;
+  transition: background 0.6s;
+}
+.wrapmock__sideface-logo {
+  font-size: 0.75em; font-weight: 800; letter-spacing: 2px;
+  padding: 0.4em 0.9em; border: 2px dashed rgba(255, 255, 255, 0.75); border-radius: 8px;
+}
+.wrapmock__sideface-icon { font-size: 4.2em; line-height: 1; filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.3)); }
+.wrapmock__sideface-name { font-family: var(--font-display); font-weight: 700; line-height: 1.05; text-shadow: 0 3px 0 rgba(0, 0, 0, 0.2); }
+.wrapmock__sideface-tag { font-size: 0.85em; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--mat-color-2); }
+.wrapmock__views { display: inline-flex; gap: 4px; margin-top: 18px; padding: 4px; border-radius: 999px; background: var(--color-card); border: 1px solid var(--color-line); position: relative; z-index: 1; }
+.wrapmock__views button {
+  font: inherit; font-size: 13px; font-weight: 700;
+  padding: 7px 16px; border-radius: 999px; border: none; background: transparent; color: var(--color-ink); cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+.wrapmock__views button.is-active { background: var(--mat-color); color: #fff; }
+.wrapmock__note { position: relative; z-index: 1; max-width: 320px; margin: 10px auto 0; font-size: 12px; line-height: 1.45; opacity: 0.75; text-align: center; }
+.hero .wrapmock__note { color: rgba(255, 255, 255, 0.85); opacity: 1; }
+.hero .wrapmock__views { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.25); }
+.hero .wrapmock__views button { color: #fff; }
 .wrapmock__photo img { width: 100%; height: auto; display: block; }
 .wrapmock__svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .wrapmock__wrap { fill: var(--mat-color); transition: fill 0.6s; }

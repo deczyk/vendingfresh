@@ -1,0 +1,37 @@
+name: IndexNow — notify search engines
+
+# After a push to main (and Vercel's deploy), submits every URL from sitemap.xml
+# to IndexNow, which forwards it to Bing, Seznam, Yandex and other participating
+# engines. Google does not use IndexNow; it reads sitemap.xml via robots.txt.
+on:
+  push:
+    branches: [main]
+    paths: ['**.html', 'public/sitemap.xml']
+  workflow_dispatch:
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Wait for the Vercel deployment
+        run: sleep 180
+      - name: Submit sitemap URLs
+        env:
+          KEY: ed12ce53178a51ef9f4c321c756ec2c7
+        run: |
+          python3 - <<'PY'
+          import json, os, re, urllib.request
+          key = os.environ['KEY']
+          urls = re.findall(r'<loc>([^<]+)</loc>', open('public/sitemap.xml', encoding='utf-8').read())
+          body = json.dumps({
+              'host': 'vendingfresh.pl',
+              'key': key,
+              'keyLocation': f'https://vendingfresh.pl/{key}.txt',
+              'urlList': urls,
+          }).encode()
+          req = urllib.request.Request('https://api.indexnow.org/indexnow', data=body,
+                                       headers={'Content-Type': 'application/json; charset=utf-8'})
+          with urllib.request.urlopen(req, timeout=30) as r:
+              print('IndexNow responded', r.status, 'for', len(urls), 'URLs')
+          PY

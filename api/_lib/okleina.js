@@ -105,3 +105,29 @@ export function isAllowedOrigin(origin) {
     return false;
   }
 }
+
+// Used when ANTHROPIC_API_KEY is missing or the AI call fails, so the generator always answers.
+const TEMPLATES = {
+  pieczywo: [['Chlebomat', 'Chleb 24/7'], ['świeże prosto z pieca', 'pieczywo całą dobę']],
+  jajka: [['Jajomat', 'Jajka 24/7'], ['prosto z fermy', 'świeże jajka całą dobę']],
+  sery: [['Seromat', 'Nabiał 24/7'], ['nabiał od rolnika', 'sery całą dobę']],
+  warzywa: [['Warzywomat', 'Warzywa 24/7'], ['prosto z pola', 'warzywa całą dobę']],
+  mieso: [['Mięsomat', 'Wędliny 24/7'], ['prosto z masarni', 'wędliny całą dobę']],
+  napoje: [['Napojomat', 'Zimne 24/7'], ['zawsze schłodzone', 'napoje całą dobę']],
+  kwiaty: [['Kwiatomat', 'Kwiaty 24/7'], ['bukiety całą dobę', 'kwiaty na każdą okazję']],
+  ciastka: [['Ciastkomat', 'Słodko 24/7'], ['ciasta i ciastka', 'słodkości całą dobę']],
+  bio: [['Lokalnie 24/7', 'Ekomat'], ['prosto od producenta', 'lokalne produkty całą dobę']],
+  inne: [['Wszystkomat', 'Otwarte 24/7'], ['zawsze otwarte', 'wszystko całą dobę']],
+};
+
+export function fallbackSlogans({ nazwa, produkt }) {
+  const [names, taglines] = TEMPLATES[produkt] ?? TEMPLATES.inne;
+  const shortName = nazwa.length <= 16 ? nazwa : nazwa.split(' ').slice(0, 2).join(' ').slice(0, 16);
+  return cleanProposals({
+    propozycje: [
+      { nazwa: names[0], haslo: nazwa },
+      { nazwa: shortName, haslo: taglines[0] },
+      { nazwa: names[1], haslo: taglines[1] },
+    ],
+  });
+}

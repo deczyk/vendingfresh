@@ -1,8 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
-import { buildLeadPrompt, summarizeLead } from './_lib/lead-summary.js';
+import { buildLeadPrompt, fallbackLeadSummary, summarizeLead } from './_lib/lead-summary.js';
 import {
   cleanProposals,
   createRateLimiter,
+  fallbackSlogans,
   generateSlogans,
   isAllowedOrigin,
   validateOkleinaInput,
@@ -20,12 +21,21 @@ describe('lead summary', () => {
     expect(prompt).not.toMatch(/Jan|600123456|example\.com|Kraków/);
   });
 
-  it('returns the model text, and null when disabled or failing', async () => {
+  it('returns the model text, and a rule-based summary without a key or on failure', async () => {
     expect(await summarizeLead({}, fakeClient('PODSUMOWANIE: test'))).toBe('PODSUMOWANIE: test');
-    expect(await summarizeLead({}, null)).toBeNull();
+    expect(await summarizeLead({ model: 'zakup' }, null)).toMatch(/^\(automatyczne podsumowanie bez AI\)/);
     const failing = { messages: { create: vi.fn().mockRejectedValue(new Error('boom')) } };
     vi.spyOn(console, 'error').mockImplementation(() => {});
-    expect(await summarizeLead({}, failing)).toBeNull();
+    expect(await summarizeLead({}, failing)).toMatch(/PRIORYTET:/);
+  });
+
+  it('rule-based summary proposes cooling, a lift and flags gaps', () => {
+    const text = fallbackLeadSummary({ model: 'zakup', produkty: ['jajka', 'sery'], lokalizacja: 'zewnatrz', telefon: '600' });
+    expect(text).toMatch(/chłodzeniem/);
+    expect(text).toMatch(/winda do jajek/);
+    expect(text).toMatch(/wersja outdoor/);
+    expect(text).toMatch(/brak wymiarów/);
+    expect(fallbackLeadSummary({ model: 'pelna_obsluga', produkty: ['napoje_zimne'] })).toMatch(/gotowy automat/);
   });
 
   it('uses the cheapest model', async () => {
@@ -63,6 +73,13 @@ describe('okleina generator', () => {
     const params = client.messages.create.mock.calls[0][0];
     expect(params.output_config.format.type).toBe('json_schema');
     expect(params.model).toBe('claude-haiku-4-5');
+  });
+
+  it('falls back to template proposals that include the company name', () => {
+    const out = fallbackSlogans({ nazwa: 'Piekarnia u Zenka', produkt: 'pieczywo' });
+    expect(out).toHaveLength(3);
+    expect(out[0]).toEqual({ nazwa: 'Chlebomat', haslo: 'Piekarnia u Zenka' });
+    expect(out.every((p) => p.nazwa.length <= 20 && p.haslo.length <= 30)).toBe(true);
   });
 
   it('rate-limits bursts per key', () => {

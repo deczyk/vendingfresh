@@ -230,6 +230,40 @@ function initWrapMock(): void {
 
   chips.forEach((chip, i) => chip.style.setProperty('--mat-color', mats[i]?.color ?? ''));
 
+  // Side wall with a big sticker, shown by turning the machine (front / side view toggle).
+  const photo = mock.querySelector<HTMLElement>('.wrapmock__photo');
+  const side = document.createElement('div');
+  side.className = 'wrapmock__sideface';
+  side.innerHTML =
+    '<span class="wrapmock__sideface-logo">LOGO</span><span class="wrapmock__sideface-icon"></span>' +
+    '<span class="wrapmock__sideface-name"></span><span class="wrapmock__sideface-tag"></span>';
+  photo?.appendChild(side);
+  const sideIcon = side.querySelector<HTMLElement>('.wrapmock__sideface-icon')!;
+  const sideBig = side.querySelector<HTMLElement>('.wrapmock__sideface-name')!;
+  const sideTag = side.querySelector<HTMLElement>('.wrapmock__sideface-tag')!;
+
+  const labels = (mock.dataset.views ?? 'Przód|Z boku').split('|');
+  const views = document.createElement('div');
+  views.className = 'wrapmock__views';
+  views.setAttribute('role', 'group');
+  labels.forEach((label, i) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = label;
+    btn.className = i === 0 ? 'is-active' : '';
+    btn.addEventListener('click', () => {
+      mock.classList.toggle('is-side', i === 1);
+      views.querySelectorAll('button').forEach((b, j) => b.classList.toggle('is-active', j === i));
+    });
+    views.appendChild(btn);
+  });
+  const note = document.createElement('p');
+  note.className = 'wrapmock__note';
+  note.textContent =
+    mock.dataset.note ??
+    'To tylko podgląd — napis, logo, kolory i grafikę na froncie i bokach zaprojektujemy dokładnie tak, jak chcesz.';
+  mock.append(views, note);
+
   // Sizes are in the photo's 350×500 coordinate space: long names shrink to stay on the panels.
   const paint = (text: string, sub: string): void => {
     name.textContent = text;
@@ -238,6 +272,9 @@ function initWrapMock(): void {
     sideName.setAttribute('font-size', String(Math.min(22, Math.floor(250 / Math.max(text.length, 1)))));
     tagline.textContent = sub.toUpperCase();
     tagline.setAttribute('font-size', String(Math.min(9, Math.floor(260 / Math.max(sub.length, 1)))));
+    sideBig.textContent = text;
+    sideBig.style.fontSize = `${Math.min(2.4, 21 / Math.max(text.length, 1))}em`;
+    sideTag.textContent = sub;
   };
 
   let current = 0;
@@ -247,6 +284,7 @@ function initWrapMock(): void {
     mock.style.setProperty('--mat-color', mat.color);
     mock.style.setProperty('--mat-color-2', mat.color2);
     paint(mat.name, mat.tagline);
+    sideIcon.textContent = mat.icon;
     [name, sideName].forEach((el) => {
       el.classList.remove('is-swapping');
       void el.getBBox();

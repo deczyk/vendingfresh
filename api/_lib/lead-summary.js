@@ -35,9 +35,46 @@ export function buildLeadPrompt(payload) {
   }).join('\n');
 }
 
-/** Returns the AI summary for a lead, or null if the feature is off or the call fails. */
+const COOLED = ['sery', 'nabial', 'mieso', 'wedliny', 'dania', 'nabial_jogurty', 'dania_gotowe', 'kanapki_salatki'];
+
+/** Rule-based summary used when there is no API key or the AI call fails. */
+export function fallbackLeadSummary(p = {}) {
+  const produkty = [...(Array.isArray(p.produkty) ? p.produkty : []), p.produktInne].filter(Boolean).join(', ') || 'nie podano';
+  const pelna = p.model === 'pelna_obsluga';
+  const proposal = [];
+  if (pelna) {
+    proposal.push('gotowy automat z naszym asortymentem, dobrany do liczby osób');
+  } else {
+    const cooled = p.temperatura === 'chlodzenie' || (p.produkty ?? []).some((x) => COOLED.includes(x));
+    proposal.push(cooled ? 'automat z chłodzeniem (SN48 2T LM lub SiLine Combi)' : 'SiLine Snack & Combi');
+    if ((p.produkty ?? []).includes('jajka')) proposal.push('winda do jajek');
+    if ((p.produkty ?? []).includes('kwiaty')) proposal.push('wysokie komory na bukiety, chłodzenie');
+    if ((p.produkty ?? []).includes('ciastka')) proposal.push('strefa chłodzona na wyroby z kremem');
+    if (['zewnatrz', 'publiczne'].includes(p.lokalizacja)) proposal.push('wersja outdoor');
+    if (p.temperatura === 'mieszane') proposal.push('kilka stref temperatur');
+  }
+  const gaps = [];
+  const questions = [];
+  if (!pelna && !p.wymiary) { gaps.push('brak wymiarów opakowań'); questions.push('Jakie są wymiary i waga opakowań?'); }
+  if (!p.wolumenDzienny) { gaps.push('brak wolumenu'); questions.push(pelna ? 'Ile osób codziennie jest na miejscu?' : 'Ile sztuk sprzedajecie dziennie?'); }
+  if (!p.lokalizacja) { gaps.push('brak lokalizacji'); }
+  questions.push('Gdzie dokładnie stanie automat i czy jest tam prąd?');
+  if (!p.telefon) gaps.push('brak telefonu — kontakt tylko mailowy');
+  const score = [p.telefon, p.wolumenDzienny, p.lokalizacja, (p.produkty ?? []).length || p.produktInne].filter(Boolean).length;
+  const priority = score >= 4 ? 'gorący' : score >= 2 ? 'ciepły' : 'zimny';
+  return [
+    '(automatyczne podsumowanie bez AI)',
+    `PODSUMOWANIE: ${p.model || 'model nieznany'}; produkty: ${produkty}; lokalizacja: ${p.lokalizacja || '—'}${p.jezyk ? `; zapytanie w języku ${p.jezyk}` : ''}.`,
+    `PROPOZYCJA: ${proposal.join(', ')}.`,
+    `UWAGI: ${gaps.length ? gaps.join('; ') : 'komplet podstawowych danych'}.`,
+    `PYTANIA NA TELEFON: ${questions.slice(0, 3).join(' ')}`,
+    `PRIORYTET: ${priority}.`,
+  ].join('\n');
+}
+
+/** Returns the AI summary for a lead, falling back to the rule-based one without a key or on errors. */
 export async function summarizeLead(payload, client) {
-  if (!client) return null;
+  if (!client) return fallbackLeadSummary(payload);
   try {
     const message = await client.messages.create({
       model: CLAUDE_MODEL,
@@ -45,9 +82,9 @@ export async function summarizeLead(payload, client) {
       system: SYSTEM,
       messages: [{ role: 'user', content: buildLeadPrompt(payload) }],
     });
-    return responseText(message) || null;
+    return responseText(message) || fallbackLeadSummary(payload);
   } catch (err) {
-    console.error('lead summary failed', err?.status ?? '', err?.message ?? err);
-    return null;
+    console.error('lead summary failed, using rule-based summary', err?.status ?? '', err?.message ?? err);
+    return fallbackLeadSummary(payload);
   }
 }
