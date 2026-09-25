@@ -242,27 +242,14 @@ function initWrapMock(): void {
   const sideBig = side.querySelector<HTMLElement>('.wrapmock__sideface-name')!;
   const sideTag = side.querySelector<HTMLElement>('.wrapmock__sideface-tag')!;
 
-  const labels = (mock.dataset.views ?? 'Przód|Z boku').split('|');
-  const views = document.createElement('div');
-  views.className = 'wrapmock__views';
-  views.setAttribute('role', 'group');
-  labels.forEach((label, i) => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = label;
-    btn.className = i === 0 ? 'is-active' : '';
-    btn.addEventListener('click', () => {
-      mock.classList.toggle('is-side', i === 1);
-      views.querySelectorAll('button').forEach((b, j) => b.classList.toggle('is-active', j === i));
-    });
-    views.appendChild(btn);
-  });
+  // Always shown turned, so the big side sticker is visible (front-only view was removed).
+  mock.classList.add('is-side');
   const note = document.createElement('p');
   note.className = 'wrapmock__note';
   note.textContent =
     mock.dataset.note ??
     'To tylko podgląd — napis, logo, kolory i grafikę na froncie i bokach zaprojektujemy dokładnie tak, jak chcesz.';
-  mock.append(views, note);
+  mock.append(note);
 
   // Sizes are in the photo's 350×500 coordinate space: long names shrink to stay on the panels.
   const paint = (text: string, sub: string): void => {
