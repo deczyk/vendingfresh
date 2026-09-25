@@ -213,20 +213,22 @@ function initWrapGenerator(apply: (text: string, sub: string, matIndex: number) 
 function initWrapMock(): void {
   const mock = document.querySelector<HTMLElement>('.wrapmock');
   if (!mock) return;
-  const name = mock.querySelector<HTMLElement>('.wrapmock__name');
-  const tagline = mock.querySelector<HTMLElement>('.wrapmock__tagline');
-  const windowEl = mock.querySelector<HTMLElement>('.wrapmock__window');
+  const name = mock.querySelector<SVGTextElement>('.wrapmock__name');
+  const sideName = mock.querySelector<SVGTextElement>('.wrapmock__side-name');
+  const tagline = mock.querySelector<SVGTextElement>('.wrapmock__tagline');
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.mat-chip'));
-  if (!name || !tagline || !windowEl) return;
+  if (!name || !sideName || !tagline) return;
 
   chips.forEach((chip, i) => chip.style.setProperty('--mat-color', MATS[i]?.color ?? ''));
 
-  const paint = (text: string, sub: string, icon: string): void => {
+  // Sizes are in the photo's 350×500 coordinate space: long names shrink to stay on the panels.
+  const paint = (text: string, sub: string): void => {
     name.textContent = text;
-    // Long custom names shrink so they still fit the front of the machine.
-    name.style.fontSize = text.length > 12 ? `${Math.max(22, 40 - (text.length - 12) * 2)}px` : '';
-    tagline.textContent = sub;
-    windowEl.querySelectorAll('span').forEach((s) => (s.textContent = icon));
+    name.setAttribute('font-size', String(Math.min(34, Math.floor(330 / Math.max(text.length, 1)))));
+    sideName.textContent = text;
+    sideName.setAttribute('font-size', String(Math.min(22, Math.floor(250 / Math.max(text.length, 1)))));
+    tagline.textContent = sub.toUpperCase();
+    tagline.setAttribute('font-size', String(Math.min(9, Math.floor(260 / Math.max(sub.length, 1)))));
   };
 
   let current = 0;
@@ -235,10 +237,10 @@ function initWrapMock(): void {
     current = i;
     mock.style.setProperty('--mat-color', mat.color);
     mock.style.setProperty('--mat-color-2', mat.color2);
-    paint(mat.name, mat.tagline, mat.icon);
-    [name, windowEl].forEach((el) => {
+    paint(mat.name, mat.tagline);
+    [name, sideName].forEach((el) => {
       el.classList.remove('is-swapping');
-      void el.offsetWidth;
+      void el.getBBox();
       el.classList.add('is-swapping');
     });
     chips.forEach((c, j) => c.classList.toggle('is-active', j === i));
@@ -261,7 +263,7 @@ function initWrapMock(): void {
   initWrapGenerator((text, sub, matIndex) => {
     window.clearInterval(timer);
     show(matIndex);
-    paint(text, sub, MATS[matIndex].icon);
+    paint(text, sub);
   });
 
   // Product pages pin the mock to one machine (data-mat="1" → Kwiatomat).
