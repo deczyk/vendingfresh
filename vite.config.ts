@@ -25,6 +25,7 @@ export default defineConfig({
         rozwiazaniaMiesoDania: resolve(__dirname, 'rozwiazania/mieso-dania.html'),
         rozwiazaniaNapoje: resolve(__dirname, 'rozwiazania/napoje.html'),
         jakDzialamy: resolve(__dirname, 'jak-dzialamy.html'),
+        oferta: resolve(__dirname, 'oferta.html'),
         finansowanie: resolve(__dirname, 'finansowanie.html'),
         automatySielaff: resolve(__dirname, 'automaty-sielaff.html'),
         poradnik: resolve(__dirname, 'poradnik.html'),

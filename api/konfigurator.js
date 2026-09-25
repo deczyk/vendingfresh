@@ -31,11 +31,20 @@ export function buildLeadsRequestBody(payload) {
     ? payload.platnosci.join(', ')
     : '';
 
+  const modelLabels = {
+    zakup: 'zakup na własność',
+    wynajem: 'wynajem (klient uzupełnia sam, opłata miesięczna)',
+    pelna_obsluga: 'pełna obsługa (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)',
+  };
+  const model = modelLabels[payload.model] || payload.model || '—';
+
   const notes = [
+    `Model współpracy: ${model}`,
     `Produkty: ${produkty || '—'}`,
     `Opakowanie: ${payload.opakowanie || '—'} (wymiary: ${payload.wymiary || '—'})`,
     `Temperatura: ${payload.temperatura || '—'}`,
-    `Wolumen: ${payload.wolumenDzienny || '—'} (liczba produktów: ${payload.liczbaProduktow || '—'})`,
+    `Wolumen / osoby na miejscu: ${payload.wolumenDzienny || '—'} (liczba produktów: ${payload.liczbaProduktow || '—'})`,
+    `Częstotliwość uzupełniania: ${payload.czestotliwosc || '—'}`,
     `Lokalizacja: ${payload.lokalizacja || '—'} (${payload.miejscowoscTyp || '—'})`,
     `Płatności i dodatki: ${platnosci || '—'}`,
   ].join('\n');
@@ -43,7 +52,7 @@ export function buildLeadsRequestBody(payload) {
   return {
     source: 'kontakt',
     marka: 'vendingfresh',
-    zainteresowanie: 'Konfigurator VendingFresh',
+    zainteresowanie: payload.model ? `Konfigurator VendingFresh — ${model}` : 'Konfigurator VendingFresh',
     produkt: produkty,
     imie: payload.imie || '',
     telefon: payload.telefon || '',

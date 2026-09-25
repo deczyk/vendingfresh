@@ -24,6 +24,11 @@
   <!-- include:nav.html -->
   <main class="config-page">
     <div class="wrap">
+      <div class="config-intro">
+        <p class="eyebrow">Konfigurator</p>
+        <h1>Dopasujemy <em>dosłownie wszystko.</em></h1>
+        <p>Rozmiar automatu, liczbę i wielkość komór, temperatury, sposób wydawania i okleinę z Twoim logo. Sprzedać możesz dosłownie wszystko — od chleba po kwiaty. Automat kupisz, wynajmiesz albo postawimy go u Ciebie w pełnej obsłudze.</p>
+      </div>
       <div class="config-progress">
         <div class="config-progress__bar" id="config-progress-bar"></div>
       </div>
@@ -33,7 +38,30 @@
         <input type="hidden" name="website" id="hp-website" autocomplete="off" tabindex="-1">
 
         <section class="config-step" data-step="1">
-          <h2>Co chcesz sprzedawać?</h2>
+          <h2>Jak chcesz mieć automat?</h2>
+          <div class="model-picker">
+            <label class="model-option">
+              <input type="radio" name="model" value="zakup">
+              <span class="model-option__icon" aria-hidden="true">🔑</span>
+              <strong>Zakup</strong>
+              <span>Automat na własność, skonfigurowany pod Ciebie. Gotówka, leasing albo dotacja. Zarobek jest Twój.</span>
+            </label>
+            <label class="model-option">
+              <input type="radio" name="model" value="wynajem">
+              <span class="model-option__icon" aria-hidden="true">📅</span>
+              <strong>Wynajem</strong>
+              <span>Wypożyczasz automat, uzupełniasz go sam swoimi produktami i płacisz co miesiąc.</span>
+            </label>
+            <label class="model-option">
+              <input type="radio" name="model" value="pelna_obsluga">
+              <span class="model-option__icon" aria-hidden="true">🙌</span>
+              <strong>Pełna obsługa</strong>
+              <span>Stawiamy automat u Ciebie bez kosztów po Twojej stronie. Wybierasz produkty i częstotliwość — my uzupełniamy i serwisujemy.</span>
+            </label>
+          </div>
+
+          <h2 class="config-step__sub"><span class="hide-pelna">Co chcesz sprzedawać?</span><span class="show-pelna">Jakie produkty chcesz mieć w automacie?</span></h2>
+          <p class="config-hint">Dosłownie wszystko się da. Zaznacz, co pasuje, a jeśli Twojego produktu nie ma na liście — opisz go niżej.</p>
           <div class="config-options">
             <label><input type="checkbox" name="produkty" value="chleb"> Chleb</label>
             <label><input type="checkbox" name="produkty" value="jajka"> Jajka</label>
@@ -48,8 +76,10 @@
             <label><input type="checkbox" name="produkty" value="miod"> Miód</label>
             <label><input type="checkbox" name="produkty" value="przetwory"> Przetwory</label>
             <label><input type="checkbox" name="produkty" value="napoje"> Napoje</label>
+            <label><input type="checkbox" name="produkty" value="kwiaty"> Kwiaty</label>
+            <label><input type="checkbox" name="produkty" value="ciastka"> Ciastka i słodycze</label>
           </div>
-          <label class="config-field">Inne (opisz): <input type="text" id="produkt-inne"></label>
+          <label class="config-field">Inne (opisz — naprawdę cokolwiek): <input type="text" id="produkt-inne" placeholder="np. karma dla zwierząt, akcesoria wędkarskie, lody"></label>
         </section>
 
         <section class="config-step" data-step="2" hidden>
@@ -63,24 +93,39 @@
             <label><input type="radio" name="opakowanie" value="luzem"> Luzem</label>
           </div>
           <label class="config-field">Orientacyjne wymiary i waga: <input type="text" id="wymiary" placeholder="np. 20x10x8 cm, 0,5 kg"></label>
+          <p class="config-hint">Na tej podstawie dobierzemy liczbę i wielkość komór — pod Twój produkt, nie odwrotnie.</p>
           <h3>Temperatura</h3>
+          <p class="config-hint">Różne produkty? Każda strefa może mieć inną temperaturę.</p>
           <div class="config-options">
             <label><input type="radio" name="temperatura" value="chlodzenie"> Chłodzenie</label>
             <label><input type="radio" name="temperatura" value="pokojowa"> Pokojowa</label>
-            <label><input type="radio" name="temperatura" value="mieszane"> Mieszane</label>
+            <label><input type="radio" name="temperatura" value="mieszane"> Mieszane (kilka stref)</label>
           </div>
         </section>
 
         <section class="config-step" data-step="3" hidden>
-          <h2>Ile sprzedajesz?</h2>
-          <label class="config-field">Ile dziennie/tygodniowo: <input type="text" id="wolumen-dzienny" placeholder="np. 40 szt. dziennie"></label>
+          <h2><span class="hide-pelna">Ile sprzedajesz?</span><span class="show-pelna">Ile osób i jak często uzupełniać?</span></h2>
+          <label class="config-field"><span class="hide-pelna">Ile dziennie/tygodniowo:</span><span class="show-pelna">Ile osób jest na miejscu każdego dnia (uczniowie, pracownicy, goście):</span> <input type="text" id="wolumen-dzienny" placeholder="np. 40 szt. dziennie albo 120 pracowników"></label>
+          <div class="show-pelna">
+            <h3>Jak często mamy uzupełniać automat?</h3>
+            <p class="config-hint">Ty decydujesz — dostosujemy się do rytmu Twojej szkoły, biura czy zakładu.</p>
+            <div class="config-options">
+              <label><input type="radio" name="czestotliwosc" value="codziennie"> Codziennie</label>
+              <label><input type="radio" name="czestotliwosc" value="kilka_razy_w_tygodniu"> Kilka razy w tygodniu</label>
+              <label><input type="radio" name="czestotliwosc" value="raz_w_tygodniu"> Raz w tygodniu</label>
+              <label><input type="radio" name="czestotliwosc" value="do_ustalenia"> Do ustalenia</label>
+            </div>
+          </div>
           <label class="config-field">Ile różnych produktów: <input type="text" id="liczba-produktow" placeholder="np. 5"></label>
         </section>
 
         <section class="config-step" data-step="4" hidden>
           <h2>Gdzie stanie automat?</h2>
           <div class="config-options">
-            <label><input type="radio" name="lokalizacja" value="budynek"> W budynku</label>
+            <label><input type="radio" name="lokalizacja" value="szkola"> Szkoła</label>
+            <label><input type="radio" name="lokalizacja" value="biuro"> Biuro</label>
+            <label><input type="radio" name="lokalizacja" value="zaklad"> Zakład produkcyjny</label>
+            <label><input type="radio" name="lokalizacja" value="budynek"> Inny budynek</label>
             <label><input type="radio" name="lokalizacja" value="wiata"> Pod wiatą</label>
             <label><input type="radio" name="lokalizacja" value="zewnatrz"> Na zewnątrz przy drodze</label>
             <label><input type="radio" name="lokalizacja" value="publiczne"> Miejsce publiczne</label>
@@ -92,12 +137,23 @@
         </section>
 
         <section class="config-step" data-step="5" hidden>
-          <h2>Płatności i dodatki</h2>
+          <h2>Co jeszcze dopasować?</h2>
+          <p class="config-hint">Dopasowujemy dosłownie wszystko. Zaznacz, na czym Ci zależy — resztę dogramy w rozmowie.</p>
+          <h3>Automat na wymiar</h3>
+          <div class="config-options">
+            <label><input type="checkbox" name="platnosci" value="rozmiar_na_wymiar"> Rozmiar automatu pod moje miejsce</label>
+            <label><input type="checkbox" name="platnosci" value="komory_na_wymiar"> Komory na wymiar moich produktów</label>
+            <label><input type="checkbox" name="platnosci" value="kilka_temperatur"> Różne temperatury w różnych komorach</label>
+          </div>
+          <h3>Wygląd</h3>
+          <div class="config-options">
+            <label><input type="checkbox" name="platnosci" value="oklejenie"> Oklejenie z Twoim logo i napisami</label>
+            <label><input type="checkbox" name="platnosci" value="ekran"> Ekran z logo</label>
+          </div>
+          <h3>Płatności i dodatki</h3>
           <div class="config-options">
             <label><input type="checkbox" name="platnosci" value="karta_blik"> Karta i BLIK</label>
             <label><input type="checkbox" name="platnosci" value="gotowka"> Gotówka</label>
-            <label><input type="checkbox" name="platnosci" value="oklejenie"> Oklejenie w barwach firmy</label>
-            <label><input type="checkbox" name="platnosci" value="ekran"> Ekran z logo</label>
             <label><input type="checkbox" name="platnosci" value="telemetria"> Telemetria</label>
           </div>
         </section>
@@ -112,6 +168,7 @@
         </section>
 
         <section class="config-step" data-step="7" hidden>
+          <div class="show-pelna config-hint">W pełnej obsłudze to my inwestujemy w automat i zarabiamy na sprzedaży — nie musisz niczego liczyć. Możesz od razu wysłać zgłoszenie.</div>
           <h2>Szacowana opłacalność <em>(opcjonalnie)</em></h2>
           <p class="config-field" style="font-weight:400;">Możesz od razu poeksperymentować z liczbami — albo pominąć ten krok i po prostu wysłać zgłoszenie.</p>
           <div class="calc-grid">
