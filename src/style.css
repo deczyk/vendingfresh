@@ -928,7 +928,7 @@ h2 em, h1 em {
   background: linear-gradient(90deg, var(--color-primary), var(--color-leaf), var(--color-accent), var(--color-coral));
 }
 .site-footer h3 { color: #fff; font-family: var(--font-display); font-size: 20px; }
-.footer__icon { width: 56px; height: 56px; margin-bottom: 12px; border-radius: 14px; background: #fff; padding: 6px; }
+.footer__icon { width: 56px; height: 56px; margin-bottom: 12px; }
 .footer__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
 .footer__social { display: flex; gap: 10px; margin-top: 12px; }
 .footer__social a {
