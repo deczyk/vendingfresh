@@ -103,10 +103,6 @@ h2 em, h1 em {
   color: var(--color-primary);
   font-style: italic;
   font-weight: 500;
-  background: linear-gradient(transparent 68%, rgba(201, 162, 39, 0.38) 68%, rgba(201, 162, 39, 0.38) 92%, transparent 92%);
-  padding: 0 4px;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 
 /* ---------- Buttons ---------- */
@@ -341,9 +337,6 @@ h2 em, h1 em {
 .hero h1 { max-width: 900px; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.15); }
 .hero h1 em, .hero h2 em {
   color: var(--color-accent-soft);
-  background: linear-gradient(transparent 70%, rgba(201, 162, 39, 0.45) 70%, rgba(201, 162, 39, 0.45) 90%, transparent 90%);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
 }
 .hero__subtitle { font-size: 19px; max-width: 640px; opacity: 0.92; }
 .hero__cta { display: flex; gap: 16px; margin: 32px 0 44px; flex-wrap: wrap; }
@@ -919,7 +912,6 @@ h2 em, h1 em {
 .cta-final .hero__cta { justify-content: center; margin-bottom: 0; }
 .cta-final h2 em {
   color: var(--color-accent-soft);
-  background: linear-gradient(transparent 70%, rgba(201, 162, 39, 0.45) 70%, rgba(201, 162, 39, 0.45) 90%, transparent 90%);
 }
 
 /* ---------- Footer ---------- */
