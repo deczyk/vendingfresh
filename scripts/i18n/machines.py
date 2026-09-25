@@ -116,7 +116,7 @@ M = {
  },
 }
 
-SMART_IMG = {'wv-8': ('/westvend/wv-8.webp', 296, 646)}
+SMART_IMG = {'wv-8': ('/westvend/wv-8.webp', 296, 646), 'wv-hybrid': ('/westvend/wv-hybrid.webp', 414, 661)}
 
 # Smart line (Westvend) — shown above the Sielaff (Premium) models on the machines page
 SMART = {
