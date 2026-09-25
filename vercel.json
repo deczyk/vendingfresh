@@ -13,6 +13,7 @@
     { "source": "/rozwiazania/mieso-dania", "destination": "/rozwiazania/mieso-dania.html" },
     { "source": "/rozwiazania/napoje", "destination": "/rozwiazania/napoje.html" },
     { "source": "/jak-dzialamy", "destination": "/jak-dzialamy.html" },
+    { "source": "/oferta", "destination": "/oferta.html" },
     { "source": "/finansowanie", "destination": "/finansowanie.html" },
     { "source": "/automaty-sielaff", "destination": "/automaty-sielaff.html" },
     { "source": "/poradnik", "destination": "/poradnik.html" },
