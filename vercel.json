@@ -3,6 +3,7 @@
     { "source": "/konfigurator", "destination": "/konfigurator.html" },
     { "source": "/polityka", "destination": "/polityka.html" },
     { "source": "/kontakt", "destination": "/kontakt.html" },
+    { "source": "/dziekujemy", "destination": "/dziekujemy.html" },
     { "source": "/faq", "destination": "/faq.html" },
     { "source": "/rozwiazania/pieczywo", "destination": "/rozwiazania/pieczywo.html" },
     { "source": "/rozwiazania/jajka", "destination": "/rozwiazania/jajka.html" },
