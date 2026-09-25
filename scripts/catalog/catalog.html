@@ -131,6 +131,16 @@ dl.spec dd { color: var(--muted); }
 .price { margin-top: 3.5mm; background: var(--teal-dark); color: #fff; border-radius: 3mm; padding: 3mm 4.5mm; display: flex; justify-content: space-between; align-items: center; }
 .price span { font-size: 7pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #9FC4BD; }
 .price b { font-family: var(--serif); font-size: 17pt; color: var(--gold-soft); }
+.price-sub { font-size: 7.8pt; color: var(--muted); margin-top: 1.5mm; }
+.price-sub b { color: var(--teal-dark); }
+table.opts { width: 100%; border-collapse: collapse; font-size: 8.2pt; margin-top: 2mm; }
+table.opts th { text-align: left; font-weight: 800; color: var(--teal-dark); width: 27mm; vertical-align: top; padding: 1.6mm 2mm 1.6mm 0; }
+table.opts th small { font-weight: 600; color: var(--muted); font-size: 6.8pt; }
+table.opts td { padding: 1.6mm 2mm; color: var(--ink); }
+table.opts td.p { text-align: right; font-weight: 700; color: var(--teal-dark); white-space: nowrap; padding-right: 4mm; }
+table.opts tr { border-bottom: .6pt solid var(--line); }
+table.opts tr:nth-child(odd) td { background: #FBF9F4; }
+.fine { font-size: 7pt; color: var(--muted); margin-top: 2mm; }
 /* solutions */
 .sol { background: var(--card); border: .6pt solid var(--line); border-radius: 4mm; padding: 4mm; }
 .sol .ic { font-size: 18pt; line-height: 1; }
@@ -308,16 +318,16 @@ dl.spec dd { color: var(--muted); }
   <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 5</span></div>
 </section>
 
-<!-- 6. LINIA SMART -->
+<!-- 6. LINIA SMART — WV HYBRID -->
 <section class="page">
   <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Linia Smart</span></div>
   <div class="inner">
     <p class="eyebrow">Linia Smart · Westvend</p>
     <h2>Automat na wymiar <em>w korzystniejszej cenie.</em></h2>
-    <p class="lead">Sprawdzone niemieckie automaty Westvend — mniejszy wybór modeli, za to niższa cena na start. Tak samo oklejamy je Twoim logo, a automat możesz kupić albo wynająć.</p>
+    <p class="lead" style="margin-bottom:5mm">Sprawdzone niemieckie automaty Westvend — mniejszy wybór modeli, za to niższa cena na start. Oklejamy je Twoim logo, a automat możesz kupić albo wynająć.</p>
 
-    <div class="machine" style="margin-bottom:4mm">
-      <div class="ph" style="height:86mm"><img src="../../public/westvend/wv-hybrid.png" alt="Westvend WV Hybrid"></div>
+    <div class="machine">
+      <div class="ph" style="height:92mm"><img src="../../public/westvend/wv-hybrid.png" alt="Westvend WV Hybrid"></div>
       <div>
         <p class="kind">Do żywności i bio</p>
         <h3>Westvend WV Hybrid</h3>
@@ -325,39 +335,71 @@ dl.spec dd { color: var(--muted); }
         <div class="tags"><span class="tag">winda</span><span class="tag">jajka · pieczywo · nabiał · słoiki</span><span class="tag tag--teal">zakup / wynajem</span></div>
         <ul class="ticks">
           <li>Winda zamiast zrzucania produktu</li>
-          <li>Także przekąski i napoje</li>
-          <li>Opcjonalnie zamek bezpieczeństwa i alarm</li>
-          <li>Do wnętrz i miejsc zadaszonych</li>
-          <li>Okleina z Twoim logo</li>
+          <li>Także przekąski, napoje, butelki i puszki</li>
+          <li>Do wnętrz i miejsc zadaszonych · zasilanie 100–240 V</li>
         </ul>
-        <div class="price"><span>Cena katalogowa*</span><b>7 249 €</b></div>
+        <div class="price"><span>Cena katalogowa netto</span><b>7 249 €</b></div>
+        <p class="price-sub">+ zawsze w zamówieniu: transport 350 € i szkolenie telefoniczne 199 € → <b>razem od 7 798 € netto</b></p>
       </div>
     </div>
 
+    <h3 style="margin-top:5mm;font-size:13pt">Opcje konfiguracji WV Hybrid <span style="font-family:var(--sans);font-size:8pt;font-weight:600;color:var(--muted)">· ceny netto</span></h3>
+    <table class="opts">
+      <tr><th>Kolor</th><td>Standard</td><td class="p">0 €</td><td>Indywidualna okleina</td><td class="p">+500 €</td></tr>
+      <tr><th>Miejsce</th><td>Wewnątrz</td><td class="p">0 €</td><td>Wersja zewnętrzna</td><td class="p">+500 €</td></tr>
+      <tr><th>Spirale</th><td>Konfiguracja standardowa</td><td class="p">0 €</td><td>Indywidualna</td><td class="p">+250 €</td></tr>
+      <tr><th rowspan="3">Płatności<br><small>min. jedna</small></th><td>Monety</td><td class="p">+450 €</td><td>Banknoty</td><td class="p">+450 €</td></tr>
+      <tr><td>Monety + banknoty</td><td class="p">+900 €</td><td>Karta + telemetria</td><td class="p">+600 €</td></tr>
+      <tr><td colspan="3">Monety + banknoty + karta + telemetria</td><td class="p">+1 400 €</td></tr>
+      <tr><th>Bezpieczeństwo</th><td>Alarm</td><td class="p">+200 €</td><td>Zamek bezpieczeństwa</td><td class="p">+250 €</td></tr>
+      <tr><th>Inne</th><td>Weryfikacja wieku</td><td class="p">+690 €</td><td>Mocowanie podłoga/ściana</td><td class="p">+65 €</td></tr>
+      <tr><th>Szkolenie</th><td>Telefoniczne (w zamówieniu)</td><td class="p">199 €</td><td>Na miejscu, zamiast tel. + dojazd</td><td class="p">499 €</td></tr>
+    </table>
+    <p class="fine">Ceny netto, zgodne z cennikiem producenta (westvend.de), bez VAT. Okleinę z Twoim logo projektujemy my. Dostępność i termin dostawy potwierdzamy w wycenie.</p>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 6</span></div>
+</section>
+
+<!-- 7. LINIA SMART — WV 8 -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Linia Smart</span></div>
+  <div class="inner">
+    <p class="eyebrow">Linia Smart · Westvend</p>
+    <h2>Najniższy koszt wejścia <em>w naszej ofercie.</em></h2>
+    <p class="lead" style="margin-bottom:5mm">Duży automat spiralny do napojów i przekąsek — dla firm, szkół i miejsc z większym ruchem.</p>
+
     <div class="machine">
-      <div class="ph" style="height:78mm"><img src="../../public/westvend/wv-8.png" alt="Westvend WV 8"></div>
+      <div class="ph" style="height:92mm"><img src="../../public/westvend/wv-8.png" alt="Westvend WV 8"></div>
       <div>
         <p class="kind">Napoje i przekąski</p>
         <h3>Westvend WV 8</h3>
-        <p>Automat spiralny na przekąski i napoje o zwiększonej pojemności. Bez windy — produkty spadają do odbioru, więc sprawdza się przy produktach, którym to nie szkodzi.</p>
-        <div class="tags"><span class="tag">spirale</span><span class="tag">przekąski · słodycze · PET · puszki</span><span class="tag tag--teal">najniższy koszt wejścia</span></div>
+        <p>Automat spiralny o zwiększonej pojemności. Bez windy — produkty spadają do odbioru, więc sprawdza się przy produktach, którym to nie szkodzi.</p>
+        <div class="tags"><span class="tag">spirale</span><span class="tag">przekąski · słodycze · PET · puszki</span><span class="tag tag--teal">zakup / wynajem</span></div>
         <ul class="ticks">
           <li>Więcej miejsc na produkty — do lokalizacji z większym ruchem</li>
-          <li>Do wnętrz i miejsc zadaszonych</li>
-          <li>Okleina z Twoim logo, zakup albo wynajem</li>
+          <li>Do wnętrz i miejsc zadaszonych · zasilanie 230 V</li>
+          <li>Okleina z Twoim logo</li>
         </ul>
-        <dl class="spec">
-          <dt>Konfiguracja</dt><dd>kolor obudowy, układ spiral, płatności, weryfikacja wieku, mocowanie do podłogi/ściany</dd>
-          <dt>W cenie</dt><dd>transport pod Twój adres i szkolenie z obsługi</dd>
-        </dl>
-        <div class="price"><span>Cena katalogowa*</span><b>5 499 €</b></div>
+        <div class="price"><span>Cena katalogowa netto</span><b>5 499 €</b></div>
+        <p class="price-sub">+ zawsze w zamówieniu: transport 179 € i szkolenie telefoniczne 89 € → <b>razem od 5 767 € netto</b></p>
       </div>
     </div>
 
-    <div class="note" style="margin-top:auto"><strong>Ważne:</strong> automaty linii Smart są przeznaczone do wnętrz i miejsc zadaszonych — nie do stałej pracy na zewnątrz. Automat przy drodze albo bez dachu? Wybierz linię Premium w wersji outdoor. Specyfikację i dostępność potwierdzamy przy wycenie.</div>
-    <p style="font-size:7pt;color:var(--muted);margin-top:2mm">* Cena katalogowa producenta w konfiguracji podstawowej. Opcje dodatkowe (np. płatności, alarm, zamek) i VAT potwierdzamy w indywidualnej wycenie. Transport i szkolenie w cenie.</p>
+    <h3 style="margin-top:5mm;font-size:13pt">Opcje konfiguracji WV 8 <span style="font-family:var(--sans);font-size:8pt;font-weight:600;color:var(--muted)">· ceny netto</span></h3>
+    <table class="opts">
+      <tr><th>Kolor</th><td>Standard</td><td class="p">0 €</td><td>Indywidualny</td><td class="p">wycena</td></tr>
+      <tr><th>Miejsce</th><td>Wewnątrz</td><td class="p">0 €</td><td>Daszek outdoor</td><td class="p">wycena</td></tr>
+      <tr><th>Spirale</th><td>Konfiguracja standardowa</td><td class="p">0 €</td><td>Indywidualna</td><td class="p">wycena</td></tr>
+      <tr><th rowspan="2">Płatności<br><small>min. jedna</small></th><td>Monety</td><td class="p">+499 €</td><td>Banknoty</td><td class="p">+499 €</td></tr>
+      <tr><td>Moduł płatności kartą</td><td class="p">+499 €</td><td></td><td></td></tr>
+      <tr><th>Inne</th><td>Weryfikacja wieku</td><td class="p">+499 €</td><td>Mocowanie podłoga/ściana</td><td class="p">+65 €</td></tr>
+      <tr><th>Szkolenie</th><td>Telefoniczne (w zamówieniu)</td><td class="p">89 €</td><td>Na miejscu</td><td class="p">wycena</td></tr>
+    </table>
+    <p class="fine">Ceny netto, zgodne z cennikiem producenta (westvend.de), bez VAT. „Wycena” — cenę podajemy indywidualnie.</p>
+
+    <div class="note" style="margin-top:auto"><strong>Ważne:</strong> automaty linii Smart są przeznaczone do wnętrz i miejsc zadaszonych — nie do stałej pracy na zewnątrz. Automat przy drodze albo bez dachu? Wybierz linię Premium w wersji outdoor.</div>
   </div>
-  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 6</span></div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 7</span></div>
 </section>
 
 <!-- 7. LINIA PREMIUM 1 -->
@@ -417,7 +459,7 @@ dl.spec dd { color: var(--muted); }
       </div>
     </div>
   </div>
-  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 7</span></div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 8</span></div>
 </section>
 
 <!-- 8. LINIA PREMIUM 2 -->
@@ -439,7 +481,7 @@ dl.spec dd { color: var(--muted); }
 
     <div class="note" style="margin-top:auto"><strong>Smart czy Premium?</strong> Smart — niższa cena na start, dwa sprawdzone modele do wnętrz. Premium — pełna gama: dwie strefy z FoodSafety, outdoor (IP24, do −20 °C), wersje antywandalowe, kawa i zwroty opakowań. W obu liniach: okleina z Twoim logo, zakup albo wynajem. <strong>Ceny linii Premium — na zapytanie</strong>, przygotujemy je w wycenie 24–48 h.</div>
   </div>
-  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 8</span></div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 9</span></div>
 </section>
 
 <!-- 9. ROZWIĄZANIA -->
@@ -470,7 +512,7 @@ dl.spec dd { color: var(--muted); }
       <div class="card card--cream"><h4>Czego potrzebujesz</h4><ul class="ticks" style="margin-top:1.5mm"><li>Dostęp do prądu</li><li>Dojazd dla serwisu</li><li>Opakowanie zgodne z wymogami sanitarnymi</li></ul></div>
     </div>
   </div>
-  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 9</span></div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 10</span></div>
 </section>
 
 <!-- 10. ILE MOŻESZ ZAROBIĆ -->
@@ -505,7 +547,7 @@ dl.spec dd { color: var(--muted); }
     </ul>
     <p style="font-size:8.5pt;margin-top:2.5mm;color:var(--muted)"><b style="color:var(--teal-dark)">Szczerze:</b> nie spełniasz połowy? Zadzwoń — powiemy wprost, czy to ma sens.</p>
   </div>
-  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 10</span></div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 11</span></div>
 </section>
 
 <!-- 11. PEŁNA OBSŁUGA + FINANSOWANIE -->
@@ -544,7 +586,7 @@ dl.spec dd { color: var(--muted); }
       <div><h3 style="font-size:12pt;margin-bottom:1mm">Wolisz nie kupować? Wynajmij.</h3><p>Automat dopasowany pod Twój produkt, z okleiną — za stałą opłatę miesięczną. Uzupełniasz sam, zarobek zostaje u Ciebie.</p></div>
     </div>
   </div>
-  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 11</span></div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 12</span></div>
 </section>
 
 <!-- 12. BACK COVER -->
