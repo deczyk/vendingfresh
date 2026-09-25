@@ -63,6 +63,10 @@ Każda strona dostaje sekcję "Polecany model" — kartę ze zdjęciem, 4–5 kl
 - `.model-card--photo` — karta modelu ze zdjęciem, rozszerzenie istniejącego `.family-card`.
 - `.carousel` (+ towarzyszący JS) — karuzela flat-peek z homepage, klikalne boczne karty, kropki nawigacyjne, klawiatura (strzałki) dla dostępności.
 
+## Sygnał "dowolny produkt"
+
+Cała obecna IA serwisu (nav, hero tiles, sekcja "Rozwiązania", karuzela) komunikuje wyłącznie żywność. Realny core USP VendingFresh to konfiguracja automatu pod dowolny produkt (żywność, ale też np. biżuteria, kosmetyki, szczoteczki) — nie tylko przygotowane z góry kategorie spożywcze. Pełna przebudowa IA pod branże pozażywnościowe jest poza zakresem tej pracy (osobny temat na przyszłość), ale w ramach karuzeli na homepage dodajemy jedną dodatkową kartę na końcu: "Twoja branża?" — krótki tekst o konfiguracji pod dowolny produkt/opakowanie, z linkiem do konfiguratora. Bez zdjęcia produktowego (nie mamy go) — neutralne tło marki (kolor `--color-primary` + ikona z konfiguratora).
+
 ## Poza zakresem
 - Nie zmieniamy kolejności ani treści sekcji niezwiązanych ze sprzętem/zdjęciami (kalkulator, finansowanie, FAQ, poradnik).
 - Nie dodajemy zdjęć do stopki ani innych podstron (kontakt, FAQ, poradnik) — poza zakresem tej prośby.
