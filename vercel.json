@@ -95,6 +95,18 @@
     {
       "source": "/automat-dla-firmy",
       "destination": "/automat-dla-firmy.html"
+    },
+    {
+      "source": "/poradnik/wynajem-czy-zakup-automatu-vendingowego",
+      "destination": "/poradnik/wynajem-czy-zakup-automatu-vendingowego.html"
+    },
+    {
+      "source": "/poradnik/automat-vendingowy-do-biura-szkoly-zakladu",
+      "destination": "/poradnik/automat-vendingowy-do-biura-szkoly-zakladu.html"
+    },
+    {
+      "source": "/poradnik/kwiatomat-sprzedaz-kwiatow-z-automatu",
+      "destination": "/poradnik/kwiatomat-sprzedaz-kwiatow-z-automatu.html"
     }
   ],
   "headers": [

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <!-- include:fonts.html -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VendingFresh — Automat 24/7 zaprojektowany pod Twój produkt | Partner Sielaff</title>
-  <meta name="description" content="Automaty vendingowe z żywnością konfigurowane pod Twój produkt: pieczywo, jajka, sery, warzywa, napoje. Partner Sielaff. Sprzedaż 24/7, montaż i serwis w całej Polsce.">
+  <title>Automaty vendingowe pod Twój produkt 24/7 | VendingFresh</title>
+  <meta name="description" content="Automaty vendingowe konfigurowane pod Twój produkt: pieczywo, jajka, sery, kwiaty, ciasta. Okleina z Twoim logo, zakup lub wynajem. Partner Sielaff.">
   <link rel="canonical" href="https://vendingfresh.pl/">
   <link rel="icon" type="image/png" href="/vendingfresh_icon.png">
   <meta property="og:type" content="website">
@@ -24,16 +24,59 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": [
+      "Organization",
+      "LocalBusiness"
+    ],
+    "@id": "https://vendingfresh.pl/#organization",
     "name": "VendingFresh",
     "url": "https://vendingfresh.pl/",
     "logo": "https://vendingfresh.pl/vendingfresh_logo.webp",
+    "image": "https://vendingfresh.pl/vendingfresh_logo_white_bg.png",
+    "description": "Automaty vendingowe konfigurowane pod produkt klienta — pieczywo, jajka, sery, kwiaty, ciasta i dowolne inne produkty. Zakup, wynajem, pełna obsługa dla firm. Partner Sielaff.",
+    "telephone": "+48735115427",
+    "email": "kontakt@vendingfresh.pl",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Warszawska 40/2A",
+      "postalCode": "40-008",
+      "addressLocality": "Katowice",
+      "addressCountry": "PL"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Polska"
+    },
     "parentOrganization": {
       "@type": "Organization",
-      "name": "Sklep za Stodołą Sp. z o.o."
+      "name": "Sklep za Stodołą Sp. z o.o.",
+      "vatID": "PL9542911300"
     },
-    "description": "Partner Sielaff. Automaty vendingowe z żywnością konfigurowane pod produkt klienta.",
-    "sameAs": []
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61594414635355",
+      "https://sklepzastodola.pl"
+    ],
+    "knowsAbout": [
+      "automaty vendingowe",
+      "automaty z żywnością",
+      "automat na chleb",
+      "automat na jajka",
+      "kwiatomat",
+      "wynajem automatów vendingowych"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://vendingfresh.pl/#website",
+    "name": "VendingFresh",
+    "url": "https://vendingfresh.pl/",
+    "inLanguage": "pl-PL",
+    "publisher": {
+      "@id": "https://vendingfresh.pl/#organization"
+    }
   }
   </script>
   <link rel="stylesheet" href="/src/style.css">
@@ -55,7 +98,7 @@
         </div>
         </div>
         <div class="hero__visual" aria-hidden="true">
-          <img src="/sielaff/siline-snack-combi/product.webp" alt="">
+          <img width="350" height="500" src="/sielaff/siline-snack-combi/product.webp" alt="">
           <div class="hero__badge hero__badge--a"><span class="hero__badge-icon">🌙</span><span><strong>24/7</strong>sprzedaż bez przerwy</span></div>
           <div class="hero__badge hero__badge--b"><span class="hero__badge-icon">⚙️</span><span><strong>Na miarę</strong>pod Twój produkt</span></div>
         </div>
@@ -106,7 +149,7 @@
             <p class="problem__punchline">Automat sprzedaje 24 godziny na dobę — bez Twojej obecności i bez etatu za ladą.</p>
           </div>
           <div class="split-section__media">
-            <img src="/kategorie/pieczywo.webp" alt="Świeże pieczywo gotowe do sprzedaży 24/7" loading="lazy">
+            <img width="1200" height="1798" src="/kategorie/pieczywo.webp" alt="Świeże pieczywo gotowe do sprzedaży 24/7" loading="lazy">
           </div>
         </div>
       </div>
@@ -161,7 +204,7 @@
             <a href="/konfigurator" class="btn btn--primary">Skonfiguruj swój automat →</a>
           </div>
           <div class="split-section__media split-section__media--contain">
-            <img src="/sielaff/siline-snack-combi/product.webp" alt="Automat Sielaff SiLine Snack & Combi" loading="lazy">
+            <img width="350" height="500" src="/sielaff/siline-snack-combi/product.webp" alt="Automat Sielaff SiLine Snack & Combi" loading="lazy">
           </div>
         </div>
       </div>
@@ -241,31 +284,31 @@
         <div class="carousel" tabindex="0">
           <div class="carousel__track">
             <a href="/rozwiazania/pieczywo" class="carousel__item carousel__item--active" style="order: 0">
-              <img src="/kategorie/pieczywo.webp" alt="Pieczywo w automacie" draggable="false">
+              <img width="1200" height="1798" src="/kategorie/pieczywo.webp" alt="Pieczywo w automacie" draggable="false">
               <div class="carousel__caption"><h3>Pieczywo</h3><p>Codzienna rotacja, temperatura pokojowa, szczyty rano i wieczorem.</p></div>
             </a>
             <a href="/rozwiazania/jajka" class="carousel__item carousel__item--side" style="order: 1">
-              <img src="/kategorie/jajka.webp" alt="Jajka w automacie" draggable="false">
+              <img width="1200" height="990" src="/kategorie/jajka.webp" alt="Jajka w automacie" draggable="false">
               <div class="carousel__caption"><h3>Jajka</h3><p>Delikatne wydawanie windą, wytłaczanki, oznakowanie zgodne z przepisami.</p></div>
             </a>
             <a href="/rozwiazania/sery" class="carousel__item carousel__item--far" style="order: 2">
-              <img src="/kategorie/sery.webp" alt="Sery w automacie" draggable="false">
+              <img width="1200" height="1800" src="/kategorie/sery.webp" alt="Sery w automacie" draggable="false">
               <div class="carousel__caption"><h3>Sery i nabiał</h3><p>Chłodzenie, różne formaty, wyższa średnia wartość koszyka.</p></div>
             </a>
             <a href="/rozwiazania/ziemniaki-warzywa" class="carousel__item carousel__item--hidden" style="order: 3">
-              <img src="/kategorie/ziemniaki-warzywa.webp" alt="Warzywa w automacie" draggable="false">
+              <img width="1200" height="800" src="/kategorie/ziemniaki-warzywa.webp" alt="Warzywa w automacie" draggable="false">
               <div class="carousel__caption"><h3>Ziemniaki i warzywa</h3><p>Duże, ciężkie opakowania — liczy się wolumen.</p></div>
             </a>
             <a href="/rozwiazania/bio-lokalne" class="carousel__item carousel__item--hidden" style="order: 4">
-              <img src="/kategorie/bio-lokalne.webp" alt="Produkty bio i lokalne w automacie" draggable="false">
+              <img width="1200" height="800" src="/kategorie/bio-lokalne.webp" alt="Produkty bio i lokalne w automacie" draggable="false">
               <div class="carousel__caption"><h3>Bio i lokalne</h3><p>Mini-sklep z wieloma produktami i opisami producentów na ekranie.</p></div>
             </a>
             <a href="/rozwiazania/mieso-dania" class="carousel__item carousel__item--hidden" style="order: -3">
-              <img src="/kategorie/mieso-dania.webp" alt="Mięso i dania gotowe w automacie" draggable="false">
+              <img width="1200" height="800" src="/kategorie/mieso-dania.webp" alt="Mięso i dania gotowe w automacie" draggable="false">
               <div class="carousel__caption"><h3>Mięso i dania gotowe</h3><p>Chłodzenie z kontrolą temperatury i telemetrią, rygor sanitarny.</p></div>
             </a>
             <a href="/rozwiazania/napoje" class="carousel__item carousel__item--far" style="order: -2">
-              <img src="/kategorie/napoje.webp" alt="Napoje w automacie" draggable="false">
+              <img width="1200" height="1858" src="/kategorie/napoje.webp" alt="Napoje w automacie" draggable="false">
               <div class="carousel__caption"><h3>Napoje</h3><p>SiLine GF, Robimat X, seria FK — z opcją zwrotów opakowań.</p></div>
             </a>
             <a href="/rozwiazania/automat-na-wszystko" class="carousel__item carousel__item--brand carousel__item--side" style="order: -1">
@@ -393,7 +436,7 @@
             <a href="/automaty-sielaff" class="btn btn--secondary">Zobacz wszystkie modele</a>
           </div>
           <div class="split-section__media">
-            <img src="/sielaff/outdoor/lifestyle.webp" alt="Automat Sielaff w wersji outdoor w przestrzeni publicznej" loading="lazy">
+            <img width="2110" height="600" src="/sielaff/outdoor/lifestyle.webp" alt="Automat Sielaff w wersji outdoor w przestrzeni publicznej" loading="lazy">
           </div>
         </div>
       </div>
@@ -429,9 +472,9 @@
         <p class="eyebrow">Poradnik</p>
         <h2>Zanim zdecydujesz, <em>poczytaj.</em></h2>
         <div class="cards-grid">
-          <a href="/poradnik/ile-kosztuje-automat-na-jajka" class="guide-card"><div class="guide-card__img"><img src="/kategorie/jajka.webp" alt="" loading="lazy"></div><span class="guide-card__tag">Koszty i zwrot</span><h3>Ile kosztuje automat na jajka i kiedy się zwraca?</h3></a>
-          <a href="/poradnik/automat-na-chleb-jak-dziala" class="guide-card"><div class="guide-card__img"><img src="/kategorie/pieczywo.webp" alt="" loading="lazy"></div><span class="guide-card__tag">Piekarnie</span><h3>Automat na chleb: jak to działa i czy piekarni się opłaca?</h3></a>
-          <a href="/poradnik/sprzedaz-zywnosci-z-automatu-przepisy" class="guide-card"><div class="guide-card__img"><img src="/kategorie/bio-lokalne.webp" alt="" loading="lazy"></div><span class="guide-card__tag">Przepisy</span><h3>Sprzedaż żywności z automatu: przepisy, sanepid, oznakowanie</h3></a>
+          <a href="/poradnik/ile-kosztuje-automat-na-jajka" class="guide-card"><div class="guide-card__img"><img width="1200" height="990" src="/kategorie/jajka.webp" alt="" loading="lazy"></div><span class="guide-card__tag">Koszty i zwrot</span><h3>Ile kosztuje automat na jajka i kiedy się zwraca?</h3></a>
+          <a href="/poradnik/automat-na-chleb-jak-dziala" class="guide-card"><div class="guide-card__img"><img width="1200" height="1798" src="/kategorie/pieczywo.webp" alt="" loading="lazy"></div><span class="guide-card__tag">Piekarnie</span><h3>Automat na chleb: jak to działa i czy piekarni się opłaca?</h3></a>
+          <a href="/poradnik/sprzedaz-zywnosci-z-automatu-przepisy" class="guide-card"><div class="guide-card__img"><img width="1200" height="800" src="/kategorie/bio-lokalne.webp" alt="" loading="lazy"></div><span class="guide-card__tag">Przepisy</span><h3>Sprzedaż żywności z automatu: przepisy, sanepid, oznakowanie</h3></a>
         </div>
       </div>
     </section>
