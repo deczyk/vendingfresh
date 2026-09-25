@@ -32,7 +32,7 @@ Jeśli dla któregoś modelu nie da się znaleźć konkretnej wartości liczbowe
 
 **Seria FK** — klasyczny automat zsypowy na napoje w butelkach/puszkach 0,2–2,0 l; wiele rozmiarów obudowy, wariantów drzwi i szerokości/głębokości zsypów; elastyczny system zsypów (standardowe i wąskie w dowolnej kombinacji); kompaktowy agregat elektroniczny typu slide-in, dostawa wózkiem paletowym bez palety; wersje wysokiego bezpieczeństwa (poza FK170); FK280 dostępny w wersji outdoor IP24; klasa energetyczna A+ lub lepsza.
 
-**Siamonie series** (kawa) — wymiary 710 × 450 × 570 mm, waga 68 kg; do 250 kubków/h; pojemność półki ok. 15 kubków kawy / 25 espresso / 15 szklanek latte macchiato, górna szklana półka ok. 12 kubków; pojemnik na ziarna 1,2 kg (wariant Mono), douzupełnianie po 1 kg; zasilanie 230 V/50 Hz/16 A, pobór mocy 2,9 kW; 10 przycisków bezpośredniego wyboru, do 20 produktów.
+**Siamonie series** (kawa) — wymiary 710 × 450 × 570 mm, waga 68 kg; do 250 kubków/h; pojemność półki ok. 15 kubków kawy / 25 espresso / 15 szklanek latte macchiato, górna szklana półka ok. 12 kubków; pojemnik na ziarna 1,2 kg (wariant Mono), uzupełnianie po 1 kg; zasilanie 230 V/50 Hz/16 A, pobór mocy 2,9 kW; 10 przycisków bezpośredniego wyboru, do 20 produktów.
 
 **SiLine® HG TS27 / SiVend HG 15 TT** (gorące napoje) — TS27: bojler 2,0 kW + dogrzewanie zależne od przepływu, temperatura ustawiana per produkt/składnik, pełnopowierzchniowy dotykowy wyświetlacz za szkłem; HG 15 TT: profil premium (kawa specialty); pokrewny model HG20 Trend: do 20 napojów gorących, podajnik kubków (bucket elevator) 520×70 mm i 375×80 mm, kubki 150 ml (70 mm) / 240–300 ml (80 mm), dozowanie gorącej wody.
 
