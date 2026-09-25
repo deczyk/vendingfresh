@@ -88,7 +88,7 @@ h2 em, h1 em { color: var(--color-primary); font-style: italic; }
 /* Nav */
 .site-header { border-bottom: 1px solid #E5DFD2; }
 .nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; position: relative; }
-.nav__logo-img { height: 40px; width: auto; }
+.nav__logo-img { height: 56px; width: auto; }
 .nav__links { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
 .nav__links a { font-weight: 500; font-size: 14px; }
 .nav__cta { background: var(--color-primary); color: #fff !important; padding: 8px 16px; border-radius: var(--radius); }
