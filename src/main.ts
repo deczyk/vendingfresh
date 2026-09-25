@@ -1,3 +1,5 @@
+import { classifyLink, track } from './analytics';
+
 function initNav(): void {
   const toggle = document.getElementById('nav-toggle');
   const links = document.getElementById('nav-links');
@@ -177,11 +179,53 @@ function initWrapMock(): void {
       start();
     }),
   );
+  // Product pages pin the mock to one machine (data-mat="1" → Kwiatomat).
+  const fixed = mock.dataset.mat;
+  if (fixed !== undefined) {
+    show(Number(fixed));
+    return;
+  }
   show(0);
   start();
 }
 
+function initClickTracking(): void {
+  document.addEventListener('click', (e) => {
+    const link = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href]');
+    if (!link) return;
+    const name = classifyLink(link.getAttribute('href') ?? '');
+    if (!name) return;
+    track(name, {
+      miejsce: link.dataset.track ?? link.closest('section, header, footer, .call-bar')?.className.split(' ').slice(0, 2).join(' ') ?? '',
+      tekst: link.textContent?.trim().slice(0, 60) ?? '',
+    });
+  });
+}
+
+function initContactFormTracking(): void {
+  document.querySelector<HTMLFormElement>('.kontakt-grid form')?.addEventListener('submit', () => {
+    track('kontakt_wyslany');
+  });
+}
+
+function initCallBar(): void {
+  const bar = document.querySelector<HTMLElement>('.call-bar');
+  if (!bar) return;
+  // Stay out of the way where the page already has its own buttons at the bottom.
+  const hideNear = document.querySelectorAll('.config-nav, .site-footer, .cta-final');
+  if (hideNear.length === 0 || !('IntersectionObserver' in window)) return;
+  const visible = new Set<Element>();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((en) => (en.isIntersecting ? visible.add(en.target) : visible.delete(en.target)));
+    bar.classList.toggle('is-hidden', visible.size > 0);
+  });
+  hideNear.forEach((el) => observer.observe(el));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initClickTracking();
+  initContactFormTracking();
+  initCallBar();
   initWrapMock();
   initNav();
   initFooterYear();

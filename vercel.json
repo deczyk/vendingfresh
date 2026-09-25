@@ -1,43 +1,128 @@
 {
   "rewrites": [
-    { "source": "/konfigurator", "destination": "/konfigurator.html" },
-    { "source": "/polityka", "destination": "/polityka.html" },
-    { "source": "/kontakt", "destination": "/kontakt.html" },
-    { "source": "/dziekujemy", "destination": "/dziekujemy.html" },
-    { "source": "/faq", "destination": "/faq.html" },
-    { "source": "/rozwiazania/pieczywo", "destination": "/rozwiazania/pieczywo.html" },
-    { "source": "/rozwiazania/jajka", "destination": "/rozwiazania/jajka.html" },
-    { "source": "/rozwiazania/sery", "destination": "/rozwiazania/sery.html" },
-    { "source": "/rozwiazania/ziemniaki-warzywa", "destination": "/rozwiazania/ziemniaki-warzywa.html" },
-    { "source": "/rozwiazania/bio-lokalne", "destination": "/rozwiazania/bio-lokalne.html" },
-    { "source": "/rozwiazania/mieso-dania", "destination": "/rozwiazania/mieso-dania.html" },
-    { "source": "/rozwiazania/napoje", "destination": "/rozwiazania/napoje.html" },
-    { "source": "/jak-dzialamy", "destination": "/jak-dzialamy.html" },
-    { "source": "/oferta", "destination": "/oferta.html" },
-    { "source": "/finansowanie", "destination": "/finansowanie.html" },
-    { "source": "/automaty-sielaff", "destination": "/automaty-sielaff.html" },
-    { "source": "/poradnik", "destination": "/poradnik.html" },
-    { "source": "/poradnik/ile-kosztuje-automat-na-jajka", "destination": "/poradnik/ile-kosztuje-automat-na-jajka.html" },
-    { "source": "/poradnik/automat-na-chleb-jak-dziala", "destination": "/poradnik/automat-na-chleb-jak-dziala.html" },
-    { "source": "/poradnik/sprzedaz-zywnosci-z-automatu-przepisy", "destination": "/poradnik/sprzedaz-zywnosci-z-automatu-przepisy.html" }
+    {
+      "source": "/konfigurator",
+      "destination": "/konfigurator.html"
+    },
+    {
+      "source": "/polityka",
+      "destination": "/polityka.html"
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/kontakt.html"
+    },
+    {
+      "source": "/dziekujemy",
+      "destination": "/dziekujemy.html"
+    },
+    {
+      "source": "/faq",
+      "destination": "/faq.html"
+    },
+    {
+      "source": "/rozwiazania/pieczywo",
+      "destination": "/rozwiazania/pieczywo.html"
+    },
+    {
+      "source": "/rozwiazania/jajka",
+      "destination": "/rozwiazania/jajka.html"
+    },
+    {
+      "source": "/rozwiazania/sery",
+      "destination": "/rozwiazania/sery.html"
+    },
+    {
+      "source": "/rozwiazania/ziemniaki-warzywa",
+      "destination": "/rozwiazania/ziemniaki-warzywa.html"
+    },
+    {
+      "source": "/rozwiazania/bio-lokalne",
+      "destination": "/rozwiazania/bio-lokalne.html"
+    },
+    {
+      "source": "/rozwiazania/mieso-dania",
+      "destination": "/rozwiazania/mieso-dania.html"
+    },
+    {
+      "source": "/rozwiazania/napoje",
+      "destination": "/rozwiazania/napoje.html"
+    },
+    {
+      "source": "/jak-dzialamy",
+      "destination": "/jak-dzialamy.html"
+    },
+    {
+      "source": "/oferta",
+      "destination": "/oferta.html"
+    },
+    {
+      "source": "/finansowanie",
+      "destination": "/finansowanie.html"
+    },
+    {
+      "source": "/automaty-sielaff",
+      "destination": "/automaty-sielaff.html"
+    },
+    {
+      "source": "/poradnik",
+      "destination": "/poradnik.html"
+    },
+    {
+      "source": "/poradnik/ile-kosztuje-automat-na-jajka",
+      "destination": "/poradnik/ile-kosztuje-automat-na-jajka.html"
+    },
+    {
+      "source": "/poradnik/automat-na-chleb-jak-dziala",
+      "destination": "/poradnik/automat-na-chleb-jak-dziala.html"
+    },
+    {
+      "source": "/poradnik/sprzedaz-zywnosci-z-automatu-przepisy",
+      "destination": "/poradnik/sprzedaz-zywnosci-z-automatu-przepisy.html"
+    },
+    {
+      "source": "/rozwiazania/kwiaty",
+      "destination": "/rozwiazania/kwiaty.html"
+    },
+    {
+      "source": "/rozwiazania/ciastka",
+      "destination": "/rozwiazania/ciastka.html"
+    },
+    {
+      "source": "/rozwiazania/automat-na-wszystko",
+      "destination": "/rozwiazania/automat-na-wszystko.html"
+    },
+    {
+      "source": "/automat-dla-firmy",
+      "destination": "/automat-dla-firmy.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=31536000" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=31536000"
+        }
       ]
     },
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        }
       ]
     }
   ]

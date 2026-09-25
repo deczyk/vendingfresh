@@ -1,3 +1,5 @@
+import { track } from './analytics';
+
 export interface ConfiguratorState {
   model: string;
   czestotliwosc: string;
@@ -170,11 +172,15 @@ function initConfigurator(): void {
     const error = validateStep(currentStep, state);
     if (error) {
       if (errorEl) errorEl.textContent = error;
+      track('konfigurator_blad', { krok: currentStep });
       return;
     }
     if (currentStep < TOTAL_STEPS) {
+      if (currentStep === 1) track('konfigurator_model', { model: state.model });
       currentStep += 1;
       renderStep();
+      // One event per step reached → a funnel in GA4 shows where people drop off.
+      track('konfigurator_krok', { krok: currentStep, model: state.model });
       return;
     }
     void submit();
@@ -196,7 +202,7 @@ function initConfigurator(): void {
       if (resultText) resultText.textContent = suggestDirection(state);
 
       const w = window as unknown as { gtag?: (...args: unknown[]) => void };
-      w.gtag?.('event', 'konfigurator_wyslany');
+      w.gtag?.('event', 'konfigurator_wyslany', { model: state.model });
     } catch {
       if (errorEl) errorEl.textContent = 'Nie udało się wysłać formularza. Spróbuj ponownie albo zadzwoń.';
     } finally {
