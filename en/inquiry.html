@@ -57,11 +57,7 @@
         <form id="inquiry-form" class="config-step" novalidate data-lang="en" data-thanks="/en/thank-you"
               data-err-product="Tell us what you want to sell." data-err-contact="Give us a phone number or an e-mail address." data-err-consent="Please tick the consent so we can contact you." data-err-send="We could not send the form. Please try again or call us.">
           <input type="text" name="website" autocomplete="off" tabindex="-1" class="visually-hidden" aria-hidden="true">
-          <h2>How do you want the machine?</h2>
-          <div class="config-options">
-            <label><input type="radio" name="model" value="zakup" checked> Buy</label>
-            <label><input type="radio" name="model" value="wynajem"> Rent</label>
-          </div>
+          <input type="hidden" name="model" value="zakup">
           <label class="config-field">What do you want to sell?
             <textarea name="produkt" required placeholder="e.g. bread and rolls in paper bags, about 60 a day"></textarea>
           </label>

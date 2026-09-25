@@ -8,9 +8,8 @@ describe('classifyLink', () => {
   });
 
   it('recognises key conversion pages, relative or absolute', () => {
-    expect(classifyLink('/konfigurator?model=pelna_obsluga')).toBe('klik_konfigurator');
-    expect(classifyLink('https://vendingfresh.pl/oferta#wynajem')).toBe('klik_oferta');
-    expect(classifyLink('/automat-dla-firmy')).toBe('klik_dla_firm');
+    expect(classifyLink('/konfigurator')).toBe('klik_konfigurator');
+    expect(classifyLink('https://vendingfresh.pl/oferta#zakup')).toBe('klik_oferta');
     expect(classifyLink('/kontakt')).toBe('klik_kontakt');
   });
 

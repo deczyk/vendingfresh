@@ -55,10 +55,6 @@ function initInquiry(): void {
     consent: d.errConsent ?? '',
   };
 
-  // Offer page buttons link here with ?model=zakup|wynajem.
-  const preset = new URLSearchParams(window.location.search).get('model');
-  form.querySelector<HTMLInputElement>(`input[name="model"][value="${preset === 'wynajem' ? 'wynajem' : 'zakup'}"]`)!.checked = true;
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(form);

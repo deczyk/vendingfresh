@@ -119,7 +119,7 @@ def models_section(lang):
         <h2>{t['models_h']} <em>{t['models_em']}</em></h2>
         <div class="cards-grid">
           <div class="family-card"><h3>{t['buy']}</h3><p>{t['buy_txt']}</p></div>
-          <div class="family-card"><h3>{t['rent']}</h3><p>{t['rent_txt']}</p></div>
+          <div class="family-card"><h3>{t['lease']}</h3><p>{t['lease_txt']}</p></div>
         </div>
         <a href="{url('offer', lang)}" class="btn btn--secondary">{t['compare']}</a>
         <p class="models-note">{t['abroad']}</p>
@@ -250,7 +250,7 @@ def home(lang):
         <p class="hero__subtitle">{p['home_sub']}</p>
         <div class="hero__cta">
           <a href="{url('inquiry', lang)}" class="btn btn--primary">{t['cta_btn']}</a>
-          <a href="{url('offer', lang)}" class="btn btn--secondary">{t['buy']} / {t['rent']}</a>
+          <a href="{url('offer', lang)}" class="btn btn--secondary">{t['compare']}</a>
         </div>
         </div>
         <div class="hero__visual" aria-hidden="true">
@@ -351,8 +351,7 @@ def home(lang):
 def offer(lang):
     t, p = T[lang], P[lang]
     lb = '\n'.join(f'              <li>{x}</li>' for x in p['offer_buy_list'])
-    lr = '\n'.join(f'              <li>{x}</li>' for x in p['offer_rent_list'])
-    rows = '\n'.join(f'              <tr><th>{a}</th><td>{b}</td><td>{c}</td></tr>' for a, b, c in p['cmp_rows'])
+    rows = '\n'.join(f'              <tr><th>{a}</th><td>{b}</td></tr>' for a, b in p['cmp_rows'])
     body = f'''    <section class="hero">
       <div class="wrap">
         <p class="eyebrow">{p['offer_eyebrow']}</p>
@@ -376,15 +375,6 @@ def offer(lang):
             </ul>
             <a href="{url('inquiry', lang)}?model=zakup" class="btn btn--secondary">{p['offer_choose_buy']}</a>
           </article>
-          <article class="model-plan model-plan--featured" id="rent">
-            <span class="model-plan__icon" aria-hidden="true">🔄</span>
-            <h3>{t['rent']}</h3>
-            <p class="model-plan__for">{p['offer_rent_for']}</p>
-            <ul class="model-plan__list">
-{lr}
-            </ul>
-            <a href="{url('inquiry', lang)}?model=wynajem" class="btn btn--primary">{p['offer_choose_rent']}</a>
-          </article>
         </div>
         <p class="models-note">{SMART[lang]['offer_note']} <a href="{url('machines', lang)}#smart">→</a></p>
         <p class="models-note">{t['abroad']}</p>
@@ -397,7 +387,7 @@ def offer(lang):
         <h2>{p['cmp_h']} <em>{p['cmp_em']}</em></h2>
         <div class="compare-wrap">
           <table class="compare">
-            <thead><tr><th></th><th>{t['buy']}</th><th>{t['rent']}</th></tr></thead>
+            <thead><tr><th></th><th>{t['buy']}</th></tr></thead>
             <tbody>
 {rows}
             </tbody>
@@ -424,11 +414,7 @@ def inquiry(lang):
         <form id="inquiry-form" class="config-step" novalidate data-lang="{lang}" data-thanks="{url('thanks', lang)}"
               data-err-product="{e(p['err_product'])}" data-err-contact="{e(p['err_contact'])}" data-err-consent="{e(p['err_consent'])}" data-err-send="{e(p['err_send'])}">
           <input type="text" name="website" autocomplete="off" tabindex="-1" class="visually-hidden" aria-hidden="true">
-          <h2>{p['inq_model']}</h2>
-          <div class="config-options">
-            <label><input type="radio" name="model" value="zakup" checked> {t['buy']}</label>
-            <label><input type="radio" name="model" value="wynajem"> {t['rent']}</label>
-          </div>
+          <input type="hidden" name="model" value="zakup">
           <label class="config-field">{p['inq_product']}
             <textarea name="produkt" required placeholder="{e(p['inq_product_ph'])}"></textarea>
           </label>
@@ -567,7 +553,7 @@ def solution(lang, key):
         <p class="hero__subtitle">{c['sub']}</p>
         <div class="hero__cta">
           <a href="{url('inquiry', lang)}" class="btn btn--primary">{t['cta_btn']}</a>
-          <a href="{url('offer', lang)}" class="btn btn--secondary">{t['buy']} / {t['rent']}</a>
+          <a href="{url('offer', lang)}" class="btn btn--secondary">{t['compare']}</a>
         </div>
       </div>
     </section>
@@ -583,7 +569,7 @@ def solution(lang, key):
             <p class="hero__subtitle">{c['sub']}</p>
             <div class="hero__cta">
               <a href="{url('inquiry', lang)}" class="btn btn--primary">{t['cta_btn']}</a>
-              <a href="{url('offer', lang)}" class="btn btn--secondary">{t['buy']} / {t['rent']}</a>
+              <a href="{url('offer', lang)}" class="btn btn--secondary">{t['compare']}</a>
             </div>
           </div>
           <div class="hero__visual hero__visual--mock">

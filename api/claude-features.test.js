@@ -37,7 +37,6 @@ describe('lead summary', () => {
     expect(text).toMatch(/winda do jajek/);
     expect(text).toMatch(/wersja outdoor/);
     expect(text).toMatch(/brak wymiarów/);
-    expect(fallbackLeadSummary({ model: 'pelna_obsluga', produkty: ['napoje_zimne'] })).toMatch(/gotowy automat/);
   });
 
   it('uses the cheapest model', async () => {

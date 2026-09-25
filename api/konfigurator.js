@@ -36,8 +36,6 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
 
   const modelLabels = {
     zakup: 'zakup na własność',
-    wynajem: 'wynajem (klient uzupełnia sam, opłata miesięczna)',
-    pelna_obsluga: 'pełna obsługa — gotowy automat (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)',
   };
   const model = modelLabels[payload.model] || payload.model || '—';
 

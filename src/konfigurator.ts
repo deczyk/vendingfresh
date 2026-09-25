@@ -59,12 +59,6 @@ export function createInitialState(): ConfiguratorState {
 export function validateStep(step: number, state: ConfiguratorState): string | null {
   switch (step) {
     case 1:
-      if (state.model.trim() === '') return 'Wybierz, jak chcesz mieć automat: zakup, wynajem albo pełna obsługa.';
-      if (state.model === 'pelna_obsluga') {
-        return state.produkty.length === 0 && state.produktInne.trim() === ''
-          ? 'Wybierz, jakie produkty mają być w automacie.'
-          : null;
-      }
       return state.produkty.length === 0 && state.produktInne.trim() === ''
         ? 'Wybierz co najmniej jeden produkt albo opisz go w polu "inne".'
         : null;
@@ -74,9 +68,6 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
       if (state.temperatura.trim() === '') return 'Wybierz temperaturę.';
       return null;
     case 3:
-      if (state.model === 'pelna_obsluga') {
-        return state.wolumenDzienny.trim() === '' ? 'Podaj, ile osób mniej więcej jest na miejscu każdego dnia.' : null;
-      }
       return state.wolumenDzienny.trim() === '' ? 'Podaj orientacyjny wolumen sprzedaży.' : null;
     case 4:
       return state.lokalizacja.trim() === '' ? 'Wybierz, gdzie stanie automat.' : null;
@@ -99,8 +90,6 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
 
 export const MODEL_LABELS: Record<string, string> = {
   zakup: 'Model: zakup na własność — gotówka, leasing albo dotacja.',
-  wynajem: 'Model: wynajem — Ty uzupełniasz automat, płacisz stałą opłatę co miesiąc.',
-  pelna_obsluga: 'Model: pełna obsługa — stawiamy automat, uzupełniamy go i serwisujemy. Przy odpowiednim ruchu bez kosztów po Twojej stronie, przy mniejszym stała opłata miesięczna — ustalimy to w wycenie.',
 };
 
 const MACHINE_NAMES: Record<string, string> = {
@@ -116,9 +105,6 @@ const MACHINE_NAMES: Record<string, string> = {
 };
 
 export function suggestDirection(state: ConfiguratorState): string {
-  if (state.model === 'pelna_obsluga') {
-    return `Proponowany kierunek: gotowy automat z naszym asortymentem, dobrany do liczby osób na miejscu. ${MODEL_LABELS.pelna_obsluga}`;
-  }
   const wymagaChlodzenia =
     state.temperatura === 'chlodzenie' ||
     state.produkty.some((p) => ['sery', 'nabial', 'mieso', 'wedliny', 'dania'].includes(p));
@@ -145,19 +131,12 @@ export function suggestDirection(state: ConfiguratorState): string {
 
 const TOTAL_STEPS = 7;
 
-// Pełna obsługa = a ready-made machine stocked from our range, so the
-// packaging/temperature step (2) does not apply and is skipped.
-export function nextStep(step: number, model: string): number {
-  return model === 'pelna_obsluga' && step === 1 ? 3 : step + 1;
+export function nextStep(step: number): number {
+  return step + 1;
 }
 
-/** Step number and total as shown to the visitor (pełna obsługa has one step fewer). */
-export function displayStep(step: number, total: number, model: string): [number, number] {
-  return model === 'pelna_obsluga' ? [step > 2 ? step - 1 : step, total - 1] : [step, total];
-}
-
-export function prevStep(step: number, model: string): number {
-  return model === 'pelna_obsluga' && step === 3 ? 1 : step - 1;
+export function prevStep(step: number): number {
+  return step - 1;
 }
 
 function initConfigurator(): void {
@@ -179,8 +158,7 @@ function initConfigurator(): void {
 
   function syncStateFromDom(): void {
     state.model = form!.querySelector<HTMLInputElement>('input[name="model"]:checked')?.value ?? '';
-    form!.dataset.model = state.model;
-    state.linia = state.model === 'pelna_obsluga' ? '' : (form!.querySelector<HTMLInputElement>('input[name="linia"]:checked')?.value ?? '');
+    state.linia = form!.querySelector<HTMLInputElement>('input[name="linia"]:checked')?.value ?? '';
     form!.dataset.linia = state.linia;
     state.modelAutomatu = state.linia === 'smart' || state.linia === 'premium'
       ? (form!.querySelector<HTMLInputElement>('input[name="model-automatu"]:checked')?.value ?? '')
@@ -224,9 +202,8 @@ function initConfigurator(): void {
     stepEls.forEach((el) => {
       el.hidden = Number(el.dataset.step) !== currentStep;
     });
-    const [shown, total] = displayStep(currentStep, TOTAL_STEPS, form!.dataset.model ?? '');
-    progressBar!.style.width = `${(shown / total) * 100}%`;
-    progressLabel!.textContent = `Krok ${shown} z ${total}`;
+    progressBar!.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
+    progressLabel!.textContent = `Krok ${currentStep} z ${TOTAL_STEPS}`;
     backBtn!.hidden = currentStep === 1;
     nextBtn!.textContent = currentStep === TOTAL_STEPS ? 'Wyślij zgłoszenie' : 'Dalej';
     if (errorEl) errorEl.textContent = '';
@@ -235,7 +212,7 @@ function initConfigurator(): void {
   backBtn.addEventListener('click', () => {
     if (currentStep > 1) {
       syncStateFromDom();
-      currentStep = prevStep(currentStep, state.model);
+      currentStep = prevStep(currentStep);
       renderStep();
     }
   });
@@ -250,7 +227,7 @@ function initConfigurator(): void {
     }
     if (currentStep < TOTAL_STEPS) {
       if (currentStep === 1) track('konfigurator_model', { model: state.model });
-      currentStep = nextStep(currentStep, state.model);
+      currentStep = nextStep(currentStep);
       renderStep();
       // One event per step reached → a funnel in GA4 shows where people drop off.
       track('konfigurator_krok', { krok: currentStep, model: state.model });
@@ -285,14 +262,6 @@ function initConfigurator(): void {
 
   form.addEventListener('change', (e) => {
     const target = e.target as HTMLInputElement | null;
-    if (target?.name === 'model') {
-      form.dataset.model = target.value;
-      const hiddenGroup = target.value === 'pelna_obsluga' ? 'custom' : 'pelna';
-      form
-        .querySelectorAll<HTMLInputElement>(`[data-group="${hiddenGroup}"] input:checked`)
-        .forEach((input) => (input.checked = false));
-      renderStep();
-    }
     if (target?.name === 'linia') {
       form.dataset.linia = target.value;
       // Options of the other line stay hidden — don't send them with the lead.
@@ -302,13 +271,6 @@ function initConfigurator(): void {
     }
   });
 
-  // Deep link from /oferta: /konfigurator?model=pelna_obsluga preselects the option.
-  const preset = new URLSearchParams(window.location.search).get('model');
-  const presetInput = preset ? form.querySelector<HTMLInputElement>(`input[name="model"][value="${CSS.escape(preset)}"]`) : null;
-  if (presetInput) {
-    presetInput.checked = true;
-    form.dataset.model = presetInput.value;
-  }
   form.dataset.linia = form.querySelector<HTMLInputElement>('input[name="linia"]:checked')?.value ?? '';
 
   renderStep();

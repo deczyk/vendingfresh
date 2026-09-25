@@ -97,18 +97,6 @@
       "destination": "/rozwiazania/automat-na-wszystko.html"
     },
     {
-      "source": "/automat-dla-firmy",
-      "destination": "/automat-dla-firmy.html"
-    },
-    {
-      "source": "/poradnik/wynajem-czy-zakup-automatu-vendingowego",
-      "destination": "/poradnik/wynajem-czy-zakup-automatu-vendingowego.html"
-    },
-    {
-      "source": "/poradnik/automat-vendingowy-do-biura-szkoly-zakladu",
-      "destination": "/poradnik/automat-vendingowy-do-biura-szkoly-zakladu.html"
-    },
-    {
       "source": "/poradnik/kwiatomat-sprzedaz-kwiatow-z-automatu",
       "destination": "/poradnik/kwiatomat-sprzedaz-kwiatow-z-automatu.html"
     },
@@ -320,6 +308,23 @@
           "value": "noindex, nofollow, noarchive"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/poradnik/wynajem-czy-zakup-automatu-vendingowego",
+      "destination": "/oferta",
+      "permanent": true
+    },
+    {
+      "source": "/automat-dla-firmy",
+      "destination": "/oferta",
+      "permanent": true
+    },
+    {
+      "source": "/poradnik/automat-vendingowy-do-biura-szkoly-zakladu",
+      "destination": "/oferta",
+      "permanent": true
     }
   ]
 }

@@ -13,7 +13,6 @@ export function classifyLink(href: string): string | null {
   const path = href.replace(/^https?:\/\/(www\.)?vendingfresh\.pl/, '');
   if (path.startsWith('/konfigurator')) return 'klik_konfigurator';
   if (path.startsWith('/oferta')) return 'klik_oferta';
-  if (path.startsWith('/automat-dla-firmy')) return 'klik_dla_firm';
   if (path.startsWith('/kontakt')) return 'klik_kontakt';
   return null;
 }

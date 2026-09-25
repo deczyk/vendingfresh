@@ -54,7 +54,7 @@
       <div class="config-intro">
         <p class="eyebrow">Konfigurator</p>
         <h1>Dopasujemy <em>dosłownie wszystko.</em></h1>
-        <p>Rozmiar automatu, liczbę i wielkość komór, temperatury, sposób wydawania i okleinę z Twoim logo. Sprzedać możesz dosłownie wszystko — od chleba po kwiaty. Automat na wymiar kupisz albo wynajmiesz — a do szkoły, biura czy zakładu postawimy gotowy automat w pełnej obsłudze.</p>
+        <p>Rozmiar automatu, liczbę i wielkość komór, temperatury, sposób wydawania i okleinę z Twoim logo. Sprzedać możesz dosłownie wszystko — od chleba po kwiaty. Automat na wymiar kupisz za gotówkę, w leasingu albo z dotacją.</p>
       </div>
       <div class="config-progress">
         <div class="config-progress__bar" id="config-progress-bar"></div>
@@ -65,30 +65,10 @@
         <input type="hidden" name="website" id="hp-website" autocomplete="off" tabindex="-1">
 
         <section class="config-step" data-step="1">
-          <h2>Jak chcesz mieć automat?</h2>
-          <div class="model-picker">
-            <label class="model-option">
-              <input type="radio" name="model" value="zakup">
-              <span class="model-option__icon" aria-hidden="true">🔑</span>
-              <strong>Zakup</strong>
-              <span>Automat na własność, skonfigurowany pod Ciebie. Gotówka, leasing albo dotacja. Zarobek jest Twój.</span>
-            </label>
-            <label class="model-option">
-              <input type="radio" name="model" value="wynajem">
-              <span class="model-option__icon" aria-hidden="true">🔄</span>
-              <strong>Wynajem</strong>
-              <span>Wynajmujesz automat, uzupełniasz go sam swoimi produktami i płacisz stałą opłatę co miesiąc.</span>
-            </label>
-            <label class="model-option">
-              <input type="radio" name="model" value="pelna_obsluga">
-              <span class="model-option__icon" aria-hidden="true">🙌</span>
-              <strong>Pełna obsługa</strong>
-              <span>Gotowy automat w szkole, biurze czy zakładzie. Wybierasz produkty z naszego asortymentu i częstotliwość — my uzupełniamy i serwisujemy. Bez indywidualnej konfiguracji i okleiny.</span>
-            </label>
-          </div>
+          <input type="radio" name="model" value="zakup" checked hidden>
 
-          <div class="hide-pelna">
-            <h2 class="config-step__sub">Która linia automatów?</h2>
+          <div>
+            <h2>Która linia automatów?</h2>
             <div class="config-options">
               <label><input type="radio" name="linia" value="smart"> Smart — Westvend (korzystniejsza cena)</label>
               <label><input type="radio" name="linia" value="premium"> Premium — Sielaff (pełna gama)</label>
@@ -96,19 +76,9 @@
             </div>
           </div>
 
-          <h2 class="config-step__sub"><span class="hide-pelna">Co chcesz sprzedawać?</span><span class="show-pelna">Jakie produkty chcesz mieć w automacie?</span></h2>
-          <p class="config-hint hide-pelna">Dosłownie wszystko się da. Zaznacz, co pasuje, a jeśli Twojego produktu nie ma na liście — opisz go niżej.</p>
-          <p class="config-hint show-pelna">Wybierz z naszego asortymentu, co ma być w automacie. W szkołach dobieramy produkty zgodne z przepisami.</p>
-          <div class="config-options show-pelna" data-group="pelna">
-            <label><input type="checkbox" name="produkty" value="przekaski_slone"> Przekąski słone</label>
-            <label><input type="checkbox" name="produkty" value="przekaski_slodkie"> Przekąski słodkie</label>
-            <label><input type="checkbox" name="produkty" value="zdrowe_przekaski"> Zdrowe przekąski i owoce</label>
-            <label><input type="checkbox" name="produkty" value="napoje_zimne"> Napoje zimne i woda</label>
-            <label><input type="checkbox" name="produkty" value="kanapki_salatki"> Kanapki i sałatki</label>
-            <label><input type="checkbox" name="produkty" value="dania_gotowe"> Dania gotowe</label>
-            <label><input type="checkbox" name="produkty" value="nabial_jogurty"> Jogurty i nabiał</label>
-          </div>
-          <div class="config-options hide-pelna" data-group="custom">
+          <h2 class="config-step__sub">Co chcesz sprzedawać?</h2>
+          <p class="config-hint">Dosłownie wszystko się da. Zaznacz, co pasuje, a jeśli Twojego produktu nie ma na liście — opisz go niżej.</p>
+          <div class="config-options" data-group="custom">
             <label><input type="checkbox" name="produkty" value="chleb"> Chleb</label>
             <label><input type="checkbox" name="produkty" value="jajka"> Jajka</label>
             <label><input type="checkbox" name="produkty" value="sery"> Sery</label>
@@ -125,7 +95,7 @@
             <label><input type="checkbox" name="produkty" value="kwiaty"> Kwiaty</label>
             <label><input type="checkbox" name="produkty" value="ciastka"> Ciastka i słodycze</label>
           </div>
-          <label class="config-field"><span class="hide-pelna">Inne (opisz — naprawdę cokolwiek):</span><span class="show-pelna">Coś jeszcze? (opcjonalnie)</span> <input type="text" id="produkt-inne" placeholder="np. karma dla zwierząt, akcesoria wędkarskie, lody"></label>
+          <label class="config-field">Inne (opisz — naprawdę cokolwiek): <input type="text" id="produkt-inne" placeholder="np. karma dla zwierząt, akcesoria wędkarskie, lody"></label>
         </section>
 
         <section class="config-step" data-step="2" hidden>
@@ -151,20 +121,9 @@
         </section>
 
         <section class="config-step" data-step="3" hidden>
-          <h2><span class="hide-pelna">Ile sprzedajesz?</span><span class="show-pelna">Ile osób i jak często uzupełniać?</span></h2>
-          <label class="config-field"><span class="hide-pelna">Ile dziennie/tygodniowo:</span><span class="show-pelna">Ile osób jest na miejscu każdego dnia (uczniowie, pracownicy, goście):</span> <input type="text" id="wolumen-dzienny" placeholder="np. 40 szt. dziennie albo 120 pracowników"></label>
-          <div class="show-pelna">
-            <p class="config-hint">Na tej podstawie ustalimy, czy automat stawiamy bez kosztów po Twojej stronie, czy za stałą opłatą miesięczną. W szkołach dobieramy asortyment zgodny z przepisami.</p>
-            <h3>Jak często mamy uzupełniać automat?</h3>
-            <p class="config-hint">Ty decydujesz — dostosujemy się do rytmu Twojej szkoły, biura czy zakładu.</p>
-            <div class="config-options">
-              <label><input type="radio" name="czestotliwosc" value="codziennie"> Codziennie</label>
-              <label><input type="radio" name="czestotliwosc" value="kilka_razy_w_tygodniu"> Kilka razy w tygodniu</label>
-              <label><input type="radio" name="czestotliwosc" value="raz_w_tygodniu"> Raz w tygodniu</label>
-              <label><input type="radio" name="czestotliwosc" value="do_ustalenia"> Do ustalenia</label>
-            </div>
-          </div>
-          <label class="config-field hide-pelna">Ile różnych produktów: <input type="text" id="liczba-produktow" placeholder="np. 5"></label>
+          <h2>Ile sprzedajesz?</h2>
+          <label class="config-field">Ile dziennie/tygodniowo: <input type="text" id="wolumen-dzienny" placeholder="np. 40 szt. dziennie"></label>
+          <label class="config-field">Ile różnych produktów: <input type="text" id="liczba-produktow" placeholder="np. 5"></label>
         </section>
 
         <section class="config-step" data-step="4" hidden>
@@ -174,20 +133,20 @@
             <label><input type="radio" name="lokalizacja" value="biuro"> Biuro</label>
             <label><input type="radio" name="lokalizacja" value="zaklad"> Zakład produkcyjny</label>
             <label><input type="radio" name="lokalizacja" value="budynek"> Inny budynek</label>
-            <label class="hide-pelna"><input type="radio" name="lokalizacja" value="wiata"> Pod wiatą</label>
-            <label class="hide-pelna"><input type="radio" name="lokalizacja" value="zewnatrz"> Na zewnątrz przy drodze</label>
-            <label class="hide-pelna"><input type="radio" name="lokalizacja" value="publiczne"> Miejsce publiczne</label>
+            <label><input type="radio" name="lokalizacja" value="wiata"> Pod wiatą</label>
+            <label><input type="radio" name="lokalizacja" value="zewnatrz"> Na zewnątrz przy drodze</label>
+            <label><input type="radio" name="lokalizacja" value="publiczne"> Miejsce publiczne</label>
           </div>
-          <div class="config-options hide-pelna">
+          <div class="config-options">
             <label><input type="radio" name="miejscowosc-typ" value="miasto"> Miasto</label>
             <label><input type="radio" name="miejscowosc-typ" value="wies"> Wieś</label>
           </div>
         </section>
 
         <section class="config-step" data-step="5" hidden>
-          <h2><span class="hide-pelna">Co jeszcze dopasować?</span><span class="show-pelna">Płatności i dodatki</span></h2>
-          <p class="config-hint hide-pelna">Dopasowujemy dosłownie wszystko. Zaznacz, na czym Ci zależy — resztę dogramy w rozmowie.</p>
-          <div class="hide-pelna linia-opts" data-linia-opts="smart">
+          <h2>Co jeszcze dopasować?</h2>
+          <p class="config-hint">Dopasowujemy dosłownie wszystko. Zaznacz, na czym Ci zależy — resztę dogramy w rozmowie.</p>
+          <div class="linia-opts" data-linia-opts="smart">
             <h3>Linia Smart (Westvend) — który model?</h3>
             <div class="config-options config-options--wide">
               <label><input type="radio" name="model-automatu" value="wv_hybrid"> WV Hybrid — z windą, do żywności i bio (jajka, pieczywo, nabiał, słoiki)</label>
@@ -210,7 +169,7 @@
             <p class="config-hint">Transport pod Twój adres i szkolenie telefoniczne z obsługi są zawsze w zamówieniu — nie trzeba ich zaznaczać.</p>
             <p class="config-hint">Linia Smart jest do wnętrz i miejsc zadaszonych. Automat bez dachu? Wybierz linię Premium w wersji outdoor.</p>
           </div>
-          <div class="hide-pelna linia-opts" data-linia-opts="premium">
+          <div class="linia-opts" data-linia-opts="premium">
             <h3>Linia Premium (Sielaff) — który model?</h3>
             <div class="config-options config-options--wide">
               <label><input type="radio" name="model-automatu" value="siline_snack_combi"> SiLine Snack &amp; Combi — S (780 mm) lub M (990 mm), spirale i popychacze, do 7 półek</label>
@@ -255,22 +214,22 @@
             </div>
           </div>
           </div>
-          <h3 class="hide-pelna">Automat na wymiar</h3>
-          <div class="config-options hide-pelna">
+          <h3>Automat na wymiar</h3>
+          <div class="config-options">
             <label><input type="checkbox" name="platnosci" value="rozmiar_na_wymiar"> Rozmiar automatu pod moje miejsce</label>
             <label><input type="checkbox" name="platnosci" value="komory_na_wymiar"> Komory na wymiar moich produktów</label>
             <label><input type="checkbox" name="platnosci" value="kilka_temperatur"> Różne temperatury w różnych komorach</label>
           </div>
-          <h3 class="hide-pelna">Wygląd</h3>
-          <div class="config-options hide-pelna">
+          <h3>Wygląd</h3>
+          <div class="config-options">
             <label><input type="checkbox" name="platnosci" value="oklejenie"> Oklejenie z Twoim logo i napisami</label>
             <label><input type="checkbox" name="platnosci" value="ekran"> Ekran z logo</label>
           </div>
-          <h3 class="hide-pelna">Płatności i dodatki</h3>
+          <h3>Płatności i dodatki</h3>
           <div class="config-options">
             <label><input type="checkbox" name="platnosci" value="karta_blik"> Karta i BLIK</label>
             <label><input type="checkbox" name="platnosci" value="gotowka"> Gotówka</label>
-            <label class="hide-pelna"><input type="checkbox" name="platnosci" value="telemetria"> Telemetria</label>
+            <label><input type="checkbox" name="platnosci" value="telemetria"> Telemetria</label>
           </div>
         </section>
 
@@ -284,9 +243,7 @@
         </section>
 
         <section class="config-step" data-step="7" hidden>
-          <h2 class="show-pelna">Gotowe!</h2>
-          <div class="show-pelna config-hint">W pełnej obsłudze nie musisz niczego liczyć — automat stawiamy, uzupełniamy i serwisujemy my. Wyślij zgłoszenie, a odezwiemy się w 24–48 h.</div>
-          <div class="hide-pelna">
+          <div>
           <h2>Szacowana opłacalność <em>(opcjonalnie)</em></h2>
           <p class="config-field" style="font-weight:400;">Możesz od razu poeksperymentować z liczbami — albo pominąć ten krok i po prostu wysłać zgłoszenie.</p>
           <div class="calc-grid">

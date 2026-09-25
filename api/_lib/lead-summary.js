@@ -1,12 +1,10 @@
 import { CLAUDE_MODEL, responseText } from './claude.js';
 
-const SYSTEM = `Jesteś asystentem działu sprzedaży VendingFresh (partner Sielaff). Firma oferuje:
-- ZAKUP lub WYNAJEM automatu skonfigurowanego pod produkt klienta: rozmiar, liczba i wielkość komór, temperatury, sposób wydawania (spirala, popychacz, winda), okleina z logo i napisami (np. Chlebomat, Kwiatomat, Ciastkomat). Klient sam uzupełnia automat.
-- PEŁNĄ OBSŁUGĘ tylko dla szkół, biur i zakładów: gotowy, standardowy automat z asortymentem VendingFresh, bez indywidualnej konfiguracji i okleiny; VendingFresh uzupełnia i serwisuje. Przy dużym ruchu bez kosztów dla klienta, przy małym stała opłata miesięczna.
+const SYSTEM = `Jesteś asystentem działu sprzedaży VendingFresh (partner Sielaff). Firma wyłącznie SPRZEDAJE automaty (gotówka, leasing albo dotacja ARiMR) — nie wynajmuje ich i nie prowadzi ich obsługi ani uzupełniania. Automat jest skonfigurowany pod produkt klienta: rozmiar, liczba i wielkość komór, temperatury, sposób wydawania (spirala, popychacz, winda), okleina z logo i napisami (np. Chlebomat, Kwiatomat, Ciastkomat). Klient sam uzupełnia automat.
 Dostajesz odpowiedzi z konfiguratora. Napisz po polsku, zwięźle, dla handlowca, który zaraz zadzwoni do klienta. Nie wymyślaj cen ani faktów, których nie ma w danych. Format (zwykły tekst, bez markdownu):
 PODSUMOWANIE: 1–2 zdania, kim jest klient i czego chce.
-PROPOZYCJA: jaki automat i konfiguracja pasują (lub gotowy automat przy pełnej obsłudze).
-UWAGI: ryzyka lub braki w danych (np. brak wymiarów, produkt wymagający chłodzenia, przepisy w szkołach).
+PROPOZYCJA: jaki automat i konfiguracja pasują, i czy warto zaproponować leasing.
+UWAGI: ryzyka lub braki w danych (np. brak wymiarów, produkt wymagający chłodzenia).
 PYTANIA NA TELEFON: 2–3 konkretne pytania.
 PRIORYTET: gorący / ciepły / zimny — z jednym słowem uzasadnienia.`;
 
@@ -46,11 +44,8 @@ const COOLED = ['sery', 'nabial', 'mieso', 'wedliny', 'dania', 'nabial_jogurty',
 /** Rule-based summary used when there is no API key or the AI call fails. */
 export function fallbackLeadSummary(p = {}) {
   const produkty = [...(Array.isArray(p.produkty) ? p.produkty : []), p.produktInne].filter(Boolean).join(', ') || 'nie podano';
-  const pelna = p.model === 'pelna_obsluga';
   const proposal = [];
-  if (pelna) {
-    proposal.push('gotowy automat z naszym asortymentem, dobrany do liczby osób');
-  } else {
+  {
     const cooled = p.temperatura === 'chlodzenie' || (p.produkty ?? []).some((x) => COOLED.includes(x));
     const fragile = (p.produkty ?? []).some((x) => ['jajka', 'kwiaty', 'ciastka', 'przetwory', 'miod'].includes(x));
     if (p.linia === 'smart') {
@@ -66,8 +61,8 @@ export function fallbackLeadSummary(p = {}) {
   }
   const gaps = [];
   const questions = [];
-  if (!pelna && !p.wymiary) { gaps.push('brak wymiarów opakowań'); questions.push('Jakie są wymiary i waga opakowań?'); }
-  if (!p.wolumenDzienny) { gaps.push('brak wolumenu'); questions.push(pelna ? 'Ile osób codziennie jest na miejscu?' : 'Ile sztuk sprzedajecie dziennie?'); }
+  if (!p.wymiary) { gaps.push('brak wymiarów opakowań'); questions.push('Jakie są wymiary i waga opakowań?'); }
+  if (!p.wolumenDzienny) { gaps.push('brak wolumenu'); questions.push('Ile sztuk sprzedajecie dziennie?'); }
   if (!p.lokalizacja) { gaps.push('brak lokalizacji'); }
   questions.push('Gdzie dokładnie stanie automat i czy jest tam prąd?');
   if (!p.telefon) gaps.push('brak telefonu — kontakt tylko mailowy');

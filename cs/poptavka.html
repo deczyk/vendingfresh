@@ -57,11 +57,7 @@
         <form id="inquiry-form" class="config-step" novalidate data-lang="cs" data-thanks="/cs/dekujeme"
               data-err-product="Napište nám, co chcete prodávat." data-err-contact="Uveďte telefon nebo e-mail." data-err-consent="Zaškrtněte prosím souhlas, abychom vás mohli kontaktovat." data-err-send="Formulář se nepodařilo odeslat. Zkuste to prosím znovu nebo nám zavolejte.">
           <input type="text" name="website" autocomplete="off" tabindex="-1" class="visually-hidden" aria-hidden="true">
-          <h2>Jak chcete automat mít?</h2>
-          <div class="config-options">
-            <label><input type="radio" name="model" value="zakup" checked> Koupě</label>
-            <label><input type="radio" name="model" value="wynajem"> Pronájem</label>
-          </div>
+          <input type="hidden" name="model" value="zakup">
           <label class="config-field">Co chcete prodávat?
             <textarea name="produkt" required placeholder="např. chléb a rohlíky v papírových sáčcích, asi 60 denně"></textarea>
           </label>

@@ -112,10 +112,10 @@ describe('buildLeadsRequestBody', () => {
 
   it('includes the chosen cooperation model in notes and interest', () => {
     const body = buildLeadsRequestBody({
-      model: 'pelna_obsluga', produkty: ['napoje'], produktInne: '', telefon: '600000000', rodo: true, website: '',
+      model: 'zakup', produkty: ['napoje'], produktInne: '', telefon: '600000000', rodo: true, website: '',
     });
 
-    expect(body.notes).toContain('Model współpracy: pełna obsługa — gotowy automat (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)');
-    expect(body.zainteresowanie).toBe('Konfigurator VendingFresh — pełna obsługa — gotowy automat (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)');
+    expect(body.notes).toContain('Model współpracy: zakup na własność');
+    expect(body.zainteresowanie).toBe('Konfigurator VendingFresh — zakup na własność');
   });
 });

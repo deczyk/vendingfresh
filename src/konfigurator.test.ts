@@ -1,15 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { createInitialState, displayStep, nextStep, prevStep, suggestDirection, validateStep } from './konfigurator';
+import { createInitialState, nextStep, prevStep, suggestDirection, validateStep } from './konfigurator';
 
 describe('validateStep', () => {
-  it('requires a cooperation model on step 1', () => {
-    const state = createInitialState();
-    state.produktInne = 'kawa mielona';
-    expect(validateStep(1, state)).toMatch(/zakup, wynajem albo pełna obsługa/);
-    state.model = 'pelna_obsluga';
-    expect(validateStep(1, state)).toBeNull();
-  });
-
   it('requires at least one product or free text on step 1', () => {
     const state = createInitialState();
     state.model = 'zakup';
@@ -43,14 +35,6 @@ describe('validateStep', () => {
     expect(validateStep(3, state)).toBeNull();
   });
 
-  it('asks full-service clients about headcount instead of sales volume on step 3', () => {
-    const state = createInitialState();
-    state.model = 'pelna_obsluga';
-    expect(validateStep(3, state)).toMatch(/ile osób/);
-    state.wolumenDzienny = '120 pracowników';
-    expect(validateStep(3, state)).toBeNull();
-  });
-
   it('requires a location on step 4', () => {
     const state = createInitialState();
     expect(validateStep(4, state)).toMatch(/gdzie stanie/);
@@ -81,9 +65,9 @@ describe('suggestDirection', () => {
     const state = createInitialState();
     state.temperatura = 'pokojowa';
     state.lokalizacja = 'budynek';
-    state.model = 'wynajem';
+    state.model = 'zakup';
     expect(suggestDirection(state)).toBe(
-      'Proponowany kierunek: SiLine Snack & Combi. Model: wynajem — Ty uzupełniasz automat, płacisz stałą opłatę co miesiąc.',
+      'Proponowany kierunek: SiLine Snack & Combi. Model: zakup na własność — gotówka, leasing albo dotacja.',
     );
   });
 
@@ -128,39 +112,9 @@ describe('suggestDirection for the chosen line', () => {
 });
 
 describe('step navigation', () => {
-  it('skips the packaging step for pełna obsługa (ready-made machine)', () => {
-    expect(nextStep(1, 'pelna_obsluga')).toBe(3);
-    expect(prevStep(3, 'pelna_obsluga')).toBe(1);
-  });
-
-  it('walks every step for zakup and wynajem', () => {
-    expect(nextStep(1, 'zakup')).toBe(2);
-    expect(prevStep(3, 'wynajem')).toBe(2);
-    expect(nextStep(4, 'pelna_obsluga')).toBe(5);
-  });
-});
-
-describe('pełna obsługa flow', () => {
-  it('numbers steps without the skipped one', () => {
-    expect(displayStep(1, 7, 'pelna_obsluga')).toEqual([1, 6]);
-    expect(displayStep(3, 7, 'pelna_obsluga')).toEqual([2, 6]);
-    expect(displayStep(7, 7, 'pelna_obsluga')).toEqual([6, 6]);
-    expect(displayStep(3, 7, 'zakup')).toEqual([3, 7]);
-  });
-
-  it('asks for products from our range on step 1', () => {
-    const state = createInitialState();
-    state.model = 'pelna_obsluga';
-    expect(validateStep(1, state)).toMatch(/produkty/);
-    state.produkty = ['napoje_zimne'];
-    expect(validateStep(1, state)).toBeNull();
-  });
-
-  it('suggests a ready-made machine, not a custom configuration', () => {
-    const state = createInitialState();
-    state.model = 'pelna_obsluga';
-    state.produkty = ['kanapki_salatki'];
-    expect(suggestDirection(state)).toMatch(/^Proponowany kierunek: gotowy automat/);
-    expect(suggestDirection(state)).not.toMatch(/SiLine/);
+  it('walks every step in order', () => {
+    expect(nextStep(1)).toBe(2);
+    expect(nextStep(4)).toBe(5);
+    expect(prevStep(3)).toBe(2);
   });
 });
