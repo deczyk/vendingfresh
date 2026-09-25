@@ -132,12 +132,13 @@
           <h2>Jak to jest zapakowane?</h2>
           <div class="config-options">
             <label><input type="radio" name="opakowanie" value="worek"> Worek</label>
-            <label><input type="radio" name="opakowanie" value="wytloczanka"> Wytłaczanka</label>
             <label><input type="radio" name="opakowanie" value="sloik"> Słoik</label>
             <label><input type="radio" name="opakowanie" value="butelka"> Butelka</label>
             <label><input type="radio" name="opakowanie" value="pudelko"> Pudełko</label>
             <label><input type="radio" name="opakowanie" value="luzem"> Luzem</label>
+            <label><input type="radio" name="opakowanie" value="inne"> Inne — wpiszę sam</label>
           </div>
+          <label class="config-field">Twoje opakowanie (jeśli inne albo chcesz doprecyzować): <input type="text" id="opakowanie-inne" placeholder="np. tacka z folią, karton 6 szt., bukiet w rękawie"></label>
           <label class="config-field">Orientacyjne wymiary i waga: <input type="text" id="wymiary" placeholder="np. 20x10x8 cm, 0,5 kg"></label>
           <p class="config-hint">Na tej podstawie dobierzemy liczbę i wielkość komór — pod Twój produkt, nie odwrotnie.</p>
           <h3>Temperatura</h3>
@@ -186,6 +187,47 @@
         <section class="config-step" data-step="5" hidden>
           <h2><span class="hide-pelna">Co jeszcze dopasować?</span><span class="show-pelna">Płatności i dodatki</span></h2>
           <p class="config-hint hide-pelna">Dopasowujemy dosłownie wszystko. Zaznacz, na czym Ci zależy — resztę dogramy w rozmowie.</p>
+          <div class="hide-pelna linia-opts" data-linia-opts="smart">
+            <h3>Linia Smart (Westvend) — który model?</h3>
+            <div class="config-options config-options--wide">
+              <label><input type="radio" name="model-automatu" value="wv_hybrid"> WV Hybrid — z windą, do żywności i bio (jajka, pieczywo, nabiał, słoiki)</label>
+              <label><input type="radio" name="model-automatu" value="wv_8"> WV 8 — spiralny, do napojów, przekąsek i butelek PET</label>
+              <label><input type="radio" name="model-automatu" value="doradzcie"> Doradźcie</label>
+            </div>
+            <h3>Konfiguracja Westvend</h3>
+            <div class="config-options config-options--wide">
+              <label><input type="checkbox" name="platnosci" value="uklad_spiral_pod_produkty"> Układ spiral pod moje produkty</label>
+              <label><input type="checkbox" name="platnosci" value="weryfikacja_wieku"> Weryfikacja wieku</label>
+              <label><input type="checkbox" name="platnosci" value="zamek_i_alarm"> Zamek bezpieczeństwa i alarm (WV Hybrid)</label>
+              <label><input type="checkbox" name="platnosci" value="mocowanie_podloga_sciana"> Mocowanie do podłogi lub ściany</label>
+              <label><input type="checkbox" name="platnosci" value="szkolenie"> Szkolenie z obsługi</label>
+              <label><input type="checkbox" name="platnosci" value="transport"> Transport pod mój adres</label>
+            </div>
+            <label class="config-field">Kolor obudowy: <input type="text" id="kolor-obudowy" placeholder="np. czarny, biały — pod okleinę z Twoim logo"></label>
+            <p class="config-hint">Linia Smart jest do wnętrz i miejsc zadaszonych. Automat bez dachu? Wybierz linię Premium w wersji outdoor.</p>
+          </div>
+          <div class="hide-pelna linia-opts" data-linia-opts="premium">
+            <h3>Linia Premium (Sielaff) — który model?</h3>
+            <div class="config-options config-options--wide">
+              <label><input type="radio" name="model-automatu" value="siline_snack_combi"> SiLine Snack &amp; Combi — świeże produkty, dwie strefy temperatur</label>
+              <label><input type="radio" name="model-automatu" value="sn48"> SN48 — kompaktowy, na start i mniejsze miejsca</label>
+              <label><input type="radio" name="model-automatu" value="siline_gf"> SiLine GF — szklana witryna, napoje i produkty markowe</label>
+              <label><input type="radio" name="model-automatu" value="robimat_x"> Robimat X — ramię robota zamiast spirali</label>
+              <label><input type="radio" name="model-automatu" value="seria_fk"> Seria FK — zsypowy na napoje</label>
+              <label><input type="radio" name="model-automatu" value="outdoor"> Wersja outdoor — na zewnątrz, IP24, do −20 °C</label>
+              <label><input type="radio" name="model-automatu" value="siline_public"> SiLine Public — antywandalowy, miejsca publiczne</label>
+              <label><input type="radio" name="model-automatu" value="doradzcie"> Doradźcie</label>
+            </div>
+            <h3>Konfiguracja Sielaff</h3>
+            <div class="config-options config-options--wide">
+              <label><input type="checkbox" name="platnosci" value="dwie_strefy_foodsafety"> Dwie strefy temperatur z monitoringiem FoodSafety</label>
+              <label><input type="checkbox" name="platnosci" value="winda"> Winda do delikatnych produktów (jajka, szkło)</label>
+              <label><input type="checkbox" name="platnosci" value="spirale_lub_popychacze"> Spirale lub popychacze pod kształt opakowania</label>
+              <label><input type="checkbox" name="platnosci" value="blokowana_klapa"> Blokowana klapa odbioru</label>
+              <label><input type="checkbox" name="platnosci" value="ekran_dotykowy_alergeny"> Ekran dotykowy z informacją o produkcie i alergenach</label>
+              <label><input type="checkbox" name="platnosci" value="automat_do_kawy"> Automat do kawy obok (Siamonie / SiLine HG)</label>
+            </div>
+          </div>
           <h3 class="hide-pelna">Automat na wymiar</h3>
           <div class="config-options hide-pelna">
             <label><input type="checkbox" name="platnosci" value="rozmiar_na_wymiar"> Rozmiar automatu pod moje miejsce</label>

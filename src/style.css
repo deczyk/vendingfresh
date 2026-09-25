@@ -1836,3 +1836,10 @@ h2 em, h1 em {
   background: #fff;
   box-shadow: var(--shadow-sm);
 }
+
+/* Configurator: options specific to the chosen machine line */
+.linia-opts { display: none; }
+[data-linia="smart"] .linia-opts[data-linia-opts="smart"],
+[data-linia="premium"] .linia-opts[data-linia-opts="premium"] { display: block; }
+[data-model="pelna_obsluga"] .linia-opts { display: none; }
+.config-options.config-options--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }

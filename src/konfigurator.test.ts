@@ -27,6 +27,15 @@ describe('validateStep', () => {
     expect(validateStep(2, state)).toBeNull();
   });
 
+  it('requires a description when packaging is "inne"', () => {
+    const state = createInitialState();
+    state.opakowanie = 'inne';
+    state.temperatura = 'chlodzenie';
+    expect(validateStep(2, state)).toMatch(/Wpisz/);
+    state.opakowanieInne = 'tacka z folią';
+    expect(validateStep(2, state)).toBeNull();
+  });
+
   it('requires a volume estimate on step 3', () => {
     const state = createInitialState();
     expect(validateStep(3, state)).toMatch(/wolumen/);

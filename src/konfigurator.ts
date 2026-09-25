@@ -7,6 +7,9 @@ export interface ConfiguratorState {
   produkty: string[];
   produktInne: string;
   opakowanie: string;
+  opakowanieInne: string;
+  modelAutomatu: string;
+  kolorObudowy: string;
   wymiary: string;
   temperatura: string;
   wolumenDzienny: string;
@@ -30,6 +33,9 @@ export function createInitialState(): ConfiguratorState {
     produkty: [],
     produktInne: '',
     opakowanie: '',
+    opakowanieInne: '',
+    modelAutomatu: '',
+    kolorObudowy: '',
     wymiary: '',
     temperatura: '',
     wolumenDzienny: '',
@@ -60,6 +66,7 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
         : null;
     case 2:
       if (state.opakowanie.trim() === '') return 'Wybierz sposób pakowania.';
+      if (state.opakowanie === 'inne' && state.opakowanieInne.trim() === '') return 'Wpisz, jak zapakowany jest Twój produkt.';
       if (state.temperatura.trim() === '') return 'Wybierz temperaturę.';
       return null;
     case 3:
@@ -150,12 +157,18 @@ function initConfigurator(): void {
     state.model = form!.querySelector<HTMLInputElement>('input[name="model"]:checked')?.value ?? '';
     form!.dataset.model = state.model;
     state.linia = state.model === 'pelna_obsluga' ? '' : (form!.querySelector<HTMLInputElement>('input[name="linia"]:checked')?.value ?? '');
+    form!.dataset.linia = state.linia;
+    state.modelAutomatu = state.linia === 'smart' || state.linia === 'premium'
+      ? (form!.querySelector<HTMLInputElement>('input[name="model-automatu"]:checked')?.value ?? '')
+      : '';
+    state.kolorObudowy = state.linia === 'smart' ? (document.getElementById('kolor-obudowy') as HTMLInputElement | null)?.value ?? '' : '';
     state.czestotliwosc = form!.querySelector<HTMLInputElement>('input[name="czestotliwosc"]:checked')?.value ?? '';
     state.produkty = Array.from(
       form!.querySelectorAll<HTMLInputElement>('input[name="produkty"]:checked'),
     ).map((el) => el.value);
     state.produktInne = (document.getElementById('produkt-inne') as HTMLInputElement | null)?.value ?? '';
     state.opakowanie = form!.querySelector<HTMLInputElement>('input[name="opakowanie"]:checked')?.value ?? '';
+    state.opakowanieInne = (document.getElementById('opakowanie-inne') as HTMLInputElement | null)?.value ?? '';
     state.wymiary = (document.getElementById('wymiary') as HTMLInputElement | null)?.value ?? '';
     state.temperatura = form!.querySelector<HTMLInputElement>('input[name="temperatura"]:checked')?.value ?? '';
     state.wolumenDzienny = (document.getElementById('wolumen-dzienny') as HTMLInputElement | null)?.value ?? '';
@@ -248,6 +261,13 @@ function initConfigurator(): void {
         .forEach((input) => (input.checked = false));
       renderStep();
     }
+    if (target?.name === 'linia') {
+      form.dataset.linia = target.value;
+      // Options of the other line stay hidden — don't send them with the lead.
+      form
+        .querySelectorAll<HTMLInputElement>(`[data-linia-opts]:not([data-linia-opts="${CSS.escape(target.value)}"]) input:checked`)
+        .forEach((input) => (input.checked = false));
+    }
   });
 
   // Deep link from /oferta: /konfigurator?model=pelna_obsluga preselects the option.
@@ -257,6 +277,7 @@ function initConfigurator(): void {
     presetInput.checked = true;
     form.dataset.model = presetInput.value;
   }
+  form.dataset.linia = form.querySelector<HTMLInputElement>('input[name="linia"]:checked')?.value ?? '';
 
   renderStep();
 }
