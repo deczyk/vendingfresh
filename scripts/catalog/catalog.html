@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>VendingFresh — katalog</title>
+<style>
+@font-face { font-family: 'Fraunces'; font-weight: 500; font-style: normal; src: url(fonts/fraunces-latin-ext-500-normal.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Fraunces'; font-weight: 500; font-style: normal; src: url(fonts/fraunces-latin-500-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Fraunces'; font-weight: 500; font-style: italic; src: url(fonts/fraunces-latin-ext-500-italic.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Fraunces'; font-weight: 500; font-style: italic; src: url(fonts/fraunces-latin-500-italic.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Fraunces'; font-weight: 700; font-style: normal; src: url(fonts/fraunces-latin-ext-700-normal.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Fraunces'; font-weight: 700; font-style: normal; src: url(fonts/fraunces-latin-700-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Fraunces'; font-weight: 700; font-style: italic; src: url(fonts/fraunces-latin-ext-700-italic.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Fraunces'; font-weight: 700; font-style: italic; src: url(fonts/fraunces-latin-700-italic.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Jakarta'; font-weight: 400; src: url(fonts/plus-jakarta-sans-latin-ext-400-normal.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Jakarta'; font-weight: 400; src: url(fonts/plus-jakarta-sans-latin-400-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Jakarta'; font-weight: 600; src: url(fonts/plus-jakarta-sans-latin-ext-600-normal.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Jakarta'; font-weight: 600; src: url(fonts/plus-jakarta-sans-latin-600-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Jakarta'; font-weight: 700; src: url(fonts/plus-jakarta-sans-latin-ext-700-normal.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Jakarta'; font-weight: 700; src: url(fonts/plus-jakarta-sans-latin-700-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Jakarta'; font-weight: 800; src: url(fonts/plus-jakarta-sans-latin-ext-800-normal.woff2) format('woff2'); unicode-range: U+0100-02AF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Jakarta'; font-weight: 800; src: url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+@page { size: A4; margin: 0; }
+:root {
+  --teal: #0E5C5C; --teal-dark: #083D3D; --teal-mid: #3D7A7A;
+  --gold: #C9A227; --gold-soft: #F3E3A6; --leaf: #7BA05B; --coral: #E07A5F;
+  --ink: #1E2A28; --muted: #5B6765; --bg: #F7F5F0; --cream: #EFEAE0; --card: #FFFDF8; --line: #E5DFD2;
+  --serif: 'Fraunces', Georgia, serif; --sans: 'Jakarta', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--sans); color: var(--ink); font-size: 9.6pt; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 210mm; height: 297mm; position: relative; overflow: hidden; page-break-after: always; background: #fff; }
+.page:last-child { page-break-after: auto; }
+.inner { position: absolute; inset: 24mm 16mm 16mm 16mm; display: flex; flex-direction: column; }
+
+/* running header / footer */
+.hdr { position: absolute; top: 0; left: 16mm; right: 16mm; height: 16mm; display: flex; align-items: center; justify-content: space-between; border-bottom: 1.2pt solid var(--teal); }
+.hdr img { height: 7.5mm; }
+.hdr span { font-size: 7.5pt; color: var(--muted); letter-spacing: .04em; }
+.ftr { position: absolute; bottom: 0; left: 16mm; right: 16mm; height: 11mm; display: flex; align-items: center; justify-content: space-between; border-top: .6pt solid var(--line); font-size: 7pt; color: var(--muted); }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; color: var(--teal-dark); line-height: 1.12; }
+h2 { font-size: 24pt; margin-bottom: 3mm; letter-spacing: -.01em; }
+h2 em, h1 em { font-style: italic; font-weight: 500; color: var(--teal-mid); }
+h3 { font-size: 13pt; margin-bottom: 1.5mm; }
+.eyebrow { font-size: 7.5pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 2mm; }
+.lead { font-size: 10.5pt; color: var(--muted); max-width: 150mm; margin-bottom: 6mm; }
+p + p { margin-top: 2mm; }
+strong { font-weight: 700; }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3.5mm; }
+.card { background: var(--card); border: .6pt solid var(--line); border-radius: 4mm; padding: 4.5mm; }
+.card--cream { background: var(--cream); border-color: transparent; }
+.card--dark { background: var(--teal-dark); color: #E8F0EE; border: none; }
+.card--dark h3 { color: #fff; }
+.card .ic { font-size: 16pt; line-height: 1; margin-bottom: 2mm; display: block; }
+.card h4 { font-size: 10pt; font-weight: 800; color: var(--teal-dark); margin-bottom: 1mm; }
+.card p { font-size: 8.6pt; color: var(--muted); }
+.card--dark p { color: #C9DAD6; }
+
+ul.ticks { list-style: none; }
+ul.ticks li { position: relative; padding-left: 5mm; margin-bottom: 1.4mm; font-size: 8.8pt; }
+ul.ticks li::before { content: ''; position: absolute; left: 0; top: 1.6mm; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--leaf); }
+.card--dark ul.ticks li::before { background: var(--gold); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 3mm; }
+.tag { font-size: 7pt; font-weight: 700; padding: .8mm 2.6mm; border-radius: 10mm; background: var(--gold-soft); color: #6B5410; }
+.tag--teal { background: #D7E8E5; color: var(--teal-dark); }
+
+.note { background: var(--teal-dark); color: #DDEAE7; border-radius: 4mm; padding: 5mm 6mm; font-size: 8.8pt; }
+.note strong { color: var(--gold-soft); }
+.note--gold { background: var(--gold-soft); color: #4C3C0B; }
+.note--gold strong { color: #4C3C0B; }
+
+/* cover */
+.cover { background: radial-gradient(120% 80% at 90% 10%, #1B7A73 0%, var(--teal) 35%, var(--teal-dark) 100%); color: #fff; }
+.cover .dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.2px); background-size: 5mm 5mm; }
+.cover .logo { position: absolute; top: 16mm; left: 16mm; height: 14mm; }
+.cover .brandline { position: absolute; top: 32mm; left: 16mm; font-size: 7.5pt; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-soft); }
+.cover h1 { position: absolute; top: 52mm; left: 16mm; right: 16mm; font-size: 40pt; color: #fff; letter-spacing: -.015em; }
+.cover h1 em { color: var(--gold-soft); }
+.cover .sub { position: absolute; top: 108mm; left: 16mm; width: 110mm; font-size: 11pt; color: #CFE3DF; }
+.cover .mocks { position: absolute; bottom: 30mm; left: 0; right: 0; height: 104mm; display: flex; align-items: flex-end; justify-content: center; gap: 0; }
+.cover .mocks img { height: 100%; margin: 0 -5mm; }
+.cover .mocks img:nth-child(1), .cover .mocks img:nth-child(5) { height: 78%; }
+.cover .mocks img:nth-child(2), .cover .mocks img:nth-child(4) { height: 89%; }
+.cover .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 24mm; background: rgba(0,0,0,.22); display: flex; align-items: center; justify-content: space-between; padding: 0 16mm; }
+.btn { display: inline-block; background: var(--gold); color: var(--teal-dark); font-weight: 800; font-size: 9pt; padding: 2.6mm 5mm; border-radius: 2.5mm; }
+.cover .contact { text-align: right; font-size: 8.5pt; color: #DDEAE7; line-height: 1.6; }
+
+/* offer table */
+.offer-row { display: grid; grid-template-columns: 34mm 1fr 1fr; gap: 5mm; padding: 3.2mm 0; border-bottom: .6pt solid var(--line); font-size: 8.8pt; }
+.offer-row:first-child { border-top: .6pt solid var(--line); }
+.offer-row b { font-weight: 800; color: var(--teal-dark); font-size: 10pt; display: block; }
+.offer-row .for { color: var(--muted); font-size: 8pt; }
+.offer-row--hl { background: #FBF6E4; margin: 0 -3mm; padding-left: 3mm; padding-right: 3mm; }
+
+.steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5mm 6mm; }
+.step { display: flex; gap: 3mm; }
+.step .n { flex: none; width: 7mm; height: 7mm; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 800; font-size: 8.5pt; display: flex; align-items: center; justify-content: center; }
+.step h4 { font-size: 9.2pt; font-weight: 800; color: var(--teal-dark); margin-bottom: .8mm; }
+.step p { font-size: 8.2pt; color: var(--muted); }
+
+/* mats */
+.mats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.mat { background: linear-gradient(180deg, var(--cream), #F8F5EE); border-radius: 4mm; padding: 3mm 3mm 3.5mm; text-align: center; }
+.mat img { height: 62mm; display: block; margin: 0 auto 2mm; }
+.mat b { font-family: var(--serif); font-size: 12pt; color: var(--teal-dark); display: block; }
+.mat span { font-size: 7.8pt; color: var(--muted); }
+
+/* product (machine) blocks */
+.machine { display: grid; grid-template-columns: 58mm 1fr; gap: 7mm; align-items: start; }
+.machine .ph { background: linear-gradient(180deg, #fff, var(--cream)); border: .6pt solid var(--line); border-radius: 4mm; height: 96mm; display: flex; align-items: center; justify-content: center; padding: 4mm; }
+.machine .ph img { max-height: 100%; max-width: 100%; }
+.machine .kind { font-size: 7.5pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--coral); margin-bottom: 1mm; }
+.machine h3 { font-size: 16pt; }
+.machine > div > p { font-size: 9pt; color: var(--muted); margin-bottom: 1mm; }
+dl.spec { display: grid; grid-template-columns: 30mm 1fr; gap: 1.4mm 3mm; font-size: 8.3pt; margin-top: 3mm; padding-top: 3mm; border-top: .6pt dashed var(--line); }
+dl.spec dt { font-weight: 700; color: var(--teal-dark); }
+dl.spec dd { color: var(--muted); }
+
+.mini { display: grid; grid-template-columns: 26mm 1fr; gap: 4mm; align-items: center; }
+.mini img { width: 26mm; height: 36mm; object-fit: contain; background: #fff; border-radius: 3mm; border: .6pt solid var(--line); padding: 1.5mm; }
+.mini h4 { font-size: 10.5pt; font-family: var(--serif); color: var(--teal-dark); margin-bottom: .8mm; }
+.mini p { font-size: 8.2pt; color: var(--muted); }
+
+/* solutions */
+.sol { background: var(--card); border: .6pt solid var(--line); border-radius: 4mm; padding: 4mm; }
+.sol .ic { font-size: 18pt; line-height: 1; }
+.sol h4 { font-family: var(--serif); font-size: 11.5pt; color: var(--teal-dark); margin: 1.5mm 0 .8mm; }
+.sol p { font-size: 8.2pt; color: var(--muted); }
+.sol--all { background: var(--teal-dark); border: none; }
+.sol--all h4 { color: var(--gold-soft); } .sol--all p { color: #C9DAD6; }
+
+/* earnings */
+.case { background: var(--card); border: .6pt solid var(--line); border-radius: 4mm; padding: 4mm; }
+.case h4 { font-family: var(--serif); font-size: 11.5pt; color: var(--teal-dark); margin-bottom: 1.5mm; }
+.case .in { font-size: 7.8pt; color: var(--muted); margin-bottom: 2.5mm; line-height: 1.55; }
+.case .row { display: flex; justify-content: space-between; font-size: 8.4pt; padding: 1mm 0; border-top: .6pt dashed var(--line); }
+.case .row b { font-weight: 800; }
+.case .big { margin-top: 2mm; background: var(--teal-dark); color: #fff; border-radius: 2.5mm; padding: 2.4mm 3mm; display: flex; justify-content: space-between; align-items: baseline; }
+.case .big span { font-size: 7.5pt; color: #C9DAD6; }
+.case .big b { font-family: var(--serif); font-size: 15pt; color: var(--gold-soft); }
+
+.check { list-style: none; counter-reset: c; }
+.check li { position: relative; padding: 2.4mm 0 2.4mm 9mm; border-bottom: .6pt solid var(--line); font-size: 9pt; }
+.check li::before { content: '✓'; position: absolute; left: 0; top: 2mm; width: 6mm; height: 6mm; border-radius: 50%; background: #E3EEDA; color: #3E6B22; font-weight: 800; font-size: 8.5pt; display: flex; align-items: center; justify-content: center; }
+
+.photo-band { border-radius: 4mm; overflow: hidden; height: 58mm; }
+.photo-band img { width: 100%; height: 100%; object-fit: cover; }
+
+/* back cover */
+.back { background: radial-gradient(120% 90% at 10% 0%, #1B7A73 0%, var(--teal) 30%, var(--teal-dark) 100%); color: #fff; }
+.back .dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.2px); background-size: 5mm 5mm; }
+.back .inner { inset: 22mm 18mm 18mm 18mm; }
+.back h2 { color: #fff; font-size: 30pt; }
+.back h2 em { color: var(--gold-soft); }
+.back .lead { color: #CFE3DF; }
+.reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; margin: 4mm 0 8mm; }
+.reason { background: rgba(255,255,255,.07); border: .6pt solid rgba(255,255,255,.14); border-radius: 4mm; padding: 4mm; }
+.reason b { color: var(--gold-soft); font-size: 9.5pt; display: block; margin-bottom: .8mm; }
+.reason p { font-size: 8.3pt; color: #C9DAD6; }
+.contact-box { margin-top: auto; background: #fff; color: var(--ink); border-radius: 5mm; padding: 6mm; display: grid; grid-template-columns: 1fr 34mm; gap: 6mm; align-items: center; }
+.contact-box h3 { font-size: 15pt; margin-bottom: 2mm; }
+.contact-box .c { font-size: 10pt; line-height: 1.8; }
+.contact-box .c b { color: var(--teal-dark); }
+.contact-box .qr { text-align: center; font-size: 7pt; color: var(--muted); }
+.contact-box .qr img { width: 34mm; height: 34mm; display: block; margin-bottom: 1.5mm; }
+.legal { font-size: 7pt; color: #9FBDB7; margin-top: 5mm; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="page cover">
+  <div class="dots"></div>
+  <img class="logo" src="../../public/vendingfresh_logo.png" alt="VendingFresh" style="filter: brightness(0) invert(1);">
+  <div class="brandline">Automaty sprzedażowe na wymiar · partner Sielaff</div>
+  <h1>Automat, który z daleka mówi, <em>co sprzedajesz.</em></h1>
+  <p class="sub">Chlebomat, kwiatomat, ciastkomat, seromat — albo wszystkomat. Dopasowujemy rozmiar, komory, temperatury i okleinę z Twoim logo. Kupisz albo wynajmiesz.</p>
+  <div class="mocks">
+    <img src="img/mock-jajomat.png" alt="">
+    <img src="img/mock-kwiatomat.png" alt="">
+    <img src="img/mock-chlebomat.png" alt="">
+    <img src="img/mock-ciastkomat.png" alt="">
+    <img src="img/mock-seromat.png" alt="">
+  </div>
+  <div class="bar">
+    <span class="btn">Katalog 2026 · oferta i modele →</span>
+    <div class="contact">tel. +48 735 115 427<br>kontakt@vendingfresh.pl · vendingfresh.pl</div>
+  </div>
+</section>
+
+<!-- 2. KIM JESTEŚMY -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026</span></div>
+  <div class="inner">
+    <p class="eyebrow">Kim jesteśmy</p>
+    <h2>Masz dobry produkt. <em>Brakuje Ci tylko czasu, żeby go sprzedawać.</em></h2>
+    <p class="lead">VendingFresh to marka Sklep za Stodołą Sp. z o.o. z Katowic. Projektujemy, dostarczamy i serwisujemy automaty sprzedażowe — nie z półki, tylko skonfigurowane pod konkretny produkt i miejsce. Jesteśmy partnerem Sielaff, a w linii Smart oferujemy automaty Westvend w korzystniejszej cenie.</p>
+
+    <div class="grid3" style="margin-bottom:7mm">
+      <div class="card card--cream"><span class="ic">🕕</span><h4>Sklep zamyka się o 18</h4><p>Klient, który wraca z pracy o 19, i tak nie kupi Twojego produktu. Automat sprzedaje 24/7.</p></div>
+      <div class="card card--cream"><span class="ic">⛺</span><h4>Targ to cały dzień stania</h4><p>Rozładunek, stoisko, sprzedaż, pakowanie — a trafiasz tylko do tych, którzy przyjdą akurat w sobotę.</p></div>
+      <div class="card card--cream"><span class="ic">💸</span><h4>Pracownik za ladą kosztuje</h4><p>Nawet gdy nikt nie przychodzi, pensja i tak leci. Automat nie bierze urlopu.</p></div>
+    </div>
+
+    <p class="eyebrow">Co nas wyróżnia</p>
+    <div class="grid2">
+      <div class="card"><span class="ic">📐</span><h4>Automat na wymiar</h4><p>Rozmiar, liczba i wielkość komór, temperatury, sposób wydawania — wszystko pod Twój produkt, nie odwrotnie.</p></div>
+      <div class="card"><span class="ic">🎨</span><h4>Okleina z Twoim logo</h4><p>Pełna okleina w Twoich barwach, duże napisy i ekran z logo. Projekt i wykonanie po naszej stronie.</p></div>
+      <div class="card"><span class="ic">🔑</span><h4>Kupisz albo wynajmiesz</h4><p>Zakup za gotówkę, w leasingu albo z dotacją ARiMR — albo wynajem ze stałą opłatą miesięczną.</p></div>
+      <div class="card"><span class="ic">🛠️</span><h4>Opieka po starcie</h4><p>Dostawa, montaż, szkolenie, serwis i telemetria — w całej Polsce.</p></div>
+    </div>
+
+    <div class="note" style="margin-top:auto"><strong>Dosłownie wszystko się da.</strong> Pieczywo, jajka, sery, kwiaty, ciastka, dania gotowe, karma dla zwierząt czy akcesoria wędkarskie — jeśli masz produkt, dobierzemy do niego automat.</div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 2</span></div>
+</section>
+
+<!-- 3. CO OFERUJEMY -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026</span></div>
+  <div class="inner">
+    <p class="eyebrow">Oferta</p>
+    <h2>Kup, wynajmij <em>albo zostaw to nam.</em></h2>
+    <p class="lead">Trzy modele współpracy. Automat na wymiar — z okleiną i komorami pod Twój produkt — kupisz albo wynajmiesz. Szkołom, biurom i zakładom stawiamy gotowy automat w pełnej obsłudze.</p>
+
+    <div class="offer-row"><div><b>🔑 Zakup</b><span class="for">dla producentów i sklepów</span></div><div>Automat na własność, skonfigurowany i oklejony pod Twój produkt. Gotówka, leasing albo dotacja ARiMR.</div><div>Uzupełniasz sam, zarobek w całości Twój. Montaż, szkolenie i serwis po naszej stronie.</div></div>
+    <div class="offer-row"><div><b>📅 Wynajem</b><span class="for">bez kupowania automatu</span></div><div>Wypożyczasz od nas automat dopasowany pod Twój produkt i płacisz stałą opłatę co miesiąc.</div><div>Uzupełniasz go swoimi produktami, a zarobek ze sprzedaży zostaje u Ciebie.</div></div>
+    <div class="offer-row offer-row--hl"><div><b>🙌 Pełna obsługa</b><span class="for">szkoły, biura, zakłady</span></div><div>Stawiamy gotowy automat z naszym asortymentem. Ty wybierasz produkty i częstotliwość uzupełniania.</div><div>My uzupełniamy i serwisujemy. Bez kosztów przy odpowiednim ruchu, w mniejszych miejscach stała opłata.</div></div>
+    <p style="font-size:7.8pt;color:var(--muted);margin-top:2.5mm">Pełna obsługa to standardowy automat — bez indywidualnej konfiguracji i okleiny. Automat na wymiar (kwiatomat, chlebomat…) dostępny jest w zakupie i wynajmie.</p>
+
+    <h3 style="margin-top:9mm;font-size:17pt">Jak wygląda współpraca</h3>
+    <p class="lead" style="margin-bottom:5mm">Od pierwszej rozmowy do pierwszej sprzedaży.</p>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div><h4>Rozmowa i konfigurator</h4><p>Opowiadasz o produkcie i wypełniasz konfigurator. 5 minut, bez zobowiązań.</p></div></div>
+      <div class="step"><span class="n">2</span><div><h4>Projekt i wycena</h4><p>Projektujemy automat — rozmiar, komory, temperatury, okleinę — i wyceniamy w 24–48 h.</p></div></div>
+      <div class="step"><span class="n">3</span><div><h4>Model współpracy</h4><p>Zakup (gotówka, leasing, ARiMR), wynajem albo pełna obsługa gotowego automatu.</p></div></div>
+      <div class="step"><span class="n">4</span><div><h4>Dostawa i montaż</h4><p>Dowozimy gotowy, oklejony automat i montujemy go w wybranym miejscu.</p></div></div>
+      <div class="step"><span class="n">5</span><div><h4>Szkolenie i start</h4><p>Pokazujemy obsługę i uruchamiamy sprzedaż. W pełnej obsłudze nie musisz nic.</p></div></div>
+      <div class="step"><span class="n">6</span><div><h4>Opieka po starcie</h4><p>Serwis, telemetria i wsparcie — w całej Polsce.</p></div></div>
+    </div>
+
+    <div class="grid2" style="margin-top:auto">
+      <div class="note"><strong>Dwie linie automatów.</strong> Linia Smart (Westvend) — korzystniejsza cena na start. Linia Premium (Sielaff) — pełna gama, także outdoor i miejsca publiczne.</div>
+      <div class="note note--gold"><strong>Nie wiesz, co wybrać?</strong> Zaznacz „doradźcie” w konfiguratorze na vendingfresh.pl/konfigurator — dobierzemy linię i model za Ciebie.</div>
+    </div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 3</span></div>
+</section>
+
+<!-- 4. DOPASUJEMY WSZYSTKO -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026</span></div>
+  <div class="inner">
+    <p class="eyebrow">Konfiguracja</p>
+    <h2>Dopasowujemy <em>dosłownie wszystko.</em></h2>
+    <p class="lead">Każdy automat powstaje pod konkretny produkt i miejsce. Oto, co ustawiamy razem z Tobą.</p>
+    <div class="grid2" style="gap:3.5mm">
+      <div class="card"><h4>📦 Produkt i opakowanie</h4><p>Worek, słoik, butelka, pudełko, luzem albo Twoje własne opakowanie — dobieramy mechanizm pod konkretny format.</p></div>
+      <div class="card"><h4>📏 Rozmiar automatu</h4><p>Wielkość dobrana do miejsca i do tego, ile sprzedajesz.</p></div>
+      <div class="card"><h4>🗄️ Komory na wymiar</h4><p>Liczba i wielkość komór pod Twoje produkty — od małego ciastka po duży bukiet czy worek ziemniaków.</p></div>
+      <div class="card"><h4>🌡️ Temperatury</h4><p>Chłodzenie, temperatura pokojowa albo kilka stref temperatur w jednym automacie.</p></div>
+      <div class="card"><h4>⚙️ Sposób wydawania</h4><p>Spirala, popychacz albo winda — zależnie od kruchości i kształtu produktu.</p></div>
+      <div class="card"><h4>📍 Miejsce</h4><p>W budynku, pod wiatą czy na zewnątrz przy drodze — dobieramy obudowę i linię automatu.</p></div>
+      <div class="card"><h4>💳 Płatności</h4><p>Karta, BLIK, gotówka — konfiguracja pod Twoich klientów. Opcjonalnie weryfikacja wieku.</p></div>
+      <div class="card"><h4>🎨 Oklejenie i branding</h4><p>Pełna okleina w Twoich barwach, logo, duże napisy i ekran z logo — projekt i wykonanie po naszej stronie.</p></div>
+    </div>
+
+    <div style="margin-top:auto;display:grid;grid-template-columns:1fr 66mm;gap:6mm;align-items:end">
+      <div>
+        <h3 style="font-size:17pt">Z daleka widać, co sprzedajesz.</h3>
+        <p style="font-size:9pt;color:var(--muted);margin-bottom:3mm">Zwykły automat to szara skrzynka. Twój ma wyglądać jak Twój sklep: z nazwą, logo i hasłem, które widać z drugiej strony ulicy. Duża naklejka na boku działa jak billboard.</p>
+        <div class="tags"><span class="tag">Twoje logo</span><span class="tag">Twoje barwy</span><span class="tag">duże napisy</span><span class="tag">ekran z logo</span><span class="tag tag--teal">projekt w cenie</span></div>
+        <p style="font-size:7.5pt;color:var(--muted)">Obok: poglądowa wizualizacja okleiny. Napis, logo, grafikę — przygotujemy dokładnie to, czego chcesz.</p>
+      </div>
+      <img src="img/mock-wszystkomat.png" alt="Wizualizacja okleiny" style="width:66mm">
+    </div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 4</span></div>
+</section>
+
+<!-- 5. -MATY -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026</span></div>
+  <div class="inner">
+    <p class="eyebrow">Inspiracje</p>
+    <h2>Chlebomat, kwiatomat, <em>wszystkomat.</em></h2>
+    <p class="lead">Tak może wyglądać Twój automat. Każdy z nich to ten sam sprawdzony automat — tylko z komorami, temperaturą i okleiną pod inny produkt.</p>
+    <div class="mats">
+      <div class="mat"><img src="img/mock-chlebomat.png" alt=""><b>Chlebomat</b><span>świeże pieczywo 24/7</span></div>
+      <div class="mat"><img src="img/mock-kwiatomat.png" alt=""><b>Kwiatomat</b><span>bukiety i kwiaty cięte</span></div>
+      <div class="mat"><img src="img/mock-ciastkomat.png" alt=""><b>Ciastkomat</b><span>ciasta, desery, słodycze</span></div>
+      <div class="mat"><img src="img/mock-jajomat.png" alt=""><b>Jajomat</b><span>jajka prosto z fermy</span></div>
+      <div class="mat"><img src="img/mock-seromat.png" alt=""><b>Seromat</b><span>sery i nabiał od rolnika</span></div>
+      <div class="mat"><img src="img/mock-wszystkomat.png" alt=""><b>Wszystkomat</b><span>Twój produkt 24/7</span></div>
+    </div>
+    <p style="font-size:7.5pt;color:var(--muted);margin-top:auto">Wizualizacje poglądowe na zdjęciu automatu Sielaff. Wnętrze, komory i okleinę dobieramy indywidualnie.</p>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 5</span></div>
+</section>
+
+<!-- 6. LINIA SMART -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Linia Smart</span></div>
+  <div class="inner">
+    <p class="eyebrow">Linia Smart · Westvend</p>
+    <h2>Automat na wymiar <em>w korzystniejszej cenie.</em></h2>
+    <p class="lead">Sprawdzone niemieckie automaty Westvend — mniejszy wybór modeli, za to niższa cena na start. Tak samo oklejamy je Twoim logo, a automat możesz kupić albo wynająć.</p>
+
+    <div class="machine" style="margin-bottom:6mm">
+      <div class="ph"><img src="../../public/westvend/wv-hybrid.png" alt="Westvend WV Hybrid"></div>
+      <div>
+        <p class="kind">Do żywności i bio</p>
+        <h3>Westvend WV Hybrid</h3>
+        <p>Automat hybrydowy z windą towarową — produkty są wydawane delikatnie, tak żeby się nie uszkodziły. Duża pojemność i elastyczne wydawanie różnych formatów.</p>
+        <div class="tags"><span class="tag">winda</span><span class="tag">jajka · pieczywo · nabiał · słoiki</span><span class="tag tag--teal">zakup / wynajem</span></div>
+        <ul class="ticks">
+          <li>Winda zamiast zrzucania produktu</li>
+          <li>Także przekąski i napoje</li>
+          <li>Opcjonalnie zamek bezpieczeństwa i alarm</li>
+          <li>Do wnętrz i miejsc zadaszonych</li>
+          <li>Okleina z Twoim logo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="machine">
+      <div class="ph" style="height:84mm"><img src="../../public/westvend/wv-8.png" alt="Westvend WV 8"></div>
+      <div>
+        <p class="kind">Napoje i przekąski</p>
+        <h3>Westvend WV 8</h3>
+        <p>Automat spiralny na przekąski i napoje o zwiększonej pojemności. Bez windy — produkty spadają do odbioru, więc sprawdza się przy produktach, którym to nie szkodzi.</p>
+        <div class="tags"><span class="tag">spirale</span><span class="tag">przekąski · słodycze · PET · puszki</span><span class="tag tag--teal">najniższy koszt wejścia</span></div>
+        <ul class="ticks">
+          <li>Więcej miejsc na produkty — do lokalizacji z większym ruchem</li>
+          <li>Do wnętrz i miejsc zadaszonych</li>
+          <li>Okleina z Twoim logo, zakup albo wynajem</li>
+        </ul>
+        <dl class="spec">
+          <dt>Konfiguracja</dt><dd>kolor obudowy, układ spiral, płatności, weryfikacja wieku, mocowanie do podłogi/ściany, szkolenie, transport</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:auto"><strong>Ważne:</strong> automaty linii Smart są przeznaczone do wnętrz i miejsc zadaszonych — nie do stałej pracy na zewnątrz. Automat przy drodze albo bez dachu? Wybierz linię Premium w wersji outdoor. Specyfikację i dostępność potwierdzamy przy wycenie.</div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 6</span></div>
+</section>
+
+<!-- 7. LINIA PREMIUM 1 -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Linia Premium</span></div>
+  <div class="inner">
+    <p class="eyebrow">Linia Premium · Sielaff</p>
+    <h2>Pełna gama <em>niemieckich automatów.</em></h2>
+    <p class="lead">Jako partner Sielaff dobieramy model i konfigurację pod Twój produkt. Dwie strefy temperatur z monitoringiem FoodSafety, winda, wersje outdoor i antywandalowe.</p>
+
+    <div class="machine" style="margin-bottom:6mm">
+      <div class="ph"><img src="../../public/sielaff/siline-snack-combi/product.png" alt="Sielaff SiLine Snack & Combi"></div>
+      <div>
+        <p class="kind">Świeże produkty · najczęstszy wybór</p>
+        <h3>SiLine Snack &amp; Combi</h3>
+        <p>Elastyczna konfiguracja wnętrza — dwie strefy temperatur w jednej maszynie, z przesuwalną granicą między nimi. Podstawowy wybór dla większości produktów świeżych.</p>
+        <div class="tags"><span class="tag">2 strefy temperatur</span><span class="tag">FoodSafety</span><span class="tag">opcja: winda</span></div>
+        <dl class="spec">
+          <dt>Szerokość</dt><dd>780 lub 990 mm</dd>
+          <dt>Strefy temperatur</dt><dd>dwie, granica przesuwalna między półkami</dd>
+          <dt>Bezpieczeństwo</dt><dd>oprogramowanie FoodSafety monitoruje strefę świeżych produktów</dd>
+          <dt>Opcje</dt><dd>winda do delikatnych produktów — jajka, szkło, napoje gazowane</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="grid2" style="gap:6mm">
+      <div class="machine" style="grid-template-columns:30mm 1fr;gap:4mm">
+        <div class="ph" style="height:48mm;padding:2mm"><img src="../../public/sielaff/sn48/product.png" alt="Sielaff SN48"></div>
+        <div>
+          <p class="kind">Na start</p>
+          <h3 style="font-size:13pt">SN48</h3>
+          <p style="font-size:8.3pt;color:var(--muted)">Kompaktowy automat spiralny: Snack, Combi, Fresh food lub 2T LM (dwustrefowy). Dobry na start albo do mniejszych lokalizacji.</p>
+          <p style="font-size:8pt;margin-top:1.5mm"><b>5 lub 6 półek, 8 spiral</b> w wielu rozmiarach</p>
+        </div>
+      </div>
+      <div class="machine" style="grid-template-columns:30mm 1fr;gap:4mm">
+        <div class="ph" style="height:48mm;padding:2mm"><img src="../../public/sielaff/siline-gf/product.png" alt="Sielaff SiLine GF"></div>
+        <div>
+          <p class="kind">Napoje i marki</p>
+          <h3 style="font-size:13pt">SiLine GF</h3>
+          <p style="font-size:8.3pt;color:var(--muted)">Duża szklana witryna z dobrą widocznością produktu — napoje i produkty markowe.</p>
+          <p style="font-size:8pt;margin-top:1.5mm"><b>do 72 wyborów</b> na 8 półkach · szkło/PET i puszki 0,2–0,6 l</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card--cream" style="margin-top:auto">
+      <h4>Co można skonfigurować w linii Premium</h4>
+      <div class="grid3" style="gap:1mm 5mm;margin-top:2mm">
+        <ul class="ticks"><li>Dwie strefy temperatur</li><li>Winda do delikatnych produktów</li></ul>
+        <ul class="ticks"><li>Spirale lub popychacze</li><li>Blokowana klapa odbioru</li></ul>
+        <ul class="ticks"><li>Ekran dotykowy z alergenami</li><li>Telemetria i płatności</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 7</span></div>
+</section>
+
+<!-- 8. LINIA PREMIUM 2 -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Linia Premium</span></div>
+  <div class="inner">
+    <p class="eyebrow">Linia Premium · Sielaff</p>
+    <h2>Na zewnątrz, w tłumie <em>i z robotem.</em></h2>
+    <div class="photo-band" style="margin:3mm 0 6mm"><img src="img/outdoor.jpg" alt="Automat Sielaff w wersji outdoor"></div>
+
+    <div class="grid2" style="gap:6mm 7mm">
+      <div class="mini"><img src="img/outdoor.jpg" alt="" style="object-fit:cover;padding:0"><div><h4>Seria Outdoor (SiLine / SiVend)</h4><p>Wzmocniona obudowa, ogrzewanie i chłodzenie do pracy na zewnątrz, bez zadaszenia. <b>IP24, do −20 °C.</b> Idealna przy drodze i przy gospodarstwie.</p></div></div>
+      <div class="mini"><img src="../../public/sielaff/siline-public/product.png" alt=""><div><h4>SiLine Public</h4><p>Panel antywandalowy z poliwęglanu 12 mm i wzmocniona blokada — do miejsc publicznych o dużym ruchu.</p></div></div>
+      <div class="mini"><img src="../../public/sielaff/robimat-x/product.png" alt=""><div><h4>Robimat X</h4><p>Ramię robota zamiast spirali. Butelki i puszki 0,2–0,6 l, produkty 200–910 g. Wariant XM: ok. 315 napojów.</p></div></div>
+      <div class="mini"><img src="../../public/sielaff/fk-series/product.png" alt=""><div><h4>Seria FK</h4><p>Klasyczny automat zsypowy na napoje 0,2–2,0 l — zsypy standardowe i wąskie w dowolnej kombinacji.</p></div></div>
+      <div class="mini"><img src="../../public/sielaff/siamonie/product.png" alt=""><div><h4>Siamonie · SiLine HG</h4><p>Kawa, herbata, czekolada — do 250 kubków/h. Dobry duet z automatem na żywność.</p></div></div>
+      <div class="mini"><img src="../../public/sielaff/sione/product.png" alt=""><div><h4>SiOne</h4><p>Kompaktowe zwroty opakowań: kody kreskowe do 10 000 pozycji, do 30 opakowań/min.</p></div></div>
+    </div>
+
+    <div class="note" style="margin-top:auto"><strong>Smart czy Premium?</strong> Smart — niższa cena na start, dwa sprawdzone modele do wnętrz. Premium — pełna gama: dwie strefy z FoodSafety, outdoor (IP24, do −20 °C), wersje antywandalowe, kawa i zwroty opakowań. W obu liniach: okleina z Twoim logo, zakup albo wynajem.</div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 8</span></div>
+</section>
+
+<!-- 9. ROZWIĄZANIA -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Rozwiązania</span></div>
+  <div class="inner">
+    <p class="eyebrow">Rozwiązania</p>
+    <h2>Automat dopasowany <em>do Twojego produktu.</em></h2>
+    <p class="lead">Każdy produkt ma swoje wymagania — temperaturę, sposób wydawania, rytm sprzedaży. Tak podchodzimy do najczęstszych branż.</p>
+    <div class="grid3" style="gap:4mm">
+      <div class="sol"><span class="ic">🥖</span><h4>Pieczywo</h4><p>Codzienna rotacja, temperatura pokojowa, szczyty rano i wieczorem.</p></div>
+      <div class="sol"><span class="ic">🥚</span><h4>Jajka</h4><p>Delikatne wydawanie windą, wytłaczanki, oznakowanie zgodne z przepisami.</p></div>
+      <div class="sol"><span class="ic">🧀</span><h4>Sery i nabiał</h4><p>Chłodzenie, różne formaty, wyższa średnia wartość koszyka.</p></div>
+      <div class="sol"><span class="ic">🥔</span><h4>Ziemniaki i warzywa</h4><p>Duże, ciężkie opakowania — liczy się wolumen i wielkość komór.</p></div>
+      <div class="sol"><span class="ic">🌿</span><h4>Bio i lokalne</h4><p>Mini-sklep z wieloma produktami i opisami producentów na ekranie.</p></div>
+      <div class="sol"><span class="ic">🍖</span><h4>Mięso i dania gotowe</h4><p>Chłodzenie z kontrolą temperatury i telemetrią, rygor sanitarny.</p></div>
+      <div class="sol"><span class="ic">🥤</span><h4>Napoje</h4><p>SiLine GF, Robimat X, seria FK — z opcją zwrotów opakowań.</p></div>
+      <div class="sol"><span class="ic">🌷</span><h4>Kwiaty</h4><p>Wysokie komory na bukiety, chłodzenie, które przedłuża świeżość.</p></div>
+      <div class="sol"><span class="ic">🧁</span><h4>Ciastka i słodycze</h4><p>Chłodzone desery i ciasta w witrynie, która kusi z daleka.</p></div>
+    </div>
+    <div class="sol sol--all" style="margin-top:4mm;display:flex;gap:5mm;align-items:center">
+      <span class="ic">✨</span>
+      <div><h4>Twoja branża? Automat na wszystko.</h4><p>Karma dla zwierząt, akcesoria wędkarskie, lody, kosmetyki — dopasujemy rozmiar, komory, temperatury i okleinę pod dowolny produkt.</p></div>
+    </div>
+
+    <div class="grid2" style="margin-top:auto;gap:5mm">
+      <div class="card card--cream"><h4>Gdzie sprawdza się automat</h4><ul class="ticks" style="margin-top:1.5mm"><li>Przy gospodarstwie, piekarni, fermie</li><li>Przy drodze i na osiedlu</li><li>W szkole, biurze, zakładzie, szpitalu</li></ul></div>
+      <div class="card card--cream"><h4>Czego potrzebujesz</h4><ul class="ticks" style="margin-top:1.5mm"><li>Dostęp do prądu</li><li>Dojazd dla serwisu</li><li>Opakowanie zgodne z wymogami sanitarnymi</li></ul></div>
+    </div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 9</span></div>
+</section>
+
+<!-- 10. ILE MOŻESZ ZAROBIĆ -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Opłacalność</span></div>
+  <div class="inner">
+    <p class="eyebrow">Opłacalność</p>
+    <h2>Ile może zarobić <em>Twój automat?</em></h2>
+    <p class="lead">Cztery przykłady z kalkulatora na vendingfresh.pl — przy zakupie automatu. Przychód = transakcje × koszyk × 30 dni; zysk = przychód × marża − koszty miesięczne.</p>
+    <div class="grid2" style="gap:5mm">
+      <div class="case"><h4>🥖 Piekarnia przy osiedlu</h4><p class="in">40 transakcji dziennie · koszyk 12 zł · marża 35% · inwestycja 35 000 zł · koszty 400 zł/mies.</p>
+        <div class="row"><span>Przychód miesięczny</span><b>14 400 zł</b></div><div class="row"><span>Zysk po kosztach</span><b>4 640 zł / mies.</b></div>
+        <div class="big"><span>Zwrot inwestycji</span><b>ok. 7,5 mies.</b></div></div>
+      <div class="case"><h4>🥚 Ferma jaj przy drodze</h4><p class="in">20 transakcji dziennie · koszyk 15 zł · marża 40% · inwestycja 30 000 zł · koszty 250 zł/mies.</p>
+        <div class="row"><span>Przychód miesięczny</span><b>9 000 zł</b></div><div class="row"><span>Zysk po kosztach</span><b>3 350 zł / mies.</b></div>
+        <div class="big"><span>Zwrot inwestycji</span><b>ok. 9 mies.</b></div></div>
+      <div class="case"><h4>🧀 Serowarnia rzemieślnicza</h4><p class="in">15 transakcji dziennie · koszyk 25 zł · marża 45% · inwestycja 40 000 zł · koszty 350 zł/mies.</p>
+        <div class="row"><span>Przychód miesięczny</span><b>11 250 zł</b></div><div class="row"><span>Zysk po kosztach</span><b>4 712 zł / mies.</b></div>
+        <div class="big"><span>Zwrot inwestycji</span><b>ok. 8,5 mies.</b></div></div>
+      <div class="case"><h4>🌿 Sklep bio 24/7</h4><p class="in">60 transakcji dziennie · koszyk 20 zł · marża 30% · inwestycja 60 000 zł · koszty 700 zł/mies.</p>
+        <div class="row"><span>Przychód miesięczny</span><b>36 000 zł</b></div><div class="row"><span>Zysk po kosztach</span><b>10 100 zł / mies.</b></div>
+        <div class="big"><span>Zwrot inwestycji</span><b>ok. 6 mies.</b></div></div>
+    </div>
+    <div class="note" style="margin-top:5mm"><strong>Model poglądowy, nie gwarancja wyniku.</strong> Wynik zależy od cen, kosztów i ruchu klientów w Twojej lokalizacji. Kwoty inwestycji w przykładach są umowne — realną wycenę Twojej konfiguracji przygotujemy w 24–48 h.</div>
+
+    <h3 style="margin-top:7mm;font-size:15pt">Czy to ma sens u Ciebie?</h3>
+    <ul class="check" style="margin-top:1mm">
+      <li>Masz produkt, po który klienci wracają regularnie — jakikolwiek, automat dopasujemy</li>
+      <li>Możesz zapewnić regularne dostawy i uzupełnianie</li>
+      <li>Masz miejsce z ruchem albo cel podróży klientów</li>
+      <li>Masz dostęp do prądu i dojazd dla serwisu</li>
+    </ul>
+    <p style="font-size:8.5pt;margin-top:2.5mm;color:var(--muted)"><b style="color:var(--teal-dark)">Szczerze:</b> nie spełniasz połowy? Zadzwoń — powiemy wprost, czy to ma sens.</p>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 10</span></div>
+</section>
+
+<!-- 11. PEŁNA OBSŁUGA + FINANSOWANIE -->
+<section class="page">
+  <div class="hdr"><img src="../../public/vendingfresh_logo.png" alt="VendingFresh"><span>Katalog 2026 · Dla firm i finansowanie</span></div>
+  <div class="inner">
+    <p class="eyebrow">Pełna obsługa · szkoły, biura, zakłady</p>
+    <h2>Automat w Twojej firmie <em>i zero zachodu.</em></h2>
+    <p class="lead">Uczniowie, pracownicy i goście mają przekąski, napoje czy dania pod ręką — a Ty nie musisz się niczym zajmować.</p>
+    <div class="grid2" style="gap:5mm;margin-bottom:5mm">
+      <div class="card">
+        <h4>Ty decydujesz</h4>
+        <ul class="ticks" style="margin-top:1.5mm"><li>Jakie produkty z naszego asortymentu</li><li>Jak często uzupełniamy — codziennie, kilka razy w tygodniu, raz w tygodniu</li><li>Gdzie stoi automat</li></ul>
+      </div>
+      <div class="card">
+        <h4>My robimy resztę</h4>
+        <ul class="ticks" style="margin-top:1.5mm"><li>Stawiamy automat — Ty nic nie kupujesz</li><li>Uzupełniamy, serwisujemy, pilnujemy telemetrii</li><li>W szkołach — asortyment zgodny z przepisami</li></ul>
+      </div>
+    </div>
+    <div class="grid2" style="gap:5mm">
+      <div class="note"><strong>Bez kosztów</strong>, jeśli na miejscu jest odpowiedni ruch — zarabiamy na sprzedaży.</div>
+      <div class="note note--gold"><strong>Mniejsza firma?</strong> Stała opłata miesięczna, a uzupełnianie i serwis nadal po naszej stronie.</div>
+    </div>
+    <p style="font-size:7.8pt;color:var(--muted);margin-top:2.5mm">Pełna obsługa dotyczy standardowego automatu z naszym asortymentem — bez indywidualnej konfiguracji i okleiny.</p>
+
+    <div style="border-top:1.2pt solid var(--teal);margin:8mm 0 6mm"></div>
+    <p class="eyebrow">Finansowanie</p>
+    <h2 style="font-size:20pt">Kupujesz? <em>Nie musisz płacić z własnej kieszeni.</em></h2>
+    <div class="grid3" style="margin-top:3mm">
+      <div class="card card--cream"><span class="ic">📄</span><h4>Leasing</h4><p>Rozkładasz inwestycję na miesięczne raty — domyślna ścieżka dla większości klientów.</p></div>
+      <div class="card card--cream"><span class="ic">🌾</span><h4>Dotacje ARiMR</h4><p>Sprawdzamy, czy Twój projekt — głównie gospodarstwa rolne — kwalifikuje się do dofinansowania.</p></div>
+      <div class="card card--cream"><span class="ic">🔑</span><h4>Zakup</h4><p>Klasyczny zakup urządzenia na własność, bez pośredników finansowych.</p></div>
+    </div>
+    <div class="card card--dark" style="margin-top:auto;display:flex;gap:5mm;align-items:center">
+      <span class="ic" style="font-size:22pt">📅</span>
+      <div><h3 style="font-size:12pt;margin-bottom:1mm">Wolisz nie kupować? Wynajmij.</h3><p>Automat dopasowany pod Twój produkt, z okleiną — za stałą opłatę miesięczną. Uzupełniasz sam, zarobek zostaje u Ciebie.</p></div>
+    </div>
+  </div>
+  <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 11</span></div>
+</section>
+
+<!-- 12. BACK COVER -->
+<section class="page back">
+  <div class="dots"></div>
+  <div class="inner">
+    <img src="../../public/vendingfresh_logo.png" alt="VendingFresh" style="height:13mm;align-self:flex-start;filter:brightness(0) invert(1);margin-bottom:10mm">
+    <h2>Sześć powodów, <em>żeby zacząć z nami.</em></h2>
+    <div class="reasons">
+      <div class="reason"><b>01 · Na wymiar</b><p>Rozmiar, komory, temperatury i sposób wydawania pod Twój produkt.</p></div>
+      <div class="reason"><b>02 · Twoja marka</b><p>Okleina z logo i napisami — z daleka widać, co sprzedajesz.</p></div>
+      <div class="reason"><b>03 · Dwie linie</b><p>Smart w korzystniejszej cenie albo Premium Sielaff z pełną gamą.</p></div>
+      <div class="reason"><b>04 · Elastyczny model</b><p>Zakup, leasing, dotacja ARiMR, wynajem albo pełna obsługa dla firm.</p></div>
+      <div class="reason"><b>05 · Szybka wycena</b><p>Indywidualna wycena w 24–48 h po wypełnieniu konfiguratora.</p></div>
+      <div class="reason"><b>06 · Opieka</b><p>Montaż, szkolenie, serwis i telemetria w całej Polsce.</p></div>
+    </div>
+    <div class="contact-box">
+      <div>
+        <h3>Skonfiguruj swój automat</h3>
+        <div class="c">
+          <b>tel.</b> +48 735 115 427<br>
+          <b>e-mail</b> kontakt@vendingfresh.pl<br>
+          <b>www</b> vendingfresh.pl/konfigurator
+        </div>
+      </div>
+      <div class="qr"><img src="img/qr-konfigurator.svg" alt="QR do konfiguratora">Zeskanuj i wypełnij konfigurator — 5 minut</div>
+    </div>
+    <p class="legal">VendingFresh — marka Sklep za Stodołą Sp. z o.o., Katowice. Zdjęcia automatów: Sielaff, Westvend. Wizualizacje okleiny mają charakter poglądowy. Katalog nie stanowi oferty handlowej w rozumieniu Kodeksu cywilnego; ceny i specyfikację potwierdzamy w indywidualnej wycenie.</p>
+  </div>
+</section>
+
+</body>
+</html>
