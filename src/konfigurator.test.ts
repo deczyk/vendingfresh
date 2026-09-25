@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createInitialState, suggestDirection, validateStep } from './konfigurator';
+import { createInitialState, nextStep, prevStep, suggestDirection, validateStep } from './konfigurator';
 
 describe('validateStep', () => {
   it('requires a cooperation model on step 1', () => {
@@ -95,5 +95,18 @@ describe('suggestDirection', () => {
     expect(suggestDirection(state)).toBe(
       'Proponowany kierunek: SiLine Snack & Combi, z windą, wersja outdoor, płatności bezgotówkowe.',
     );
+  });
+});
+
+describe('step navigation', () => {
+  it('skips the packaging step for pełna obsługa (ready-made machine)', () => {
+    expect(nextStep(1, 'pelna_obsluga')).toBe(3);
+    expect(prevStep(3, 'pelna_obsluga')).toBe(1);
+  });
+
+  it('walks every step for zakup and wynajem', () => {
+    expect(nextStep(1, 'zakup')).toBe(2);
+    expect(prevStep(3, 'wynajem')).toBe(2);
+    expect(nextStep(4, 'pelna_obsluga')).toBe(5);
   });
 });

@@ -104,6 +104,16 @@ export function suggestDirection(state: ConfiguratorState): string {
 
 const TOTAL_STEPS = 7;
 
+// Pełna obsługa = a ready-made machine stocked from our range, so the
+// packaging/temperature step (2) does not apply and is skipped.
+export function nextStep(step: number, model: string): number {
+  return model === 'pelna_obsluga' && step === 1 ? 3 : step + 1;
+}
+
+export function prevStep(step: number, model: string): number {
+  return model === 'pelna_obsluga' && step === 3 ? 1 : step - 1;
+}
+
 function initConfigurator(): void {
   const state = createInitialState();
   let currentStep = 1;
@@ -162,7 +172,8 @@ function initConfigurator(): void {
 
   backBtn.addEventListener('click', () => {
     if (currentStep > 1) {
-      currentStep -= 1;
+      syncStateFromDom();
+      currentStep = prevStep(currentStep, state.model);
       renderStep();
     }
   });
@@ -177,7 +188,7 @@ function initConfigurator(): void {
     }
     if (currentStep < TOTAL_STEPS) {
       if (currentStep === 1) track('konfigurator_model', { model: state.model });
-      currentStep += 1;
+      currentStep = nextStep(currentStep, state.model);
       renderStep();
       // One event per step reached → a funnel in GA4 shows where people drop off.
       track('konfigurator_krok', { krok: currentStep, model: state.model });

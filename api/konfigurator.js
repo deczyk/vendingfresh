@@ -1,3 +1,6 @@
+import { getClaudeClient } from './_lib/claude.js';
+import { summarizeLead } from './_lib/lead-summary.js';
+
 const LEADS_ENDPOINT = 'https://www.sklepzastodola.pl/api/leads';
 const MAX_PAYLOAD_SIZE = 20000;
 
@@ -23,7 +26,7 @@ export function validateLeadPayload(body) {
   return null;
 }
 
-export function buildLeadsRequestBody(payload) {
+export function buildLeadsRequestBody(payload, aiSummary = null) {
   const produkty = Array.isArray(payload.produkty) && payload.produkty.length > 0
     ? payload.produkty.join(', ')
     : (payload.produktInne || '');
@@ -34,7 +37,7 @@ export function buildLeadsRequestBody(payload) {
   const modelLabels = {
     zakup: 'zakup na własność',
     wynajem: 'wynajem (klient uzupełnia sam, opłata miesięczna)',
-    pelna_obsluga: 'pełna obsługa (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)',
+    pelna_obsluga: 'pełna obsługa — gotowy automat (my stawiamy, uzupełniamy i zarabiamy na sprzedaży)',
   };
   const model = modelLabels[payload.model] || payload.model || '—';
 
@@ -48,6 +51,7 @@ export function buildLeadsRequestBody(payload) {
     `Lokalizacja: ${payload.lokalizacja || '—'} (${payload.miejscowoscTyp || '—'})`,
     `Płatności i dodatki: ${platnosci || '—'}`,
   ].join('\n');
+  const notesWithSummary = aiSummary ? `${notes}\n\n--- Podsumowanie AI (do weryfikacji) ---\n${aiSummary}` : notes;
 
   return {
     source: 'kontakt',
@@ -59,15 +63,15 @@ export function buildLeadsRequestBody(payload) {
     email: payload.email || '',
     miejscowosc: payload.miejscowoscKontakt || '',
     website: payload.website || '',
-    notes,
+    notes: notesWithSummary,
   };
 }
 
-async function sendToLeadsApi(payload) {
+async function sendToLeadsApi(payload, aiSummary) {
   const response = await fetch(LEADS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(buildLeadsRequestBody(payload)),
+    body: JSON.stringify(buildLeadsRequestBody(payload, aiSummary)),
   });
   if (!response.ok) {
     const detail = await response.text().catch(() => '');
@@ -88,7 +92,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    await sendToLeadsApi(req.body.payload);
+    // Best effort: a missing key or a failed AI call just sends the lead without a summary.
+    const aiSummary =
+      req.body.typ === 'konfigurator' ? await summarizeLead(req.body.payload, getClaudeClient()) : null;
+    await sendToLeadsApi(req.body.payload, aiSummary);
     res.status(200).json({ ok: true });
   } catch (err) {
     console.error('konfigurator handler error', err);

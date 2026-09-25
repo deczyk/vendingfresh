@@ -137,6 +137,79 @@ const MATS = [
   { name: 'Wszystkomat', tagline: 'twój produkt 24/7', icon: '✨', color: '#0E5C5C', color2: '#F3E3A6' },
 ];
 
+// Which mock colours/icon to use for each product in the slogan generator.
+const PRODUCT_TO_MAT: Record<string, number> = {
+  pieczywo: 0, kwiaty: 1, ciastka: 2, jajka: 3, sery: 4,
+};
+
+function initWrapGenerator(apply: (text: string, sub: string, matIndex: number) => void): void {
+  const form = document.querySelector<HTMLFormElement>('#wrap-gen');
+  const results = form?.querySelector<HTMLElement>('.wrap-gen__results');
+  const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  if (!form || !results || !button) return;
+
+  const setStatus = (text: string): void => {
+    results.replaceChildren();
+    const p = document.createElement('p');
+    p.className = 'wrap-gen__status';
+    p.textContent = text;
+    results.appendChild(p);
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const nazwa = String(data.get('nazwa') ?? '').trim();
+    const produkt = String(data.get('produkt') ?? '');
+    const matIndex = PRODUCT_TO_MAT[produkt] ?? 5;
+    button.disabled = true;
+    setStatus('Wymyślam napisy…');
+    track('okleina_generator', { produkt });
+    try {
+      const response = await fetch('/api/okleina', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nazwa, produkt }),
+      });
+      const body = (await response.json().catch(() => ({}))) as {
+        propozycje?: { nazwa: string; haslo: string }[];
+        error?: string;
+      };
+      if (!response.ok || !body.propozycje?.length) {
+        setStatus(body.error ?? 'Nie udało się wymyślić napisów — spróbuj ponownie.');
+        return;
+      }
+      results.replaceChildren();
+      body.propozycje.forEach((p, i) => {
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'wrap-gen__option';
+        const strong = document.createElement('strong');
+        strong.textContent = p.nazwa;
+        const small = document.createElement('span');
+        small.textContent = p.haslo;
+        option.append(strong, small);
+        option.addEventListener('click', () => {
+          results.querySelectorAll('.wrap-gen__option').forEach((o) => o.classList.remove('is-active'));
+          option.classList.add('is-active');
+          apply(p.nazwa, p.haslo, matIndex);
+        });
+        results.appendChild(option);
+        if (i === 0) option.click();
+      });
+      const cta = document.createElement('a');
+      cta.href = '/konfigurator';
+      cta.className = 'wrap-gen__cta';
+      cta.textContent = 'Chcę taki automat →';
+      results.appendChild(cta);
+    } catch {
+      setStatus('Brak połączenia — spróbuj ponownie.');
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
 function initWrapMock(): void {
   const mock = document.querySelector<HTMLElement>('.wrapmock');
   if (!mock) return;
@@ -148,15 +221,21 @@ function initWrapMock(): void {
 
   chips.forEach((chip, i) => chip.style.setProperty('--mat-color', MATS[i]?.color ?? ''));
 
+  const paint = (text: string, sub: string, icon: string): void => {
+    name.textContent = text;
+    // Long custom names shrink so they still fit the front of the machine.
+    name.style.fontSize = text.length > 12 ? `${Math.max(22, 40 - (text.length - 12) * 2)}px` : '';
+    tagline.textContent = sub;
+    windowEl.querySelectorAll('span').forEach((s) => (s.textContent = icon));
+  };
+
   let current = 0;
   const show = (i: number): void => {
     const mat = MATS[i];
     current = i;
     mock.style.setProperty('--mat-color', mat.color);
     mock.style.setProperty('--mat-color-2', mat.color2);
-    name.textContent = mat.name;
-    tagline.textContent = mat.tagline;
-    windowEl.querySelectorAll('span').forEach((s) => (s.textContent = mat.icon));
+    paint(mat.name, mat.tagline, mat.icon);
     [name, windowEl].forEach((el) => {
       el.classList.remove('is-swapping');
       void el.offsetWidth;
@@ -179,6 +258,12 @@ function initWrapMock(): void {
       start();
     }),
   );
+  initWrapGenerator((text, sub, matIndex) => {
+    window.clearInterval(timer);
+    show(matIndex);
+    paint(text, sub, MATS[matIndex].icon);
+  });
+
   // Product pages pin the mock to one machine (data-mat="1" → Kwiatomat).
   const fixed = mock.dataset.mat;
   if (fixed !== undefined) {

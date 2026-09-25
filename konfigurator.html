@@ -27,7 +27,7 @@
       <div class="config-intro">
         <p class="eyebrow">Konfigurator</p>
         <h1>Dopasujemy <em>dosłownie wszystko.</em></h1>
-        <p>Rozmiar automatu, liczbę i wielkość komór, temperatury, sposób wydawania i okleinę z Twoim logo. Sprzedać możesz dosłownie wszystko — od chleba po kwiaty. Automat kupisz, wynajmiesz albo postawimy go u Ciebie w pełnej obsłudze.</p>
+        <p>Rozmiar automatu, liczbę i wielkość komór, temperatury, sposób wydawania i okleinę z Twoim logo. Sprzedać możesz dosłownie wszystko — od chleba po kwiaty. Automat na wymiar kupisz albo wynajmiesz — a do szkoły, biura czy zakładu postawimy gotowy automat w pełnej obsłudze.</p>
       </div>
       <div class="config-progress">
         <div class="config-progress__bar" id="config-progress-bar"></div>
@@ -56,7 +56,7 @@
               <input type="radio" name="model" value="pelna_obsluga">
               <span class="model-option__icon" aria-hidden="true">🙌</span>
               <strong>Pełna obsługa</strong>
-              <span>Stawiamy automat u Ciebie, Ty wybierasz produkty i częstotliwość — my uzupełniamy i serwisujemy. Przy odpowiednim ruchu bez kosztów, przy mniejszym stała opłata miesięczna.</span>
+              <span>Gotowy automat w szkole, biurze czy zakładzie. Wybierasz produkty z naszego asortymentu i częstotliwość — my uzupełniamy i serwisujemy. Bez indywidualnej konfiguracji i okleiny.</span>
             </label>
           </div>
 
@@ -138,16 +138,16 @@
         </section>
 
         <section class="config-step" data-step="5" hidden>
-          <h2>Co jeszcze dopasować?</h2>
-          <p class="config-hint">Dopasowujemy dosłownie wszystko. Zaznacz, na czym Ci zależy — resztę dogramy w rozmowie.</p>
-          <h3>Automat na wymiar</h3>
-          <div class="config-options">
+          <h2><span class="hide-pelna">Co jeszcze dopasować?</span><span class="show-pelna">Płatności i dodatki</span></h2>
+          <p class="config-hint hide-pelna">Dopasowujemy dosłownie wszystko. Zaznacz, na czym Ci zależy — resztę dogramy w rozmowie.</p>
+          <h3 class="hide-pelna">Automat na wymiar</h3>
+          <div class="config-options hide-pelna">
             <label><input type="checkbox" name="platnosci" value="rozmiar_na_wymiar"> Rozmiar automatu pod moje miejsce</label>
             <label><input type="checkbox" name="platnosci" value="komory_na_wymiar"> Komory na wymiar moich produktów</label>
             <label><input type="checkbox" name="platnosci" value="kilka_temperatur"> Różne temperatury w różnych komorach</label>
           </div>
-          <h3>Wygląd</h3>
-          <div class="config-options">
+          <h3 class="hide-pelna">Wygląd</h3>
+          <div class="config-options hide-pelna">
             <label><input type="checkbox" name="platnosci" value="oklejenie"> Oklejenie z Twoim logo i napisami</label>
             <label><input type="checkbox" name="platnosci" value="ekran"> Ekran z logo</label>
           </div>

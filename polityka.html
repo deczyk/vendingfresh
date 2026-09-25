@@ -48,7 +48,9 @@
           <p>Podajesz: imię, telefon (opcjonalnie), e-mail, treść wiadomości. Formularz jest obsługiwany przez zewnętrzny serwis <strong>Formspree</strong> (Formspree, Inc., USA), który przekazuje nam treść zgłoszenia e-mailem. Formspree działa jako nasz podmiot przetwarzający.</p>
 
           <h3>Konfigurator automatu (/konfigurator)</h3>
-          <p>Podajesz: imię, telefon, e-mail, miejscowość oraz odpowiedzi dotyczące Twojego produktu (rodzaj asortymentu, opakowanie, wolumen sprzedaży, planowana lokalizacja automatu, preferencje płatności). Zgłoszenie trafia z naszego serwera (funkcja <code>/api/konfigurator</code>) bezpośrednio do wewnętrznego systemu obsługi zgłoszeń pod adresem <strong>sklepzastodola.pl</strong>, prowadzonego przez tego samego administratora (Sklep za Stodołą Sp. z o.o.) — dane nie opuszczają naszej organizacji.</p>
+          <p>Podajesz: imię, telefon, e-mail, miejscowość oraz odpowiedzi dotyczące Twojego produktu (rodzaj asortymentu, opakowanie, wolumen sprzedaży, planowana lokalizacja automatu, preferencje płatności). Zgłoszenie trafia z naszego serwera (funkcja <code>/api/konfigurator</code>) bezpośrednio do wewnętrznego systemu obsługi zgłoszeń pod adresem <strong>sklepzastodola.pl</strong>, prowadzonego przez tego samego administratora (Sklep za Stodołą Sp. z o.o.). Aby szybciej przygotować wycenę, same odpowiedzi dotyczące produktu i automatu (bez imienia, telefonu, e-maila i miejscowości) przekazujemy do modelu AI firmy Anthropic, który przygotowuje dla naszego handlowca krótkie podsumowanie zgłoszenia.</p>
+          <h3>Generator napisów na okleinę (strona główna)</h3>
+          <p>Jeśli skorzystasz z generatora, wpisana nazwa firmy i wybrany rodzaj produktu są przekazywane do modelu AI firmy Anthropic, który zwraca propozycje napisów. Nie zapisujemy tych danych po naszej stronie. Nie wpisuj w to pole danych osobowych.</p>
           <p>W obu formularzach dane wykorzystujemy wyłącznie w celu: odpowiedzi na zapytanie, przygotowania indywidualnej wyceny automatu oraz dalszego kontaktu handlowego w tej sprawie.</p>
 
           <h2>3. Podstawa prawna przetwarzania</h2>
@@ -75,6 +77,7 @@
           <ul>
             <li><strong>Formspree, Inc.</strong> (USA) — obsługa formularza kontaktowego.</li>
             <li><strong>Vercel Inc.</strong> (USA) — hosting strony internetowej.</li>
+            <li><strong>Anthropic, PBC</strong> (USA) — model AI przygotowujący podsumowania zgłoszeń z konfiguratora (bez danych kontaktowych) i propozycje napisów w generatorze okleiny.</li>
             <li><strong>Google LLC</strong> (USA) — Google Analytics, Google Search Console (jeśli wyrazisz zgodę na cookie analityczne).</li>
           </ul>
           <p>Część odbiorców ma siedzibę poza Europejskim Obszarem Gospodarczym (głównie USA). W takich przypadkach przekazanie danych odbywa się w oparciu o odpowiednie zabezpieczenia prawne — standardowe klauzule umowne UE i/lub uczestnictwo dostawcy w programie EU-U.S. Data Privacy Framework, zgodnie z decyzjami Komisji Europejskiej dotyczącymi odpowiedniego poziomu ochrony.</p>
@@ -100,7 +103,7 @@
           <p>Podanie danych w formularzach jest dobrowolne, ale niezbędne, jeśli chcesz otrzymać odpowiedź na zapytanie lub indywidualną wycenę automatu — bez danych kontaktowych nie jesteśmy w stanie się z Tobą skontaktować.</p>
 
           <h2>10. Zautomatyzowane podejmowanie decyzji</h2>
-          <p>Nie podejmujemy wobec Ciebie decyzji w sposób zautomatyzowany, w tym nie profilujemy Cię w sposób wywołujący skutki prawne. Konfigurator na stronie jedynie porządkuje Twoje odpowiedzi do wiadomości, którą odczytuje i na którą odpowiada człowiek.</p>
+          <p>Nie podejmujemy wobec Ciebie decyzji w sposób zautomatyzowany, w tym nie profilujemy Cię w sposób wywołujący skutki prawne. Konfigurator na stronie jedynie porządkuje Twoje odpowiedzi do wiadomości, którą odczytuje i na którą odpowiada człowiek. Podsumowanie AI jest wyłącznie pomocą dla handlowca — o wycenie i dalszym kontakcie zawsze decyduje człowiek.</p>
 
           <h2>11. Zmiany polityki prywatności</h2>
           <p>Możemy okresowo aktualizować tę politykę, w szczególności przy zmianie funkcjonalności strony lub przepisów prawa. Aktualna wersja jest zawsze dostępna pod tym adresem, z datą ostatniej aktualizacji na górze strony.</p>
