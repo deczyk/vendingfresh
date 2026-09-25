@@ -128,6 +128,9 @@ dl.spec dd { color: var(--muted); }
 .mini h4 { font-size: 10.5pt; font-family: var(--serif); color: var(--teal-dark); margin-bottom: .8mm; }
 .mini p { font-size: 8.2pt; color: var(--muted); }
 
+.price { margin-top: 3.5mm; background: var(--teal-dark); color: #fff; border-radius: 3mm; padding: 3mm 4.5mm; display: flex; justify-content: space-between; align-items: center; }
+.price span { font-size: 7pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #9FC4BD; }
+.price b { font-family: var(--serif); font-size: 17pt; color: var(--gold-soft); }
 /* solutions */
 .sol { background: var(--card); border: .6pt solid var(--line); border-radius: 4mm; padding: 4mm; }
 .sol .ic { font-size: 18pt; line-height: 1; }
@@ -313,8 +316,8 @@ dl.spec dd { color: var(--muted); }
     <h2>Automat na wymiar <em>w korzystniejszej cenie.</em></h2>
     <p class="lead">Sprawdzone niemieckie automaty Westvend — mniejszy wybór modeli, za to niższa cena na start. Tak samo oklejamy je Twoim logo, a automat możesz kupić albo wynająć.</p>
 
-    <div class="machine" style="margin-bottom:6mm">
-      <div class="ph"><img src="../../public/westvend/wv-hybrid.png" alt="Westvend WV Hybrid"></div>
+    <div class="machine" style="margin-bottom:4mm">
+      <div class="ph" style="height:86mm"><img src="../../public/westvend/wv-hybrid.png" alt="Westvend WV Hybrid"></div>
       <div>
         <p class="kind">Do żywności i bio</p>
         <h3>Westvend WV Hybrid</h3>
@@ -327,11 +330,12 @@ dl.spec dd { color: var(--muted); }
           <li>Do wnętrz i miejsc zadaszonych</li>
           <li>Okleina z Twoim logo</li>
         </ul>
+        <div class="price"><span>Cena katalogowa*</span><b>7 249 €</b></div>
       </div>
     </div>
 
     <div class="machine">
-      <div class="ph" style="height:84mm"><img src="../../public/westvend/wv-8.png" alt="Westvend WV 8"></div>
+      <div class="ph" style="height:78mm"><img src="../../public/westvend/wv-8.png" alt="Westvend WV 8"></div>
       <div>
         <p class="kind">Napoje i przekąski</p>
         <h3>Westvend WV 8</h3>
@@ -346,10 +350,12 @@ dl.spec dd { color: var(--muted); }
           <dt>Konfiguracja</dt><dd>kolor obudowy, układ spiral, płatności, weryfikacja wieku, mocowanie do podłogi/ściany</dd>
           <dt>W cenie</dt><dd>transport pod Twój adres i szkolenie z obsługi</dd>
         </dl>
+        <div class="price"><span>Cena katalogowa*</span><b>5 499 €</b></div>
       </div>
     </div>
 
     <div class="note" style="margin-top:auto"><strong>Ważne:</strong> automaty linii Smart są przeznaczone do wnętrz i miejsc zadaszonych — nie do stałej pracy na zewnątrz. Automat przy drodze albo bez dachu? Wybierz linię Premium w wersji outdoor. Specyfikację i dostępność potwierdzamy przy wycenie.</div>
+    <p style="font-size:7pt;color:var(--muted);margin-top:2mm">* Cena katalogowa producenta w konfiguracji podstawowej. Opcje dodatkowe (np. płatności, alarm, zamek) i VAT potwierdzamy w indywidualnej wycenie. Transport i szkolenie w cenie.</p>
   </div>
   <div class="ftr"><span>VendingFresh — marka Sklep za Stodołą Sp. z o.o.</span><span>str. 6</span></div>
 </section>
