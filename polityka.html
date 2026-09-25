@@ -6,18 +6,116 @@
     <link rel="icon" type="image/png" href="/vendingfresh_icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polityka prywatności — VendingFresh</title>
-    <meta name="description" content="Pracujemy nad polityką prywatności VendingFresh — wróć tu wkrótce." />
+    <meta name="description" content="Jakie dane zbiera VendingFresh, w jakim celu, komu je przekazujemy i jakie masz prawa — polityka prywatności zgodna z RODO." />
     <link rel="canonical" href="https://vendingfresh.pl/polityka" />
-    <meta name="robots" content="noindex, follow" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Polityka prywatności — VendingFresh" />
+    <meta property="og:description" content="Jakie dane zbiera VendingFresh, w jakim celu i jakie masz prawa — polityka prywatności zgodna z RODO." />
+    <meta property="og:url" content="https://vendingfresh.pl/polityka" />
+    <meta property="og:image" content="https://vendingfresh.pl/vendingfresh_logo_white_bg.png" />
+    <meta name="twitter:card" content="summary" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <!-- include:nav.html -->
-    <main class="placeholder-page">
-      <img class="placeholder-page__logo" src="/vendingfresh_logo.webp" alt="VendingFresh" />
-      <h1>Strona w przygotowaniu</h1>
-      <p>Pracujemy nad polityką prywatności — wróć tu wkrótce.</p>
-      <a class="btn btn--primary" href="/">Wróć na stronę główną</a>
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <p class="eyebrow">Prawne</p>
+          <h1>Polityka prywatności</h1>
+          <p class="hero__subtitle">Ostatnia aktualizacja: 25 września 2026. Poniżej znajdziesz, jakie dane zbieramy, po co, komu je przekazujemy i jakie masz prawa.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap article">
+          <h2>1. Administrator danych</h2>
+          <p>Administratorem Twoich danych osobowych jest <strong>Sklep za Stodołą Sp. z o.o.</strong>, właściciel marki VendingFresh (dalej: „my", „Administrator").</p>
+          <ul>
+            <li>Adres siedziby: [UZUPEŁNIĆ — pełny adres rejestrowy spółki]</li>
+            <li>NIP / REGON / KRS: [UZUPEŁNIĆ]</li>
+            <li>E-mail: <a href="mailto:kontakt@vendingfresh.pl">kontakt@vendingfresh.pl</a></li>
+            <li>Telefon: <a href="tel:+48735115427">+48 735 115 427</a></li>
+          </ul>
+          <p>We wszystkich sprawach dotyczących ochrony danych osobowych możesz skontaktować się z nami pod powyższym adresem e-mail.</p>
+
+          <h2>2. Jakie dane zbieramy i po co</h2>
+          <p>Zbieramy dane osobowe wyłącznie wtedy, gdy sam/sama je nam podajesz — wypełniając formularz kontaktowy albo konfigurator automatu. Nie prowadzimy ukrytego śledzenia ani nie kupujemy danych od podmiotów trzecich.</p>
+
+          <h3>Formularz kontaktowy (/kontakt)</h3>
+          <p>Podajesz: imię, telefon (opcjonalnie), e-mail, treść wiadomości. Formularz jest obsługiwany przez zewnętrzny serwis <strong>Formspree</strong> (Formspree, Inc., USA), który przekazuje nam treść zgłoszenia e-mailem. Formspree działa jako nasz podmiot przetwarzający.</p>
+
+          <h3>Konfigurator automatu (/konfigurator)</h3>
+          <p>Podajesz: imię, telefon, e-mail, miejscowość oraz odpowiedzi dotyczące Twojego produktu (rodzaj asortymentu, opakowanie, wolumen sprzedaży, planowana lokalizacja automatu, preferencje płatności). Zgłoszenie trafia z naszego serwera (funkcja <code>/api/konfigurator</code>) bezpośrednio do wewnętrznego systemu obsługi zgłoszeń pod adresem <strong>sklepzastodola.pl</strong>, prowadzonego przez tego samego administratora (Sklep za Stodołą Sp. z o.o.) — dane nie opuszczają naszej organizacji.</p>
+          <p>W obu formularzach dane wykorzystujemy wyłącznie w celu: odpowiedzi na zapytanie, przygotowania indywidualnej wyceny automatu oraz dalszego kontaktu handlowego w tej sprawie.</p>
+
+          <h2>3. Podstawa prawna przetwarzania</h2>
+          <ul>
+            <li><strong>Art. 6 ust. 1 lit. b RODO</strong> — przetwarzanie niezbędne do podjęcia działań na Twoje żądanie przed zawarciem umowy (np. przygotowanie wyceny po wypełnieniu konfiguratora).</li>
+            <li><strong>Art. 6 ust. 1 lit. a RODO</strong> — zgoda, którą wyrażasz zaznaczając checkbox przy formularzu kontaktowym lub w ostatnim kroku konfiguratora.</li>
+            <li><strong>Art. 6 ust. 1 lit. f RODO</strong> — nasz prawnie uzasadniony interes (analityka ruchu na stronie, marketing), wyłącznie po Twojej zgodzie na cookie analityczne/marketingowe (patrz sekcja 5).</li>
+          </ul>
+
+          <h2>4. Formularz honeypot / ochrona antyspamowa</h2>
+          <p>Konfigurator zawiera ukryte, niewidoczne dla Ciebie pole techniczne (tzw. honeypot), które pomaga nam odrzucać automatyczne zgłoszenia spamowe (boty). Jeśli to pole zostanie wypełnione, zgłoszenie jest odrzucane — nie zapisujemy przy tym żadnych dodatkowych danych o Tobie ponad to, co i tak widniałoby w formularzu.</p>
+
+          <h2>5. Pliki cookie i podobne technologie</h2>
+          <p>Przy pierwszej wizycie na stronie wyświetlamy baner z prośbą o zgodę na cookie. Bez Twojej zgody ładujemy wyłącznie cookie techniczne, niezbędne do zapamiętania Twojego wyboru (przechowywane lokalnie w przeglądarce, klucz <code>vf_cookie_consent</code>).</p>
+          <p>Po wyrażeniu zgody dodatkowo uruchamiamy:</p>
+          <ul>
+            <li><strong>Google Analytics 4</strong> — statystyki odwiedzin i ruchu na stronie (Google Ireland Limited / Google LLC).</li>
+            <li><strong>Meta Pixel (Facebook)</strong> — narzędzie marketingowe Meta Platforms, Inc., wykorzystywane do pomiaru skuteczności reklam. [DO POTWIERDZENIA: obecnie w kodzie strony jest przygotowane miejsce na Meta Pixel, ale nie ma jeszcze wpiętego rzeczywistego identyfikatora piksela — jeśli nie planujesz go aktywować, dam znać i usunę tę pozycję z polityki oraz z kodu].</li>
+          </ul>
+          <p>Zgodę możesz w każdej chwili wycofać, czyszcząc dane przeglądarki dla tej strony (ciasteczka i local storage) i ponownie podejmując decyzję w banerze przy kolejnej wizycie.</p>
+
+          <h2>6. Komu przekazujemy dane</h2>
+          <p>Twoje dane mogą być przekazywane następującym odbiorcom, wyłącznie w zakresie niezbędnym do świadczenia usługi:</p>
+          <ul>
+            <li><strong>Formspree, Inc.</strong> (USA) — obsługa formularza kontaktowego.</li>
+            <li><strong>Vercel Inc.</strong> (USA) — hosting strony internetowej.</li>
+            <li><strong>Google LLC</strong> (USA) — Google Analytics, Google Search Console (jeśli wyrazisz zgodę na cookie analityczne).</li>
+            <li><strong>Meta Platforms, Inc.</strong> (USA) — wyłącznie jeśli aktywujemy Meta Pixel (patrz sekcja 5).</li>
+          </ul>
+          <p>Część odbiorców ma siedzibę poza Europejskim Obszarem Gospodarczym (głównie USA). W takich przypadkach przekazanie danych odbywa się w oparciu o odpowiednie zabezpieczenia prawne — standardowe klauzule umowne UE i/lub uczestnictwo dostawcy w programie EU-U.S. Data Privacy Framework, zgodnie z decyzjami Komisji Europejskiej dotyczącymi odpowiedniego poziomu ochrony.</p>
+
+          <h2>7. Okres przechowywania danych</h2>
+          <p>Dane z formularzy przechowujemy przez czas niezbędny do obsługi Twojego zapytania i przygotowania wyceny, a następnie — jeśli doszło do dalszej współpracy — przez okres wynikający z przepisów podatkowych i cywilnych (standardowo do 6 lat od zakończenia relacji, zgodnie z terminami przedawnienia roszczeń). Dane osób, które nie zdecydowały się na współpracę, usuwamy nie później niż po 12 miesiącach od ostatniego kontaktu. [DO POTWIERDZENIA: dokładne okresy retencji warto ustalić z osobą prowadzącą księgowość/obsługę prawną spółki i tu doprecyzować].</p>
+
+          <h2>8. Twoje prawa</h2>
+          <p>Zgodnie z RODO przysługuje Ci prawo do:</p>
+          <ul>
+            <li>dostępu do swoich danych i uzyskania ich kopii,</li>
+            <li>sprostowania (poprawienia) danych,</li>
+            <li>usunięcia danych („prawo do bycia zapomnianym"),</li>
+            <li>ograniczenia przetwarzania,</li>
+            <li>przenoszenia danych,</li>
+            <li>wniesienia sprzeciwu wobec przetwarzania opartego na naszym prawnie uzasadnionym interesie,</li>
+            <li>cofnięcia zgody w dowolnym momencie, bez wpływu na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem,</li>
+            <li>wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO), ul. Stawki 2, 00-193 Warszawa.</li>
+          </ul>
+          <p>Aby skorzystać z powyższych praw, napisz do nas na <a href="mailto:kontakt@vendingfresh.pl">kontakt@vendingfresh.pl</a>.</p>
+
+          <h2>9. Dobrowolność podania danych</h2>
+          <p>Podanie danych w formularzach jest dobrowolne, ale niezbędne, jeśli chcesz otrzymać odpowiedź na zapytanie lub indywidualną wycenę automatu — bez danych kontaktowych nie jesteśmy w stanie się z Tobą skontaktować.</p>
+
+          <h2>10. Zautomatyzowane podejmowanie decyzji</h2>
+          <p>Nie podejmujemy wobec Ciebie decyzji w sposób zautomatyzowany, w tym nie profilujemy Cię w sposób wywołujący skutki prawne. Konfigurator na stronie jedynie porządkuje Twoje odpowiedzi do wiadomości, którą odczytuje i na którą odpowiada człowiek.</p>
+
+          <h2>11. Zmiany polityki prywatności</h2>
+          <p>Możemy okresowo aktualizować tę politykę, w szczególności przy zmianie funkcjonalności strony lub przepisów prawa. Aktualna wersja jest zawsze dostępna pod tym adresem, z datą ostatniej aktualizacji na górze strony.</p>
+        </div>
+      </section>
+
+      <section class="section cta-final">
+        <div class="wrap">
+          <h2>Pytania o Twoje dane? <em>Napisz do nas.</em></h2>
+          <div class="hero__cta">
+            <a href="mailto:kontakt@vendingfresh.pl" class="btn btn--primary">kontakt@vendingfresh.pl</a>
+            <a href="/" class="btn btn--secondary">Wróć na stronę główną</a>
+          </div>
+        </div>
+      </section>
     </main>
     <!-- include:footer.html -->
     <!-- include:cookie-banner.html -->
