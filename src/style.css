@@ -1529,39 +1529,48 @@ h2 em, h1 em {
 
 /* ---------- "Sprzedasz dosłownie wszystko" product strip ---------- */
 .marquee--products {
-  position: relative;
-  z-index: 1;
-  margin-top: 40px;
+  margin: 56px 0 0;
   padding: 0;
-  display: flex;
-  align-items: stretch;
-  background: var(--color-ink);
-  transform: rotate(-1.2deg);
-  box-shadow: var(--shadow-md);
+  background: none;
+  color: var(--color-ink);
+  text-align: center;
+  white-space: normal;
+  overflow: hidden;
 }
 .marquee--products .marquee__label {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding: 16px 22px;
-  background: var(--color-accent);
-  color: var(--color-ink);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  position: relative;
-  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 24px 20px;
 }
-.marquee--products .marquee__viewport { overflow: hidden; flex: 1; display: flex; align-items: center; }
-.marquee--products .marquee__track { padding-left: 0; animation-duration: 38s; }
-.marquee--products .marquee__track span { margin: 0 22px; font-size: 17px; font-weight: 600; }
+.marquee--products .marquee__label em { font-style: italic; font-weight: 500; color: var(--color-primary); }
+.marquee--products .marquee__viewport {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 6px 0 14px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee--products .marquee__track { padding-left: 0; animation-duration: 45s; }
+.marquee--products .marquee__track span {
+  display: inline-block;
+  margin: 0 6px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  box-shadow: var(--shadow-sm);
+  font-size: 15px;
+  font-weight: 600;
+}
+.marquee--products .marquee__track span:last-child,
+.marquee--products .marquee__track span:nth-child(13) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
 .marquee--products:hover .marquee__track { animation-play-state: paused; }
-@media (max-width: 600px) {
-  .marquee--products { flex-direction: column; transform: none; }
-  .marquee--products .marquee__label { justify-content: center; padding: 10px; }
-  .marquee--products .marquee__viewport { padding: 12px 0; }
-}
 
 /* ---------- Konfigurator intro + hints ---------- */
 .config-intro { text-align: center; margin-bottom: 36px; }

@@ -80,7 +80,7 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
 export const MODEL_LABELS: Record<string, string> = {
   zakup: 'Model: zakup na własność — gotówka, leasing albo dotacja.',
   wynajem: 'Model: wynajem — Ty uzupełniasz automat, płacisz miesięczną opłatę.',
-  pelna_obsluga: 'Model: pełna obsługa — stawiamy automat bez kosztów po Twojej stronie, uzupełniamy go i serwisujemy.',
+  pelna_obsluga: 'Model: pełna obsługa — stawiamy automat, uzupełniamy go i serwisujemy. Przy odpowiednim ruchu bez kosztów po Twojej stronie, przy mniejszym stała opłata miesięczna — ustalimy to w wycenie.',
 };
 
 export function suggestDirection(state: ConfiguratorState): string {
