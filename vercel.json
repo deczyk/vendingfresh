@@ -3,6 +3,7 @@
     { "source": "/konfigurator", "destination": "/konfigurator.html" },
     { "source": "/polityka", "destination": "/polityka.html" },
     { "source": "/kontakt", "destination": "/kontakt.html" },
+    { "source": "/dziekujemy", "destination": "/dziekujemy.html" },
     { "source": "/faq", "destination": "/faq.html" },
     { "source": "/rozwiazania/pieczywo", "destination": "/rozwiazania/pieczywo.html" },
     { "source": "/rozwiazania/jajka", "destination": "/rozwiazania/jajka.html" },
@@ -29,7 +30,7 @@
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|ico)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=31536000" }
       ]
     },
     {

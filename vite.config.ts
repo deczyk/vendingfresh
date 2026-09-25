@@ -14,6 +14,8 @@ export default defineConfig({
         konfigurator: resolve(__dirname, 'konfigurator.html'),
         polityka: resolve(__dirname, 'polityka.html'),
         kontakt: resolve(__dirname, 'kontakt.html'),
+        dziekujemy: resolve(__dirname, 'dziekujemy.html'),
+        notFound: resolve(__dirname, '404.html'),
         faq: resolve(__dirname, 'faq.html'),
         rozwiazaniaPieczywo: resolve(__dirname, 'rozwiazania/pieczywo.html'),
         rozwiazaniaJajka: resolve(__dirname, 'rozwiazania/jajka.html'),
