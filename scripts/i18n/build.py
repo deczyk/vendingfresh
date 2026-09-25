@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from common import LANGS, LOCALE, PAGES, SOLUTIONS, T, MATS, MAT_COLORS, MAT_ICONS, IMG, ICON, url
 from pages import P
 from solutions import S, SEC
-from machines import M, IMGS, GROUPS, NAMES, SMART
+from machines import M, IMGS, GROUPS, NAMES, SMART, SMART_IMG
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 BASE = 'https://vendingfresh.pl'
@@ -507,8 +507,8 @@ def machines(lang):
 '''
     sm = SMART[lang]
     smart_cards = ''.join(f'''
-          <article class="model-plan{' model-plan--featured' if i == 0 else ''}" id="{mid}">
-            <span class="model-plan__icon" aria-hidden="true">{icon}</span>
+          <article class="model-plan{' model-plan--featured' if i == 0 else ''}{' model-plan--photo' if mid in SMART_IMG else ''}" id="{mid}">
+            {f'<img class="model-plan__img" src="{SMART_IMG[mid][0]}" width="{SMART_IMG[mid][1]}" height="{SMART_IMG[mid][2]}" alt="{name}" loading="lazy">' if mid in SMART_IMG else f'<span class="model-plan__icon" aria-hidden="true">{icon}</span>'}
             <h3>{name}</h3>
             <p class="model-plan__for">{txt}</p>
             <ul class="model-plan__list">
