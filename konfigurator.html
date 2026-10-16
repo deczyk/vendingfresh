@@ -110,6 +110,7 @@
           </div>
           <label class="config-field">Twoje opakowanie (jeśli inne albo chcesz doprecyzować): <input type="text" id="opakowanie-inne" placeholder="np. tacka z folią, karton 6 szt., bukiet w rękawie"></label>
           <label class="config-field">Orientacyjne wymiary i waga: <input type="text" id="wymiary" placeholder="np. 20x10x8 cm, 0,5 kg"></label>
+          <p class="config-hint">Podaj wymiary jednego opakowania w centymetrach i jego wagę.</p>
           <p class="config-hint">Na tej podstawie dobierzemy liczbę i wielkość komór — pod Twój produkt, nie odwrotnie.</p>
           <h3>Temperatura</h3>
           <p class="config-hint">Różne produkty? Każda strefa może mieć inną temperaturę.</p>
@@ -124,6 +125,14 @@
           <h2>Ile sprzedajesz?</h2>
           <label class="config-field">Ile dziennie/tygodniowo: <input type="text" id="wolumen-dzienny" placeholder="np. 40 szt. dziennie"></label>
           <label class="config-field">Ile różnych produktów: <input type="text" id="liczba-produktow" placeholder="np. 5"></label>
+          <h3>Jak często uzupełnisz automat?</h3>
+          <div class="config-options">
+            <label><input type="radio" name="czestotliwosc" value="codziennie"> Codziennie</label>
+            <label><input type="radio" name="czestotliwosc" value="co 2-3 dni"> Co 2–3 dni</label>
+            <label><input type="radio" name="czestotliwosc" value="raz w tygodniu"> Raz w tygodniu</label>
+            <label><input type="radio" name="czestotliwosc" value="nie wiem"> Jeszcze nie wiem</label>
+          </div>
+          <p class="config-hint">Od tego zależy pojemność automatu — przy rzadszym uzupełnianiu potrzeba więcej komór.</p>
         </section>
 
         <section class="config-step" data-step="4" hidden>
@@ -141,6 +150,19 @@
             <label><input type="radio" name="miejscowosc-typ" value="miasto"> Miasto</label>
             <label><input type="radio" name="miejscowosc-typ" value="wies"> Wieś</label>
           </div>
+          <h3>Czy w tym miejscu jest prąd?</h3>
+          <div class="config-options">
+            <label><input type="radio" name="prad" value="jest"> Tak, jest gniazdko 230 V</label>
+            <label><input type="radio" name="prad" value="do doprowadzenia"> Trzeba doprowadzić</label>
+            <label><input type="radio" name="prad" value="nie wiem"> Nie wiem</label>
+          </div>
+          <h3>Zasięg telefonu w tym miejscu</h3>
+          <div class="config-options">
+            <label><input type="radio" name="zasieg" value="dobry"> Dobry</label>
+            <label><input type="radio" name="zasieg" value="slaby"> Słaby</label>
+            <label><input type="radio" name="zasieg" value="nie wiem"> Nie wiem</label>
+          </div>
+          <p class="config-hint">Zasięg jest potrzebny do płatności kartą/BLIK i podglądu sprzedaży w telefonie.</p>
         </section>
 
         <section class="config-step" data-step="5" hidden>
@@ -235,6 +257,20 @@
 
         <section class="config-step" data-step="6" hidden>
           <h2>Kontakt</h2>
+          <h3>Jak chcesz sfinansować automat?</h3>
+          <div class="config-options">
+            <label><input type="radio" name="finansowanie" value="gotowka"> Gotówka</label>
+            <label><input type="radio" name="finansowanie" value="leasing"> Leasing</label>
+            <label><input type="radio" name="finansowanie" value="dotacja"> Dotacja ARiMR</label>
+            <label><input type="radio" name="finansowanie" value="nie wiem"> Doradźcie</label>
+          </div>
+          <h3>Kiedy chcesz ruszyć?</h3>
+          <div class="config-options">
+            <label><input type="radio" name="termin" value="do miesiaca"> Do miesiąca</label>
+            <label><input type="radio" name="termin" value="1-3 miesiace"> Za 1–3 miesiące</label>
+            <label><input type="radio" name="termin" value="pozniej"> Później</label>
+            <label><input type="radio" name="termin" value="rozpoznanie"> Na razie sprawdzam</label>
+          </div>
           <label class="config-field">Imię: <input type="text" id="imie"></label>
           <label class="config-field">Telefon: <input type="tel" id="telefon"></label>
           <label class="config-field">E-mail: <input type="email" id="email"></label>

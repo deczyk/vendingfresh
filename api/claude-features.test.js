@@ -39,6 +39,22 @@ describe('lead summary', () => {
     expect(text).toMatch(/brak wymiarów/);
   });
 
+  it('flags a bag too small for its weight, frost outside and a small volume', () => {
+    const text = fallbackLeadSummary({
+      model: 'zakup', produkty: ['jajka', 'ziemniaki'], opakowanie: 'worek', wymiary: '25x15x10 5kg',
+      temperatura: 'pokojowa', wolumenDzienny: '10 dziennie', lokalizacja: 'zewnatrz', telefon: '600',
+    });
+    expect(text).toMatch(/nie pasują do wagi/);
+    expect(text).toMatch(/ogrzewanie przeciwmrozowe/);
+    expect(text).toMatch(/mały wolumen \(ok\. 10/);
+    expect(text).toMatch(/Jak często uzupełnicie/);
+  });
+
+  it('accepts a realistic package and weekly volume', () => {
+    const text = fallbackLeadSummary({ opakowanie: 'worek', wymiary: '40x25x12 cm, 5 kg', wolumenDzienny: '210 tygodniowo', lokalizacja: 'budynek' });
+    expect(text).not.toMatch(/nie pasują do wagi|mały wolumen|przeciwmrozowe/);
+  });
+
   it('uses the cheapest model', async () => {
     const client = fakeClient('ok');
     await summarizeLead({}, client);

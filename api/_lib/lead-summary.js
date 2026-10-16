@@ -4,7 +4,7 @@ const SYSTEM = `Jesteś asystentem działu sprzedaży VendingFresh (partner Siel
 Dostajesz odpowiedzi z konfiguratora. Napisz po polsku, zwięźle, dla handlowca, który zaraz zadzwoni do klienta. Nie wymyślaj cen ani faktów, których nie ma w danych. Format (zwykły tekst, bez markdownu):
 PODSUMOWANIE: 1–2 zdania, kim jest klient i czego chce.
 PROPOZYCJA: jaki automat i konfiguracja pasują, i czy warto zaproponować leasing.
-UWAGI: ryzyka lub braki w danych (np. brak wymiarów, produkt wymagający chłodzenia).
+UWAGI: ryzyka lub braki w danych (np. brak wymiarów, wymiary niepasujące do wagi, produkt wymagający chłodzenia, mróz przy automacie na zewnątrz, mały wolumen przy drogim automacie).
 PYTANIA NA TELEFON: 2–3 konkretne pytania.
 PRIORYTET: gorący / ciepły / zimny — z jednym słowem uzasadnienia.`;
 
@@ -29,14 +29,64 @@ const FIELDS = [
   ['lokalizacja', 'Lokalizacja'],
   ['miejscowoscTyp', 'Miasto czy wieś'],
   ['platnosci', 'Płatności, dopasowanie i dodatki'],
+  ['prad', 'Prąd w miejscu automatu'],
+  ['zasieg', 'Zasięg telefonu w miejscu automatu'],
+  ['finansowanie', 'Preferowane finansowanie'],
+  ['termin', 'Planowany termin startu'],
 ];
+
+const num = (v) => Number(String(v).replace(',', '.'));
+
+/** Litres and kilograms parsed from e.g. "25x15x10 cm, 5 kg"; null when not given. */
+export function parsePackage(text = '') {
+  const t = String(text).toLowerCase();
+  const dims = t.match(/(\d+(?:[.,]\d+)?)\s*[x×*]\s*(\d+(?:[.,]\d+)?)\s*[x×*]\s*(\d+(?:[.,]\d+)?)/);
+  const weight = t.match(/(\d+(?:[.,]\d+)?)\s*(kg|g)\b/);
+  const litres = dims ? (num(dims[1]) * num(dims[2]) * num(dims[3])) / 1000 : null;
+  const kg = weight ? num(weight[1]) / (weight[2] === 'g' ? 1000 : 1) : null;
+  return { litres, kg };
+}
+
+/** True when the weight can't fit the stated size (e.g. 5 kg in a 3.75 l bag). */
+export function packageLooksWrong(p = {}) {
+  const { litres, kg } = parsePackage(p.wymiary);
+  if (!litres || !kg) return false;
+  const maxDensity = ['sloik', 'butelka'].includes(p.opakowanie) ? 2 : 1.2;
+  return kg / litres > maxDensity;
+}
+
+/** Sales per day from free text like "10 dziennie" or "70 tygodniowo"; null when unknown. */
+export function dailyVolume(text = '') {
+  const t = String(text).toLowerCase();
+  const m = t.match(/\d+(?:[.,]\d+)?/);
+  if (!m) return null;
+  return /tydz|tyg/.test(t) ? num(m[0]) / 7 : num(m[0]);
+}
+
+const OUTSIDE = ['zewnatrz', 'publiczne', 'wiata'];
+
+/** Rule-based warnings, also handed to the AI so it doesn't miss them. */
+export function leadWarnings(p = {}) {
+  const warnings = [];
+  if (packageLooksWrong(p)) warnings.push(`wymiary opakowania (${p.wymiary}) nie pasują do wagi — dopytaj o prawdziwy rozmiar`);
+  if (OUTSIDE.includes(p.lokalizacja) && !(p.platnosci ?? []).includes('ogrzewanie_przeciwmrozowe')) {
+    warnings.push('automat na zewnątrz — zimą produkty przemarzną, potrzebne ogrzewanie przeciwmrozowe i zadaszenie');
+  }
+  const daily = dailyVolume(p.wolumenDzienny);
+  if (daily !== null && daily < 20) {
+    warnings.push(`mały wolumen (ok. ${Math.round(daily)} sprzedaży dziennie) — policz zwrot z inwestycji; tańsza opcja: Westvend WV Hybrid pod wiatą`);
+  }
+  if (p.prad === 'do doprowadzenia') warnings.push('trzeba doprowadzić prąd');
+  if (p.zasieg === 'slaby') warnings.push('słaby zasięg — sprawdź płatności kartą i telemetrię');
+  return warnings;
+}
 
 export function buildLeadPrompt(payload) {
   return FIELDS.map(([key, label]) => {
     const value = payload?.[key];
     const text = Array.isArray(value) ? value.join(', ') : String(value ?? '').slice(0, 500);
     return `${label}: ${text.trim() || '—'}`;
-  }).join('\n');
+  }).concat(leadWarnings(payload).map((w) => `Uwaga automatyczna: ${w}`)).join('\n');
 }
 
 const COOLED = ['sery', 'nabial', 'mieso', 'wedliny', 'dania', 'nabial_jogurty', 'dania_gotowe', 'kanapki_salatki'];
@@ -59,15 +109,19 @@ export function fallbackLeadSummary(p = {}) {
     if (['zewnatrz', 'publiczne'].includes(p.lokalizacja)) proposal.push('wersja outdoor');
     if (p.temperatura === 'mieszane') proposal.push('kilka stref temperatur');
   }
-  const gaps = [];
+  const gaps = leadWarnings(p);
   const questions = [];
+  if (packageLooksWrong(p)) questions.push('Jaki jest dokładny rozmiar jednego opakowania?');
   if (!p.wymiary) { gaps.push('brak wymiarów opakowań'); questions.push('Jakie są wymiary i waga opakowań?'); }
   if (!p.wolumenDzienny) { gaps.push('brak wolumenu'); questions.push('Ile sztuk sprzedajecie dziennie?'); }
   if (!p.lokalizacja) { gaps.push('brak lokalizacji'); }
-  questions.push('Gdzie dokładnie stanie automat i czy jest tam prąd?');
+  if (!p.prad || p.prad === 'nie wiem') questions.push('Gdzie dokładnie stanie automat i czy jest tam prąd?');
+  if (!p.czestotliwosc) questions.push('Jak często uzupełnicie automat?');
+  if (!p.finansowanie || p.finansowanie === 'nie wiem') questions.push('Gotówka, leasing czy dotacja?');
   if (!p.telefon) gaps.push('brak telefonu — kontakt tylko mailowy');
   const score = [p.telefon, p.wolumenDzienny, p.lokalizacja, (p.produkty ?? []).length || p.produktInne].filter(Boolean).length;
-  const priority = score >= 4 ? 'gorący' : score >= 2 ? 'ciepły' : 'zimny';
+  let priority = score >= 4 ? 'gorący' : score >= 2 ? 'ciepły' : 'zimny';
+  if (priority === 'gorący' && ['pozniej', 'rozpoznanie'].includes(p.termin)) priority = 'ciepły';
   return [
     '(automatyczne podsumowanie bez AI)',
     `PODSUMOWANIE: ${p.model || 'model nieznany'}; produkty: ${produkty}; lokalizacja: ${p.lokalizacja || '—'}${p.jezyk ? `; zapytanie w języku ${p.jezyk}` : ''}.`,

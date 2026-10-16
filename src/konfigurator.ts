@@ -4,6 +4,10 @@ export interface ConfiguratorState {
   model: string;
   linia: string;
   czestotliwosc: string;
+  prad: string;
+  zasieg: string;
+  finansowanie: string;
+  termin: string;
   produkty: string[];
   produktInne: string;
   opakowanie: string;
@@ -32,6 +36,10 @@ export function createInitialState(): ConfiguratorState {
     model: '',
     linia: '',
     czestotliwosc: '',
+    prad: '',
+    zasieg: '',
+    finansowanie: '',
+    termin: '',
     produkty: [],
     produktInne: '',
     opakowanie: '',
@@ -68,7 +76,8 @@ export function validateStep(step: number, state: ConfiguratorState): string | n
       if (state.temperatura.trim() === '') return 'Wybierz temperaturę.';
       return null;
     case 3:
-      return state.wolumenDzienny.trim() === '' ? 'Podaj orientacyjny wolumen sprzedaży.' : null;
+      if (state.wolumenDzienny.trim() === '') return 'Podaj orientacyjny wolumen sprzedaży.';
+      return state.czestotliwosc === '' ? 'Zaznacz, jak często uzupełnisz automat.' : null;
     case 4:
       return state.lokalizacja.trim() === '' ? 'Wybierz, gdzie stanie automat.' : null;
     case 5:
@@ -173,6 +182,9 @@ function initConfigurator(): void {
     state.liczbaAutomatow = state.linia === 'smart' ? (document.getElementById('liczba-automatow') as HTMLInputElement | null)?.value ?? '' : '';
     state.kolorObudowy = state.linia === 'smart' ? (document.getElementById('kolor-obudowy') as HTMLInputElement | null)?.value ?? '' : '';
     state.czestotliwosc = form!.querySelector<HTMLInputElement>('input[name="czestotliwosc"]:checked')?.value ?? '';
+    for (const key of ['prad', 'zasieg', 'finansowanie', 'termin'] as const) {
+      state[key] = form!.querySelector<HTMLInputElement>(`input[name="${key}"]:checked`)?.value ?? '';
+    }
     state.produkty = Array.from(
       form!.querySelectorAll<HTMLInputElement>('input[name="produkty"]:checked'),
     ).map((el) => el.value);

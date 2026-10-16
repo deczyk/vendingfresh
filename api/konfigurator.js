@@ -53,6 +53,8 @@ export function buildLeadsRequestBody(payload, aiSummary = null) {
     `Wolumen / osoby na miejscu: ${payload.wolumenDzienny || '—'} (liczba produktów: ${payload.liczbaProduktow || '—'})`,
     `Częstotliwość uzupełniania: ${payload.czestotliwosc || '—'}`,
     `Lokalizacja: ${payload.lokalizacja || '—'} (${payload.miejscowoscTyp || '—'})`,
+    `Prąd / zasięg: ${payload.prad || '—'} / ${payload.zasieg || '—'}`,
+    `Finansowanie: ${payload.finansowanie || '—'}; termin startu: ${payload.termin || '—'}`,
     `Płatności i dodatki: ${platnosci || '—'}`,
   ].join('\n');
   const notesWithSummary = aiSummary ? `${notes}\n\n--- Podsumowanie zgłoszenia (do weryfikacji) ---\n${aiSummary}` : notes;

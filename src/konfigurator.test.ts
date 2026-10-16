@@ -28,10 +28,12 @@ describe('validateStep', () => {
     expect(validateStep(2, state)).toBeNull();
   });
 
-  it('requires a volume estimate on step 3', () => {
+  it('requires a volume estimate and restock frequency on step 3', () => {
     const state = createInitialState();
     expect(validateStep(3, state)).toMatch(/wolumen/);
     state.wolumenDzienny = '40 szt dziennie';
+    expect(validateStep(3, state)).toMatch(/uzupełnisz/);
+    state.czestotliwosc = 'codziennie';
     expect(validateStep(3, state)).toBeNull();
   });
 
