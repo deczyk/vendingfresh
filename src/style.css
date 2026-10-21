@@ -1843,3 +1843,18 @@ h2 em, h1 em {
 [data-linia="premium"] .linia-opts[data-linia-opts="premium"] { display: block; }
 [data-model="pelna_obsluga"] .linia-opts { display: none; }
 .config-options.config-options--wide { grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
+
+/* ---------- Photo features (Sielaff: interfejs i wnętrze) ---------- */
+.photo-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 32px 0 0; }
+.photo-feature {
+  margin: 0;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
+}
+.photo-feature:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.photo-feature img { display: block; width: 100%; height: auto; aspect-ratio: 422 / 276; object-fit: cover; }
+.photo-feature figcaption { padding: 18px 20px 20px; font-size: 14px; }
+.photo-feature figcaption strong { display: block; margin-bottom: 6px; color: var(--color-primary); font-family: var(--font-display); font-size: 18px; }
