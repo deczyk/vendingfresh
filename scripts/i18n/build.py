@@ -16,6 +16,8 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 BASE = 'https://vendingfresh.pl'
 ORG_ID = BASE + '/#organization'
 PHONE_TEL, PHONE, EMAIL = '+48735115427', '+48 735 115 427', 'kontakt@vendingfresh.pl'
+# Brand profiles for schema.org sameAs — add LinkedIn etc. here once they exist
+SAME_AS = ['https://www.facebook.com/profile.php?id=61594414635355']
 e = lambda s: html.escape(s, quote=True)
 CUR = ' aria-current="true"'
 ACT = ' class="is-active"'
@@ -52,6 +54,7 @@ def head(lang, page, title, desc, extra='', og_type='website', noindex=False, im
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta property="og:type" content="{og_type}">
+  <meta property="og:site_name" content="VendingFresh">
   <meta property="og:locale" content="{LOCALE[lang]}">
   <meta property="og:title" content="{e(title)}">
   <meta property="og:description" content="{e(desc)}">
@@ -228,10 +231,14 @@ def partials(lang):
 # ---------------------------------------------------------------- pages
 def home(lang):
     t, p = T[lang], P[lang]
-    org = {"@context": "https://schema.org", "@type": ["Organization", "LocalBusiness"], "@id": ORG_ID, "name": "VendingFresh", "url": BASE + url('home', lang),
-           "logo": BASE + "/vendingfresh_logo.webp", "telephone": PHONE_TEL, "email": EMAIL,
-           "address": {"@type": "PostalAddress", "streetAddress": "ul. Warszawska 40/2A", "postalCode": "40-008", "addressLocality": "Katowice", "addressCountry": "PL"}}
-    site = {"@context": "https://schema.org", "@type": "WebSite", "name": "VendingFresh", "url": BASE + url('home', lang), "inLanguage": lang, "publisher": {"@id": ORG_ID}}
+    org = {"@context": "https://schema.org", "@type": ["Organization", "LocalBusiness"], "@id": ORG_ID, "name": "VendingFresh",
+           "alternateName": ["Vending Fresh", "vendingfresh.pl"], "url": BASE + "/",
+           "logo": {"@type": "ImageObject", "url": BASE + "/vendingfresh_logo.png", "contentUrl": BASE + "/vendingfresh_logo.png"},
+           "image": BASE + "/vendingfresh_logo_white_bg.png", "telephone": PHONE_TEL, "email": EMAIL,
+           "address": {"@type": "PostalAddress", "streetAddress": "ul. Warszawska 40/2A", "postalCode": "40-008", "addressLocality": "Katowice", "addressCountry": "PL"},
+           "parentOrganization": {"@type": "Organization", "name": "Sklep za Stodołą Sp. z o.o.", "url": "https://sklepzastodola.pl", "vatID": "PL9542911300"},
+           "sameAs": SAME_AS}
+    site = {"@context": "https://schema.org", "@type": "WebSite", "name": "VendingFresh", "alternateName": "Vending Fresh", "url": BASE + url('home', lang), "inLanguage": lang, "publisher": {"@id": ORG_ID}}
     tiles = '\n'.join(f'          <a href="{url("sol:" + k, lang)}" class="tile"><span class="tile__icon">{ICON[k]}</span>{t["sol_names"][k]}</a>' for k in SOLUTIONS)
     stats = '\n'.join(f'          <div class="stat"><span class="stat__value">{v}</span><span class="stat__label">{l}</span></div>' for v, l in p['stats'])
     cols = '\n'.join(f'              <div class="col"><h3>{h}</h3><p>{x}</p></div>' for h, x in p['problem_cols'])

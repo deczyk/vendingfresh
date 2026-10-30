@@ -3,10 +3,10 @@
 
 P = {
  'en': {
-  'home_title': 'Vending machines tailored to your product | VendingFresh',
-  'home_desc': 'Vending machines configured for your product — bread, eggs, cheese, flowers, cakes and more. Custom wrap with your logo. Buy outright or in leasing. Sielaff partner.',
+  'home_title': 'VendingFresh – vending machines tailored to your product',
+  'home_desc': 'VendingFresh – 24/7 vending machines configured for your product — bread, eggs, cheese, flowers, cakes and more. Custom wrap with your logo. Buy outright or in leasing. Sielaff partner.',
   'home_eyebrow': 'Sielaff partner',
-  'home_h1': 'A 24/7 vending machine designed', 'home_h1_em': 'around your product.',
+  'home_h1': 'VendingFresh – vending machines', 'home_h1_em': 'tailored to your product.',
   'home_sub': 'We don’t sell off-the-shelf machines. We tailor <strong>literally everything</strong> — machine size, number and size of compartments, temperatures, dispensing and the wrap — so you can sell literally anything: from bread to flowers to cakes.',
   'badge_a': ('24/7', 'selling around the clock'), 'badge_b': ('Made to measure', 'for your product'),
   'stats': [('24/7', 'sales without staff'), ('∞', 'products you can sell'), ('24–48 h', 'for a tailored quote'), ('Sielaff', 'German-made machines')],
@@ -72,10 +72,10 @@ P = {
   'thx_p': 'We will get back to you within 24–48 h. If it’s urgent, call us:', 'thx_home': 'Back to the home page',
  },
  'cs': {
-  'home_title': 'Prodejní automaty na míru vašemu produktu | VendingFresh',
-  'home_desc': 'Prodejní automaty konfigurované pro váš produkt — pečivo, vejce, sýry, květiny, zákusky a další. Polep s vaším logem. Koupě hned, nebo na leasing. Partner Sielaff.',
+  'home_title': 'VendingFresh – prodejní automaty na míru vašemu produktu',
+  'home_desc': 'VendingFresh – prodejní automaty konfigurované pro váš produkt — pečivo, vejce, sýry, květiny, zákusky a další. Polep s vaším logem. Koupě hned, nebo na leasing. Partner Sielaff.',
   'home_eyebrow': 'Partner Sielaff',
-  'home_h1': 'Automat 24/7 navržený', 'home_h1_em': 'pro váš produkt.',
+  'home_h1': 'VendingFresh – prodejní automaty', 'home_h1_em': 'na míru vašemu produktu.',
   'home_sub': 'Neprodáváme automaty z regálu. Přizpůsobíme <strong>doslova všechno</strong> — velikost automatu, počet a velikost přihrádek, teploty, způsob výdeje i polep — takže v něm prodáte doslova cokoliv: od chleba přes květiny až po zákusky.',
   'badge_a': ('24/7', 'prodej bez přestávky'), 'badge_b': ('Na míru', 'pro váš produkt'),
   'stats': [('24/7', 'prodej bez obsluhy'), ('∞', 'produktů, které můžete prodávat'), ('24–48 h', 'na nabídku na míru'), ('Sielaff', 'automaty z Německa')],
@@ -138,10 +138,10 @@ P = {
   'thx_p': 'Ozveme se do 24–48 h. Pokud spěcháte, zavolejte nám:', 'thx_home': 'Zpět na úvodní stránku',
  },
  'sk': {
-  'home_title': 'Predajné automaty na mieru vášmu produktu | VendingFresh',
-  'home_desc': 'Predajné automaty konfigurované pre váš produkt — pečivo, vajcia, syry, kvety, zákusky a ďalšie. Polep s vaším logom. Kúpa hneď alebo na leasing. Partner Sielaff.',
+  'home_title': 'VendingFresh – predajné automaty na mieru vášmu produktu',
+  'home_desc': 'VendingFresh – predajné automaty konfigurované pre váš produkt — pečivo, vajcia, syry, kvety, zákusky a ďalšie. Polep s vaším logom. Kúpa hneď alebo na leasing. Partner Sielaff.',
   'home_eyebrow': 'Partner Sielaff',
-  'home_h1': 'Automat 24/7 navrhnutý', 'home_h1_em': 'pre váš produkt.',
+  'home_h1': 'VendingFresh – predajné automaty', 'home_h1_em': 'na mieru vášmu produktu.',
   'home_sub': 'Nepredávame automaty z regálu. Prispôsobíme <strong>doslova všetko</strong> — veľkosť automatu, počet a veľkosť priehradok, teploty, spôsob výdaja aj polep — takže v ňom predáte doslova čokoľvek: od chleba cez kvety až po zákusky.',
   'badge_a': ('24/7', 'predaj bez prestávky'), 'badge_b': ('Na mieru', 'pre váš produkt'),
   'stats': [('24/7', 'predaj bez obsluhy'), ('∞', 'produktov, ktoré môžete predávať'), ('24–48 h', 'na ponuku na mieru'), ('Sielaff', 'automaty z Nemecka')],
